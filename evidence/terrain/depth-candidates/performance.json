@@ -1,0 +1,802 @@
+{
+  "generatedAtIso": "2026-08-07T09:12:44.973Z",
+  "purpose": "TERR-111/112/113 quiet-GPU depth-strategy comparison",
+  "revision": "e1168b2",
+  "device": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "drawingBuffer": {
+    "width": 1600,
+    "height": 913,
+    "pixelRatio": 1
+  },
+  "protocol": {
+    "baseline": "Two symmetric-order runs per mode; six R0 views; 24 retained six-frame rotations per view.",
+    "occlusion": "Two runs per mode; peak fixture at 21 km; 16 alternating hidden/visible pairs; 8 six-frame rotations per leg; terrain renderOrder -1 before ocean renderOrder 0.",
+    "contention": "All competing game/browser renderers stopped for the run."
+  },
+  "rawRuns": [
+    {
+      "label": "baseline-a-conventional",
+      "kind": "baseline",
+      "repeat": "a",
+      "mode": "conventional",
+      "path": "raw/baseline-a-conventional/performance.json",
+      "sha256": "a60c8992db1151b2d25dc068346e6b5d58846bfaeb2c39082ebac624b58320be"
+    },
+    {
+      "label": "baseline-a-log",
+      "kind": "baseline",
+      "repeat": "a",
+      "mode": "log",
+      "path": "raw/baseline-a-log/performance.json",
+      "sha256": "72ef1eeb1a875a913d3729f6deca3e7b4118bd614c046fb61252b8f3a8e37471"
+    },
+    {
+      "label": "baseline-a-reversed",
+      "kind": "baseline",
+      "repeat": "a",
+      "mode": "reversed",
+      "path": "raw/baseline-a-reversed/performance.json",
+      "sha256": "f49636234f835945f89c96772ef21483591c9aee00f34e64a1db35ba16b8c392"
+    },
+    {
+      "label": "baseline-b-reversed",
+      "kind": "baseline",
+      "repeat": "b",
+      "mode": "reversed",
+      "path": "raw/baseline-b-reversed/performance.json",
+      "sha256": "e56deb822fbd3594dcd7b2e9a693daaf5d3ed111168d40829f94e5ce3f84a2b4"
+    },
+    {
+      "label": "baseline-b-log",
+      "kind": "baseline",
+      "repeat": "b",
+      "mode": "log",
+      "path": "raw/baseline-b-log/performance.json",
+      "sha256": "9c0326a82df0d5dceec5698f1345a500b2439587be0fe417ce746cbd6de1267b"
+    },
+    {
+      "label": "baseline-b-conventional",
+      "kind": "baseline",
+      "repeat": "b",
+      "mode": "conventional",
+      "path": "raw/baseline-b-conventional/performance.json",
+      "sha256": "76149a927a1476f4b8e08277e427fc6a311ea3b93cbc219ca9139d319840a623"
+    },
+    {
+      "label": "occlusion-a-conventional",
+      "kind": "occlusion",
+      "repeat": "a",
+      "mode": "conventional",
+      "path": "raw/occlusion-a-conventional/paired-terrain-cost.json",
+      "sha256": "be689ccac433603c71502e4e6975b286a5fb1f8b00cf6ec9a6582050649847ad"
+    },
+    {
+      "label": "occlusion-a-log",
+      "kind": "occlusion",
+      "repeat": "a",
+      "mode": "log",
+      "path": "raw/occlusion-a-log/paired-terrain-cost.json",
+      "sha256": "d28f2d88f3732387748c34eeba56c575fb0d89dd9355d745b85c7ddf4d486cd9"
+    },
+    {
+      "label": "occlusion-a-reversed",
+      "kind": "occlusion",
+      "repeat": "a",
+      "mode": "reversed",
+      "path": "raw/occlusion-a-reversed/paired-terrain-cost.json",
+      "sha256": "52e382cd7cac75342262c0d330f7763f3458995810d7fb21c3000aaa549a491f"
+    },
+    {
+      "label": "occlusion-b-reversed",
+      "kind": "occlusion",
+      "repeat": "b",
+      "mode": "reversed",
+      "path": "raw/occlusion-b-reversed/paired-terrain-cost.json",
+      "sha256": "f7f388eb863a13a970ba453c708b864d463c019eed9e26058f85231b58c0ac00"
+    },
+    {
+      "label": "occlusion-b-log",
+      "kind": "occlusion",
+      "repeat": "b",
+      "mode": "log",
+      "path": "raw/occlusion-b-log/paired-terrain-cost.json",
+      "sha256": "083c5c97564a0014d488186febcb96294ecae37e0c6092b31a37132d62f500ec"
+    },
+    {
+      "label": "occlusion-b-conventional",
+      "kind": "occlusion",
+      "repeat": "b",
+      "mode": "conventional",
+      "path": "raw/occlusion-b-conventional/paired-terrain-cost.json",
+      "sha256": "38b095a399b90da0f695aeb7778aa0c2335f60e354aff92edadf428dc396514e"
+    }
+  ],
+  "baseline": {
+    "conventional": {
+      "embodied-forward-production-midday": {
+        "label": "Embodied forward · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.475541,
+            "frameStandardDeviationMs": 4.999778596003688,
+            "oceanMedianMs": 2.8623754999999997,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 7.0639994999999995,
+            "frameStandardDeviationMs": 3.3195038271133823,
+            "oceanMedianMs": 3.5641665000000002,
+            "presentedFrameMedianMs": 16.600000381469727
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.76977025,
+        "oceanMedianAcrossRunsMs": 3.2132709999999998
+      },
+      "embodied-toward-low-sun-production": {
+        "label": "Embodied toward low Sun · production sea",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.673375,
+            "frameStandardDeviationMs": 2.392031142485295,
+            "oceanMedianMs": 4.1107505,
+            "presentedFrameMedianMs": 16.600000381469727
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 7.11552,
+            "frameStandardDeviationMs": 2.3338868537098603,
+            "oceanMedianMs": 3.1044370000000003,
+            "presentedFrameMedianMs": 16.600000381469727
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.8944475,
+        "oceanMedianAcrossRunsMs": 3.6075937500000004
+      },
+      "cinematic-default-production-midday": {
+        "label": "Default cinematic · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.730249,
+            "frameStandardDeviationMs": 2.073026610457621,
+            "oceanMedianMs": 5.3908949999999995,
+            "presentedFrameMedianMs": 16.600000381469727
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.300833,
+            "frameStandardDeviationMs": 2.1229047269658343,
+            "oceanMedianMs": 5.556209,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.515541,
+        "oceanMedianAcrossRunsMs": 5.473552
+      },
+      "cinematic-default-rough-low-sun": {
+        "label": "Default cinematic · rough sea · low Sun",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.250749500000001,
+            "frameStandardDeviationMs": 1.4512991222859901,
+            "oceanMedianMs": 5.969042,
+            "presentedFrameMedianMs": 16.600000381469727
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.9484785,
+            "frameStandardDeviationMs": 1.0312057757396633,
+            "oceanMedianMs": 6.534437499999999,
+            "presentedFrameMedianMs": 16.59999990463257
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.599614,
+        "oceanMedianAcrossRunsMs": 6.25173975
+      },
+      "cinematic-max-production-midday": {
+        "label": "Maximum cinematic · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.646291,
+            "frameStandardDeviationMs": 1.2285194020646042,
+            "oceanMedianMs": 3.7543539999999997,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.5034375,
+            "frameStandardDeviationMs": 1.5822122176644873,
+            "oceanMedianMs": 3.9297915000000003,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.57486425,
+        "oceanMedianAcrossRunsMs": 3.84207275
+      },
+      "cinematic-max-rough-low-sun": {
+        "label": "Maximum cinematic · rough sea · low Sun",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.328186500000001,
+            "frameStandardDeviationMs": 0.7068044245551814,
+            "oceanMedianMs": 6.2996035,
+            "presentedFrameMedianMs": 16.600000381469727
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.3554375,
+            "frameStandardDeviationMs": 0.4845537868508509,
+            "oceanMedianMs": 6.335145499999999,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.341812000000001,
+        "oceanMedianAcrossRunsMs": 6.3173745
+      }
+    },
+    "log": {
+      "embodied-forward-production-midday": {
+        "label": "Embodied forward · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.6436245,
+            "frameStandardDeviationMs": 0.9328079585548235,
+            "oceanMedianMs": 2.885396,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 7.1132285,
+            "frameStandardDeviationMs": 2.4230006973509677,
+            "oceanMedianMs": 3.362562,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.8784265,
+        "oceanMedianAcrossRunsMs": 3.1239790000000003
+      },
+      "embodied-toward-low-sun-production": {
+        "label": "Embodied toward low Sun · production sea",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.7267495,
+            "frameStandardDeviationMs": 0.6162640034137684,
+            "oceanMedianMs": 3.0848125,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.470437,
+            "frameStandardDeviationMs": 1.9441770071691555,
+            "oceanMedianMs": 3.1691044999999995,
+            "presentedFrameMedianMs": 16.59999990463257
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.59859325,
+        "oceanMedianAcrossRunsMs": 3.1269584999999998
+      },
+      "cinematic-default-production-midday": {
+        "label": "Default cinematic · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.8342495,
+            "frameStandardDeviationMs": 0.5381939536943108,
+            "oceanMedianMs": 4.270417,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.8761035,
+            "frameStandardDeviationMs": 1.4085681918485113,
+            "oceanMedianMs": 4.316979,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.855176500000001,
+        "oceanMedianAcrossRunsMs": 4.293698
+      },
+      "cinematic-default-rough-low-sun": {
+        "label": "Default cinematic · rough sea · low Sun",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.56675,
+            "frameStandardDeviationMs": 0.032223787217034165,
+            "oceanMedianMs": 6.0545835,
+            "presentedFrameMedianMs": 16.600000381469727
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.612687000000001,
+            "frameStandardDeviationMs": 0.4191911738869195,
+            "oceanMedianMs": 6.132896000000001,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.5897185,
+        "oceanMedianAcrossRunsMs": 6.09373975
+      },
+      "cinematic-max-production-midday": {
+        "label": "Maximum cinematic · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.2843955000000005,
+            "frameStandardDeviationMs": 2.0945387510224625,
+            "oceanMedianMs": 4.654708,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.5729165,
+            "frameStandardDeviationMs": 1.9863242841968607,
+            "oceanMedianMs": 4.153604,
+            "presentedFrameMedianMs": 16.59999990463257
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.428656,
+        "oceanMedianAcrossRunsMs": 4.404156
+      },
+      "cinematic-max-rough-low-sun": {
+        "label": "Maximum cinematic · rough sea · low Sun",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.3399785,
+            "frameStandardDeviationMs": 0.028458419870685623,
+            "oceanMedianMs": 6.290312,
+            "presentedFrameMedianMs": 16.600000381469727
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.350458,
+            "frameStandardDeviationMs": 0.5063863505047506,
+            "oceanMedianMs": 6.446979499999999,
+            "presentedFrameMedianMs": 16.600000381469727
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.34521825,
+        "oceanMedianAcrossRunsMs": 6.36864575
+      }
+    },
+    "reversed": {
+      "embodied-forward-production-midday": {
+        "label": "Embodied forward · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.5311665,
+            "frameStandardDeviationMs": 1.9764163189441801,
+            "oceanMedianMs": 2.59675,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.35652,
+            "frameStandardDeviationMs": 1.9956788484651287,
+            "oceanMedianMs": 3.1145414999999996,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.4438432500000005,
+        "oceanMedianAcrossRunsMs": 2.85564575
+      },
+      "embodied-toward-low-sun-production": {
+        "label": "Embodied toward low Sun · production sea",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.889832500000001,
+            "frameStandardDeviationMs": 1.770143779309022,
+            "oceanMedianMs": 3.2974170000000003,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 7.393625,
+            "frameStandardDeviationMs": 2.421296990130801,
+            "oceanMedianMs": 4.578583,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 7.14172875,
+        "oceanMedianAcrossRunsMs": 3.938
+      },
+      "cinematic-default-production-midday": {
+        "label": "Default cinematic · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.6350415,
+            "frameStandardDeviationMs": 0.976758062847823,
+            "oceanMedianMs": 4.6715,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.598103999999999,
+            "frameStandardDeviationMs": 1.258484507304615,
+            "oceanMedianMs": 4.50675,
+            "presentedFrameMedianMs": 16.59999990463257
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.61657275,
+        "oceanMedianAcrossRunsMs": 4.589125
+      },
+      "cinematic-default-rough-low-sun": {
+        "label": "Default cinematic · rough sea · low Sun",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.2841035,
+            "frameStandardDeviationMs": 0.055721326827642706,
+            "oceanMedianMs": 5.8966875000000005,
+            "presentedFrameMedianMs": 16.59999990463257
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.246666000000001,
+            "frameStandardDeviationMs": 0.09794330706665057,
+            "oceanMedianMs": 5.9166669999999995,
+            "presentedFrameMedianMs": 16.699999809265137
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.26538475,
+        "oceanMedianAcrossRunsMs": 5.9066772499999995
+      },
+      "cinematic-max-production-midday": {
+        "label": "Maximum cinematic · production sea · midday",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 6.512352999999999,
+            "frameStandardDeviationMs": 1.7713290631546177,
+            "oceanMedianMs": 4.582312,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 6.2340205,
+            "frameStandardDeviationMs": 1.819065663086689,
+            "oceanMedianMs": 4.5654995,
+            "presentedFrameMedianMs": 16.65000009536743
+          }
+        ],
+        "frameMedianAcrossRunsMs": 6.3731867499999995,
+        "oceanMedianAcrossRunsMs": 4.57390575
+      },
+      "cinematic-max-rough-low-sun": {
+        "label": "Maximum cinematic · rough sea · low Sun",
+        "runs": [
+          {
+            "repeat": "a",
+            "frameMedianMs": 8.337145,
+            "frameStandardDeviationMs": 0.02630788368572694,
+            "oceanMedianMs": 6.1871875,
+            "presentedFrameMedianMs": 16.699999809265137
+          },
+          {
+            "repeat": "b",
+            "frameMedianMs": 8.332062,
+            "frameStandardDeviationMs": 0.033801210568080955,
+            "oceanMedianMs": 6.2020215,
+            "presentedFrameMedianMs": 16.59999990463257
+          }
+        ],
+        "frameMedianAcrossRunsMs": 8.3346035,
+        "oceanMedianAcrossRunsMs": 6.1946045000000005
+      }
+    }
+  },
+  "comparisons": {
+    "embodied-forward-production-midday": {
+      "logMinusConventionalFrameMs": 0.10865625000000012,
+      "reversedMinusConventionalFrameMs": -0.3259269999999992,
+      "logMinusConventionalOceanMs": -0.08929199999999948,
+      "reversedMinusConventionalOceanMs": -0.3576252499999999
+    },
+    "embodied-toward-low-sun-production": {
+      "logMinusConventionalFrameMs": -0.29585424999999965,
+      "reversedMinusConventionalFrameMs": 0.24728125000000034,
+      "logMinusConventionalOceanMs": -0.4806352500000006,
+      "reversedMinusConventionalOceanMs": 0.3304062499999998
+    },
+    "cinematic-default-production-midday": {
+      "logMinusConventionalFrameMs": -1.6603645,
+      "reversedMinusConventionalFrameMs": -1.8989682500000011,
+      "logMinusConventionalOceanMs": -1.1798539999999997,
+      "reversedMinusConventionalOceanMs": -0.8844269999999996
+    },
+    "cinematic-default-rough-low-sun": {
+      "logMinusConventionalFrameMs": -0.009895500000000723,
+      "reversedMinusConventionalFrameMs": -0.3342292499999999,
+      "logMinusConventionalOceanMs": -0.15799999999999947,
+      "reversedMinusConventionalOceanMs": -0.34506250000000005
+    },
+    "cinematic-max-production-midday": {
+      "logMinusConventionalFrameMs": -0.14620824999999993,
+      "reversedMinusConventionalFrameMs": -0.20167750000000062,
+      "logMinusConventionalOceanMs": 0.5620832500000006,
+      "reversedMinusConventionalOceanMs": 0.731833
+    },
+    "cinematic-max-rough-low-sun": {
+      "logMinusConventionalFrameMs": 0.003406249999999389,
+      "reversedMinusConventionalFrameMs": -0.007208500000000839,
+      "logMinusConventionalOceanMs": 0.0512712500000001,
+      "reversedMinusConventionalOceanMs": -0.12276999999999916
+    }
+  },
+  "occlusion": {
+    "conventional": {
+      "depth": {
+        "requested": "conventional",
+        "logarithmicActive": false,
+        "reversedActive": false,
+        "clipControl": true,
+        "depthBits": 24
+      },
+      "frame": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 0.5407602812499998,
+            "pairedMedianMs": 0.5953019999999993,
+            "standardErrorMs": 0.07902024322121214
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 0.6470768437499999,
+            "pairedMedianMs": 0.6676139999999999,
+            "standardErrorMs": 0.17984517591398072
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": 0.5939185624999999,
+          "standardDeviation": 0.5492417754498785,
+          "standardError": 0.09709314598288703,
+          "approximate95PercentInterval": [
+            0.3997322705342258,
+            0.7881048544657739
+          ]
+        }
+      },
+      "terrainAndOceanPrefix": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 0.45378900000000005,
+            "pairedMedianMs": 0.6019375,
+            "standardErrorMs": 0.11254597346648498
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 0.6945755937500002,
+            "pairedMedianMs": 0.6960520000000003,
+            "standardErrorMs": 0.17636894288505003
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": 0.5741822968750001,
+          "standardDeviation": 0.5948501982130142,
+          "standardError": 0.10515565223664605,
+          "approximate95PercentInterval": [
+            0.363870992401708,
+            0.7844936013482922
+          ]
+        }
+      },
+      "sceneAndStars": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": -0.08513671875,
+            "pairedMedianMs": -0.07547974999999996,
+            "standardErrorMs": 0.048113011385650856
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 0.026550749999999623,
+            "pairedMedianMs": -0.022729000000000443,
+            "standardErrorMs": 0.0769960713837888
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": -0.02929298437500019,
+          "standardDeviation": 0.2589167492905183,
+          "standardError": 0.04577044729652567,
+          "approximate95PercentInterval": [
+            -0.12083387896805153,
+            0.06224791021805115
+          ]
+        }
+      }
+    },
+    "log": {
+      "depth": {
+        "requested": "log",
+        "logarithmicActive": true,
+        "reversedActive": false,
+        "clipControl": true,
+        "depthBits": 24
+      },
+      "frame": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 1.3533725937500003,
+            "pairedMedianMs": 1.376677,
+            "standardErrorMs": 0.03253798525077456
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 1.0923138749999999,
+            "pairedMedianMs": 0.9404479999999991,
+            "standardErrorMs": 0.19905317035549575
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": 1.222843234375,
+          "standardDeviation": 0.5766596151514175,
+          "standardError": 0.10193998107749801,
+          "approximate95PercentInterval": [
+            1.018963272220004,
+            1.426723196529996
+          ]
+        }
+      },
+      "terrainAndOceanPrefix": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 1.2487213749999997,
+            "pairedMedianMs": 1.2586252499999997,
+            "standardErrorMs": 0.03865248454049399
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 1.0636628750000001,
+            "pairedMedianMs": 1.0927605000000007,
+            "standardErrorMs": 0.15234069371835138
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": 1.156192125,
+          "standardDeviation": 0.44729947942376835,
+          "standardError": 0.07907212378043979,
+          "approximate95PercentInterval": [
+            0.9980478774391204,
+            1.3143363725608797
+          ]
+        }
+      },
+      "sceneAndStars": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 0.032371093749999885,
+            "pairedMedianMs": 0.01669849999999995,
+            "standardErrorMs": 0.027095000311374257
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": -0.10799203125000004,
+            "pairedMedianMs": 0.016479750000000015,
+            "standardErrorMs": 0.09985001691166263
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": -0.037810468750000076,
+          "standardDeviation": 0.29657257369280327,
+          "standardError": 0.05242711949303207,
+          "approximate95PercentInterval": [
+            -0.1426647077360642,
+            0.06704377023606406
+          ]
+        }
+      }
+    },
+    "reversed": {
+      "depth": {
+        "requested": "reversed",
+        "logarithmicActive": false,
+        "reversedActive": true,
+        "clipControl": true,
+        "depthBits": 24
+      },
+      "frame": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 0.6788436875,
+            "pairedMedianMs": 0.7105622500000002,
+            "standardErrorMs": 0.05602869943525365
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 0.46562649999999994,
+            "pairedMedianMs": 0.5802500000000004,
+            "standardErrorMs": 0.11299124631158747
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": 0.57223509375,
+          "standardDeviation": 0.3672561472812428,
+          "standardError": 0.06492232804375304,
+          "approximate95PercentInterval": [
+            0.442390437662494,
+            0.7020797498375061
+          ]
+        }
+      },
+      "terrainAndOceanPrefix": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": 0.5482396562500002,
+            "pairedMedianMs": 0.6839587500000004,
+            "standardErrorMs": 0.1418051393769348
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": 0.6257029687500002,
+            "pairedMedianMs": 0.5544685,
+            "standardErrorMs": 0.1123334733115114
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": 0.5869713125000002,
+          "standardDeviation": 0.504898780831953,
+          "standardError": 0.08925433793477361,
+          "approximate95PercentInterval": [
+            0.408462636630453,
+            0.7654799883695474
+          ]
+        }
+      },
+      "sceneAndStars": {
+        "runs": [
+          {
+            "repeat": "a",
+            "pairedMeanMs": -0.08552846874999984,
+            "pairedMedianMs": -0.1281774999999996,
+            "standardErrorMs": 0.07657718151726445
+          },
+          {
+            "repeat": "b",
+            "pairedMeanMs": -0.12495568750000005,
+            "pairedMedianMs": -0.08626075000000033,
+            "standardErrorMs": 0.05648901178879608
+          }
+        ],
+        "pooledPairedOnMinusOffMs": {
+          "count": 32,
+          "mean": -0.10524207812499994,
+          "standardDeviation": 0.26552769178881397,
+          "standardError": 0.04693910786417047,
+          "approximate95PercentInterval": [
+            -0.1991202938533409,
+            -0.011363862396659
+          ]
+        }
+      }
+    }
+  }
+}

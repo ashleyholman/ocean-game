@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-08-10",
+  "host": {
+    "chip": "Apple M2",
+    "lowPowerMode": false
+  },
+  "contract": {
+    "chrome": "--headless=new --enable-gpu --use-angle=metal --window-size=1600,1000",
+    "cssSurface": "1280x720",
+    "devicePixelRatio": 2,
+    "drawingBuffer": "2560x1440",
+    "fence": "1x1 readPixels with PIXEL_PACK_BUFFER unbound",
+    "roundPolicy": "Alternating revision order",
+    "thermalTimeline": "ProcessInfo.thermalState sampled once per second"
+  },
+  "rawFeed": {
+    "directory": "perf-results",
+    "fileCount": 46,
+    "datasets": {
+      "thermal-cold-post-wake": 8,
+      "thermal-cold-endpoint": 8,
+      "rejected-thermal-structural-tail": 1,
+      "thermal-privileged-cold-structural-tail": 4,
+      "thermal-privileged-post-wake-transition": 3,
+      "thermal-privileged-endpoint-ramp": 20,
+      "thermal-privileged-recovery-endpoint": 2
+    },
+    "powermetricsSidecars": [
+      "2026-08-10T01-10-46Z_thermal-hour_powermetrics.txt"
+    ],
+    "powermetricsSummary": "evidence/performance/2026-08-10-powermetrics-summary.json"
+  },
+  "instrumentation": {
+    "automaticPublicTimeline": {
+      "source": "ProcessInfo.thermalState",
+      "intervalMs": 1000,
+      "fields": [
+        "capturedAt",
+        "thermalState",
+        "thermalStateRaw",
+        "lowPowerMode",
+        "activeProcessorCount"
+      ],
+      "states": [
+        "nominal",
+        "fair",
+        "serious",
+        "critical"
+      ],
+      "limitation": "This is a public pressure state, not a raw temperature or direct per-frame throttle flag."
+    },
+    "optionalPowermetrics": {
+      "flag": "--powermetrics",
+      "samplers": [
+        "thermal",
+        "sfi",
+        "cpu_power",
+        "gpu_power"
+      ],
+      "requires": "sudo -v before the unprivileged runner, or one bounded command approved through the native macOS administrator dialog",
+      "capturedToday": true,
+      "sidecar": "perf-results/2026-08-10T01-10-46Z_thermal-hour_powermetrics.txt",
+      "parser": "tools/perf/summarize-powermetrics.mjs",
+      "rawTemperatureAvailableOnHost": false
+    },
+    "coldRunControls": {
+      "requireNominalFlag": "--require-nominal-thermal",
+      "settleFlag": "--settle-seconds",
+      "behavior": "Refuse an elevated or Low Power start; save and then stop after the first run whose timeline leaves nominal."
+    }
+  },
+  "endpointRebaseline": {
+    "dataset": "thermal-cold-endpoint",
+    "from": "38440b5",
+    "to": "f3d542c",
+    "earlyRounds": {
+      "fromRoundMediansMs": [
+        14.575,
+        14.775
+      ],
+      "toRoundMediansMs": [
+        17.2125,
+        17.85
+      ],
+      "fromMeanMs": 14.675,
+      "toMeanMs": 17.53125,
+      "deltaMs": 2.85625,
+      "deltaPercent": 19.463,
+      "thermalStates": {
+        "from": [
+          "nominal",
+          "nominal-to-fair transition"
+        ],
+        "to": [
+          "nominal",
+          "nominal"
+        ]
+      },
+      "fullyNominalRound1DeltaMs": 2.6375,
+      "interpretation": "The old endpoint and current runtime reproduce the prior fresh ballpark. The transition run stayed at baseline speed; round 1 is the strictly nominal comparison."
+    },
+    "comparisonTo2026-08-09Fresh": {
+      "priorFromMs": 14.0125,
+      "priorToMs": 17.00625,
+      "priorDeltaMs": 2.99375,
+      "todayEarlyFromDifferencePercent": 4.728,
+      "todayEarlyToDifferencePercent": 3.087,
+      "conclusion": "The host baseline reproduced within about five percent, and the roughly three-millisecond code regression is real."
+    },
+    "sustainedFairRounds": {
+      "fromRoundMediansMs": [
+        26.3375,
+        25.9375
+      ],
+      "toRoundMediansMs": [
+        34.6,
+        31.9625
+      ],
+      "fromMeanMs": 26.1375,
+      "toMeanMs": 33.28125,
+      "pairedDeltaMs": 7.14375,
+      "fromSlowdownVersusEarlyPercent": 78.109,
+      "toSlowdownVersusEarlyPercent": 89.84,
+      "interpretation": "Fair public pressure coincided with a severe slowdown in this unprivileged session, but the later controlled ramp proves fair alone is not sufficient. These rounds remain rejected and are not evidence that thermal pressure caused their entire 78 to 90 percent slowdown."
+    }
+  },
+  "postWakeRecheck": {
+    "dataset": "thermal-cold-post-wake",
+    "from": "0de168d",
+    "to": "293e66f",
+    "fromRoundMediansMs": [
+      29.4,
+      16.525,
+      17.1,
+      16.7125
+    ],
+    "toRoundMediansMs": [
+      31.25,
+      17.35,
+      16.475,
+      17.0
+    ],
+    "pairedRoundDeltasMs": [
+      1.85,
+      0.825,
+      -0.625,
+      0.2875
+    ],
+    "pairedDeltaMedianMs": 0.55625,
+    "thermalStatesByRound": [
+      "nominal",
+      "nominal",
+      "fair",
+      "fair"
+    ],
+    "status": "Inconclusive for small commit attribution",
+    "reason": "The same revisions dropped by roughly 12 to 14 ms between the first and second pairs even though both pairs remained nominal. The public thermal state therefore explains some, but not all, host drift."
+  },
+  "structuralTailRecheck": {
+    "intendedFrom": "66597cb",
+    "intendedTo": "5504730",
+    "priorHistorySweepMediansMs": {
+      "66597cb": [
+        21.85,
+        21.9625
+      ],
+      "5504730": [
+        20.9,
+        21.025
+      ]
+    },
+    "rejectedDataset": "rejected-thermal-structural-tail",
+    "rejectedPoint": {
+      "revision": "66597cb",
+      "medianMs": 48.6875,
+      "thermalState": "fair"
+    },
+    "guardedRetries": "Two later attempts were refused before Chrome launched because the preflight state was fair, including one after a 10-second quiet settle.",
+    "status": "Superseded by the privileged cold recheck below."
+  },
+  "privilegedColdStructuralTail": {
+    "dataset": "thermal-privileged-cold-structural-tail",
+    "from": "66597cb",
+    "to": "5504730",
+    "fromRoundMediansMs": [
+      18.3375,
+      18.075
+    ],
+    "toRoundMediansMs": [
+      17.6125,
+      18.25
+    ],
+    "fromMeanMs": 18.20625,
+    "toMeanMs": 17.93125,
+    "deltaMs": -0.275,
+    "deltaPercent": -1.51,
+    "publicThermal": "nominal for every run",
+    "powermetricsPressure": "Nominal for every run",
+    "gpuActiveFrequencyMHz": "1397.8 to 1398.0",
+    "interpretation": "The structural merge is a small net improvement, not a regression source. The old hot sweep exaggerated its apparent improvement from about 0.28 ms to about 0.94 ms."
+  },
+  "privilegedPostWakeTransition": {
+    "dataset": "thermal-privileged-post-wake-transition",
+    "from": "0de168d",
+    "to": "293e66f",
+    "acceptedColdPairMs": {
+      "from": 16.5625,
+      "to": 16.7875,
+      "delta": 0.225
+    },
+    "nextToRevisionRunMs": 32.5375,
+    "publicStateDuringSlowRun": "nominal",
+    "powermetricsStateDuringSlowRun": "Nominal",
+    "gpuActiveFrequencyMHzDuringSlowRun": 1398,
+    "gpuPowerMwDuringSlowRun": 11592.111,
+    "followingPressureTransition": "powermetrics Moderate appeared about five seconds later and the next public preflight was fair",
+    "interpretation": "The doubled frame time occurred at full GPU clock and high GPU power before either thermal API changed. Thermal throttling does not explain this outlier; transient GPU contention or another host effect remains more plausible."
+  },
+  "privilegedThermalRamp": {
+    "dataset": "thermal-privileged-endpoint-ramp",
+    "from": "38440b5",
+    "to": "f3d542c",
+    "sequence": "Ten alternating pairs with no cooldown, starting at Nominal pressure",
+    "coldRounds1And2MeanMs": {
+      "from": 13.875,
+      "to": 16.91875,
+      "delta": 3.04375,
+      "deltaPercent": 21.937
+    },
+    "pressureTimeline": {
+      "rampStartAt": "2026-08-10T01:17:06.621Z",
+      "firstModerateAt": "2026-08-10T01:18:05.000Z",
+      "firstHeavyAt": "2026-08-10T01:18:37.000Z",
+      "loadEndedAt": "2026-08-10T01:20:41.322Z",
+      "recoveredToModerateAt": "2026-08-10T01:20:56.000Z",
+      "recoveredToNominalAt": "2026-08-10T01:21:14.000Z",
+      "publicApi": "ProcessInfo reached fair near the Moderate transition, never exceeded fair, and returned to nominal before powermetrics did"
+    },
+    "moderateAndEarlyHeavy": {
+      "result": "Frame times remained near the cold baseline through pair 5 and current-master pair 6 despite fair public state and Heavy privileged pressure.",
+      "gpuActiveFrequencyMHz": "about 1398"
+    },
+    "hotRounds9And10MeanMs": {
+      "from": 17.51875,
+      "to": 20.2375,
+      "fromSlowdownPercent": 26.261,
+      "toSlowdownPercent": 19.615
+    },
+    "activeGpuColdToHot": {
+      "frequencyMHz": {
+        "cold": 1397.972,
+        "hot": 1154.549,
+        "changePercent": -17.413
+      },
+      "powerMw": {
+        "cold": 10697.759,
+        "hot": 6464.234,
+        "changePercent": -39.574
+      },
+      "pClusterFrequencyMHz": {
+        "cold": 3355.647,
+        "hot": 3349.215,
+        "changePercent": -0.192
+      }
+    },
+    "interpretation": "This is direct evidence of GPU-specific thermal or power throttling: under sustained Heavy pressure, GPU clock and estimated power fall while P-core frequency stays effectively flat and frame times rise. Fair or Heavy pressure begins before performance degrades, so pressure state alone is not an instantaneous throttle bit."
+  },
+  "privilegedRecovery": {
+    "dataset": "thermal-privileged-recovery-endpoint",
+    "fromMs": 13.975,
+    "toMs": 16.75,
+    "publicThermal": "nominal",
+    "powermetricsPressure": "Nominal",
+    "gpuActiveFrequencyMHz": 1398,
+    "interpretation": "After privileged pressure returned to Nominal, both revisions returned to their cold frame times."
+  },
+  "conclusions": [
+    "The 2026-08-09 endpoint regression reproduces: about 2.86 ms today versus 2.99 ms previously.",
+    "The controlled privileged ramp directly demonstrates GPU throttling under sustained Heavy pressure: active GPU clock fell about 17 percent, GPU power about 40 percent, and frame time rose about 20 to 26 percent while P-core frequency stayed flat.",
+    "ProcessInfo fair is an early, coarse pressure warning. It neither proves throttling has begun nor distinguishes Moderate from Heavy, and it clears earlier than powermetrics.",
+    "The 32.54 ms nominal/full-clock outlier proves that thermal throttling does not explain every collapse; transient GPU contention or another host effect must also be considered.",
+    "The structural tail is a small improvement, and the roughly three-millisecond old-to-current code regression remains real."
+  ]
+}

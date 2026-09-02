@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "drift",
+      "comment": "No fixed port: the harness assigns one via PORT (vite.config.ts reads it), so parallel worktree sessions never collide.",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "autoPort": true
+    }
+  ]
+}

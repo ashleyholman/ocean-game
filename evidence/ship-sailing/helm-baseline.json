@@ -1,0 +1,286 @@
+{
+  "formatVersion": 2,
+  "status": "S3: weather-helm curve on a captive zero-leeway heading — rudder angle that zeroes the net yaw moment at the solved captive speed, per canvas balance. The leeway-solved equilibrium is the S3 polar regeneration.",
+  "contract": {
+    "method": "Per point: bisect captive speed to surge balance at amidships helm, then bisect the rudder angle to zero the summed water+rig yaw moment at that speed. Starboard-wind geometry throughout.",
+    "scope": "Wind 8 m/s, angles 45-150, four canvas balances from all-aft to headsails-only. Flat water, frozen trim.",
+    "validationMeaning": "Sign and ordering of helm against canvas balance (construction from CoE positions, verified by measurement) and the few-degrees magnitude band. The curve itself is a provisional-coefficient model result."
+  },
+  "configuration": {
+    "windSpeedMps": 8,
+    "angleGridDeg": [
+      45,
+      60,
+      75,
+      90,
+      105,
+      120,
+      135,
+      150
+    ],
+    "probeSettleSeconds": 6,
+    "speedBisectionIterations": 12,
+    "helmBisectionIterations": 12
+  },
+  "sheets": [
+    {
+      "canvas": "AFT_CANVAS",
+      "canvasCoeZM": -5.442,
+      "points": [
+        {
+          "windAngleOffBowDeg": 45,
+          "steadySpeedMps": 1.3719,
+          "balanceRudderDeg": null,
+          "residualYawMomentNm": -12281.97,
+          "sailYawMomentNm": -12250.61
+        },
+        {
+          "windAngleOffBowDeg": 60,
+          "steadySpeedMps": 2.6255,
+          "balanceRudderDeg": 6.614,
+          "residualYawMomentNm": -49.78,
+          "sailYawMomentNm": -20474.07
+        },
+        {
+          "windAngleOffBowDeg": 75,
+          "steadySpeedMps": 3.0699,
+          "balanceRudderDeg": 5.281,
+          "residualYawMomentNm": -69.67,
+          "sailYawMomentNm": -21955.9
+        },
+        {
+          "windAngleOffBowDeg": 90,
+          "steadySpeedMps": 3.0001,
+          "balanceRudderDeg": 4.529,
+          "residualYawMomentNm": -59.99,
+          "sailYawMomentNm": -18018.56
+        },
+        {
+          "windAngleOffBowDeg": 105,
+          "steadySpeedMps": 2.6065,
+          "balanceRudderDeg": 4.597,
+          "residualYawMomentNm": -25.87,
+          "sailYawMomentNm": -13974.99
+        },
+        {
+          "windAngleOffBowDeg": 120,
+          "steadySpeedMps": 2.4193,
+          "balanceRudderDeg": 4.734,
+          "residualYawMomentNm": 3.68,
+          "sailYawMomentNm": -12432.63
+        },
+        {
+          "windAngleOffBowDeg": 135,
+          "steadySpeedMps": 2.4129,
+          "balanceRudderDeg": 4.187,
+          "residualYawMomentNm": 0.12,
+          "sailYawMomentNm": -10922.1
+        },
+        {
+          "windAngleOffBowDeg": 150,
+          "steadySpeedMps": 2.4034,
+          "balanceRudderDeg": 3.401,
+          "residualYawMomentNm": 30.57,
+          "sailYawMomentNm": -8765.53
+        }
+      ]
+    },
+    {
+      "canvas": "FULL_SAIL",
+      "canvasCoeZM": 0.683,
+      "points": [
+        {
+          "windAngleOffBowDeg": 45,
+          "steadySpeedMps": 0.3626,
+          "balanceRudderDeg": null,
+          "residualYawMomentNm": -9798.95,
+          "sailYawMomentNm": -9797.82
+        },
+        {
+          "windAngleOffBowDeg": 60,
+          "steadySpeedMps": 2.4526,
+          "balanceRudderDeg": 4.836,
+          "residualYawMomentNm": -39.64,
+          "sailYawMomentNm": -13958.9
+        },
+        {
+          "windAngleOffBowDeg": 75,
+          "steadySpeedMps": 3.511,
+          "balanceRudderDeg": 2.683,
+          "residualYawMomentNm": -37.08,
+          "sailYawMomentNm": -15258.67
+        },
+        {
+          "windAngleOffBowDeg": 90,
+          "steadySpeedMps": 3.8427,
+          "balanceRudderDeg": 1.794,
+          "residualYawMomentNm": 105.26,
+          "sailYawMomentNm": -11551.18
+        },
+        {
+          "windAngleOffBowDeg": 105,
+          "steadySpeedMps": 3.7189,
+          "balanceRudderDeg": 1.418,
+          "residualYawMomentNm": 66.59,
+          "sailYawMomentNm": -8454.93
+        },
+        {
+          "windAngleOffBowDeg": 120,
+          "steadySpeedMps": 3.4063,
+          "balanceRudderDeg": 1.316,
+          "residualYawMomentNm": -17.07,
+          "sailYawMomentNm": -6682.62
+        },
+        {
+          "windAngleOffBowDeg": 135,
+          "steadySpeedMps": 3.3508,
+          "balanceRudderDeg": 1.111,
+          "residualYawMomentNm": 1.61,
+          "sailYawMomentNm": -5408.68
+        },
+        {
+          "windAngleOffBowDeg": 150,
+          "steadySpeedMps": 3.3428,
+          "balanceRudderDeg": 0.837,
+          "residualYawMomentNm": 27.17,
+          "sailYawMomentNm": -3920.37
+        }
+      ]
+    },
+    {
+      "canvas": "WORKING_SAIL",
+      "canvasCoeZM": 1.2766,
+      "points": [
+        {
+          "windAngleOffBowDeg": 45,
+          "steadySpeedMps": 0,
+          "balanceRudderDeg": null,
+          "residualYawMomentNm": -7353.54,
+          "sailYawMomentNm": -7353.47
+        },
+        {
+          "windAngleOffBowDeg": 60,
+          "steadySpeedMps": 2.0098,
+          "balanceRudderDeg": 5.144,
+          "residualYawMomentNm": -0.12,
+          "sailYawMomentNm": -9802.66
+        },
+        {
+          "windAngleOffBowDeg": 75,
+          "steadySpeedMps": 3.1397,
+          "balanceRudderDeg": 2.136,
+          "residualYawMomentNm": 60.83,
+          "sailYawMomentNm": -9519.21
+        },
+        {
+          "windAngleOffBowDeg": 90,
+          "steadySpeedMps": 3.5904,
+          "balanceRudderDeg": 1.145,
+          "residualYawMomentNm": -18.03,
+          "sailYawMomentNm": -6398.21
+        },
+        {
+          "windAngleOffBowDeg": 105,
+          "steadySpeedMps": 3.4841,
+          "balanceRudderDeg": 0.906,
+          "residualYawMomentNm": -56.57,
+          "sailYawMomentNm": -4744.29
+        },
+        {
+          "windAngleOffBowDeg": 120,
+          "steadySpeedMps": 3.2286,
+          "balanceRudderDeg": 0.906,
+          "residualYawMomentNm": -26.73,
+          "sailYawMomentNm": -4068.69
+        },
+        {
+          "windAngleOffBowDeg": 135,
+          "steadySpeedMps": 3.2492,
+          "balanceRudderDeg": 0.735,
+          "residualYawMomentNm": -5.07,
+          "sailYawMomentNm": -3306.28
+        },
+        {
+          "windAngleOffBowDeg": 150,
+          "steadySpeedMps": 3.2381,
+          "balanceRudderDeg": 0.564,
+          "residualYawMomentNm": 54.41,
+          "sailYawMomentNm": -2402.51
+        }
+      ]
+    },
+    {
+      "canvas": "HEADSAILS_ONLY",
+      "canvasCoeZM": 7.3469,
+      "points": [
+        {
+          "windAngleOffBowDeg": 45,
+          "steadySpeedMps": 0,
+          "balanceRudderDeg": null,
+          "residualYawMomentNm": 782.83,
+          "sailYawMomentNm": 782.84
+        },
+        {
+          "windAngleOffBowDeg": 60,
+          "steadySpeedMps": 0.7593,
+          "balanceRudderDeg": null,
+          "residualYawMomentNm": 4348.67,
+          "sailYawMomentNm": 4378.19
+        },
+        {
+          "windAngleOffBowDeg": 75,
+          "steadySpeedMps": 2.0193,
+          "balanceRudderDeg": -3.503,
+          "residualYawMomentNm": 10.86,
+          "sailYawMomentNm": 6751.99
+        },
+        {
+          "windAngleOffBowDeg": 90,
+          "steadySpeedMps": 2.6255,
+          "balanceRudderDeg": -2.205,
+          "residualYawMomentNm": 7.97,
+          "sailYawMomentNm": 7188.78
+        },
+        {
+          "windAngleOffBowDeg": 105,
+          "steadySpeedMps": 2.6747,
+          "balanceRudderDeg": -1.726,
+          "residualYawMomentNm": -22.33,
+          "sailYawMomentNm": 5814.54
+        },
+        {
+          "windAngleOffBowDeg": 120,
+          "steadySpeedMps": 2.4764,
+          "balanceRudderDeg": -1.76,
+          "residualYawMomentNm": 18.02,
+          "sailYawMomentNm": 5115.48
+        },
+        {
+          "windAngleOffBowDeg": 135,
+          "steadySpeedMps": 2.3399,
+          "balanceRudderDeg": -2,
+          "residualYawMomentNm": -35.67,
+          "sailYawMomentNm": 5115.82
+        },
+        {
+          "windAngleOffBowDeg": 150,
+          "steadySpeedMps": 2.3002,
+          "balanceRudderDeg": -1.829,
+          "residualYawMomentNm": 37.67,
+          "sailYawMomentNm": 4583.33
+        }
+      ]
+    }
+  ],
+  "gates": {
+    "coeOrderingAftToForward": [
+      "AFT_CANVAS",
+      "FULL_SAIL",
+      "WORKING_SAIL",
+      "HEADSAILS_ONLY"
+    ],
+    "helmFollowsCanvasBalance": true,
+    "fullSailMaxAbsBalanceDeg": 4.836,
+    "fullSailReachWeatherHelm": true
+  }
+}

@@ -1,0 +1,225 @@
+UPCOMING IMPLEMENTATION AND REVIEW RUNBOOK
+
+STATUS, 2026-08-16 — READ THIS FIRST
+
+Three of this runbook's four stages are spent. Stage 1 (ocean swell and sea
+states), stage 2 (camera) and stage 3 (graphics and atmosphere) are all built,
+reviewed and integrated into `master`; their prompts and paired review runbooks
+are kept here as history, not as work. Stage 4, `weather-prompt.txt`, is the
+only one still pending, and it is being read against the code that exists
+before any of it is built — see docs/weather/ when that lands.
+
+The baseline named below is the raft era and is long superseded. Take the
+current `master` as the baseline, per the standing instruction further down.
+
+CURRENT BASELINE
+
+At the time this runbook was prepared, `master` is at:
+
+`9d796db` — Float the raft: distributed buoyancy on the planetary world model
+
+That baseline includes:
+
+- canonical WGS84/ECEF travel and time in `PlanetaryWorld`;
+- a permanently raft-centred local renderer;
+- no planar `worldX`/`worldZ` travel or 800 m renderer recenter;
+- shared CPU/GPU wave time and presentation coordinates;
+- 24-station distributed force-based buoyancy at fixed 240 Hz substeps;
+- deterministic buoyancy presets and `?debug=buoyancy`;
+- 65 tracked planetary/raft-water tests.
+
+Always create each implementation worktree from the latest integrated `master`
+at the time that stage begins, not necessarily the commit above.
+
+Vitest can discover duplicate tests inside nested `.claude/worktrees`. Every
+implementation and review session must ensure it is testing only its intended
+worktree; exclude nested worktrees instead of reporting duplicate suites as
+additional coverage.
+
+SERIAL IMPLEMENTATION ORDER
+
+Do not fan the three implementation prompts out from the current `master`.
+Implement and integrate them in this order:
+
+1. Ocean sea states and whitewater.
+2. Multi-scale cinematic and embodied camera.
+3. Final graphics, lighting, atmosphere and materials.
+
+The camera round depends on the final sea-state, persistent-foam and LOD
+interfaces from the ocean round. The graphics round depends on both the final
+ocean states and the final camera viewpoints. Review-only sessions may run in
+parallel with one another after their candidate implementation is ready because
+they must not edit the branch.
+
+STAGE 1 — OCEAN
+
+Primary implementation:
+
+- Harness/model: Codex with GPT-5.6 Sol.
+- Prompt: `ocean-swell-prompt.txt`.
+- Base: latest integrated `master`.
+
+Post-round independent code-and-visual review, launched only after the Codex
+implementation session has completed its own internal visual-critic loop,
+evidence and final report:
+
+- Harness/model: Claude Code with Opus 5.
+- Prompt: `ocean-opus-code-and-visual-review-prompt.txt`.
+- Mode: read-only.
+
+Give the review findings back to the original Codex implementation session.
+That session, or a fresh Codex follow-up session on the same branch, can then
+decide and implement a separate improvement pass.
+
+Integrate the ocean branch before starting Stage 2.
+
+STAGE 2 — CAMERA
+
+Primary implementation:
+
+- Harness/model: Claude Code with Opus 5.
+- Prompt: `camera-prompt.txt`.
+- Base: `master` after the ocean branch is integrated.
+
+Post-round independent reviews, launched only after the Claude implementation
+session has completed its own internal visual-critic loop, evidence and final
+report:
+
+- Independent code, visual and motion review:
+  - Harness/model: a separate Claude Code session with Opus 5.
+  - Prompt: `camera-opus-code-and-visual-review-prompt.txt`.
+  - Mode: read-only.
+- Technical/integration review:
+  - Harness/model: Codex with GPT-5.6 Sol.
+  - Prompt: `camera-sol-technical-review-prompt.txt`.
+  - Mode: read-only.
+
+The two reviewers can run in parallel against the same completed candidate
+commit. Give both reports to a later improvement session if you want another
+pass; the original implementation is not paused waiting for them.
+
+Integrate the camera branch before starting Stage 3.
+
+STAGE 3 — GRAPHICS
+
+Primary implementation:
+
+- Harness/model: Claude Code with Opus 5.
+- Prompt: `graphics-prompt.txt`.
+- Base: `master` after both ocean and camera branches are integrated.
+
+Post-round independent reviews, launched only after the Claude implementation
+session has completed its own internal visual-critic loop, evidence and final
+report:
+
+- Independent code and visual-fidelity review:
+  - Harness/model: a separate Claude Code session with Opus 5.
+  - Prompt: `graphics-opus-code-and-visual-review-prompt.txt`.
+  - Mode: read-only.
+- Technical/regression review:
+  - Harness/model: Codex with GPT-5.6 Sol.
+  - Prompt: `graphics-sol-technical-review-prompt.txt`.
+  - Mode: read-only.
+
+The two reviewers can run in parallel against the same completed candidate
+commit. Give both reports to a later improvement session if you want another
+pass; the original implementation is not paused waiting for them.
+
+REVIEW WORKTREE RULE
+
+A reviewer must inspect the candidate implementation, not the old `master`.
+Use one of these safe arrangements:
+
+1. Pause the implementation session and open a separate read-only session in
+   the same candidate worktree; or
+2. Commit the candidate on its feature branch and create a review worktree at
+   that exact candidate commit.
+
+Do not create a reviewer worktree from `master` unless the candidate has already
+been merged there.
+
+REVIEW HANDOFF PACKAGE
+
+Before launching a reviewer, the implementation session should provide:
+
+- candidate commit or exact working-tree path;
+- starting/base commit;
+- concise change summary;
+- specification and report paths;
+- commands already run and their results;
+- browser URL and how to select deterministic cases;
+- screenshot, contact-sheet and video paths;
+- known limitations;
+- any issue on which independent judgment is specifically wanted.
+
+READ-ONLY MEANS READ-ONLY
+
+Reviewer sessions may:
+
+- inspect source and diffs;
+- review architecture, numerical contracts, tests and resource lifecycle;
+- run tests, type checking and builds;
+- launch the app;
+- use the visible developer-tools launcher;
+- use query parameters as deterministic deep links;
+- capture temporary evidence outside tracked source;
+- report findings with exact file and line references.
+
+Reviewer sessions must not:
+
+- edit production code, tests, specifications or reports;
+- run formatters that rewrite files;
+- commit, merge, rebase, push or open pull requests;
+- “fix” findings themselves;
+- expand the round’s scope.
+
+DEVELOPER-TOOLS UX ACROSS ALL STAGES
+
+The ocean round establishes a shared compact `Tools` or `Debug` launcher. It
+must expose existing World/General and Buoyancy diagnostics plus Ocean without
+requiring query parameters. Camera and Graphics add their own panels in later
+rounds.
+
+Every stage preserves:
+
+- a single visible, discoverable launcher during early development;
+- a one-action `Hide all` clean view;
+- lazy loading of closed diagnostic panels;
+- optional query-parameter deep links for bookmarks, test automation and
+  deterministic captures;
+- one shared UI state rather than competing debug systems.
+
+INTEGRATION CHECK
+
+Do not integrate a stage until:
+
+- its full tracked test suite, type check and production build pass;
+- the implementation prompt’s own browser, performance and internal-critic loop
+  is complete;
+- documentation and evidence match the actual final candidate;
+- the diff contains no unrelated work.
+
+The separate companion reviews are an additional post-round quality pass, not a
+dependency that leaves the implementation agent waiting for you. You may run
+them before integration, or after integration on the exact completed commit and
+then open a small follow-up improvement branch.
+
+FOLLOW-UP IMPROVEMENT HANDOFF
+
+For a fresh follow-up session, prepend the original implementation prompt and
+then add:
+
+“The original implementation round and its internal visual-review loop are
+complete. This is a bounded follow-up improvement pass on that completed
+candidate. Read the attached external code-and-visual review report(s), verify
+each finding against the current code and evidence, and rank them by correctness
+and impact. Implement only accepted in-scope fixes; do not redo the architecture
+or expand the feature set. Re-run the affected deterministic cases, the full
+tracked test suite, type checking, production build and browser checks.
+Regenerate equivalent before/after evidence and update the round report with
+findings accepted, rejected and fixed.”
+
+Use Codex/Sol for the ocean follow-up. For camera and graphics, keep Claude/Opus
+as the sole follow-up integrator when visual judgment dominates; use Codex/Sol
+instead for a narrowly technical follow-up, but do not have both edit the same
+candidate concurrently.

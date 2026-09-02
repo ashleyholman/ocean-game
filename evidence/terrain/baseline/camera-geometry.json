@@ -1,0 +1,122 @@
+{
+  "generatedAtIso": "2026-08-05T22:15:53.349Z",
+  "purpose": "R0 terrain baseline: TERR-004 open-water performance and TERR-005 camera geometry",
+  "device": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+  "oceanTemporalEnabled": false,
+  "notes": [
+    "World, waves, foam history and cloud cache frozen during sampling.",
+    "GPU times are six-frame prefix-rotation derivations (see GpuProfiler).",
+    "Machine may be contended; medians with spread, not tight bounds."
+  ],
+  "views": [
+    {
+      "id": "embodied-forward-production-midday",
+      "label": "Embodied forward · production sea · midday",
+      "mode": "embodied",
+      "nearPlaneM": 0.06,
+      "farPlaneM": 25000,
+      "verticalFovDeg": 80.4615306098645,
+      "aspect": 1.7524644030668126,
+      "cameraHeightAboveMeanSeaM": 3.5072293097721756,
+      "geometricHorizonM": 6684.992757346449,
+      "oceanDiscRadiusM": 20000,
+      "seaSurfaceModel": "flat vessel-centred tangent disc",
+      "drawingBuffer": {
+        "width": 1600,
+        "height": 913,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "embodied-toward-low-sun-production",
+      "label": "Embodied toward low Sun · production sea",
+      "mode": "embodied",
+      "nearPlaneM": 0.06,
+      "farPlaneM": 25000,
+      "verticalFovDeg": 80.4615306098645,
+      "aspect": 1.7524644030668126,
+      "cameraHeightAboveMeanSeaM": 3.0154464991824774,
+      "geometricHorizonM": 6198.615037691946,
+      "oceanDiscRadiusM": 20000,
+      "seaSurfaceModel": "flat vessel-centred tangent disc",
+      "drawingBuffer": {
+        "width": 1600,
+        "height": 913,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "cinematic-default-production-midday",
+      "label": "Default cinematic · production sea · midday",
+      "mode": "cinematic",
+      "nearPlaneM": 0.25,
+      "farPlaneM": 25000,
+      "verticalFovDeg": 44.29489328064024,
+      "aspect": 1.7524644030668126,
+      "cameraHeightAboveMeanSeaM": 8.586404791944515,
+      "geometricHorizonM": 10459.82999791604,
+      "oceanDiscRadiusM": 20000,
+      "seaSurfaceModel": "flat vessel-centred tangent disc",
+      "drawingBuffer": {
+        "width": 1600,
+        "height": 913,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "cinematic-default-rough-low-sun",
+      "label": "Default cinematic · rough sea · low Sun",
+      "mode": "cinematic",
+      "nearPlaneM": 0.25,
+      "farPlaneM": 25000,
+      "verticalFovDeg": 44.29489328064024,
+      "aspect": 1.7524644030668126,
+      "cameraHeightAboveMeanSeaM": 8.586404791944515,
+      "geometricHorizonM": 10459.82999791604,
+      "oceanDiscRadiusM": 20000,
+      "seaSurfaceModel": "flat vessel-centred tangent disc",
+      "drawingBuffer": {
+        "width": 1600,
+        "height": 913,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "cinematic-max-production-midday",
+      "label": "Maximum cinematic · production sea · midday",
+      "mode": "cinematic",
+      "nearPlaneM": 5.338964872555308,
+      "farPlaneM": 25000,
+      "verticalFovDeg": 44.29489328064024,
+      "aspect": 1.7524644030668126,
+      "cameraHeightAboveMeanSeaM": 267,
+      "geometricHorizonM": 58328.25463701104,
+      "oceanDiscRadiusM": 20000,
+      "seaSurfaceModel": "flat vessel-centred tangent disc",
+      "drawingBuffer": {
+        "width": 1600,
+        "height": 913,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "id": "cinematic-max-rough-low-sun",
+      "label": "Maximum cinematic · rough sea · low Sun",
+      "mode": "cinematic",
+      "nearPlaneM": 5.2749618968263245,
+      "farPlaneM": 25000,
+      "verticalFovDeg": 44.29489328064024,
+      "aspect": 1.7524644030668126,
+      "cameraHeightAboveMeanSeaM": 267,
+      "geometricHorizonM": 58328.25463701104,
+      "oceanDiscRadiusM": 20000,
+      "seaSurfaceModel": "flat vessel-centred tangent disc",
+      "drawingBuffer": {
+        "width": 1600,
+        "height": 913,
+        "pixelRatio": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "formatVersion": 1,
+  "note": "Deterministic single-wave encounter-frequency evidence. The same CPU WaveField sampled by buoyancy is evaluated along prescribed bow-forward tracks.",
+  "limitations": [
+    "This validates relative wave timing, not force-integrated surge, sway, yaw or propulsion.",
+    "The diagnostic wave is a pure sinusoid; production seas still use up to 48 components.",
+    "Speed is through still mean water: current, leeway and wind are intentionally absent."
+  ],
+  "regenerateCommand": "npm run ship:encounter",
+  "configuration": {
+    "requestedWaveTravelHeadingDeg": 0,
+    "resolvedWaveTravelHeadingDeg": 0.000908,
+    "requestedWavePeriodSeconds": 8,
+    "resolvedWavelengthMetres": 99.92383947,
+    "resolvedIntrinsicPeriodSeconds": 8,
+    "resolvedPhaseSpeedMps": 12.49047993,
+    "speedThroughWaterMps": 4,
+    "sampleHz": 240,
+    "measurementSeconds": 80
+  },
+  "cases": [
+    {
+      "aspect": "head",
+      "vesselHeadingDeg": 180.000908,
+      "relativeHeadingDeg": 180,
+      "projectedSpeedAlongWaveMps": -4,
+      "expectedAngularFrequencyRadPerSecond": 1.03691713,
+      "measuredAngularFrequencyRadPerSecond": 1.03691713,
+      "expectedPeriodSeconds": 6.05948644,
+      "measuredPeriodSeconds": 6.05948644,
+      "relativeFrequencyError": 0,
+      "measuredUpwardCrossings": 13
+    },
+    {
+      "aspect": "quartering-head",
+      "vesselHeadingDeg": 135.000908,
+      "relativeHeadingDeg": 135,
+      "projectedSpeedAlongWaveMps": -2.82842712,
+      "expectedAngularFrequencyRadPerSecond": 0.96324893,
+      "measuredAngularFrequencyRadPerSecond": 0.96324893,
+      "expectedPeriodSeconds": 6.52290918,
+      "measuredPeriodSeconds": 6.52290918,
+      "relativeFrequencyError": 0,
+      "measuredUpwardCrossings": 12
+    },
+    {
+      "aspect": "beam",
+      "vesselHeadingDeg": 90.000908,
+      "relativeHeadingDeg": 90,
+      "projectedSpeedAlongWaveMps": 0,
+      "expectedAngularFrequencyRadPerSecond": 0.78539816,
+      "measuredAngularFrequencyRadPerSecond": 0.78539816,
+      "expectedPeriodSeconds": 8,
+      "measuredPeriodSeconds": 8,
+      "relativeFrequencyError": 0,
+      "measuredUpwardCrossings": 10
+    },
+    {
+      "aspect": "following",
+      "vesselHeadingDeg": 0.000908,
+      "relativeHeadingDeg": 0,
+      "projectedSpeedAlongWaveMps": 4,
+      "expectedAngularFrequencyRadPerSecond": 0.53387919,
+      "measuredAngularFrequencyRadPerSecond": 0.53387919,
+      "expectedPeriodSeconds": 11.76892711,
+      "measuredPeriodSeconds": 11.76892711,
+      "relativeFrequencyError": 0,
+      "measuredUpwardCrossings": 6
+    }
+  ]
+}

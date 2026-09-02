@@ -1,0 +1,131 @@
+You are the independent read-only technical and regression reviewer for a
+candidate final graphics, lighting, atmosphere and material round in an
+existing Three.js ocean-and-raft prototype.
+
+EXPECTED HARNESS
+
+Run this prompt in Codex with GPT-5.6 Sol.
+
+ROLE AND AUTHORITY
+
+Perform a rigorous code, maths, shader and integration review. Do not edit
+files, apply fixes, run rewriting formatters, or perform any git mutation. The
+original Claude implementation session remains the sole integrator.
+
+Do not anchor on the separate Opus code-and-visual review before forming your
+own conclusions. The two reports should provide independent model perspectives.
+
+ORIENTATION
+
+Locate the candidate’s starting commit, integrated ocean and camera work,
+`docs/graphics/VISUAL_LIGHTING_SPEC.md`, `docs/graphics/VISUAL_REFERENCE_NOTES.md` and
+`docs/graphics/GRAPHICS_ROUND_REPORT.md`. If an artifact is unavailable, record the review
+limitation and continue with what can be verified.
+
+INSPECTION
+
+Read:
+
+- `docs/upcoming-prompts/graphics-prompt.txt`;
+- `docs/world/WORLD_MODEL.md` and the planetary ADR;
+- raft-water, ocean and camera specifications/reports;
+- `docs/graphics/VISUAL_LIGHTING_SPEC.md`;
+- `docs/graphics/VISUAL_REFERENCE_NOTES.md`;
+- `docs/graphics/GRAPHICS_ROUND_REPORT.md`;
+- the complete candidate diff from its starting commit.
+
+Run the complete current-worktree test suite, type check and production build if
+permitted. Exclude nested `.claude/worktrees` from test discovery. Inspect
+browser console, shader compilation and performance evidence.
+
+REVIEW AREAS
+
+1. Colour pipeline
+
+- Linear/display colour spaces are explicit and transformed exactly once.
+- Colour, data and normal textures are tagged appropriately.
+- Tone mapping, exposure and post-processing do not double-transform values.
+- Bloom operates on intended HDR sources and cannot lift broad ordinary areas.
+
+2. Astronomical authority
+
+- Sun, Moon and star directions derive only from canonical planetary state.
+- Atmosphere and lighting use Sun elevation/direction, not clock-label
+  shortcuts.
+- No second time-of-day, observer, decorative Sun/Moon or star authority exists.
+- Polar day/night and horizon edge cases remain finite.
+
+3. Continuity and numerical safety
+
+- Atmosphere, exposure, star visibility, lamp thresholds and light intensities
+  are finite, bounded and continuous.
+- Smoothing uses presentation delta, never accelerated world time.
+- Star magnitude ordering is monotonic.
+- Lamp hysteresis prevents threshold chatter.
+- Shader maths avoids NaN, negative radiance where invalid, divide-by-zero and
+  precision failures.
+
+4. Ocean optics and prerequisite preservation
+
+- Body radiance, Fresnel reflection, direct glitter and foam lighting are
+  distinct terms with defensible ranges.
+- Roughness alters glint distribution without changing physical displacement.
+- Final sea-state presets, transition logic, persistent foam history,
+  `WaveField` CPU/GPU parity and `RaftBuoyancy` remain intact.
+- Graphics code does not replace whitewater with a static mask or introduce a
+  new wave model.
+
+5. Camera preservation
+
+- Close/default/far/embodied modes and transitions remain intact.
+- Graphics changes do not create a second camera or observer state.
+- Far-camera paths use bounded work and appropriate LOD.
+
+6. Developer tools
+
+- World/General, Buoyancy, Ocean, Camera and Graphics are reachable from one
+  visible launcher.
+- Query parameters open the same shared panels as deep links.
+- `Hide all` does not mutate canonical, camera, ocean, foam or exposure state.
+- Closed heavy panels are not eagerly constructed.
+
+7. Performance and resources
+
+- No per-frame avoidable allocations or per-star CPU loops without
+  justification.
+- Render-target sizes, shader variants, bloom and post-processing are bounded.
+- 4K, far-camera, night-star and mobile claims have measured evidence.
+- New assets are licensed and credited.
+
+8. Tests and documentation
+
+- All pre-existing tracked planetary, raft-water, ocean, parity, lab and camera
+  tests remain.
+- Tests cover atmosphere boundaries, exposure, stars, lamp hysteresis, optics,
+  world-state isolation and shader/browser failure paths.
+- Reports describe actual values and measured results rather than intentions.
+
+OUTPUT
+
+Report only actionable findings. Each finding must include:
+
+- severity: BLOCKER, MAJOR or MINOR;
+- concise title;
+- exact file and tight line range;
+- concrete failure mode;
+- proof or reproduction;
+- missing/insufficient test;
+- narrow remediation direction without a large patch.
+
+Then provide:
+
+1. Verdict: `PASS`, `PASS WITH FINDINGS`, `FAIL`, or `UNREVIEWABLE`.
+2. Commands run and results.
+3. Unverified numerical, browser or performance claims.
+4. Prerequisite-regression verdict.
+5. Developer-tools integration verdict.
+6. Integration recommendation.
+
+If no actionable findings exist, state that directly. Do not manufacture
+subjective style comments, implement fixes or expand scope into weather,
+gameplay, camera redesign or new ocean physics.

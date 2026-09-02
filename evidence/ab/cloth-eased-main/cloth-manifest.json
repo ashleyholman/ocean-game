@@ -1,0 +1,184 @@
+{
+ "switch": {
+  "name": "cloth",
+  "summary": "the M6 deformable cloth (alive, ships) against the pre-M6 flat loft (flat), with `still` freezing the flogging clock while keeping the shape — REVIEW_QUEUE 2.6. Wants a point of sail: five of that line’s six items are conditions rather than views, so pair it with the `trueWindAngleDeg` scene field",
+  "scope": "reload",
+  "defaultArm": "alive",
+  "arms": [
+   "alive",
+   "flat"
+  ]
+ },
+ "arms": [
+  "alive",
+  "flat"
+ ],
+ "scenes": [
+  {
+   "seaState": "CURRENT_MODERATE",
+   "waveTimeSeconds": 120,
+   "stand": "Helm",
+   "lookYawDeg": 0,
+   "lookPitchDeg": 25,
+   "sunElevationDeg": 38,
+   "trueWindAngleDeg": 135
+  }
+ ],
+ "surface": {
+  "tier": "desktop",
+  "cssWidth": 1280,
+  "cssHeight": 720,
+  "pixelRatio": 2
+ },
+ "repeats": 1,
+ "diffGain": 8,
+ "terrain": "off",
+ "params": {},
+ "capturedAt": "2026-08-17T04:12:04.260Z",
+ "determinism": {
+  "sameStage": {
+   "pixels": 3686400,
+   "differing": 3928,
+   "differingPercent": 0.107,
+   "maxChannelDelta": 1,
+   "meanChannelDelta": 0.0011,
+   "meanSignedLuma": -0.0004
+  },
+  "restage": {
+   "pixels": 3686400,
+   "differing": 36360,
+   "differingPercent": 0.986,
+   "maxChannelDelta": 69,
+   "meanChannelDelta": 0.0105,
+   "meanSignedLuma": -0.0005
+  }
+ },
+ "crossPageControl": {
+  "pixels": 3686400,
+  "differing": 170478,
+  "differingPercent": 4.625,
+  "maxChannelDelta": 62,
+  "meanChannelDelta": 0.0525,
+  "meanSignedLuma": -0.0001
+ },
+ "nullControls": null,
+ "armDelta": {
+  "pixels": 3686400,
+  "differing": 619917,
+  "differingPercent": 16.816,
+  "maxChannelDelta": 187,
+  "meanChannelDelta": 0.8539,
+  "meanSignedLuma": -0.3097
+ },
+ "armDeltas": [
+  {
+   "scene": "CURRENT_MODERATE · sun 38° · wind 135° off the bow",
+   "difference": {
+    "pixels": 3686400,
+    "differing": 619917,
+    "differingPercent": 16.816,
+    "maxChannelDelta": 187,
+    "meanChannelDelta": 0.8539,
+    "meanSignedLuma": -0.3097
+   }
+  }
+ ],
+ "shots": [
+  {
+   "label": "cloth=alive · CURRENT_MODERATE · sun 38° · wind 135° off the bow",
+   "sunElevationDeg": 38.01,
+   "moonElevationDeg": 69.43,
+   "moonIlluminatedFraction": 0.0789,
+   "moonPower": 0,
+   "trueWindAngleDeg": 135,
+   "tier": {
+    "tier": "desktop",
+    "detailOctaves": 5,
+    "oceanRings": 288,
+    "oceanSectors": 288,
+    "cssWidth": 1280,
+    "cssHeight": 720,
+    "pixelRatio": 2,
+    "backingWidth": 2560,
+    "backingHeight": 1440,
+    "devicePixelRatio": 1,
+    "adaptiveResolutionPinned": true,
+    "animationLoopStopped": true,
+    "preserveDrawingBuffer": true,
+    "switches": {
+     "oceanTaa": "0",
+     "legacyToneCurve": "0",
+     "legacyExposure": "0",
+     "noChromaTrim": "0",
+     "legacySkyHue": "0",
+     "sunDomeMean": "0",
+     "fibonacciAmbient": "0",
+     "flatSkyMean": "0",
+     "legacyWaterHue": "0",
+     "sunShadow": "1",
+     "vesselSkyOcclusion": "1",
+     "foamLookupLegacy": "0",
+     "wakeEffects": "1",
+     "kelvinPattern": "0",
+     "cloudLiveMarch": "0",
+     "scotopic": "1",
+     "legacyMoonlight": "0",
+     "cloth": "alive",
+     "starDome": "far",
+     "terrainOrder": "after",
+     "shoulder": "0.8",
+     "noToe": "0",
+     "timber": "off"
+    }
+   }
+  },
+  {
+   "label": "cloth=flat · CURRENT_MODERATE · sun 38° · wind 135° off the bow",
+   "sunElevationDeg": 38.01,
+   "moonElevationDeg": 69.43,
+   "moonIlluminatedFraction": 0.0789,
+   "moonPower": 0,
+   "trueWindAngleDeg": 135,
+   "tier": {
+    "tier": "desktop",
+    "detailOctaves": 5,
+    "oceanRings": 288,
+    "oceanSectors": 288,
+    "cssWidth": 1280,
+    "cssHeight": 720,
+    "pixelRatio": 2,
+    "backingWidth": 2560,
+    "backingHeight": 1440,
+    "devicePixelRatio": 1,
+    "adaptiveResolutionPinned": true,
+    "animationLoopStopped": true,
+    "preserveDrawingBuffer": true,
+    "switches": {
+     "oceanTaa": "0",
+     "legacyToneCurve": "0",
+     "legacyExposure": "0",
+     "noChromaTrim": "0",
+     "legacySkyHue": "0",
+     "sunDomeMean": "0",
+     "fibonacciAmbient": "0",
+     "flatSkyMean": "0",
+     "legacyWaterHue": "0",
+     "sunShadow": "1",
+     "vesselSkyOcclusion": "1",
+     "foamLookupLegacy": "0",
+     "wakeEffects": "1",
+     "kelvinPattern": "0",
+     "cloudLiveMarch": "0",
+     "scotopic": "1",
+     "legacyMoonlight": "0",
+     "cloth": "flat",
+     "starDome": "far",
+     "terrainOrder": "after",
+     "shoulder": "0.8",
+     "noToe": "0",
+     "timber": "off"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,2288 @@
+You are the sole implementation lead for the next development round of an
+existing Three.js ocean-and-raft prototype.
+
+Work directly in the existing repository. Implement, test, visually inspect and
+refine the working application. Do not merely provide a weather-system design
+document, mock-up, or isolated code examples.
+
+Use deep reasoning. Inspect the final integrated ocean, camera and graphics
+architecture before choosing techniques or changing authority boundaries.
+
+PROJECT ROUND
+
+Planned implementation stage 4 — Local Maritime Weather, Wind, Clouds, Rain,
+and Storm Presentation
+
+IMPLEMENTATION ORDER AND DEPENDENCIES
+
+This round begins only after the following implementation rounds and their
+accepted improvement passes have been integrated into the latest `master`:
+
+1. Open-ocean sea states and whitewater.
+2. Multi-scale cinematic and embodied camera.
+3. Clear-sky atmosphere, ocean optics, lighting, and full-day visual fidelity.
+
+Start from that latest integrated `master`, not from the repository state that
+existed when this prompt was written.
+
+Read and preserve the final implementation, specifications, reports, evidence,
+tests and development labs produced by those rounds. File and symbol names may
+have changed during their implementation. Discover the actual final
+architecture instead of assuming that pre-round names remain exact.
+
+This weather round owns:
+
+- one coherent local maritime-weather state;
+- smoothly controllable weather conditions;
+- current surface wind and spatially variable gusts;
+- expanded cloud structure and weather-dependent sky presentation;
+- cloud-driven direct and ambient light changes;
+- maritime haze and precipitation-driven visibility;
+- drizzle and rain;
+- rain response on the ocean;
+- restrained rain wetness on the raft and castaway materials;
+- storm lightning and thunder;
+- weather ambience;
+- developer presets, controls and deterministic evidence;
+- clean extension points for later automated and global weather systems.
+
+It may make narrow compatibility changes to final graphics, ocean, camera,
+audio, material and developer-tool interfaces. It must not redesign their
+established contracts or quietly begin unrelated gameplay.
+
+PRIMARY GOAL
+
+Implement a visually rich, internally coherent LOCAL MARITIME WEATHER SYSTEM.
+
+The developer must be able to select a named condition and see one connected
+environment rather than a collection of unrelated toggles:
+
+- clouds have the right form, depth, altitude, motion and lighting;
+- Sun, Moon, stars and ambient illumination respond to those clouds;
+- wind moves clouds, precipitation, spray, foam and sail presentation
+  coherently;
+- gusts form moving areas of stronger and weaker forcing across the visible
+  ocean;
+- rain exists in world space, reduces visibility, strikes the ocean and wets
+  exposed materials;
+- the water responds immediately at fine scales without pretending that large
+  waves form instantly;
+- thunderstorms produce convincing in-cloud illumination, visible distant
+  lightning, ocean response and delayed thunder;
+- every effect works across the established cinematic and embodied cameras,
+  real astronomical day, twilight and night.
+
+This is a weather-presentation and local-forcing round.
+
+It is not a global meteorology, climate, forecasting, front simulation, cloud
+microphysics or gameplay-scheduling round.
+
+LOCAL WEATHER BOUNDARY
+
+For this round, "local weather" means:
+
+- the condition at and around the raft;
+- spatial variation across the complete currently visible ocean and sky;
+- deterministic fields that remain stable in world/render coordinates as the
+  camera moves;
+- cloud, gust and rain patterns that advect over time;
+- no simulation of the pressure system, front, geography or thermodynamics
+  that caused the condition;
+- no decision about which condition should occur during a voyage.
+
+The local system may represent a rain band, squall or convective storm within
+the visible domain. It does not need to know where that storm sits on a global
+weather map.
+
+Provide an explicit provider or sampling boundary, or a clearly equivalent
+architecture, so a future system can derive local weather from canonical ECEF
+position and UTC without replacing downstream renderers and response systems.
+
+For this round, the provider is controlled by deterministic developer presets
+and sliders.
+
+A later implementation may supply the same local state from:
+
+- scripted gameplay;
+- a voyage timeline;
+- a global forecast field;
+- fronts and pressure systems;
+- recorded or live meteorological data.
+
+Do not implement those providers now.
+
+CORE EXPERIENCE
+
+The completed round should make the same ocean world feel materially different
+under:
+
+- exceptional clear weather;
+- scattered maritime cumulus;
+- high thin cloud and humid haze;
+- a low marine overcast with drizzle;
+- a forceful rain squall;
+- a dark convective thunderstorm.
+
+Conditions must not be simple full-screen colour grades.
+
+A clear day should preserve the beauty and clarity established by the graphics
+round.
+
+Broken cloud should create moving pools of Sun and shadow, changing sky
+composition and water reflection without making the entire scene grey.
+
+Overcast should feel enclosed and diffuse, with a credible low ceiling, softer
+shadows, cooler or more neutral illumination and reduced contrast, while
+remaining tonally rich.
+
+Heavy rain should reduce visibility, roughen the fine surface, fill the near
+air with wind-driven drops, texture the ocean with impacts and make the raft
+feel exposed.
+
+A thunderstorm should feel large, dark and powerful while retaining readable
+cloud structure, water, raft silhouette and spatially localised illumination.
+Lightning should briefly reveal the scene rather than behave like a white
+screen flash.
+
+FOUNDATIONS TO PRESERVE
+
+Before modifying production code, locate, understand and preserve the final
+integrated equivalents of:
+
+- `PlanetaryWorld`;
+- canonical WGS84/ECEF position and velocity;
+- world UTC and world-time controls;
+- presentation time and its bounded frame delta;
+- real Sun direction and elevation;
+- real Moon direction and elevation;
+- real star-catalogue orientation;
+- the transported local tangent frame;
+- the world-to-render adapter;
+- the permanently raft-centred local renderer;
+- the complete multi-scale cinematic camera;
+- the embodied camera and unrestricted sky look;
+- camera transitions, composition and listener handling;
+- `SeaStateController`;
+- the final sea-state parameter and preset model;
+- independent primary and secondary swell;
+- `WaveField` CPU/GPU parity;
+- inverse horizontal-displacement sampling;
+- orbital water velocity;
+- distributed fixed-step raft buoyancy;
+- persistent crest foam and whitewater history;
+- spindrift;
+- separate raft-contact and overtopping spray;
+- final clear-sky atmosphere;
+- final clear deep-ocean optical profile;
+- sky/ocean reflection coherence;
+- final direct-Sun, ambient-sky and Moon-light model;
+- final exposure, tone mapping and colour management;
+- final cloud lighting and compositing from the graphics round;
+- final star, Moon and raft-lamp presentation;
+- final wet-surface or material-response hooks, if present;
+- current ambience and audio architecture;
+- shared discoverable developer-tools launcher;
+- World/General, Buoyancy, Ocean, Camera and Graphics panels;
+- clean-view and direct debug-link behaviour;
+- all tracked tests and visual evidence.
+
+Do not weaken a verified earlier-round contract to make weather implementation
+easier.
+
+BASELINE INSPECTION
+
+Before changing production code:
+
+1. Read the final integrated:
+   - `docs/world/WORLD_MODEL.md`;
+   - planetary-world ADRs;
+   - raft/water specification and report;
+   - ocean sea-state specification, architecture audit and report;
+   - camera specification and report;
+   - graphics/lighting specification, reference notes and report;
+   - `docs/project/FUTURE_ROUNDS.md`;
+   - `README.md`;
+   - asset and licence credits;
+   - any later improvement or review reports relevant to these systems.
+
+2. Inspect all current:
+   - weather-adjacent state;
+   - wind state and controls;
+   - wind-to-render-frame conversion;
+   - wind-sea construction;
+   - fine ocean roughness;
+   - gust, streak and whitewater logic;
+   - foam advection;
+   - spindrift;
+   - raft and sail wind presentation;
+   - sky and atmosphere shaders;
+   - clouds;
+   - celestial occlusion;
+   - ocean reflections;
+   - cloud shadows, if any;
+   - scene lighting;
+   - exposure and post-processing;
+   - materials and wetness;
+   - audio;
+   - camera-dependent quality paths;
+   - development controls;
+   - deterministic capture tools.
+
+3. Produce an authority map listing every existing value that claims to be:
+   - wind speed;
+   - wind direction;
+   - gustiness;
+   - cloud drift;
+   - ocean roughness;
+   - whitecap wind;
+   - foam-advection wind;
+   - spray wind;
+   - sail wind;
+   - course or travel direction.
+
+4. Explicitly identify which existing consumers read:
+   - the sea state's generating wind;
+   - a presentation `WindSystem`;
+   - local constants;
+   - duplicated or independently evolving values.
+
+5. Run the current:
+   - dependency installation required by the repository;
+   - tracked test suite;
+   - type checking;
+   - production build;
+   - linting, if tracked.
+
+   Ensure Vitest or any equivalent test runner is testing this worktree only.
+   Exclude nested `.claude/worktrees` or other nested worktrees rather than
+   counting duplicate suites as additional coverage.
+
+6. Launch the application in a real browser.
+
+7. Capture the final clear-weather baseline at representative:
+   - high-Sun daytime;
+   - sunrise or sunset;
+   - civil twilight;
+   - Moonlit night;
+   - Moonless star-heavy night.
+
+8. Use the established camera system to capture:
+   - close cinematic;
+   - default cinematic;
+   - far aerial;
+   - embodied horizon view;
+   - embodied zenith view;
+   - embodied downward water view.
+
+9. Repeat relevant baselines in:
+   - glassy or near-calm water;
+   - the normal production moderate sea;
+   - post-storm swell;
+   - the documented rough production sea.
+
+10. Record:
+    - current frame rate and frame time at standard desktop, 1440p and 4K;
+    - current mobile-sized performance;
+    - current sky/cloud GPU cost;
+    - current ocean cost;
+    - current particle and audio costs;
+    - current draw calls and render targets where useful;
+    - cloud geometry or ray-step architecture;
+    - cloud coverage, altitude and drift representation;
+    - how clouds affect Sun, Moon, stars, ambient light and reflections;
+    - current wind parameter ownership;
+    - current gust spatial and temporal behaviour;
+    - current clear-air visibility model;
+    - current material wetness inputs;
+    - current ambience layers.
+
+11. Identify what already looks excellent and preserve it.
+
+Do not begin by replacing the final sky, ocean or lighting system wholesale.
+
+SUBAGENT WORKFLOW
+
+Use at most three bounded, read-only analytical subagents.
+
+The main agent remains the sole production integrator and code editor.
+
+Do not allow several agents to build competing weather, cloud or wind systems
+in parallel worktrees.
+
+SUBAGENT 1 — WEATHER AUTHORITY, WIND, AND OCEAN-COUPLING ANALYST
+
+Inspect the final integrated architecture and return:
+
+- the complete current wind-authority and consumer map;
+- where the current sea state conflates present atmospheric wind with the wind
+  remembered by the developed wind sea;
+- which existing gust implementations are temporal, spatial or duplicated;
+- the smallest safe migration to one current atmospheric-wind authority;
+- how to preserve the established sea-state spectrum and transitions;
+- how current wind should affect fine roughness, foam, spindrift, rain, sail
+  and audio immediately;
+- how the large wind sea should retain memory and respond slowly;
+- how remote primary and secondary swell remain independent;
+- how to anchor local weather and gust fields without creating a second world
+  position or travel accumulator;
+- how a future ECEF/UTC weather provider can connect;
+- likely CPU/GPU parity, buoyancy, transition and diagnostic risks;
+- recommended deterministic tests.
+
+Use authoritative meteorological or oceanographic references where they
+materially improve parameter definitions or coupling decisions.
+
+Do not edit production code.
+
+SUBAGENT 2 — CLOUD, PRECIPITATION, LIGHTNING, AND PERFORMANCE ANALYST
+
+Inspect the final:
+
+- clear-sky atmosphere;
+- cloud implementation;
+- Sun/Moon/star presentation;
+- lighting and cloud-shadow paths;
+- ocean reflection;
+- post-processing and exposure;
+- materials;
+- camera scales;
+- desktop/mobile quality tiers;
+- audio architecture.
+
+Research authoritative real-time references and current official Three.js or
+WebGL guidance relevant to:
+
+- layered maritime cloud rendering;
+- convincing cloud depth and self-shadowing;
+- high thin cloud;
+- low overcast;
+- convective cloud;
+- cloud transmittance and scene lighting;
+- rain at near and far scales;
+- rain extinction and visibility;
+- rain impacts and ring ripples on water;
+- lightning bolts and in-cloud flashes;
+- lightning illumination and exposure;
+- delayed thunder;
+- scalable desktop/mobile implementations.
+
+Return:
+
+- which parts of the current cloud system can be retained;
+- whether a layered analytic, shell, impostor, limited volumetric or hybrid
+  solution best fits the final renderer;
+- how to avoid flat wallpaper clouds, repeated tiles and horizon seams;
+- how to keep visible sky and ocean reflection coherent without duplicating an
+  unaffordable cloud render in every ocean fragment;
+- a practical precipitation architecture;
+- a practical lightning architecture;
+- quality tiers and likely performance risks;
+- asset and licensing implications;
+- validation cases.
+
+Do not edit production code.
+
+SUBAGENT 3 — WEATHER VISUAL AND MOTION CRITIC
+
+Run only after the first integrated implementation.
+
+Review actual browser screenshots and short motion captures. Static stills
+alone are not sufficient for weather.
+
+Rank the five most damaging defects by severity.
+
+Judge:
+
+- clear-weather regression;
+- cloud scale, depth, silhouette and altitude;
+- cloud repetition and camera attachment;
+- Sun-facing, shadowed, sunset and Moonlit cloud response;
+- cloud shadows over ocean and raft;
+- overcast light;
+- high-cloud haze and halos;
+- rain density, speed, slant and scale;
+- whether rain resembles rain rather than snow, sparks or a screen overlay;
+- near/far precipitation continuity;
+- rain visibility and horizon treatment;
+- water impacts and ring ripples;
+- raft/material wetness;
+- gust motion and local ocean response;
+- foam, spray and sail coherence;
+- storm composition;
+- lightning bolt shape, duration and placement;
+- in-cloud illumination;
+- water and material response to lightning;
+- thunder timing and gross audio coherence;
+- transition smoothness;
+- clear, overcast and storm behaviour by day, sunset and night;
+- close, default, far and embodied camera presentation;
+- mobile and 4K presentation;
+- performance-visible artefacts.
+
+The critic must not request global fronts, terrain, gameplay, currents or other
+out-of-scope systems.
+
+REVIEW LOOP
+
+Perform no more than three focused visual-and-motion review passes.
+
+For each pass:
+
+1. Capture the required screenshots and short motion sequences in a real
+   browser.
+2. Give them to the visual critic.
+3. Receive the five highest-severity defects.
+4. Fix those defects.
+5. Re-run tests, type checking, relevant captures and performance checks.
+6. Stop when no severity-one defect remains and remaining limitations are minor
+   or explicitly documented.
+
+Do not run an unlimited "make it perfect" loop.
+
+RESEARCH STANDARD
+
+Use primary or authoritative sources where practical.
+
+Distinguish:
+
+- observed atmospheric or ocean behaviour;
+- a real-time approximation;
+- an artistic control;
+- an implementation-specific performance compromise.
+
+Do not use "physically based" as a substitute for documenting what is actually
+modelled.
+
+Record the useful conclusions and source links in the final weather reference
+notes.
+
+Do not copy a stock weather shader without understanding its coordinate,
+lighting, colour-space, licensing and performance assumptions.
+
+CANONICAL LOCAL WEATHER STATE
+
+Define one canonical, serialisable local weather state, or a clearly equivalent
+model.
+
+It should contain only quantities that have a real consumer or a clearly
+documented extension purpose in this round.
+
+Do not add inert pressure, temperature, dew-point or climate fields merely to
+make the interface appear meteorological.
+
+Use meaningful units where practical.
+
+The state should conceptually cover:
+
+1. IDENTITY
+   - stable preset or state identifier;
+   - display label;
+   - deterministic seed;
+   - notes or intended visual character.
+
+2. CURRENT SURFACE WIND
+   - mean 10-metre wind speed in metres per second;
+   - heading using the repository's documented towards/from convention;
+   - gust excess, RMS variation or another clearly documented magnitude;
+   - gust spatial scale;
+   - gust temporal scale or advection rate;
+   - restrained direction variability, if implemented.
+
+3. ATMOSPHERIC VISIBILITY
+   - clear-air haze or aerosol/turbidity adjustment;
+   - humidity or a directly consumed moisture proxy;
+   - meteorological visibility or extinction in a meaningful form;
+   - precipitation extinction as a distinct contribution.
+
+4. CLOUD LAYERS
+   - a small fixed-capacity set of stable layers or archetype slots;
+   - coverage;
+   - density or optical depth;
+   - base altitude;
+   - thickness or vertical development;
+   - horizontal scale;
+   - layer or field weight;
+   - motion relative to, or derived from, the current wind;
+   - lighting/scattering controls that are not arbitrary per-preset colours.
+
+5. PRECIPITATION
+   - none, drizzle or rain for this round;
+   - rate, preferably with a documented relation to millimetres per hour;
+   - drop-size or streak-distribution character where useful;
+   - spatial variation;
+   - wind response;
+   - visibility response.
+
+6. LIGHTNING
+   - enabled or zero-to-one storm electrical activity;
+   - event rate or inter-event distribution;
+   - strike-distance range;
+   - in-cloud versus visible-bolt balance;
+   - deterministic event seed/state.
+
+Do not expose every shader coefficient as canonical weather.
+
+Derived renderer quantities may remain internal.
+
+WEATHER CONTROLLER AND TRANSITIONS
+
+Implement a `WeatherController`, or equivalent, that owns:
+
+- current state;
+- target state;
+- transition origin;
+- transition duration;
+- elapsed progress;
+- deterministic weather presentation time;
+- redirection from the current interpolated state;
+- snap/reset behaviour for reproducible captures.
+
+Named presets must be ordinary state values consumed by this controller.
+
+Do not implement a separate renderer code path for each preset.
+
+Support:
+
+- immediate snap for deterministic evidence;
+- transition to a target over an adjustable duration;
+- interruption and redirection midway through a transition;
+- freeze and deterministic reset;
+- future programmatic setting of the same target state.
+
+During transitions:
+
+- interpolate directions by the shortest circular path;
+- do not pop cloud topology;
+- do not reseed visible noise abruptly;
+- do not switch rain particles all at once;
+- do not snap direct light, ambient light, visibility, audio or wetness;
+- do not erase existing foam;
+- do not instantly dry wet materials;
+- do not reset exposure adaptation;
+- do not generate a burst of lightning solely because a preset was selected;
+- keep all values finite.
+
+Prefer stable cloud archetype/layer slots whose weights, density and coverage
+can fade continuously.
+
+If genuinely different stochastic fields must be changed, use a documented
+stable transition or bounded crossfade. Do not linearly interpolate integer
+seeds and let the entire sky scramble every frame.
+
+Use presentation time for:
+
+- visual transition smoothing;
+- gust and cloud advection presentation;
+- precipitation particles;
+- lightning event playback;
+- wetness response;
+- audio smoothing.
+
+Do not use the accelerated 72× or otherwise variable world-time delta as a
+raw particle, cloud, gust, exposure or audio frame delta.
+
+A future world-weather provider may use canonical UTC to decide target weather.
+That is separate from bounded presentation smoothing.
+
+WEATHER PROVIDER EXTENSION POINT
+
+Provide a narrow local-weather input boundary.
+
+Conceptually, a future provider should be able to sample:
+
+- canonical ECEF position;
+- canonical UTC;
+- optional altitude;
+
+and produce:
+
+- a local target weather state;
+- or smoothly sampled local forcing values.
+
+The developer-preset provider for this round may ignore geography.
+
+Do not:
+
+- create a parallel planar voyage position;
+- accumulate a second world distance;
+- reinterpret wave presentation origin as geography;
+- attach weather coordinates to camera yaw;
+- reset weather merely because the raft-centred renderer remains at local zero.
+
+If procedural fields need local coordinates, derive them through the established
+world/render adapter or a documented stable presentation-field mapping.
+
+CURRENT ATMOSPHERIC WIND VERSUS WIND-SEA MEMORY
+
+This distinction is mandatory.
+
+There are two physically different quantities:
+
+A. CURRENT ATMOSPHERIC SURFACE WIND
+
+Owned by the local weather system.
+
+It represents what the air is doing now.
+
+It immediately drives:
+
+- gust sampling;
+- cloud or layer advection where appropriate;
+- rain slant and advection;
+- capillary and fine surface roughness;
+- local reflection/glint roughness modulation;
+- active whitecap-generation gating;
+- foam advection and new windrow orientation;
+- spindrift transport and emission gating;
+- raft-contact airborne spray transport;
+- sail and loose-material presentation;
+- wind and rain ambience.
+
+B. DEVELOPED WIND-SEA MEMORY
+
+Owned by the sea-state system.
+
+It represents wave energy produced by wind acting over fetch and duration.
+
+It controls the existing:
+
+- wind-sea spectrum;
+- dominant local wind-sea period;
+- developed wave height;
+- directional spread;
+- wind-sea maturity;
+- large and medium displacement felt by the raft.
+
+It changes on sea-state timescales and through the established
+`SeaStateController`/`WaveField` transition contract.
+
+C. REMOTE SWELL
+
+Primary and secondary swell remain independent of present local weather.
+
+A local wind change must not:
+
+- rotate established remote swell;
+- erase post-storm swell;
+- instantly create a mature large wind sea;
+- reset phases;
+- pop the wave field.
+
+MIGRATION REQUIREMENT
+
+Do not leave two mutable values both labelled "current wind speed" and allow
+different consumers to choose one arbitrarily.
+
+If compatibility requires retaining a `SeaState.wind`-like field:
+
+- rename, relabel or rigorously document it as generating/effective wind for
+  the developed wind sea;
+- preserve old preset semantics and numerical tests;
+- stop using it as the unqualified present atmospheric wind for direct weather
+  consumers;
+- expose the distinction clearly in developer controls and telemetry.
+
+The final presentation `WindSystem`, if retained, should consume or present the
+weather system's current atmospheric wind. It should not remain an independent
+wind authority.
+
+Course and travel direction remain distinct from wind.
+
+Do not change canonical voyage speed, steering or navigation gameplay merely
+because present wind is now represented more accurately. Sail cloth and visual
+response are in scope; a new sailing-force or navigation model is not.
+
+SEA-STATE RESPONSE PARAMETERS
+
+Do not move every ocean-response control into weather.
+
+The sea state may continue to own documented properties of the water and its
+existing wave/foam history, including:
+
+- wind-sea maturity and developed spectrum;
+- breakability or threshold bias;
+- intrinsic fine-detail response coefficients;
+- foam generation susceptibility;
+- foam persistence and breakup;
+- spray susceptibility;
+- remote swell.
+
+Weather supplies the present atmospheric forcing.
+
+Document how current wind combines with those sea-state response coefficients.
+Audit the formulae so wind speed is not accidentally counted twice.
+
+Whitewater should require a coherent combination of:
+
+- a wave field capable of breaking;
+- current atmospheric forcing;
+- the sea state's documented response coefficients;
+- persistent foam history.
+
+The statistical far-field whitewater estimate must remain consistent with the
+near-field generation model during mismatched and transitioning weather/sea
+conditions.
+
+SEA-STATE COUPLING EXTENSION
+
+Preserve independent weather and sea-state selection for diagnostics.
+
+The Weather panel must not silently overwrite:
+
+- selected remote swell;
+- sea-state preset;
+- sea-state survivability classification;
+- camera;
+- world location;
+- date or time.
+
+Provide an explicit coupling adapter, command or narrowly scoped developer mode
+that can map sustained weather wind into a wind-sea target using the established
+sea-state transition path.
+
+This may be:
+
+- a `Sync wind-sea target from current weather` action;
+- an explicit `Independent` versus `Follow weather` diagnostic mode;
+- a comparably clear design.
+
+It must never be an undocumented hidden side effect of selecting a weather
+preset.
+
+The coupled demonstration should prove that:
+
+- fine roughness reacts promptly;
+- gust and spray response is prompt;
+- the wind-sea target changes slowly and continuously;
+- phase remains continuous;
+- remote swell is untouched;
+- persistent foam decays or grows through its own history.
+
+Do not attempt a full fetch-, route- and storm-history ocean evolution model in
+this round.
+
+SPATIALLY VARIABLE GUST FIELD
+
+Implement one reusable deterministic local wind/gust field.
+
+A practical implementation may use:
+
+- low-frequency band-limited procedural noise;
+- a small field texture;
+- analytic cells;
+- another measured real-time technique.
+
+It does not need computational fluid dynamics.
+
+The field must:
+
+- have a documented mean;
+- have a bounded gust magnitude;
+- use stable spatial coordinates;
+- advect coherently with the mean wind or a documented gust velocity;
+- evolve continuously;
+- avoid visible tiles and wrap pops;
+- be deterministic under a fixed seed and reset;
+- provide a GPU sampling path for the ocean;
+- provide a CPU sampling path at the raft and selected effect locations;
+- agree closely enough between CPU and GPU for shared decisions;
+- remain finite under every preset and stress control.
+
+Prefer physically legible controls such as:
+
+- mean wind speed;
+- gust excess or standard deviation;
+- dominant patch size in metres;
+- dominant time scale in seconds;
+- optional direction variation in degrees.
+
+Do not expose only an unexplained `gustiness` scalar if the implementation can
+provide a clearer model.
+
+The gust field should produce moving areas of:
+
+- slightly stronger and weaker capillary roughness;
+- changing glint distribution;
+- increased or reduced whitecap generation where waves are already capable of
+  breaking;
+- changing foam windrow formation;
+- bursts of spindrift;
+- locally different rain slant or density where justified;
+- changing sail/wind-audio response at the raft.
+
+Do not use local gusts to multiply the large Gerstner displacement field.
+
+Do not make a gust instantly raise or lower:
+
+- established swell;
+- large wind-sea crest height;
+- the raft's supporting surface;
+- buoyancy forces through a separate weather wave.
+
+Fine visual chop and statistical short-wave normals may respond quickly.
+Developed displacement remains the sea-state system's responsibility.
+
+CLOUD-SYSTEM EXPANSION
+
+The final clear-weather cloud implementation is the starting point, not
+necessarily the final weather architecture.
+
+This round must expand beyond one thin, flat, uniformly parameterised cloud
+layer.
+
+Support a small, bounded family of vertically meaningful cloud forms, with
+stable transition slots or an equivalent approach:
+
+1. HIGH THIN CLOUD
+   - cirrus-like or thin high sheet;
+   - broad, delicate structure;
+   - restrained Sun or Moon halo response;
+   - minimal dark lower surface;
+   - no opaque low-ceiling appearance.
+
+2. LOW OR MIDDLE STRATIFORM CLOUD
+   - broad layer suitable for marine overcast;
+   - credible low ceiling;
+   - internal variation;
+   - diffuse light and muted direct shadows;
+   - drizzle support.
+
+3. FAIR-WEATHER CUMULUS
+   - discrete cloud masses;
+   - readable sunlit tops/sides and shaded bases;
+   - open blue gaps;
+   - moving cloud shadows;
+   - no repeated cotton-ball grid.
+
+4. CONVECTIVE OR STORM CLOUD
+   - substantial vertical development;
+   - dark but detailed lower structure;
+   - brighter or sculpted upper regions where Sun geometry allows;
+   - anvil or storm-mass character where practical;
+   - internal lightning illumination;
+   - heavy-rain support.
+
+These are visual/parameter archetypes, not a demand for a cloud-classification
+simulator.
+
+The implementation technique may be:
+
+- layered analytic shells;
+- depth-aware impostors;
+- limited ray-marched volumes;
+- hybrid geometry and procedural shading;
+- another justified real-time method.
+
+Do not require a general-purpose planet-scale volumetric-cloud engine.
+
+However, do not claim the cloud expansion is complete if overcast and
+convective clouds are merely the original flat noise layer recoloured darker.
+
+CLOUD QUALITY REQUIREMENTS
+
+Clouds must:
+
+- occupy coherent world directions;
+- remain stable when the camera rotates;
+- retain scale across close, far and embodied cameras;
+- remain convincing when looking at the horizon and zenith;
+- show plausible vertical placement;
+- show internal density variation;
+- show Sun-facing and shadowed structure;
+- avoid obvious texture repetition;
+- avoid polar or dome seams;
+- avoid a bald horizon band;
+- avoid hard intersection with the ocean horizon;
+- avoid swimming when the camera translates;
+- move continuously;
+- support quality scaling;
+- remain finite at extreme view angles.
+
+Under high Sun:
+
+- clear portions of sky retain the final graphics round's blue;
+- fair clouds may have bright neutral tops and cooler shaded bases;
+- highlights retain detail rather than clipping flat white;
+- storm clouds remain structured rather than uniformly charcoal.
+
+At low Sun:
+
+- cloud illumination follows the real Sun direction;
+- lit edges and surfaces may become gold, peach, orange or subdued red;
+- shaded regions may remain cool;
+- the entire cloud field must not receive one global orange tint.
+
+At night:
+
+- clouds become dark silhouettes where unlit;
+- Moonlit surfaces respond to the real Moon direction;
+- dense cloud attenuates stars;
+- the raft lamp does not illuminate distant cloud;
+- lightning can reveal internal volume and lower cloud structure.
+
+CLOUD MOTION AND WIND SHEAR
+
+Surface wind is the current local atmospheric authority.
+
+Cloud layers may move at a documented offset from surface wind because real
+cloud-level flow need not equal the 10-metre wind.
+
+For this round:
+
+- allow simple per-layer speed and direction offsets where useful;
+- preserve one coherent convention;
+- interpolate changes smoothly;
+- do not build a full 3D atmospheric wind or vertical-shear simulation.
+
+CLOUD LIGHTING, SHADOWS, AND CELESTIAL OCCLUSION
+
+Cloud transmittance must affect more than the visible cloud colour.
+
+Integrate weather coherently with:
+
+- direct Sun intensity;
+- direct Moon intensity;
+- ambient sky colour and intensity;
+- shadow strength and softness;
+- Sun and Moon discs;
+- stars;
+- ocean reflection;
+- Sun and Moon glitter;
+- raft, sail, character and lamp presentation;
+- exposure adaptation.
+
+Broken cloud should produce broad, moving cloud shadows or a comparably
+convincing low-frequency illumination variation over:
+
+- ocean;
+- raft;
+- sail;
+- castaway.
+
+Do not project small hard-edged cloud decals onto the water.
+
+Overcast should:
+
+- strongly reduce direct Sun;
+- increase the relative importance of diffuse sky light;
+- soften or remove hard Sun shadows;
+- retain directional and tonal richness;
+- avoid turning every material into the same grey value.
+
+Dense cloud should:
+
+- attenuate stars behind it;
+- dim or obscure the Sun and Moon according to optical depth;
+- alter Moon halo and Sun aureole in a restrained moisture-aware manner;
+- affect the light reaching the ocean.
+
+Do not hide celestial objects with unrelated global opacity while leaving their
+scene lights at full strength.
+
+CLOUDS AND OCEAN REFLECTION
+
+The visible sky and reflected sky must remain perceptually coherent.
+
+Do not evaluate an unaffordable full volumetric cloud renderer inside every
+ocean fragment merely for mathematical purity.
+
+Use a measured approximation where required, such as:
+
+- a lower-frequency analytic cloud transmittance;
+- a weather environment map updated at a controlled rate;
+- a bounded sky-light probe;
+- a simplified reflection representation;
+- another documented method.
+
+The result must preserve:
+
+- reflected blue gaps under broken cloud;
+- darker reflected cloud masses;
+- overcast sky reflection;
+- cloud-dependent Sun/Moon glint;
+- no obvious mismatch in direction or motion;
+- no stale environment during transitions;
+- no large frame-time spikes during environment updates.
+
+ATMOSPHERE, HUMIDITY, HAZE, AND VISIBILITY
+
+Treat the final graphics round's clear maritime atmosphere as the neutral base.
+
+Weather may modulate:
+
+- aerosol or turbidity;
+- moisture haze;
+- Sun and Moon aureoles;
+- horizon contrast;
+- distance extinction;
+- ambient sky radiance;
+- precipitation extinction.
+
+Use a coherent distance-aware visibility model.
+
+Heavy rain should reduce the distance at which:
+
+- individual waves remain distinct;
+- the horizon remains high contrast;
+- the raft remains visible from the far camera;
+- cloud bases remain crisp.
+
+Do not implement reduced visibility as only:
+
+- a flat full-screen grey overlay;
+- arbitrary global desaturation;
+- an opaque plane around the camera;
+- a camera-attached radial wall.
+
+Preserve:
+
+- plausible sky/horizon relationships;
+- colour-space correctness;
+- tone-mapping stability;
+- day/night differences;
+- real Sun and Moon directions;
+- clear-weather visual quality.
+
+True moving sea-fog banks and detailed low-level fog volumes are deferred.
+General maritime haze and rain-driven visibility are in scope.
+
+PRECIPITATION
+
+Support:
+
+- no precipitation;
+- drizzle;
+- rain;
+- heavy rain.
+
+Snow, sleet and hail are not required.
+
+Use at least two perceptual scales:
+
+1. NEAR PRECIPITATION
+   - world-space or convincingly world-anchored drops/streaks;
+   - readable speed and wind slant;
+   - density appropriate to intensity;
+   - correct depth and occlusion behaviour where practical;
+   - no obvious camera-fixed pattern;
+   - no giant drops;
+   - no slow snow-like drift.
+
+2. FAR PRECIPITATION
+   - rain curtains, volumetric density or another stable approximation;
+   - coherent reduction in visibility;
+   - continuity with near rain;
+   - no visible particle-radius boundary;
+   - no cylindrical wall following the camera.
+
+Rain must:
+
+- follow the current wind field or a documented height-adjusted derivative;
+- remain spatially correlated with rain-capable cloud or a documented
+  precipitation mask;
+- fall beneath the storm or overcast structure rather than uniformly from
+  unrelated clear-blue gaps;
+- remain stable across camera modes;
+- work while looking horizontally, upward and downward;
+- look plausible against bright sky, dark cloud and dark night;
+- avoid white opaque streaks against the storm;
+- respond to Sun, Moon, ambient light, lamp and lightning without glowing
+  uniformly;
+- scale down appropriately on mobile;
+- avoid large per-frame allocations.
+
+Do not use persistent camera-lens droplets or a generic wet-lens overlay in this
+round.
+
+RAIN–OCEAN INTERACTION
+
+Rain must visibly affect the ocean.
+
+Provide a scalable combination of:
+
+- local impact dimples or small splash crowns;
+- expanding ring ripples;
+- rain-driven fine normal roughness;
+- far-field statistical rain texture;
+- local lighting response.
+
+Do not CPU-simulate every raindrop impact over the entire ocean.
+
+Do not add rain ripples to:
+
+- `WaveField` large displacement;
+- raft buoyancy sampling;
+- orbital water velocity;
+- established swell.
+
+Rain impacts are a high-frequency visual surface layer.
+
+They must:
+
+- remain registered to the water parameter space or another documented stable
+  water-surface coordinate;
+- avoid sliding over displaced waves;
+- avoid periodic wrap pops;
+- avoid obvious square tiles;
+- remain visible but restrained in calm water;
+- coexist with foam and whitewater in rough water;
+- receive day, sunset, Moon and lightning illumination;
+- not resemble boiling water.
+
+Heavy rain may reduce small-scale specular clarity and alter apparent
+roughness. It must not globally erase the final deep-ocean optical model.
+
+RAIN, RAFT, SAIL, AND CASTAWAY WETNESS
+
+Feed precipitation into the final material/wetness architecture established by
+the graphics round.
+
+If that round provides one shared wetness response, extend it rather than
+creating unrelated rainy material clones.
+
+Rain wetness may:
+
+- darken exposed wood;
+- increase controlled specular response;
+- dampen or darken cloth;
+- alter rope and character material response;
+- accumulate with rain;
+- dry gradually after rain stops.
+
+Keep this bounded.
+
+Do not implement:
+
+- deck puddle fluid simulation;
+- streaming runoff;
+- volumetric water accumulation;
+- cloth saturation mechanics;
+- hypothermia;
+- character discomfort or health;
+- inventory consequences.
+
+Wet materials must not become:
+
+- chrome;
+- black plastic;
+- uniformly glossy;
+- instantly dry at the end of a preset transition.
+
+LIGHTNING
+
+Lightning is a required part of the thunderstorm condition.
+
+Implement a deterministic event controller with:
+
+- stable seeded scheduling;
+- irregular rather than metronomic intervals;
+- bounded multi-pulse structure where appropriate;
+- in-cloud flashes;
+- occasional visible distant cloud-to-ocean bolts;
+- event position and distance;
+- manual developer trigger;
+- freeze/reset support.
+
+LIGHTNING VISUAL REQUIREMENTS
+
+A lightning event should coherently affect:
+
+- the originating cloud volume or mass;
+- nearby cloud layers;
+- direct scene illumination;
+- ocean reflection and local glint;
+- rain streak visibility;
+- raft, sail and castaway materials;
+- exposure and bloom;
+- the visible bolt, when present.
+
+Do not implement lightning as only a full-screen white rectangle.
+
+Visible bolts should:
+
+- originate plausibly inside or beneath storm cloud;
+- terminate at distant ocean for this round;
+- use restrained branching;
+- have a bright narrow core and limited glow;
+- persist for a physically brief, readable interval;
+- avoid looking like a static white tree, neon rope or HUD element;
+- remain spatially fixed during the flash;
+- be visible from relevant cameras without always striking beside the raft.
+
+In-cloud flashes should reveal cloud structure rather than merely recolour the
+whole sky.
+
+Exposure must recover smoothly without leaving the scene black or pumping for
+several seconds.
+
+Avoid rapid repetitive strobing. A storm can be dramatic without producing a
+continuous high-frequency flash sequence.
+
+THUNDER
+
+Add thunder coherently with lightning.
+
+Use:
+
+- strike distance;
+- approximately plausible speed-of-sound delay;
+- suitable variation in crack, rumble and duration;
+- distance-aware level and filtering;
+- restrained spatial presentation where supported.
+
+Thunder must not play simultaneously with every distant visible bolt unless
+the distance justifies it.
+
+Do not add lightning damage, fire, electrocution, raft impact or gameplay.
+
+AUDIO WEATHER LAYERS
+
+Extend the existing ambience rather than replacing it.
+
+Weather audio should include, where appropriate:
+
+- wind strength and gust response;
+- light rain;
+- heavy rain on open water;
+- rain on sail, wood or raft at a restrained level;
+- distant thunder;
+- closer thunder for nearer diagnostic strikes.
+
+Audio must:
+
+- transition smoothly;
+- avoid obvious short-loop repetition;
+- avoid clipping when wind, waves, rain and thunder overlap;
+- follow the established camera/listener architecture;
+- remain coherent across cinematic and embodied modes;
+- use presentation time;
+- dispose cleanly.
+
+Do not add music or unrelated narrative audio.
+
+If external audio assets are used, they must be permissively licensed and fully
+credited.
+
+WEATHER PRESETS
+
+Provide deterministic machine-readable presets.
+
+Preset buttons are conveniences over the canonical weather state. They must not
+activate bespoke hidden shader branches.
+
+At minimum implement:
+
+1. CLEAR_MARITIME
+
+   Purpose:
+   - neutral regression anchor for the completed graphics round;
+   - very high visibility;
+   - no precipitation;
+   - no lightning;
+   - final clear-sky and deep-ocean appearance preserved;
+   - only the documented clear-weather cloud amount.
+
+   This preset must reproduce the graphics round's intended base state within
+   expected effects of its stated current wind.
+
+2. FAIR_CUMULUS
+
+   Characteristics:
+   - scattered low maritime cumulus;
+   - substantial blue gaps;
+   - clearly modelled sunlit and shaded cloud structure;
+   - moving cloud shadows;
+   - moderate present wind;
+   - visible but not extreme gust patches;
+   - high visibility;
+   - no precipitation or lightning.
+
+3. HIGH_CLOUD_HAZE
+
+   Characteristics:
+   - thin high cloud;
+   - humid maritime haze;
+   - softened Sun or Moon aureole;
+   - reduced but still substantial visibility;
+   - no broad opaque overcast;
+   - no heavy rain;
+   - no lightning.
+
+4. MARINE_OVERCAST_DRIZZLE
+
+   Characteristics:
+   - broad low or middle cloud layer;
+   - readable ceiling and internal variation;
+   - weak direct Sun and diffuse ambient light;
+   - soft shadows;
+   - drizzle;
+   - modest visibility reduction;
+   - damp materials;
+   - no lightning.
+
+5. RAIN_SQUALL
+
+   Characteristics:
+   - heavy or rapidly intensifying rain;
+   - strong current wind;
+   - pronounced spatial gusts;
+   - dark broken or layered cloud;
+   - moving rain-density variation;
+   - materially reduced visibility;
+   - active fine water roughness, impacts, foam and spray;
+   - no required lightning, so it remains distinct from the thunderstorm.
+
+6. THUNDERSTORM
+
+   Characteristics:
+   - deep convective cloud mass;
+   - detailed dark lower cloud and vertically developed structure;
+   - heavy showers;
+   - strong but bounded gusts;
+   - substantial visibility reduction;
+   - in-cloud flashes;
+   - occasional visible cloud-to-ocean lightning;
+   - delayed thunder;
+   - coherent storm lighting by day and night.
+
+Each preset must document:
+
+- current surface-wind mean and heading;
+- gust magnitude, spatial scale and time scale;
+- cloud layers and intended altitudes;
+- visibility;
+- precipitation;
+- lightning activity;
+- intended visual character;
+- important limitations.
+
+WEATHER AND SEA-STATE INDEPENDENCE
+
+Weather presets are weather-only.
+
+They must not silently select:
+
+- calm water;
+- rough water;
+- post-storm swell;
+- a camera;
+- a time of day;
+- a geographic location.
+
+This allows physically meaningful combinations such as:
+
+- fresh rain squall over a sea that has not yet developed;
+- rough post-storm swell under clearing weather;
+- glassy water under high haze;
+- remote swell under a local overcast;
+- rough ocean under clear weather.
+
+Provide documented showcase combinations if useful, but keep the underlying
+controls independent.
+
+DEVELOPER WEATHER LAB
+
+Extend the shared discoverable developer-tools launcher with a `Weather` panel.
+
+Keep a supported direct link such as `?debug=weather` for bookmarks,
+deterministic automation and evidence capture.
+
+Do not require a query parameter to discover the panel.
+
+The panel must coexist with:
+
+- World/General;
+- Buoyancy;
+- Ocean;
+- Camera;
+- Graphics;
+- every existing deep link.
+
+Closed panels must remain dynamically unloaded where that is the established
+tools-shell contract.
+
+`Hide all` must return to a clean, screenshot-ready view without resetting:
+
+- canonical world state;
+- weather transition state;
+- cloud fields;
+- rain;
+- wetness;
+- lightning schedule;
+- sea state;
+- foam history;
+- camera.
+
+GROUP CONTROLS BY MEANING
+
+Provide controls and telemetry for:
+
+A. PRESETS AND TRANSITION
+   - named preset;
+   - snap versus transition;
+   - transition duration;
+   - progress and target;
+   - freeze weather presentation;
+   - deterministic reset;
+   - seed;
+   - copy/export current state.
+
+B. CURRENT WIND
+   - mean wind speed;
+   - heading;
+   - gust magnitude;
+   - gust spatial scale;
+   - gust time scale;
+   - sampled instantaneous wind at the raft;
+   - clear indication that course and developed wind sea are different.
+
+C. ATMOSPHERE
+   - visibility;
+   - humidity/moisture or consumed haze control;
+   - clear-air turbidity/aerosol adjustment where retained;
+   - current direct-light transmittance;
+   - current ambient-light effect.
+
+D. CLOUDS
+   - high-cloud weight/coverage;
+   - low/stratiform weight/coverage;
+   - cumulus weight/coverage;
+   - convective/storm weight;
+   - a small number of meaningful density, altitude or thickness controls;
+   - cloud-motion telemetry.
+
+E. PRECIPITATION AND WETNESS
+   - precipitation mode;
+   - rate;
+   - near/far density telemetry;
+   - ocean-impact strength;
+   - current raft wetness;
+   - optional force-dry diagnostic action.
+
+F. LIGHTNING
+   - activity;
+   - manual in-cloud flash;
+   - manual visible distant strike;
+   - next-event or last-event telemetry where useful;
+   - thunder delay telemetry.
+
+G. OCEAN COUPLING
+   - independent versus explicit follow/sync behaviour;
+   - current atmospheric wind;
+   - developed wind-sea generating/effective wind;
+   - target and progress when a wind-sea transition is requested.
+
+Do not expose hundreds of raw shader constants.
+
+All controls must use the same production state and systems. Do not construct a
+parallel demo weather renderer inside the panel.
+
+DETERMINISM AND CAPTURE SUPPORT
+
+Provide a deterministic diagnostic reset that can establish:
+
+- chosen weather preset;
+- chosen sea state;
+- chosen canonical date, time and location through existing controls;
+- chosen camera;
+- fixed weather seed;
+- fixed presentation time;
+- known transition progress;
+- known lightning event;
+- known wetness state.
+
+Support repeatable screenshots and short motion captures.
+
+Freezing weather presentation must not:
+
+- pause canonical world time unless the existing world control explicitly does
+  so;
+- reset wave phase;
+- erase foam;
+- move the camera;
+- reset exposure unexpectedly.
+
+If rain, cloud and gust systems use ring buffers, particles, temporal render
+targets or cached environment maps, reset them explicitly and deterministically.
+
+VISUAL VALIDATION MATRIX
+
+Use a real browser.
+
+Capture stills and short motion sequences. Weather cannot be judged entirely
+from still images.
+
+Do not attempt the full Cartesian product. Use the following representative and
+adversarial cases.
+
+A. CLEAR REGRESSION
+
+1. Clear maritime, high Sun, default camera, moderate sea.
+2. Clear maritime, sunset, default and far cameras.
+3. Clear maritime, Moonlit night and embodied horizon view.
+4. Clear maritime, Moonless star-heavy night and embodied zenith view.
+
+Confirm that the weather system's neutral state does not degrade the completed
+graphics round.
+
+B. CLOUD FORM AND LIGHTING
+
+5. Fair cumulus, high Sun, close/default/far cameras.
+6. Fair cumulus, low Sun viewed towards and away from the Sun.
+7. Fair cumulus, embodied zenith and horizon look.
+8. High cloud/haze with the Sun visible.
+9. High cloud/haze with the Moon visible at night.
+10. Marine overcast at midday.
+11. Marine overcast at sunset.
+12. Marine overcast at Moonlit and Moonless night.
+13. Thunderstorm convective cloud from default, far and embodied views.
+
+C. PRECIPITATION
+
+14. Drizzle over calm water in embodied and close views.
+15. Heavy rain over calm water so ring ripples are legible.
+16. Heavy rain over moderate water so impacts coexist with normal wave detail.
+17. Heavy rain over rough water so rain, foam and spray remain distinguishable.
+18. Rain looking towards bright sky.
+19. Rain against dark cloud.
+20. Rain at Moonlit night.
+21. Rain near the raft lamp.
+22. Far-camera rain and visibility.
+
+D. WIND AND GUSTS
+
+23. Low mean wind with weak gusts over glassy water.
+24. Moderate mean wind with large moving gust patches.
+25. Strong squall gusts over moderate sea.
+26. Wind direction crossing 359 degrees to 1 degree during a transition.
+27. Camera orbit and mode switch while a fixed gust patch crosses the raft.
+28. Gust-field continuity at every procedural wrap or origin boundary.
+
+E. WEATHER–SEA INTERACTIONS
+
+29. Rain squall over a calm or young sea.
+30. Thunderstorm over rough sea.
+31. Clear or fair weather over post-storm swell.
+32. Strong present wind crossing remote primary swell.
+33. Explicit wind-sea sync/follow demonstration without remote-swell change.
+
+F. LIGHTNING
+
+34. Daytime in-cloud flash.
+35. Sunset visible distant bolt.
+36. Moonlit-night visible bolt.
+37. Moonless-night in-cloud and visible-bolt events.
+38. Lightning viewed from far cinematic.
+39. Lightning viewed from embodied horizon.
+40. Thunder delay at near and far diagnostic strike distances.
+41. Repeated deterministic reset to the same event.
+
+G. TRANSITIONS
+
+42. Clear to fair cumulus.
+43. Fair cumulus to overcast drizzle.
+44. Overcast to rain squall.
+45. Rain squall to thunderstorm.
+46. Thunderstorm to clearing/clear conditions.
+47. Redirect thunderstorm transition midway back to fair weather.
+48. Snap reset from a wet storm to a deterministic capture state.
+
+H. GEOGRAPHIC AND ASTRONOMICAL EDGE CASES
+
+49. Tropical high Sun.
+50. High-latitude low Sun.
+51. Polar day.
+52. Polar night.
+53. Sun just below the horizon.
+54. Moon below the horizon.
+
+I. DISPLAY AND PERFORMANCE
+
+55. Standard desktop viewport.
+56. 2560×1440.
+57. 3840×2160.
+58. Mobile portrait.
+59. Mobile landscape.
+60. Reduced weather-quality tier, if implemented.
+
+MOTION CAPTURE REQUIREMENTS
+
+Capture short sequences showing:
+
+- cloud motion without camera movement;
+- camera orbit under fixed cloud;
+- a gust patch moving over the ocean and raft;
+- drizzle;
+- heavy rain;
+- rain impacts on calm water;
+- a complete lightning/thunder event;
+- clear-to-storm transition;
+- storm-to-clear transition;
+- camera-mode transition during weather.
+
+Review at normal playback speed.
+
+Do not use only slowed-down or frame-stepped footage to conceal popping,
+particle boundaries or unstable motion.
+
+ADVERSARIAL VISUAL CHECKS
+
+Explicitly inspect for:
+
+- clouds attached to camera yaw;
+- clouds changing scale during zoom;
+- flat wallpaper cloud;
+- repeated cloud tiles;
+- cloud/horizon seams;
+- storm clouds clipped by the sky dome;
+- stars visible through opaque cloud;
+- Sun or Moon scene light remaining bright behind opaque cloud;
+- overcast implemented as a grey screen wash;
+- black cloud with no internal structure;
+- electric-purple storm tint;
+- cloud shadows moving in the wrong direction;
+- reflection clouds disagreeing with visible clouds;
+- rain resembling snow;
+- rain streaks remaining vertical in strong crosswind;
+- a near-rain particle sphere or hard radius boundary;
+- rain passing through the camera as giant lines;
+- rain ring ripples sliding over waves;
+- boiling-water rain impacts;
+- rain erasing all ocean body colour;
+- gust patches creating square tiles;
+- gusts snapping foam or spray globally;
+- local gusts moving the raft-supporting wave surface;
+- wet wood becoming chrome;
+- instantaneous drying;
+- lightning as a full-screen rectangle;
+- bolt endpoints moving during a flash;
+- neon or excessively thick lightning;
+- thunder with no distance delay;
+- exposure pumping after lightning;
+- mobile shader compilation failure;
+- NaNs, infinities or black frames.
+
+PHYSICAL AND ARCHITECTURAL VALIDATION
+
+Add deterministic automated tests where the logic is testable without judging
+pixels.
+
+At minimum cover:
+
+1. Weather preset schema validity.
+2. Finite values and documented bounds for every preset.
+3. Clone/copy isolation.
+4. Interpolation endpoints.
+5. Shortest-path direction interpolation.
+6. Mid-transition redirection continuity.
+7. Snap/reset determinism.
+8. Stable seed handling.
+9. Fixed cloud-slot transition behaviour.
+10. Precipitation intensity interpolation.
+11. No lightning when activity is zero.
+12. Deterministic lightning schedule under a fixed seed.
+13. Thunder delay increases with strike distance.
+14. Wetness accumulates and dries continuously.
+15. Gust field repeatability.
+16. Gust field continuity over time and documented spatial boundaries.
+17. Gust field mean and bounded extrema.
+18. CPU/GPU agreement for shared gust samples where both paths affect the same
+    decisions.
+19. Weather current wind and developed wind-sea memory remain distinct.
+20. Weather preset selection does not alter remote swell.
+21. Weather preset selection does not alter canonical world state.
+22. Weather preset selection does not alter camera state.
+23. Explicit wind-sea coupling uses the established transition path.
+24. Explicit wind-sea coupling preserves phase and remote swell semantics.
+25. Rain ripple layer does not enter CPU buoyancy or orbital velocity.
+26. Cloud attenuation coherently gates matching celestial scene light.
+27. Weather freeze does not pause canonical world unless explicitly requested.
+28. Disposal releases render targets, particles, audio nodes and listeners.
+
+Preserve and run every existing:
+
+- planetary-world test;
+- astronomy test;
+- navigation/movement test;
+- raft-water test;
+- buoyancy test;
+- CPU/GPU wave-parity test;
+- sea-state and transition test;
+- foam-history test;
+- camera test;
+- graphics/lighting test;
+- developer-tools test;
+- browser smoke test.
+
+Do not weaken tolerances or delete coverage to make weather pass.
+
+CANONICAL WORLD INVARIANTS
+
+Weather controls must not mutate:
+
+- canonical ECEF position;
+- canonical ECEF velocity;
+- latitude;
+- longitude;
+- UTC;
+- transported frame;
+- voyage distance;
+- camera mode;
+- sea-state selection, except through the explicit coupling action/mode;
+- remote swell;
+- buoyancy constants.
+
+The local renderer remains raft-centred.
+
+Weather procedural coordinates are not another geography.
+
+SHADER, BROWSER, AND AUDIO VALIDATION
+
+Confirm:
+
+- no shader compile errors;
+- no duplicate GLSL declarations;
+- no WebGL programme-link failures;
+- no render-target feedback errors;
+- no unsupported mobile shader path;
+- no material colour-space warnings;
+- no fresh browser console errors;
+- no unhandled audio-playback promise rejection;
+- no leaked audio nodes on panel close or application disposal;
+- no stale weather render targets after resize;
+- no black or blank frame during weather transition;
+- no deterministic capture race returning a previous frame.
+
+PERFORMANCE
+
+Weather must remain practical in real time.
+
+Measure the integrated baseline before changes and final performance for:
+
+- clear maritime;
+- fair cumulus;
+- marine overcast;
+- heavy rain squall;
+- thunderstorm without an active flash;
+- thunderstorm during lightning;
+- close cinematic;
+- default cinematic;
+- far aerial;
+- embodied horizon;
+- embodied zenith;
+- standard desktop;
+- 2560×1440;
+- 3840×2160;
+- mobile portrait and landscape.
+
+Targets:
+
+- no material regression in neutral clear weather;
+- smooth standard desktop and 1440p operation;
+- usable 4K operation on the established target hardware;
+- usable mobile-sized operation;
+- stable approximately 30 frames per second or better on a modern 4K desktop
+  under representative active weather, unless the measured integrated baseline
+  already establishes a different documented constraint;
+- no unbounded per-frame allocations;
+- no CPU particle simulation proportional to every visible rain impact;
+- no full-resolution expensive cloud-environment rebuild every frame;
+- no synchronous GPU readback in the production frame loop;
+- no audio scheduling growth over long storms;
+- no large lightning shader compilation hitch on first event.
+
+Provide measured desktop and mobile quality tiers where necessary.
+
+Quality scaling may adjust:
+
+- cloud ray steps or layer detail;
+- cloud-shadow resolution/update rate;
+- environment/reflection update rate;
+- rain particle count;
+- far-rain complexity;
+- water-impact density;
+- lightning branch count;
+- audio layering.
+
+Quality scaling must not:
+
+- change canonical weather parameters;
+- change wind sampled at the raft;
+- change sea-state or buoyancy physics;
+- remove all rain or clouds from mobile;
+- cause abrupt visual switches during adaptive resolution changes.
+
+ASSET SCOPE
+
+Prefer procedural or existing assets where they are effective.
+
+Permissively licensed textures or audio may be used when they materially
+improve quality.
+
+Do not add:
+
+- a fixed skybox;
+- stock storm panorama;
+- prerendered lightning composited as an unrelated screen image;
+- an unlicensed commercial weather pack;
+- large assets with unclear provenance.
+
+For every introduced asset record:
+
+- source URL;
+- author;
+- licence;
+- modifications;
+- repository path;
+- attribution requirements.
+
+OUT OF SCOPE
+
+Do not implement:
+
+- global weather maps;
+- global wind fields;
+- pressure systems;
+- warm or cold fronts;
+- jet streams;
+- Coriolis-driven weather evolution;
+- thermodynamic atmospheric simulation;
+- cloud condensation or microphysics;
+- forecast generation;
+- live weather data;
+- geographic climatology;
+- latitude-driven automatic weather selection;
+- seasonal automatic weather selection;
+- procedural voyage weather scheduling;
+- gameplay-triggered weather;
+- storm tracking on a map;
+- cyclones or a cyclone-eye simulation;
+- tornadoes;
+- waterspouts;
+- moving sea-fog banks;
+- snow;
+- sleet;
+- hail;
+- sea ice;
+- rainbows;
+- sundogs;
+- aurora;
+- storm surge;
+- tides;
+- ocean currents;
+- a new global ocean model;
+- a spectral-ocean replacement;
+- local gust multiplication of large displacement waves;
+- changes to verified buoyancy equations;
+- changes to remote-swell independence;
+- retuning established sea-state presets merely to flatter weather;
+- capsize, structural breakup or swamping gameplay;
+- lightning damage, fire or electrocution;
+- hypothermia, exposure or survival consequences;
+- deck-puddle fluid simulation;
+- volumetric runoff;
+- camera-lens droplets;
+- a new camera mode;
+- camera architecture redesign;
+- new navigation or sailing physics;
+- routes, compass, GPS or autopilot;
+- terrain;
+- islands;
+- coastlines;
+- ships;
+- wildlife;
+- narrative events;
+- unrelated content.
+
+Do not add adjacent features merely because they are atmospheric or visually
+attractive.
+
+IMPLEMENTATION PRIORITY
+
+Use this priority order:
+
+1. Preserve the integrated clear-weather baseline and all existing contracts.
+2. Establish canonical weather state, transitions and deterministic controls.
+3. Resolve present-wind versus developed-wind-sea authority.
+4. Implement the shared spatial gust field.
+5. Expand cloud structure and weather lighting.
+6. Implement coherent haze and precipitation visibility.
+7. Implement rain at near and far scales.
+8. Implement rain–ocean interaction.
+9. Integrate material wetness and weather audio.
+10. Implement lightning and thunder.
+11. Complete presets, developer lab and explicit sea-state coupling.
+12. Perform cross-camera, full-day, mobile and performance refinement.
+
+Do not spend most of the round polishing lightning while clouds remain flat,
+rain looks like snow or wind authority remains duplicated.
+
+IMPLEMENTATION SEQUENCE
+
+Use approximately this sequence:
+
+1. Inspect the latest integrated reports, implementation, labs and evidence.
+2. Run baseline tests, type checking and production build.
+3. Capture clear-weather and current-cloud baseline evidence.
+4. Produce the complete wind/authority map.
+5. Run the two pre-implementation analytical subagents.
+6. Create `WEATHER_ARCHITECTURE_AUDIT.md`.
+7. Create `WEATHER_SYSTEM_SPEC.md`.
+8. Create `docs/weather/WEATHER_VISUAL_REFERENCE_NOTES.md`.
+9. Define the canonical weather-state and preset schema.
+10. Implement deterministic cloning, interpolation, reset and transition logic.
+11. Add the future local-weather-provider boundary.
+12. Separate current atmospheric wind from developed wind-sea memory.
+13. Migrate direct wind consumers to the current weather authority.
+14. Implement and test the spatial gust field.
+15. Implement the expanded cloud-layer architecture.
+16. Integrate cloud transmittance with Sun, Moon, stars and ambient light.
+17. Integrate cloud shadows and ocean-reflection approximation.
+18. Implement humidity/haze and coherent visibility.
+19. Implement near and far precipitation.
+20. Implement rain–ocean impacts, rings and fine roughness.
+21. Feed rain into existing material wetness and drying.
+22. Add weather ambience layers.
+23. Implement deterministic lightning events and visible distant bolts.
+24. Integrate lightning light, cloud illumination, water response and exposure.
+25. Add delayed thunder.
+26. Implement all required weather presets.
+27. Add the Weather developer panel and direct debug link.
+28. Add explicit independent/sync wind-sea coupling.
+29. Add deterministic tests and capture controls.
+30. Run the complete test suite, type checking and production build.
+31. Capture the required visual and motion matrix.
+32. Run the visual-and-motion critic.
+33. Fix the five highest-severity findings.
+34. Repeat for no more than three focused review passes.
+35. Run final desktop, 1440p, 4K and mobile performance checks.
+36. Run final browser, shader, audio and disposal checks.
+37. Update documentation and write `docs/weather/WEATHER_ROUND_REPORT.md`.
+
+ACCEPTANCE CRITERIA
+
+The round is complete only when all of the following are true:
+
+1. `CLEAR_MARITIME` preserves the accepted graphics-round clear atmosphere,
+   ocean optics, lighting, stars, Moon and raft-lamp quality.
+
+2. Clear weather does not incur a material unexplained performance regression.
+
+3. All required presets use one canonical weather-state path rather than
+   bespoke render modes.
+
+4. Presets are deterministic and machine-readable.
+
+5. Weather can snap, transition, redirect midway, freeze and reset without
+   visible popping or state corruption.
+
+6. Cloud topology does not scramble when transitioning between presets.
+
+7. Current atmospheric wind has one documented authority.
+
+8. Developed wind-sea memory remains a distinct documented authority.
+
+9. Remote primary and secondary swell remain independent of present weather.
+
+10. Weather preset selection does not silently overwrite the selected sea
+    state.
+
+11. The explicit wind-sea sync/follow path uses the existing continuous
+    sea-state transition architecture.
+
+12. A present-wind change immediately affects fine roughness, rain, spray,
+    active foam forcing, sail presentation and ambience where appropriate.
+
+13. A present-wind change does not instantly alter large wave displacement,
+    remote swell or raft-supporting buoyancy.
+
+14. The gust field is spatially and temporally variable rather than one global
+    sine multiplier.
+
+15. Gust patches remain stable in world/render coordinates as the camera
+    orbits and changes mode.
+
+16. Gust fields advect continuously and show no visible tile or wrap pop.
+
+17. CPU and GPU gust sampling agree within documented tolerances wherever they
+    share decisions.
+
+18. Gusts create locally varying fine chop, glint, foam forcing and spray
+    without locally scaling large Gerstner waves.
+
+19. The cloud system supports visually distinct high thin, stratiform,
+    cumulus and convective forms.
+
+20. Convective and overcast clouds are not merely a recoloured copy of the old
+    flat clear-weather layer.
+
+21. Clouds have convincing scale, altitude, depth, silhouette and internal
+    shading from close, far and embodied cameras.
+
+22. Clouds remain fixed to the world/sky direction rather than camera yaw.
+
+23. Clouds remain convincing at both the horizon and zenith.
+
+24. No obvious cloud tile, dome seam, bald horizon band or scale jump remains.
+
+25. Sun-facing and shadowed cloud regions respond to the real Sun direction.
+
+26. Moonlit clouds respond to the real Moon direction.
+
+27. Dense cloud attenuates stars coherently.
+
+28. Cloud transmittance coherently attenuates matching Sun and Moon scene light.
+
+29. Broken cloud produces convincing broad moving illumination variation or
+    cloud shadows over ocean and raft.
+
+30. Overcast lighting becomes diffuse and soft without flattening the whole
+    frame into one grey value.
+
+31. Visible cloud and ocean-reflected cloud remain directionally and temporally
+    coherent.
+
+32. High thin cloud and moisture can soften Sun or Moon presentation without a
+    giant uncontrolled halo.
+
+33. General haze and precipitation visibility are distance-aware rather than a
+    flat screen tint.
+
+34. Heavy rain materially reduces visibility while retaining a believable
+    horizon and scene depth.
+
+35. Near precipitation reads as fast wind-driven rain rather than snow, sparks
+    or opaque lines.
+
+36. Far precipitation joins the near rain without an obvious particle-radius
+    boundary.
+
+37. Rain remains spatially coherent through camera orbit and camera-mode
+    transitions.
+
+38. Rain works against bright sky, dark storm cloud and night.
+
+39. Drizzle and heavy rain are visibly distinct.
+
+40. Rain visibly impacts calm and moderate ocean surfaces.
+
+41. Ocean impacts include convincing restrained dimples, splash crowns,
+    ringlets or an equivalent high-frequency response.
+
+42. Rain–ocean detail remains registered to the water rather than sliding
+    across displaced waves.
+
+43. Rain roughness does not enter CPU buoyancy, orbital velocity or established
+    swell.
+
+44. Rain effects coexist legibly with foam, whitewater and spindrift.
+
+45. Rain does not globally erase deep-ocean body colour or turn the surface
+    into boiling noise.
+
+46. Exposed materials become plausibly wet and dry gradually.
+
+47. Wet wood, cloth, rope and character materials do not become chrome, black
+    plastic or uniformly glossy.
+
+48. Weather audio transitions smoothly and follows the final camera/listener
+    architecture.
+
+49. Wind, waves, rain and thunder audio do not clip or collapse into
+    undifferentiated noise.
+
+50. Thunderstorm weather produces in-cloud illumination.
+
+51. Thunderstorm weather occasionally produces a visible distant
+    cloud-to-ocean bolt.
+
+52. A visible bolt is narrow, spatially stable, briefly readable and restrained
+    in glow.
+
+53. Lightning illuminates clouds, rain, ocean and scene materials coherently
+    rather than flashing only the screen.
+
+54. Lightning exposure recovers without a black frame or long visible pumping.
+
+55. Thunder delay corresponds to diagnostic strike distance.
+
+56. Lightning scheduling and manual diagnostic events are deterministic under
+    reset.
+
+57. The storm does not produce continuous rapid strobing.
+
+58. Clear, fair, overcast, squall and thunderstorm conditions remain coherent
+    at high Sun, low Sun, twilight and night.
+
+59. Polar day and polar night remain astronomically valid.
+
+60. The Sun, Moon and stars retain their real world-space directions.
+
+61. Weather controls do not mutate canonical ECEF position, velocity, UTC,
+    latitude, longitude or transported frame.
+
+62. Weather controls do not mutate camera state.
+
+63. The raft-centred renderer remains intact and no second travel/geography
+    accumulator is introduced.
+
+64. Close, default, far-aerial and embodied camera modes retain their controls,
+    framing and transitions.
+
+65. Weather remains visually coherent while the camera transitions.
+
+66. All existing tracked world, astronomy, movement, buoyancy, sea-state,
+    CPU/GPU parity, foam, camera, graphics and tools tests continue to pass.
+
+67. New weather-logic tests pass.
+
+68. Type checking passes.
+
+69. Production build passes.
+
+70. Fresh loads and every tools-panel/deep-link path produce no material
+    console, shader, render-target or audio error.
+
+71. The Weather panel is discoverable through the shared launcher.
+
+72. A direct weather debug link opens the same shared panel.
+
+73. `Hide all` produces a clean screenshot-ready view without resetting
+    weather, sea, world, foam, wetness, lightning schedule or camera.
+
+74. Deterministic captures reproduce the same weather and lightning state.
+
+75. The scene remains usable at standard desktop, 1440p, 4K and mobile-sized
+    viewports through measured quality tiers where necessary.
+
+76. The final visual-and-motion review contains no unresolved severity-one
+    defect and no relevant unresolved severity-two defect.
+
+77. No global fronts, forecast simulation, currents, gameplay weather
+    scheduling or unrelated feature was added.
+
+78. Present wind and sea-state response coefficients combine through one
+    documented model without double-counting wind speed.
+
+79. Near- and far-field whitewater remain mutually consistent during
+    mismatched and transitioning weather/sea conditions.
+
+80. Rain density remains spatially coherent with precipitating cloud and does
+    not fall uniformly from unrelated clear-blue gaps.
+
+DOCUMENTATION
+
+Create:
+
+- `WEATHER_ARCHITECTURE_AUDIT.md`;
+- `WEATHER_SYSTEM_SPEC.md`;
+- `docs/weather/WEATHER_VISUAL_REFERENCE_NOTES.md`;
+- `docs/weather/WEATHER_ROUND_REPORT.md`.
+
+Update:
+
+- `README.md` with the Weather panel, clean-view behaviour, presets, transition
+  controls and direct debug link;
+- `docs/project/FUTURE_ROUNDS.md`;
+- asset and licence credits if any texture or audio is introduced;
+- relevant architecture documentation if a wind-authority contract changes.
+
+In `docs/project/FUTURE_ROUNDS.md`, mark the local weather-presentation round complete while
+leaving explicitly deferred:
+
+- global ECEF/UTC weather fields;
+- pressure systems and fronts;
+- climate and geographic weather;
+- automated voyage weather scheduling;
+- advanced sea-state history driven by global storms;
+- ocean currents;
+- true sea-fog banks;
+- snow, hail and ice;
+- cyclone, tornado and waterspout systems;
+- weather gameplay and survival consequences.
+
+FINAL DELIVERABLES
+
+Leave the repository with:
+
+- working local weather implementation;
+- canonical serialisable weather state;
+- deterministic weather presets;
+- smooth weather controller and transition support;
+- future provider boundary;
+- one current atmospheric-wind authority;
+- documented developed wind-sea memory;
+- spatial gust field;
+- expanded layered cloud system;
+- cloud lighting, shadows and celestial attenuation;
+- coherent ocean reflection approximation;
+- humidity/haze and visibility response;
+- drizzle and heavy rain;
+- rain–ocean impacts and ripples;
+- restrained material wetness and drying;
+- weather ambience;
+- deterministic lightning and delayed thunder;
+- Weather developer lab;
+- explicit sea-state coupling control;
+- automated tests;
+- performance measurements;
+- screenshot and motion evidence;
+- internal visual-critic findings;
+- final reports and updated documentation.
+
+FINAL RESPONSE
+
+Do not merely claim that weather was added.
+
+Report:
+
+- the final local-weather architecture;
+- the provider/automation extension point;
+- exact weather-state parameters and units;
+- transition and deterministic-reset semantics;
+- how noise seeds and cloud slots transition without popping;
+- the final wind-authority map;
+- how current atmospheric wind differs from developed wind-sea memory;
+- which direct consumers moved to current weather wind;
+- how explicit wind-sea coupling works;
+- how remote swell remains independent;
+- gust-field representation, scale, advection and CPU/GPU sampling;
+- cloud rendering technique and layer model;
+- cloud lighting and shadow method;
+- celestial attenuation;
+- ocean-reflection approximation;
+- atmosphere and visibility method;
+- near and far rain rendering;
+- rain–ocean impact and ripple method;
+- material wetness and drying;
+- lightning event, bolt and illumination method;
+- thunder timing and audio architecture;
+- desktop/mobile quality tiers;
+- before-and-after performance;
+- automated-test results;
+- visual-and-motion critic's final verdict;
+- paths to screenshots and motion evidence;
+- asset/licence additions;
+- known limitations;
+- exact principal files changed;
+- verification commands.
+
+Do not claim completion if:
+
+- the clear-weather baseline is materially degraded;
+- current wind and developed wind-sea memory remain ambiguously duplicated;
+- local gusts are only one global time sine;
+- gusts locally distort the raft-supporting displacement field;
+- storm cloud is only a dark recolour of the old flat cloud layer;
+- rain is only a camera-space overlay;
+- heavy rain has no water-surface or visibility response;
+- stars and full celestial light remain visible through opaque cloud;
+- lightning is only a full-screen white flash;
+- thunder has no distance relationship;
+- weather presets silently overwrite sea state;
+- transitions pop or reseed the whole sky;
+- the final implementation fails established camera, ocean, graphics, world or
+  buoyancy contracts.
+
+Implement, test, visually review and verify this local maritime weather round
+now.

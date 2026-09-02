@@ -1,0 +1,24 @@
+WK2 bow collar + wet hull + mound GPU cost
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 2560×1440 · DPR 1.00
+sea CURRENT_MODERATE · speed 3.593 m/s · WK1 on · prebuilt 18 s bow collar
+world, waves and cloud cache frozen · FoamField stepping
+24 adjacent off/on pairs · 16 raw six-frame rotations per leg · 12 switch warm-up frames
+
+complete GPU frame
+  off 14.186 ms median · on 14.246 ms median
+  paired on−off +0.262 ± 0.219 ms (mean ± SE)
+  median 0.061 · sd 1.071 · range -1.095 to 5.030
+
+ocean pass
+  off 9.562 ms median · on 9.590 ms median
+  paired on−off +0.139 ± 0.080 ms (mean ± SE)
+  median 0.033 · sd 0.394 · range -0.662 to 1.361
+
+foam simulation prefix
+  off 0.000 ms median · on 0.000 ms median
+  paired on−off +0.000 ± 0.000 ms (mean ± SE)
+  median 0.000 · sd 0.000 · range 0.000 to 0.000
+
+per-pair frame deltas (ms): -0.035, -1.095, 0.053, 0.044, -0.006, 0.096, 0.011, 0.043, 0.051, 0.062, 0.061, 0.080, 0.068, 0.066, 0.070, 0.060, 0.051, 0.068, 0.081, 0.096, 0.064, 0.057, 5.030, 1.209
+INCONCLUSIVE: estimate 0.262 ± 0.219 ms does not resolve the 0.2 ms budget boundary.

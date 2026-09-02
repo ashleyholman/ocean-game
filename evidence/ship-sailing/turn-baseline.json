@@ -1,0 +1,1619 @@
+{
+  "formatVersion": 2,
+  "status": "S3: steady turn circles under commanded rudder with synthetic thrust standing in for propulsion. Sails and wind are deliberately absent so the port/starboard mirror is a pure hull+rudder statement.",
+  "contract": {
+    "method": "Constant force along the heading holds way; helm goes over after a straight approach; radius is steady speed over steady yaw rate in the settled window, not a geometric fit.",
+    "scope": "Two target speeds x rudder 10/20/30 both directions, flat water. Plus straight-line controls, and a stopped ship with full helm.",
+    "validationMeaning": "Mirror symmetry, radius-vs-helm monotonicity, no turn without way, the energy gate under thrust, and steadiness of the settled circle. Radii are model results from provisional coefficients, not claims of measured ship performance."
+  },
+  "configuration": {
+    "physicsHz": 240,
+    "helmOverSeconds": 40,
+    "totalSeconds": 200,
+    "steadyWindowSeconds": 40,
+    "rudderAnglesDeg": [
+      10,
+      20,
+      30
+    ],
+    "targetSpeedsMps": [
+      2.5,
+      4
+    ]
+  },
+  "cases": [
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "rudderCommandDeg": 10,
+      "approachSpeedMps": 2.47593,
+      "steadySpeedMps": 2.07089,
+      "steadyYawRateRadPerS": 0.0129071,
+      "steadyRadiusM": 160.446,
+      "steadyDriftAngleDeg": -4.1585,
+      "speedLossFraction": 0.16359,
+      "yawRateUnsteadiness": 0.009526,
+      "maxEnergyOverWorkJ": -12.387096
+    },
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "rudderCommandDeg": -10,
+      "approachSpeedMps": 2.47593,
+      "steadySpeedMps": 2.07117,
+      "steadyYawRateRadPerS": -0.0128873,
+      "steadyRadiusM": 160.714,
+      "steadyDriftAngleDeg": 4.1558,
+      "speedLossFraction": 0.16348,
+      "yawRateUnsteadiness": 0.00952,
+      "maxEnergyOverWorkJ": -12.387096
+    },
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "rudderCommandDeg": 20,
+      "approachSpeedMps": 2.47593,
+      "steadySpeedMps": 1.50276,
+      "steadyYawRateRadPerS": 0.0179664,
+      "steadyRadiusM": 83.643,
+      "steadyDriftAngleDeg": -7.5405,
+      "speedLossFraction": 0.39305,
+      "yawRateUnsteadiness": 0.016533,
+      "maxEnergyOverWorkJ": -12.387096,
+      "trajectory": [
+        {
+          "timeSeconds": 4,
+          "xM": 0.0001,
+          "zM": 9.994,
+          "yawRad": 0.00005409,
+          "speedMps": 2.497042
+        },
+        {
+          "timeSeconds": 8,
+          "xM": 0.0007,
+          "zM": 19.9765,
+          "yawRad": 0.00011459,
+          "speedMps": 2.494223
+        },
+        {
+          "timeSeconds": 12,
+          "xM": 0.0018,
+          "zM": 29.948,
+          "yawRad": 0.00017077,
+          "speedMps": 2.491535
+        },
+        {
+          "timeSeconds": 16,
+          "xM": 0.0034,
+          "zM": 39.909,
+          "yawRad": 0.00022641,
+          "speedMps": 2.488973
+        },
+        {
+          "timeSeconds": 20,
+          "xM": 0.0056,
+          "zM": 49.8599,
+          "yawRad": 0.00028199,
+          "speedMps": 2.486531
+        },
+        {
+          "timeSeconds": 24,
+          "xM": 0.0084,
+          "zM": 59.8014,
+          "yawRad": 0.00033751,
+          "speedMps": 2.484202
+        },
+        {
+          "timeSeconds": 28,
+          "xM": 0.0117,
+          "zM": 69.7337,
+          "yawRad": 0.00039299,
+          "speedMps": 2.481981
+        },
+        {
+          "timeSeconds": 32,
+          "xM": 0.0156,
+          "zM": 79.6573,
+          "yawRad": 0.00044842,
+          "speedMps": 2.479864
+        },
+        {
+          "timeSeconds": 36,
+          "xM": 0.02,
+          "zM": 89.5727,
+          "yawRad": 0.0005038,
+          "speedMps": 2.477844
+        },
+        {
+          "timeSeconds": 40,
+          "xM": 0.0249,
+          "zM": 99.4802,
+          "yawRad": 0.00055914,
+          "speedMps": 2.475918
+        },
+        {
+          "timeSeconds": 44,
+          "xM": -0.0406,
+          "zM": 109.2886,
+          "yawRad": 0.12109916,
+          "speedMps": 2.416352
+        },
+        {
+          "timeSeconds": 48,
+          "xM": 0.5583,
+          "zM": 118.7552,
+          "yawRad": 0.25013114,
+          "speedMps": 2.328459
+        },
+        {
+          "timeSeconds": 52,
+          "xM": 2.119,
+          "zM": 127.7637,
+          "yawRad": 0.3596565,
+          "speedMps": 2.24672
+        },
+        {
+          "timeSeconds": 56,
+          "xM": 4.5452,
+          "zM": 136.2586,
+          "yawRad": 0.46436539,
+          "speedMps": 2.173965
+        },
+        {
+          "timeSeconds": 60,
+          "xM": 7.7316,
+          "zM": 144.2033,
+          "yawRad": 0.56583796,
+          "speedMps": 2.109022
+        },
+        {
+          "timeSeconds": 64,
+          "xM": 11.5826,
+          "zM": 151.5719,
+          "yawRad": 0.66444821,
+          "speedMps": 2.050831
+        },
+        {
+          "timeSeconds": 68,
+          "xM": 16.0116,
+          "zM": 158.3463,
+          "yawRad": 0.76048936,
+          "speedMps": 1.998524
+        },
+        {
+          "timeSeconds": 72,
+          "xM": 20.9394,
+          "zM": 164.515,
+          "yawRad": 0.85421874,
+          "speedMps": 1.951373
+        },
+        {
+          "timeSeconds": 76,
+          "xM": 26.2932,
+          "zM": 170.0715,
+          "yawRad": 0.94586224,
+          "speedMps": 1.908763
+        },
+        {
+          "timeSeconds": 80,
+          "xM": 32.0064,
+          "zM": 175.0136,
+          "yawRad": 1.03561992,
+          "speedMps": 1.87017
+        },
+        {
+          "timeSeconds": 84,
+          "xM": 38.0169,
+          "zM": 179.3424,
+          "yawRad": 1.12366891,
+          "speedMps": 1.835144
+        },
+        {
+          "timeSeconds": 88,
+          "xM": 44.2675,
+          "zM": 183.062,
+          "yawRad": 1.21016643,
+          "speedMps": 1.803299
+        },
+        {
+          "timeSeconds": 92,
+          "xM": 50.7049,
+          "zM": 186.1787,
+          "yawRad": 1.29525295,
+          "speedMps": 1.774297
+        },
+        {
+          "timeSeconds": 96,
+          "xM": 57.279,
+          "zM": 188.7011,
+          "yawRad": 1.37905425,
+          "speedMps": 1.747846
+        },
+        {
+          "timeSeconds": 100,
+          "xM": 63.9432,
+          "zM": 190.6395,
+          "yawRad": 1.46168309,
+          "speedMps": 1.723688
+        },
+        {
+          "timeSeconds": 104,
+          "xM": 70.6535,
+          "zM": 192.0059,
+          "yawRad": 1.54324097,
+          "speedMps": 1.701597
+        },
+        {
+          "timeSeconds": 108,
+          "xM": 77.3685,
+          "zM": 192.8138,
+          "yawRad": 1.62381947,
+          "speedMps": 1.681374
+        },
+        {
+          "timeSeconds": 112,
+          "xM": 84.0494,
+          "zM": 193.0781,
+          "yawRad": 1.70350131,
+          "speedMps": 1.662841
+        },
+        {
+          "timeSeconds": 116,
+          "xM": 90.6594,
+          "zM": 192.8148,
+          "yawRad": 1.7823614,
+          "speedMps": 1.645842
+        },
+        {
+          "timeSeconds": 120,
+          "xM": 97.1636,
+          "zM": 192.0413,
+          "yawRad": 1.86046774,
+          "speedMps": 1.630236
+        },
+        {
+          "timeSeconds": 124,
+          "xM": 103.5293,
+          "zM": 190.7762,
+          "yawRad": 1.93788208,
+          "speedMps": 1.615897
+        },
+        {
+          "timeSeconds": 128,
+          "xM": 109.7257,
+          "zM": 189.039,
+          "yawRad": 2.01466063,
+          "speedMps": 1.602714
+        },
+        {
+          "timeSeconds": 132,
+          "xM": 115.7236,
+          "zM": 186.8504,
+          "yawRad": 2.09085463,
+          "speedMps": 1.590584
+        },
+        {
+          "timeSeconds": 136,
+          "xM": 121.4956,
+          "zM": 184.232,
+          "yawRad": 2.16651081,
+          "speedMps": 1.579418
+        },
+        {
+          "timeSeconds": 140,
+          "xM": 127.0163,
+          "zM": 181.2066,
+          "yawRad": 2.2416719,
+          "speedMps": 1.569132
+        },
+        {
+          "timeSeconds": 144,
+          "xM": 132.2617,
+          "zM": 177.7976,
+          "yawRad": 2.31637694,
+          "speedMps": 1.559652
+        },
+        {
+          "timeSeconds": 148,
+          "xM": 137.2098,
+          "zM": 174.0295,
+          "yawRad": 2.39066172,
+          "speedMps": 1.550911
+        },
+        {
+          "timeSeconds": 152,
+          "xM": 141.84,
+          "zM": 169.9275,
+          "yawRad": 2.46455899,
+          "speedMps": 1.542848
+        },
+        {
+          "timeSeconds": 156,
+          "xM": 146.1338,
+          "zM": 165.5177,
+          "yawRad": 2.53809884,
+          "speedMps": 1.535407
+        },
+        {
+          "timeSeconds": 160,
+          "xM": 150.0742,
+          "zM": 160.8267,
+          "yawRad": 2.61130885,
+          "speedMps": 1.528538
+        },
+        {
+          "timeSeconds": 164,
+          "xM": 153.646,
+          "zM": 155.8819,
+          "yawRad": 2.68421438,
+          "speedMps": 1.522195
+        },
+        {
+          "timeSeconds": 168,
+          "xM": 156.8359,
+          "zM": 150.7111,
+          "yawRad": 2.75683874,
+          "speedMps": 1.516335
+        },
+        {
+          "timeSeconds": 172,
+          "xM": 159.6324,
+          "zM": 145.3427,
+          "yawRad": 2.82920337,
+          "speedMps": 1.510919
+        },
+        {
+          "timeSeconds": 176,
+          "xM": 162.0256,
+          "zM": 139.8056,
+          "yawRad": 2.90132801,
+          "speedMps": 1.505914
+        },
+        {
+          "timeSeconds": 180,
+          "xM": 164.0077,
+          "zM": 134.1287,
+          "yawRad": 2.97323082,
+          "speedMps": 1.501287
+        },
+        {
+          "timeSeconds": 184,
+          "xM": 165.5727,
+          "zM": 128.3414,
+          "yawRad": 3.04492856,
+          "speedMps": 1.497007
+        },
+        {
+          "timeSeconds": 188,
+          "xM": 166.7164,
+          "zM": 122.473,
+          "yawRad": 3.11643666,
+          "speedMps": 1.493049
+        },
+        {
+          "timeSeconds": 192,
+          "xM": 167.4364,
+          "zM": 116.5531,
+          "yawRad": -3.09541594,
+          "speedMps": 1.489387
+        },
+        {
+          "timeSeconds": 196,
+          "xM": 167.7323,
+          "zM": 110.6111,
+          "yawRad": -3.0242455,
+          "speedMps": 1.485999
+        },
+        {
+          "timeSeconds": 200,
+          "xM": 167.6056,
+          "zM": 104.676,
+          "yawRad": -2.95322519,
+          "speedMps": 1.482863
+        }
+      ]
+    },
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "rudderCommandDeg": -20,
+      "approachSpeedMps": 2.47593,
+      "steadySpeedMps": 1.50297,
+      "steadyYawRateRadPerS": -0.0179539,
+      "steadyRadiusM": 83.713,
+      "steadyDriftAngleDeg": 7.5382,
+      "speedLossFraction": 0.39297,
+      "yawRateUnsteadiness": 0.016532,
+      "maxEnergyOverWorkJ": -12.387096,
+      "trajectory": [
+        {
+          "timeSeconds": 4,
+          "xM": 0.0001,
+          "zM": 9.994,
+          "yawRad": 0.00005409,
+          "speedMps": 2.497042
+        },
+        {
+          "timeSeconds": 8,
+          "xM": 0.0007,
+          "zM": 19.9765,
+          "yawRad": 0.00011459,
+          "speedMps": 2.494223
+        },
+        {
+          "timeSeconds": 12,
+          "xM": 0.0018,
+          "zM": 29.948,
+          "yawRad": 0.00017077,
+          "speedMps": 2.491535
+        },
+        {
+          "timeSeconds": 16,
+          "xM": 0.0034,
+          "zM": 39.909,
+          "yawRad": 0.00022641,
+          "speedMps": 2.488973
+        },
+        {
+          "timeSeconds": 20,
+          "xM": 0.0056,
+          "zM": 49.8599,
+          "yawRad": 0.00028199,
+          "speedMps": 2.486531
+        },
+        {
+          "timeSeconds": 24,
+          "xM": 0.0084,
+          "zM": 59.8014,
+          "yawRad": 0.00033751,
+          "speedMps": 2.484202
+        },
+        {
+          "timeSeconds": 28,
+          "xM": 0.0117,
+          "zM": 69.7337,
+          "yawRad": 0.00039299,
+          "speedMps": 2.481981
+        },
+        {
+          "timeSeconds": 32,
+          "xM": 0.0156,
+          "zM": 79.6573,
+          "yawRad": 0.00044842,
+          "speedMps": 2.479864
+        },
+        {
+          "timeSeconds": 36,
+          "xM": 0.02,
+          "zM": 89.5727,
+          "yawRad": 0.0005038,
+          "speedMps": 2.477844
+        },
+        {
+          "timeSeconds": 40,
+          "xM": 0.0249,
+          "zM": 99.4802,
+          "yawRad": 0.00055914,
+          "speedMps": 2.475918
+        },
+        {
+          "timeSeconds": 44,
+          "xM": 0.1013,
+          "zM": 109.2885,
+          "yawRad": -0.1198803,
+          "speedMps": 2.416369
+        },
+        {
+          "timeSeconds": 48,
+          "xM": -0.486,
+          "zM": 118.756,
+          "yawRad": -0.24882459,
+          "speedMps": 2.328512
+        },
+        {
+          "timeSeconds": 52,
+          "xM": -2.035,
+          "zM": 127.7669,
+          "yawRad": -0.35826288,
+          "speedMps": 2.246802
+        },
+        {
+          "timeSeconds": 56,
+          "xM": -4.4495,
+          "zM": 136.2654,
+          "yawRad": -0.46288848,
+          "speedMps": 2.174072
+        },
+        {
+          "timeSeconds": 60,
+          "xM": -7.6243,
+          "zM": 144.2153,
+          "yawRad": -0.56428153,
+          "speedMps": 2.109149
+        },
+        {
+          "timeSeconds": 64,
+          "xM": -11.4641,
+          "zM": 151.5904,
+          "yawRad": -0.66281555,
+          "speedMps": 2.050976
+        },
+        {
+          "timeSeconds": 68,
+          "xM": -15.8824,
+          "zM": 158.3725,
+          "yawRad": -0.75878337,
+          "speedMps": 1.998683
+        },
+        {
+          "timeSeconds": 72,
+          "xM": -20.8001,
+          "zM": 164.5501,
+          "yawRad": -0.85244198,
+          "speedMps": 1.951543
+        },
+        {
+          "timeSeconds": 76,
+          "xM": -26.1446,
+          "zM": 170.1166,
+          "yawRad": -0.94401696,
+          "speedMps": 1.908942
+        },
+        {
+          "timeSeconds": 80,
+          "xM": -31.8491,
+          "zM": 175.0697,
+          "yawRad": -1.03370813,
+          "speedMps": 1.870357
+        },
+        {
+          "timeSeconds": 84,
+          "xM": -37.8521,
+          "zM": 179.4104,
+          "yawRad": -1.1216924,
+          "speedMps": 1.835338
+        },
+        {
+          "timeSeconds": 88,
+          "xM": -44.096,
+          "zM": 183.1426,
+          "yawRad": -1.20812679,
+          "speedMps": 1.803498
+        },
+        {
+          "timeSeconds": 92,
+          "xM": -50.5277,
+          "zM": 186.2727,
+          "yawRad": -1.29315162,
+          "speedMps": 1.774501
+        },
+        {
+          "timeSeconds": 96,
+          "xM": -57.0974,
+          "zM": 188.8092,
+          "yawRad": -1.3768925,
+          "speedMps": 1.748053
+        },
+        {
+          "timeSeconds": 100,
+          "xM": -63.7581,
+          "zM": 190.7621,
+          "yawRad": -1.45946208,
+          "speedMps": 1.723898
+        },
+        {
+          "timeSeconds": 104,
+          "xM": -70.4662,
+          "zM": 192.1436,
+          "yawRad": -1.54096172,
+          "speedMps": 1.70181
+        },
+        {
+          "timeSeconds": 108,
+          "xM": -77.1803,
+          "zM": 192.9668,
+          "yawRad": -1.62148291,
+          "speedMps": 1.681588
+        },
+        {
+          "timeSeconds": 112,
+          "xM": -83.8615,
+          "zM": 193.2466,
+          "yawRad": -1.70110829,
+          "speedMps": 1.663057
+        },
+        {
+          "timeSeconds": 116,
+          "xM": -90.4729,
+          "zM": 192.9991,
+          "yawRad": -1.77991267,
+          "speedMps": 1.646059
+        },
+        {
+          "timeSeconds": 120,
+          "xM": -96.9798,
+          "zM": 192.2413,
+          "yawRad": -1.85796399,
+          "speedMps": 1.630454
+        },
+        {
+          "timeSeconds": 124,
+          "xM": -103.3495,
+          "zM": 190.9919,
+          "yawRad": -1.93532393,
+          "speedMps": 1.616116
+        },
+        {
+          "timeSeconds": 128,
+          "xM": -109.5511,
+          "zM": 189.2702,
+          "yawRad": -2.01204864,
+          "speedMps": 1.602933
+        },
+        {
+          "timeSeconds": 132,
+          "xM": -115.5555,
+          "zM": 187.0969,
+          "yawRad": -2.0881893,
+          "speedMps": 1.590803
+        },
+        {
+          "timeSeconds": 136,
+          "xM": -121.3353,
+          "zM": 184.4935,
+          "yawRad": -2.16379261,
+          "speedMps": 1.579637
+        },
+        {
+          "timeSeconds": 140,
+          "xM": -126.8649,
+          "zM": 181.4826,
+          "yawRad": -2.23890124,
+          "speedMps": 1.569351
+        },
+        {
+          "timeSeconds": 144,
+          "xM": -132.1205,
+          "zM": 178.0876,
+          "yawRad": -2.31355421,
+          "speedMps": 1.559871
+        },
+        {
+          "timeSeconds": 148,
+          "xM": -137.0798,
+          "zM": 174.3329,
+          "yawRad": -2.38778725,
+          "speedMps": 1.55113
+        },
+        {
+          "timeSeconds": 152,
+          "xM": -141.7224,
+          "zM": 170.2436,
+          "yawRad": -2.46163311,
+          "speedMps": 1.543066
+        },
+        {
+          "timeSeconds": 156,
+          "xM": -146.0296,
+          "zM": 165.8457,
+          "yawRad": -2.53512182,
+          "speedMps": 1.535625
+        },
+        {
+          "timeSeconds": 160,
+          "xM": -149.9844,
+          "zM": 161.1657,
+          "yawRad": -2.60828096,
+          "speedMps": 1.528755
+        },
+        {
+          "timeSeconds": 164,
+          "xM": -153.5716,
+          "zM": 156.231,
+          "yawRad": -2.68113585,
+          "speedMps": 1.522411
+        },
+        {
+          "timeSeconds": 168,
+          "xM": -156.7779,
+          "zM": 151.0693,
+          "yawRad": -2.75370978,
+          "speedMps": 1.516551
+        },
+        {
+          "timeSeconds": 172,
+          "xM": -159.5914,
+          "zM": 145.7089,
+          "yawRad": -2.82602418,
+          "speedMps": 1.511135
+        },
+        {
+          "timeSeconds": 176,
+          "xM": -162.0025,
+          "zM": 140.1786,
+          "yawRad": -2.89809875,
+          "speedMps": 1.506129
+        },
+        {
+          "timeSeconds": 180,
+          "xM": -164.0032,
+          "zM": 134.5073,
+          "yawRad": -2.96995167,
+          "speedMps": 1.501501
+        },
+        {
+          "timeSeconds": 184,
+          "xM": -165.5873,
+          "zM": 128.7242,
+          "yawRad": -3.04159966,
+          "speedMps": 1.497221
+        },
+        {
+          "timeSeconds": 188,
+          "xM": -166.7506,
+          "zM": 122.8589,
+          "yawRad": -3.11305815,
+          "speedMps": 1.493262
+        },
+        {
+          "timeSeconds": 192,
+          "xM": -167.4906,
+          "zM": 116.9406,
+          "yawRad": 3.09884395,
+          "speedMps": 1.489599
+        },
+        {
+          "timeSeconds": 196,
+          "xM": -167.8069,
+          "zM": 110.9988,
+          "yawRad": 3.0277229,
+          "speedMps": 1.48621
+        },
+        {
+          "timeSeconds": 200,
+          "xM": -167.7007,
+          "zM": 105.0625,
+          "yawRad": 2.95675188,
+          "speedMps": 1.483074
+        }
+      ]
+    },
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "rudderCommandDeg": 30,
+      "approachSpeedMps": 2.47593,
+      "steadySpeedMps": 1.12003,
+      "steadyYawRateRadPerS": 0.019236,
+      "steadyRadiusM": 58.226,
+      "steadyDriftAngleDeg": -10.3535,
+      "speedLossFraction": 0.54763,
+      "yawRateUnsteadiness": 0.013638,
+      "maxEnergyOverWorkJ": -12.387096
+    },
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "rudderCommandDeg": -30,
+      "approachSpeedMps": 2.47593,
+      "steadySpeedMps": 1.12016,
+      "steadyYawRateRadPerS": -0.0192273,
+      "steadyRadiusM": 58.259,
+      "steadyDriftAngleDeg": 10.3515,
+      "speedLossFraction": 0.54758,
+      "yawRateUnsteadiness": 0.01364,
+      "maxEnergyOverWorkJ": -12.387096
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "rudderCommandDeg": 10,
+      "approachSpeedMps": 3.97001,
+      "steadySpeedMps": 3.65738,
+      "steadyYawRateRadPerS": 0.0228249,
+      "steadyRadiusM": 160.236,
+      "steadyDriftAngleDeg": -4.1563,
+      "speedLossFraction": 0.07875,
+      "yawRateUnsteadiness": 0.000167,
+      "maxEnergyOverWorkJ": -77.000332
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "rudderCommandDeg": -10,
+      "approachSpeedMps": 3.97001,
+      "steadySpeedMps": 3.65766,
+      "steadyYawRateRadPerS": -0.0227887,
+      "steadyRadiusM": 160.503,
+      "steadyDriftAngleDeg": 4.1536,
+      "speedLossFraction": 0.07868,
+      "yawRateUnsteadiness": 0.000167,
+      "maxEnergyOverWorkJ": -77.000332
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "rudderCommandDeg": 20,
+      "approachSpeedMps": 3.97001,
+      "steadySpeedMps": 2.86143,
+      "steadyYawRateRadPerS": 0.0342763,
+      "steadyRadiusM": 83.481,
+      "steadyDriftAngleDeg": -7.5246,
+      "speedLossFraction": 0.27924,
+      "yawRateUnsteadiness": 0.001191,
+      "maxEnergyOverWorkJ": -77.000332,
+      "trajectory": [
+        {
+          "timeSeconds": 4,
+          "xM": 0.0004,
+          "zM": 15.9856,
+          "yawRad": 0.00009127,
+          "speedMps": 3.993093
+        },
+        {
+          "timeSeconds": 8,
+          "xM": 0.0021,
+          "zM": 31.9467,
+          "yawRad": 0.00018175,
+          "speedMps": 3.987637
+        },
+        {
+          "timeSeconds": 12,
+          "xM": 0.0052,
+          "zM": 47.8882,
+          "yawRad": 0.00027069,
+          "speedMps": 3.983318
+        },
+        {
+          "timeSeconds": 16,
+          "xM": 0.0097,
+          "zM": 63.8144,
+          "yawRad": 0.00035955,
+          "speedMps": 3.979896
+        },
+        {
+          "timeSeconds": 20,
+          "xM": 0.0156,
+          "zM": 79.7284,
+          "yawRad": 0.00044834,
+          "speedMps": 3.977181
+        },
+        {
+          "timeSeconds": 24,
+          "xM": 0.0229,
+          "zM": 95.6326,
+          "yawRad": 0.00053708,
+          "speedMps": 3.975025
+        },
+        {
+          "timeSeconds": 28,
+          "xM": 0.0317,
+          "zM": 111.5291,
+          "yawRad": 0.00062578,
+          "speedMps": 3.973312
+        },
+        {
+          "timeSeconds": 32,
+          "xM": 0.0418,
+          "zM": 127.4196,
+          "yawRad": 0.00071444,
+          "speedMps": 3.97195
+        },
+        {
+          "timeSeconds": 36,
+          "xM": 0.0533,
+          "zM": 143.3051,
+          "yawRad": 0.00080308,
+          "speedMps": 3.970867
+        },
+        {
+          "timeSeconds": 40,
+          "xM": 0.0663,
+          "zM": 159.1868,
+          "yawRad": 0.00089169,
+          "speedMps": 3.970005
+        },
+        {
+          "timeSeconds": 44,
+          "xM": 0.2087,
+          "zM": 174.8176,
+          "yawRad": 0.19504845,
+          "speedMps": 3.815519
+        },
+        {
+          "timeSeconds": 48,
+          "xM": 2.4973,
+          "zM": 189.5027,
+          "yawRad": 0.37646527,
+          "speedMps": 3.633159
+        },
+        {
+          "timeSeconds": 52,
+          "xM": 7.0759,
+          "zM": 202.9687,
+          "yawRad": 0.54562094,
+          "speedMps": 3.492799
+        },
+        {
+          "timeSeconds": 56,
+          "xM": 13.5889,
+          "zM": 215.0518,
+          "yawRad": 0.70907212,
+          "speedMps": 3.38242
+        },
+        {
+          "timeSeconds": 60,
+          "xM": 21.719,
+          "zM": 225.6185,
+          "yawRad": 0.86799764,
+          "speedMps": 3.293977
+        },
+        {
+          "timeSeconds": 64,
+          "xM": 31.173,
+          "zM": 234.5625,
+          "yawRad": 1.02326013,
+          "speedMps": 3.222168
+        },
+        {
+          "timeSeconds": 68,
+          "xM": 41.6729,
+          "zM": 241.8036,
+          "yawRad": 1.17553328,
+          "speedMps": 3.163295
+        },
+        {
+          "timeSeconds": 72,
+          "xM": 52.9517,
+          "zM": 247.2873,
+          "yawRad": 1.32534883,
+          "speedMps": 3.114673
+        },
+        {
+          "timeSeconds": 76,
+          "xM": 64.7503,
+          "zM": 250.9839,
+          "yawRad": 1.47312646,
+          "speedMps": 3.074289
+        },
+        {
+          "timeSeconds": 80,
+          "xM": 76.8177,
+          "zM": 252.889,
+          "yawRad": 1.6192071,
+          "speedMps": 3.040594
+        },
+        {
+          "timeSeconds": 84,
+          "xM": 88.9107,
+          "zM": 253.0235,
+          "yawRad": 1.76387071,
+          "speedMps": 3.012379
+        },
+        {
+          "timeSeconds": 88,
+          "xM": 100.7952,
+          "zM": 251.4331,
+          "yawRad": 1.9073457,
+          "speedMps": 2.988684
+        },
+        {
+          "timeSeconds": 92,
+          "xM": 112.2481,
+          "zM": 248.1884,
+          "yawRad": 2.04982089,
+          "speedMps": 2.968737
+        },
+        {
+          "timeSeconds": 96,
+          "xM": 123.0591,
+          "zM": 243.384,
+          "yawRad": 2.19145418,
+          "speedMps": 2.951913
+        },
+        {
+          "timeSeconds": 100,
+          "xM": 133.0332,
+          "zM": 237.1375,
+          "yawRad": 2.33237687,
+          "speedMps": 2.937699
+        },
+        {
+          "timeSeconds": 104,
+          "xM": 141.9931,
+          "zM": 229.5879,
+          "yawRad": 2.47269863,
+          "speedMps": 2.925675
+        },
+        {
+          "timeSeconds": 108,
+          "xM": 149.7814,
+          "zM": 220.8941,
+          "yawRad": 2.61251188,
+          "speedMps": 2.915491
+        },
+        {
+          "timeSeconds": 112,
+          "xM": 156.2631,
+          "zM": 211.232,
+          "yawRad": 2.75189436,
+          "speedMps": 2.906858
+        },
+        {
+          "timeSeconds": 116,
+          "xM": 161.3274,
+          "zM": 200.7925,
+          "yawRad": 2.89091147,
+          "speedMps": 2.899533
+        },
+        {
+          "timeSeconds": 120,
+          "xM": 164.8893,
+          "zM": 189.778,
+          "yawRad": 3.02961851,
+          "speedMps": 2.893315
+        },
+        {
+          "timeSeconds": 124,
+          "xM": 166.8915,
+          "zM": 178.3997,
+          "yawRad": -3.11512301,
+          "speedMps": 2.888033
+        },
+        {
+          "timeSeconds": 128,
+          "xM": 167.3047,
+          "zM": 166.8733,
+          "yawRad": -2.97690291,
+          "speedMps": 2.883544
+        },
+        {
+          "timeSeconds": 132,
+          "xM": 166.1285,
+          "zM": 155.4164,
+          "yawRad": -2.83887294,
+          "speedMps": 2.879728
+        },
+        {
+          "timeSeconds": 136,
+          "xM": 163.3911,
+          "zM": 144.2437,
+          "yawRad": -2.70100463,
+          "speedMps": 2.876482
+        },
+        {
+          "timeSeconds": 140,
+          "xM": 159.1494,
+          "zM": 133.5641,
+          "yawRad": -2.56327383,
+          "speedMps": 2.873721
+        },
+        {
+          "timeSeconds": 144,
+          "xM": 153.487,
+          "zM": 123.5765,
+          "yawRad": -2.42566002,
+          "speedMps": 2.871371
+        },
+        {
+          "timeSeconds": 148,
+          "xM": 146.5137,
+          "zM": 114.4668,
+          "yawRad": -2.28814578,
+          "speedMps": 2.869371
+        },
+        {
+          "timeSeconds": 152,
+          "xM": 138.363,
+          "zM": 106.4038,
+          "yawRad": -2.15071628,
+          "speedMps": 2.867669
+        },
+        {
+          "timeSeconds": 156,
+          "xM": 129.1898,
+          "zM": 99.537,
+          "yawRad": -2.01335892,
+          "speedMps": 2.866219
+        },
+        {
+          "timeSeconds": 160,
+          "xM": 119.1676,
+          "zM": 93.9932,
+          "yawRad": -1.87606298,
+          "speedMps": 2.864985
+        },
+        {
+          "timeSeconds": 164,
+          "xM": 108.4852,
+          "zM": 89.8746,
+          "yawRad": -1.73881935,
+          "speedMps": 2.863934
+        },
+        {
+          "timeSeconds": 168,
+          "xM": 97.3437,
+          "zM": 87.257,
+          "yawRad": -1.60162027,
+          "speedMps": 2.863039
+        },
+        {
+          "timeSeconds": 172,
+          "xM": 85.9521,
+          "zM": 86.1879,
+          "yawRad": -1.46445912,
+          "speedMps": 2.862277
+        },
+        {
+          "timeSeconds": 176,
+          "xM": 74.5242,
+          "zM": 86.6861,
+          "yawRad": -1.32733029,
+          "speedMps": 2.861627
+        },
+        {
+          "timeSeconds": 180,
+          "xM": 63.2739,
+          "zM": 88.7413,
+          "yawRad": -1.19022898,
+          "speedMps": 2.861074
+        },
+        {
+          "timeSeconds": 184,
+          "xM": 52.4121,
+          "zM": 92.3141,
+          "yawRad": -1.05315112,
+          "speedMps": 2.860603
+        },
+        {
+          "timeSeconds": 188,
+          "xM": 42.1418,
+          "zM": 97.3367,
+          "yawRad": -0.91609324,
+          "speedMps": 2.860201
+        },
+        {
+          "timeSeconds": 192,
+          "xM": 32.6553,
+          "zM": 103.7146,
+          "yawRad": -0.77905237,
+          "speedMps": 2.859859
+        },
+        {
+          "timeSeconds": 196,
+          "xM": 24.1299,
+          "zM": 111.3278,
+          "yawRad": -0.642026,
+          "speedMps": 2.859568
+        },
+        {
+          "timeSeconds": 200,
+          "xM": 16.725,
+          "zM": 120.0333,
+          "yawRad": -0.50501198,
+          "speedMps": 2.85932
+        }
+      ]
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "rudderCommandDeg": -20,
+      "approachSpeedMps": 3.97001,
+      "steadySpeedMps": 2.86179,
+      "steadyYawRateRadPerS": -0.034252,
+      "steadyRadiusM": 83.551,
+      "steadyDriftAngleDeg": 7.5224,
+      "speedLossFraction": 0.27915,
+      "yawRateUnsteadiness": 0.00119,
+      "maxEnergyOverWorkJ": -77.000332,
+      "trajectory": [
+        {
+          "timeSeconds": 4,
+          "xM": 0.0004,
+          "zM": 15.9856,
+          "yawRad": 0.00009127,
+          "speedMps": 3.993093
+        },
+        {
+          "timeSeconds": 8,
+          "xM": 0.0021,
+          "zM": 31.9467,
+          "yawRad": 0.00018175,
+          "speedMps": 3.987637
+        },
+        {
+          "timeSeconds": 12,
+          "xM": 0.0052,
+          "zM": 47.8882,
+          "yawRad": 0.00027069,
+          "speedMps": 3.983318
+        },
+        {
+          "timeSeconds": 16,
+          "xM": 0.0097,
+          "zM": 63.8144,
+          "yawRad": 0.00035955,
+          "speedMps": 3.979896
+        },
+        {
+          "timeSeconds": 20,
+          "xM": 0.0156,
+          "zM": 79.7284,
+          "yawRad": 0.00044834,
+          "speedMps": 3.977181
+        },
+        {
+          "timeSeconds": 24,
+          "xM": 0.0229,
+          "zM": 95.6326,
+          "yawRad": 0.00053708,
+          "speedMps": 3.975025
+        },
+        {
+          "timeSeconds": 28,
+          "xM": 0.0317,
+          "zM": 111.5291,
+          "yawRad": 0.00062578,
+          "speedMps": 3.973312
+        },
+        {
+          "timeSeconds": 32,
+          "xM": 0.0418,
+          "zM": 127.4196,
+          "yawRad": 0.00071444,
+          "speedMps": 3.97195
+        },
+        {
+          "timeSeconds": 36,
+          "xM": 0.0533,
+          "zM": 143.3051,
+          "yawRad": 0.00080308,
+          "speedMps": 3.970867
+        },
+        {
+          "timeSeconds": 40,
+          "xM": 0.0663,
+          "zM": 159.1868,
+          "yawRad": 0.00089169,
+          "speedMps": 3.970005
+        },
+        {
+          "timeSeconds": 44,
+          "xM": -0.0478,
+          "zM": 174.8179,
+          "yawRad": -0.19311028,
+          "speedMps": 3.815573
+        },
+        {
+          "timeSeconds": 48,
+          "xM": -2.3076,
+          "zM": 189.5079,
+          "yawRad": -0.37438569,
+          "speedMps": 3.633286
+        },
+        {
+          "timeSeconds": 52,
+          "xM": -6.858,
+          "zM": 202.9841,
+          "yawRad": -0.54340718,
+          "speedMps": 3.492978
+        },
+        {
+          "timeSeconds": 56,
+          "xM": -13.3443,
+          "zM": 215.0825,
+          "yawRad": -0.70673117,
+          "speedMps": 3.382638
+        },
+        {
+          "timeSeconds": 60,
+          "xM": -21.45,
+          "zM": 225.6691,
+          "yawRad": -0.86553496,
+          "speedMps": 3.294224
+        },
+        {
+          "timeSeconds": 64,
+          "xM": -30.8826,
+          "zM": 234.6372,
+          "yawRad": -1.02068008,
+          "speedMps": 3.222439
+        },
+        {
+          "timeSeconds": 68,
+          "xM": -41.3646,
+          "zM": 241.9063,
+          "yawRad": -1.17283938,
+          "speedMps": 3.163584
+        },
+        {
+          "timeSeconds": 72,
+          "xM": -52.6295,
+          "zM": 247.421,
+          "yawRad": -1.32254395,
+          "speedMps": 3.114977
+        },
+        {
+          "timeSeconds": 76,
+          "xM": -64.4189,
+          "zM": 251.1513,
+          "yawRad": -1.47021294,
+          "speedMps": 3.074604
+        },
+        {
+          "timeSeconds": 80,
+          "xM": -76.482,
+          "zM": 253.0919,
+          "yawRad": -1.61618687,
+          "speedMps": 3.040919
+        },
+        {
+          "timeSeconds": 84,
+          "xM": -88.5758,
+          "zM": 253.2631,
+          "yawRad": -1.76074538,
+          "speedMps": 3.012711
+        },
+        {
+          "timeSeconds": 88,
+          "xM": -100.4666,
+          "zM": 251.7098,
+          "yawRad": -1.90411659,
+          "speedMps": 2.989022
+        },
+        {
+          "timeSeconds": 92,
+          "xM": -111.9313,
+          "zM": 248.5019,
+          "yawRad": -2.04648912,
+          "speedMps": 2.96908
+        },
+        {
+          "timeSeconds": 96,
+          "xM": -122.7595,
+          "zM": 243.7331,
+          "yawRad": -2.18802067,
+          "speedMps": 2.95226
+        },
+        {
+          "timeSeconds": 100,
+          "xM": -132.7563,
+          "zM": 237.5203,
+          "yawRad": -2.32884239,
+          "speedMps": 2.938049
+        },
+        {
+          "timeSeconds": 104,
+          "xM": -141.744,
+          "zM": 230.0016,
+          "yawRad": -2.46906382,
+          "speedMps": 2.926028
+        },
+        {
+          "timeSeconds": 108,
+          "xM": -149.5649,
+          "zM": 221.3351,
+          "yawRad": -2.60877729,
+          "speedMps": 2.915846
+        },
+        {
+          "timeSeconds": 112,
+          "xM": -156.0836,
+          "zM": 211.6962,
+          "yawRad": -2.74806044,
+          "speedMps": 2.907214
+        },
+        {
+          "timeSeconds": 116,
+          "xM": -161.1886,
+          "zM": 201.2749,
+          "yawRad": -2.8869786,
+          "speedMps": 2.899891
+        },
+        {
+          "timeSeconds": 120,
+          "xM": -164.7944,
+          "zM": 190.2733,
+          "yawRad": -3.02558702,
+          "speedMps": 2.893674
+        },
+        {
+          "timeSeconds": 124,
+          "xM": -166.8428,
+          "zM": 178.9017,
+          "yawRad": 3.11925285,
+          "speedMps": 2.888393
+        },
+        {
+          "timeSeconds": 128,
+          "xM": -167.3038,
+          "zM": 167.3757,
+          "yawRad": 2.98113088,
+          "speedMps": 2.883905
+        },
+        {
+          "timeSeconds": 132,
+          "xM": -166.1759,
+          "zM": 155.9124,
+          "yawRad": 2.84319885,
+          "speedMps": 2.880089
+        },
+        {
+          "timeSeconds": 136,
+          "xM": -163.4868,
+          "zM": 144.7265,
+          "yawRad": 2.70542832,
+          "speedMps": 2.876844
+        },
+        {
+          "timeSeconds": 140,
+          "xM": -159.2918,
+          "zM": 134.0268,
+          "yawRad": 2.56779515,
+          "speedMps": 2.874083
+        },
+        {
+          "timeSeconds": 144,
+          "xM": -153.6741,
+          "zM": 124.0125,
+          "yawRad": 2.43027888,
+          "speedMps": 2.871733
+        },
+        {
+          "timeSeconds": 148,
+          "xM": -146.7421,
+          "zM": 114.8694,
+          "yawRad": 2.29286206,
+          "speedMps": 2.869734
+        },
+        {
+          "timeSeconds": 152,
+          "xM": -138.6286,
+          "zM": 106.7669,
+          "yawRad": 2.15552991,
+          "speedMps": 2.868031
+        },
+        {
+          "timeSeconds": 156,
+          "xM": -129.4875,
+          "zM": 99.8551,
+          "yawRad": 2.01826983,
+          "speedMps": 2.866582
+        },
+        {
+          "timeSeconds": 160,
+          "xM": -119.4913,
+          "zM": 94.2613,
+          "yawRad": 1.88107113,
+          "speedMps": 2.865348
+        },
+        {
+          "timeSeconds": 164,
+          "xM": -108.8284,
+          "zM": 90.0887,
+          "yawRad": 1.74392468,
+          "speedMps": 2.864297
+        },
+        {
+          "timeSeconds": 168,
+          "xM": -97.699,
+          "zM": 87.4137,
+          "yawRad": 1.60682273,
+          "speedMps": 2.863402
+        },
+        {
+          "timeSeconds": 172,
+          "xM": -86.3117,
+          "zM": 86.2851,
+          "yawRad": 1.46975869,
+          "speedMps": 2.86264
+        },
+        {
+          "timeSeconds": 176,
+          "xM": -74.8798,
+          "zM": 86.7227,
+          "yawRad": 1.33272693,
+          "speedMps": 2.86199
+        },
+        {
+          "timeSeconds": 180,
+          "xM": -63.6172,
+          "zM": 88.7173,
+          "yawRad": 1.19572267,
+          "speedMps": 2.861437
+        },
+        {
+          "timeSeconds": 184,
+          "xM": -52.7344,
+          "zM": 92.2307,
+          "yawRad": 1.05874184,
+          "speedMps": 2.860966
+        },
+        {
+          "timeSeconds": 188,
+          "xM": -42.4349,
+          "zM": 97.1964,
+          "yawRad": 0.92178097,
+          "speedMps": 2.860564
+        },
+        {
+          "timeSeconds": 192,
+          "xM": -32.911,
+          "zM": 103.521,
+          "yawRad": 0.7848371,
+          "speedMps": 2.860222
+        },
+        {
+          "timeSeconds": 196,
+          "xM": -24.3405,
+          "zM": 111.0856,
+          "yawRad": 0.64790772,
+          "speedMps": 2.859931
+        },
+        {
+          "timeSeconds": 200,
+          "xM": -16.8835,
+          "zM": 119.7484,
+          "yawRad": 0.51099068,
+          "speedMps": 2.859683
+        }
+      ]
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "rudderCommandDeg": 30,
+      "approachSpeedMps": 3.97001,
+      "steadySpeedMps": 2.17505,
+      "steadyYawRateRadPerS": 0.0374275,
+      "steadyRadiusM": 58.114,
+      "steadyDriftAngleDeg": -10.3275,
+      "speedLossFraction": 0.45213,
+      "yawRateUnsteadiness": 0.000776,
+      "maxEnergyOverWorkJ": -77.000332
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "rudderCommandDeg": -30,
+      "approachSpeedMps": 3.97001,
+      "steadySpeedMps": 2.1753,
+      "steadyYawRateRadPerS": -0.0374104,
+      "steadyRadiusM": 58.147,
+      "steadyDriftAngleDeg": 10.3255,
+      "speedLossFraction": 0.45207,
+      "yawRateUnsteadiness": 0.000776,
+      "maxEnergyOverWorkJ": -77.000332
+    }
+  ],
+  "straightLineControls": [
+    {
+      "targetSpeedMps": 2.5,
+      "thrustN": 1192.947,
+      "finalSpeedMps": 2.44195,
+      "yawDriftRad": 0.00275231
+    },
+    {
+      "targetSpeedMps": 4,
+      "thrustN": 4630.289,
+      "finalSpeedMps": 3.96664,
+      "yawDriftRad": 0.00443333
+    }
+  ],
+  "stoppedShip": {
+    "rudderCommandDeg": 30,
+    "durationSeconds": 30,
+    "finalYawRad": 0,
+    "finalSpeedMps": 0
+  },
+  "gates": {
+    "stoppedShipTurnRad": 0,
+    "radiusMonotonicWithHelm": true,
+    "mirrorMaxRelativeError": 0.00166756,
+    "minRadiusM": 58.114,
+    "maxRadiusM": 160.714,
+    "maxEnergyOverWorkJ": -12.387096,
+    "maxYawRateUnsteadiness": 0.016533
+  }
+}

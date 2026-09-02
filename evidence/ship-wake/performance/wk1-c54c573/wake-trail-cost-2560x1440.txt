@@ -1,0 +1,24 @@
+WK1 hull wake trail GPU cost
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 2560×1440 · DPR 1.00
+sea CURRENT_MODERATE · speed 3.593 m/s · prebuilt 28 s trail
+world, waves and cloud cache frozen · FoamField stepping
+24 adjacent off/on pairs · 4 raw six-frame rotations per leg · 12 switch warm-up frames
+
+complete GPU frame
+  off 35.977 ms median · on 37.485 ms median
+  paired on−off +1.750 ± 1.198 ms (mean ± SE)
+  median 0.507 · sd 5.867 · range -7.347 to 24.282
+
+ocean pass
+  off 20.415 ms median · on 22.655 ms median
+  paired on−off +2.313 ± 1.104 ms (mean ± SE)
+  median 1.313 · sd 5.408 · range -8.597 to 15.138
+
+foam simulation prefix
+  off 0.000 ms median · on 0.000 ms median
+  paired on−off +0.000 ± 0.000 ms (mean ± SE)
+  median 0.000 · sd 0.000 · range 0.000 to 0.000
+
+per-pair frame deltas (ms): 0.151, 1.779, 2.343, 3.761, -2.460, 0.025, 0.862, -2.343, -7.347, 4.160, -1.329, -1.565, -0.250, -4.757, -0.411, 2.360, 24.282, -0.796, 8.341, 5.511, 1.267, 4.320, 0.137, 3.968
+FAIL: point estimate 1.750 ms exceeds 0.6 ms budget.

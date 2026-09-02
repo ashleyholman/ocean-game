@@ -1,0 +1,440 @@
+{
+  "generatedAtIso": "2026-08-07T09:05:00.639Z",
+  "purpose": "R0 terrain baseline: TERR-004 open-water performance and TERR-005 camera geometry",
+  "device": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "oceanTemporalEnabled": false,
+  "notes": [
+    "World, waves, foam history and cloud cache frozen during sampling.",
+    "GPU times are six-frame prefix-rotation derivations (see GpuProfiler).",
+    "Machine may be contended; medians with spread, not tight bounds."
+  ],
+  "views": [
+    {
+      "id": "embodied-forward-production-midday",
+      "label": "Embodied forward · production sea · midday",
+      "seaState": "CURRENT_MODERATE",
+      "sun": {
+        "targetElevationDeg": 90,
+        "achievedElevationDeg": 76.02231777101227,
+        "azimuthDeg": -178.17979703720798,
+        "worldInstantUtcSeconds": 1768532225.3639903
+      },
+      "gpuMs": {
+        "frame": {
+          "mean": 7.811430166666669,
+          "median": 7.1132285,
+          "standardDeviation": 2.4230006973509677,
+          "minimum": 5.436874,
+          "maximum": 13.3895,
+          "count": 24
+        },
+        "foamSimulation": {
+          "mean": 0,
+          "median": 0,
+          "standardDeviation": 0,
+          "minimum": 0,
+          "maximum": 0,
+          "count": 24
+        },
+        "cloudCacheBake": {
+          "mean": 1.3124545833333332,
+          "median": 1.2833125,
+          "standardDeviation": 0.16695258056052573,
+          "minimum": 0.981125,
+          "maximum": 1.544958,
+          "count": 24
+        },
+        "skyAndCloudDraw": {
+          "mean": 1.0853209999999998,
+          "median": 1.059688,
+          "standardDeviation": 0.24630996273112601,
+          "minimum": 0.670458,
+          "maximum": 1.5643749999999998,
+          "count": 24
+        },
+        "ocean": {
+          "mean": 3.652517375,
+          "median": 3.362562,
+          "standardDeviation": 1.5303808805798416,
+          "minimum": 1.69775,
+          "maximum": 7.040751,
+          "count": 24
+        },
+        "sceneAndStars": {
+          "mean": 2.5187134999999996,
+          "median": 2.0249165000000002,
+          "standardDeviation": 2.5252488007705556,
+          "minimum": -3.593250000000001,
+          "maximum": 9.029540999999998,
+          "count": 24
+        }
+      },
+      "presentedFrameMs": {
+        "mean": 16.670063696089823,
+        "median": 16.699999809265137,
+        "standardDeviation": 0.8396783106230473,
+        "minimum": 13.400000095367432,
+        "maximum": 20,
+        "count": 157
+      },
+      "rotationsKept": 24,
+      "capture": "captures/embodied-forward-production-midday.jpg"
+    },
+    {
+      "id": "embodied-toward-low-sun-production",
+      "label": "Embodied toward low Sun · production sea",
+      "seaState": "CURRENT_MODERATE",
+      "sun": {
+        "targetElevationDeg": 8,
+        "achievedElevationDeg": 7.9407639054283425,
+        "azimuthDeg": -69.75326939864864,
+        "worldInstantUtcSeconds": 1768555019.4119856
+      },
+      "gpuMs": {
+        "frame": {
+          "mean": 7.376108791666667,
+          "median": 6.470437,
+          "standardDeviation": 1.9441770071691555,
+          "minimum": 5.681999,
+          "maximum": 12.086041,
+          "count": 24
+        },
+        "foamSimulation": {
+          "mean": 0,
+          "median": 0,
+          "standardDeviation": 0,
+          "minimum": 0,
+          "maximum": 0,
+          "count": 24
+        },
+        "cloudCacheBake": {
+          "mean": 1.2765950416666667,
+          "median": 1.270625,
+          "standardDeviation": 0.13575469346854022,
+          "minimum": 1.002124,
+          "maximum": 1.471083,
+          "count": 24
+        },
+        "skyAndCloudDraw": {
+          "mean": 1.879588291666667,
+          "median": 0.941083,
+          "standardDeviation": 3.284832089391989,
+          "minimum": 0.536791,
+          "maximum": 15.353915999999998,
+          "count": 24
+        },
+        "ocean": {
+          "mean": 2.6419030416666667,
+          "median": 3.1691044999999995,
+          "standardDeviation": 3.8408102245315208,
+          "minimum": -12.110249999999999,
+          "maximum": 8.260416000000001,
+          "count": 24
+        },
+        "sceneAndStars": {
+          "mean": 1.210713458333333,
+          "median": 1.0772910000000002,
+          "standardDeviation": 1.44734588176268,
+          "minimum": -4.148291,
+          "maximum": 4.16625,
+          "count": 24
+        }
+      },
+      "presentedFrameMs": {
+        "mean": 16.66114649499298,
+        "median": 16.59999990463257,
+        "standardDeviation": 1.7111493249468828,
+        "minimum": 12.899999618530273,
+        "maximum": 20.699999809265137,
+        "count": 157
+      },
+      "rotationsKept": 24,
+      "capture": "captures/embodied-toward-low-sun-production.jpg"
+    },
+    {
+      "id": "cinematic-default-production-midday",
+      "label": "Default cinematic · production sea · midday",
+      "seaState": "CURRENT_MODERATE",
+      "sun": {
+        "targetElevationDeg": 90,
+        "achievedElevationDeg": 75.82937476448703,
+        "azimuthDeg": -178.8747994621889,
+        "worldInstantUtcSeconds": 1768618602.9059765
+      },
+      "gpuMs": {
+        "frame": {
+          "mean": 7.562988916666666,
+          "median": 6.8761035,
+          "standardDeviation": 1.4085681918485113,
+          "minimum": 6.605166,
+          "maximum": 11.345041,
+          "count": 24
+        },
+        "foamSimulation": {
+          "mean": 0,
+          "median": 0,
+          "standardDeviation": 0,
+          "minimum": 0,
+          "maximum": 0,
+          "count": 24
+        },
+        "cloudCacheBake": {
+          "mean": 1.3275480833333333,
+          "median": 1.33902,
+          "standardDeviation": 0.1344382175004132,
+          "minimum": 1.057291,
+          "maximum": 1.5475,
+          "count": 24
+        },
+        "skyAndCloudDraw": {
+          "mean": 0.9257189166666665,
+          "median": 0.915229,
+          "standardDeviation": 0.23215226654165483,
+          "minimum": 0.5465840000000002,
+          "maximum": 1.359126,
+          "count": 24
+        },
+        "ocean": {
+          "mean": 5.635173541666667,
+          "median": 4.316979,
+          "standardDeviation": 2.1596586592358604,
+          "minimum": 3.6135010000000003,
+          "maximum": 11.474917000000001,
+          "count": 24
+        },
+        "sceneAndStars": {
+          "mean": -0.06814775000000022,
+          "median": 0.4862090000000001,
+          "standardDeviation": 3.1417359131978957,
+          "minimum": -7.7542930000000005,
+          "maximum": 8.741291,
+          "count": 24
+        }
+      },
+      "presentedFrameMs": {
+        "mean": 16.669620251353784,
+        "median": 16.699999809265137,
+        "standardDeviation": 0.9440871264860483,
+        "minimum": 13.599999904632568,
+        "maximum": 20.100000381469727,
+        "count": 158
+      },
+      "rotationsKept": 24,
+      "capture": "captures/cinematic-default-production-midday.jpg"
+    },
+    {
+      "id": "cinematic-default-rough-low-sun",
+      "label": "Default cinematic · rough sea · low Sun",
+      "seaState": "SOUTHERN_OCEAN_ROUGH",
+      "sun": {
+        "targetElevationDeg": 8,
+        "achievedElevationDeg": 7.965189476117724,
+        "azimuthDeg": -70.0339105792444,
+        "worldInstantUtcSeconds": 1768641386.4089692
+      },
+      "gpuMs": {
+        "frame": {
+          "mean": 8.785410791666667,
+          "median": 8.612687000000001,
+          "standardDeviation": 0.4191911738869195,
+          "minimum": 8.484416,
+          "maximum": 10.162624,
+          "count": 24
+        },
+        "foamSimulation": {
+          "mean": 0,
+          "median": 0,
+          "standardDeviation": 0,
+          "minimum": 0,
+          "maximum": 0,
+          "count": 24
+        },
+        "cloudCacheBake": {
+          "mean": 1.1344126250000002,
+          "median": 1.1122075,
+          "standardDeviation": 0.055869869435737025,
+          "minimum": 1.075041,
+          "maximum": 1.263124,
+          "count": 24
+        },
+        "skyAndCloudDraw": {
+          "mean": 0.7668855000000002,
+          "median": 0.7618955000000001,
+          "standardDeviation": 0.06515818456381496,
+          "minimum": 0.6482920000000001,
+          "maximum": 0.9383750000000002,
+          "count": 24
+        },
+        "ocean": {
+          "mean": 6.673197916666667,
+          "median": 6.132896000000001,
+          "standardDeviation": 1.679367895013243,
+          "minimum": 6.003958,
+          "maximum": 14.230250000000002,
+          "count": 24
+        },
+        "sceneAndStars": {
+          "mean": 0.3747274166666668,
+          "median": 0.44733350000000005,
+          "standardDeviation": 2.2313883276552477,
+          "minimum": -7.674208000000002,
+          "maximum": 7.103043000000001,
+          "count": 24
+        }
+      },
+      "presentedFrameMs": {
+        "mean": 16.664331211405955,
+        "median": 16.699999809265137,
+        "standardDeviation": 0.9220943740891521,
+        "minimum": 14.5,
+        "maximum": 19.5,
+        "count": 157
+      },
+      "rotationsKept": 24,
+      "capture": "captures/cinematic-default-rough-low-sun.jpg"
+    },
+    {
+      "id": "cinematic-max-production-midday",
+      "label": "Maximum cinematic · production sea · midday",
+      "seaState": "CURRENT_MODERATE",
+      "sun": {
+        "targetElevationDeg": 90,
+        "achievedElevationDeg": 75.62960394331833,
+        "azimuthDeg": -177.8064125011113,
+        "worldInstantUtcSeconds": 1768705089.4079597
+      },
+      "gpuMs": {
+        "frame": {
+          "mean": 7.380799791666668,
+          "median": 6.5729165,
+          "standardDeviation": 1.9863242841968607,
+          "minimum": 5.441874,
+          "maximum": 11.213249,
+          "count": 24
+        },
+        "foamSimulation": {
+          "mean": 0,
+          "median": 0,
+          "standardDeviation": 0,
+          "minimum": 0,
+          "maximum": 0,
+          "count": 24
+        },
+        "cloudCacheBake": {
+          "mean": 1.3332963333333332,
+          "median": 1.3146244999999999,
+          "standardDeviation": 0.14466867073139367,
+          "minimum": 1.07325,
+          "maximum": 1.601708,
+          "count": 24
+        },
+        "skyAndCloudDraw": {
+          "mean": 0.98971725,
+          "median": 0.9580420000000001,
+          "standardDeviation": 0.2954163677030968,
+          "minimum": 0.490251,
+          "maximum": 1.836125,
+          "count": 24
+        },
+        "ocean": {
+          "mean": 6.150357416666665,
+          "median": 4.153604,
+          "standardDeviation": 5.565523539020088,
+          "minimum": 3.336209,
+          "maximum": 25.509,
+          "count": 24
+        },
+        "sceneAndStars": {
+          "mean": -1.3035816666666669,
+          "median": 0.1961664999999999,
+          "standardDeviation": 5.986151907150266,
+          "minimum": -22.519125,
+          "maximum": 2.332917,
+          "count": 24
+        }
+      },
+      "presentedFrameMs": {
+        "mean": 16.652229296933314,
+        "median": 16.59999990463257,
+        "standardDeviation": 0.6865545514136685,
+        "minimum": 14.699999809265137,
+        "maximum": 19.299999713897705,
+        "count": 157
+      },
+      "rotationsKept": 24,
+      "capture": "captures/cinematic-max-production-midday.jpg"
+    },
+    {
+      "id": "cinematic-max-rough-low-sun",
+      "label": "Maximum cinematic · rough sea · low Sun",
+      "seaState": "SOUTHERN_OCEAN_ROUGH",
+      "sun": {
+        "targetElevationDeg": 8,
+        "achievedElevationDeg": 8.014983926848174,
+        "azimuthDeg": -70.32341395814612,
+        "worldInstantUtcSeconds": 1768727751.8549562
+      },
+      "gpuMs": {
+        "frame": {
+          "mean": 8.605758291666666,
+          "median": 8.350458,
+          "standardDeviation": 0.5063863505047506,
+          "minimum": 8.300875,
+          "maximum": 10.123874,
+          "count": 24
+        },
+        "foamSimulation": {
+          "mean": 0,
+          "median": 0,
+          "standardDeviation": 0,
+          "minimum": 0,
+          "maximum": 0,
+          "count": 24
+        },
+        "cloudCacheBake": {
+          "mean": 1.8646436666666668,
+          "median": 1.1273745,
+          "standardDeviation": 2.5292376980701152,
+          "minimum": 1.038041,
+          "maximum": 10.592916,
+          "count": 24
+        },
+        "skyAndCloudDraw": {
+          "mean": 0.04321529166666665,
+          "median": 0.7797285,
+          "standardDeviation": 2.542235671011442,
+          "minimum": -8.714333,
+          "maximum": 0.9990840000000001,
+          "count": 24
+        },
+        "ocean": {
+          "mean": 6.903333249999999,
+          "median": 6.446979499999999,
+          "standardDeviation": 0.740612878551227,
+          "minimum": 6.207374000000001,
+          "maximum": 8.101001,
+          "count": 24
+        },
+        "sceneAndStars": {
+          "mean": -0.2756283749999999,
+          "median": 0.042749999999999844,
+          "standardDeviation": 0.7540667544343234,
+          "minimum": -1.8297080000000001,
+          "maximum": 0.6140000000000008,
+          "count": 24
+        }
+      },
+      "presentedFrameMs": {
+        "mean": 16.694267515923567,
+        "median": 16.600000381469727,
+        "standardDeviation": 0.6843715271888122,
+        "minimum": 13.699999809265137,
+        "maximum": 20.09999990463257,
+        "count": 157
+      },
+      "rotationsKept": 24,
+      "capture": "captures/cinematic-max-rough-low-sun.jpg"
+    }
+  ]
+}

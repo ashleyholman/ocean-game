@@ -1,0 +1,13 @@
+hull sky-occlusion (AO) cost
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 2560×1440 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 38.07 ± 5.05 ms · n=128
+frame time on:  38.10 ± 4.64 ms · n=128
+
+per-pair deltas (ms): -1.51, 1.02, -1.64, 0.46, 0.22, -1.53, 2.60, 0.60
+marginal cost: +0.027 ± 0.530 ms/frame (0.07%)
+95% bound on the true cost: |cost| < 1.09 ms/frame
+Not resolvable: the term is smaller than this machine can measure.

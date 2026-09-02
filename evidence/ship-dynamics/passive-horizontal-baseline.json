@@ -1,0 +1,1264 @@
+{
+  "formatVersion": 1,
+  "status": "Passive surge, sway and yaw are force-integrated; sail drive, commanded rudder force and current remain absent.",
+  "contract": {
+    "authority": "Canonical ECEF position/velocity remain authoritative; horizontal velocity is only a transient transported-frame view.",
+    "integration": "Resistance, yaw and matching water/global midpoint displacement are advanced at 240 Hz.",
+    "scope": "Canonical loading in flat still water, plus captive-tow and clock/domain invariance checks.",
+    "validationMeaning": "Decay, passivity, fixed-step caller invariance and voyage separation are validated; resistance coefficients remain provisional."
+  },
+  "rigidBody": {
+    "massKg": 81580.34744897,
+    "yawInertiaKgM2": 764578.96064815
+  },
+  "cases": {
+    "coastDown": {
+      "name": "straight coast-down from 4 m/s",
+      "configuration": {
+        "durationSeconds": 30,
+        "callerHz": 60,
+        "physicsHz": 240,
+        "voyageCompression": 30,
+        "mode": "free",
+        "initialVelocityWorldMps": {
+          "x": 0,
+          "z": 4
+        },
+        "initialYawRad": 0,
+        "initialYawRateRadPerSecond": 0
+      },
+      "samples": [
+        {
+          "timeSeconds": 0,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 4
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 1,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.94795804
+          },
+          "speedMps": 3.94795804,
+          "forwardSpeedMps": 3.94795804,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 635770.8496
+        },
+        {
+          "timeSeconds": 2,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.89867742
+          },
+          "speedMps": 3.89867742,
+          "forwardSpeedMps": 3.89867742,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 619997.8168
+        },
+        {
+          "timeSeconds": 3,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.85184645
+          },
+          "speedMps": 3.85184645,
+          "forwardSpeedMps": 3.85184645,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 605192.429
+        },
+        {
+          "timeSeconds": 4,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.80720393
+          },
+          "speedMps": 3.80720393,
+          "forwardSpeedMps": 3.80720393,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 591245.4829
+        },
+        {
+          "timeSeconds": 5,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.76452889
+          },
+          "speedMps": 3.76452889,
+          "forwardSpeedMps": 3.76452889,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 578065.1969
+        },
+        {
+          "timeSeconds": 6,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.72363271
+          },
+          "speedMps": 3.72363271,
+          "forwardSpeedMps": 3.72363271,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 565573.7284
+        },
+        {
+          "timeSeconds": 7,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.68435318
+          },
+          "speedMps": 3.68435318,
+          "forwardSpeedMps": 3.68435318,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 553704.5138
+        },
+        {
+          "timeSeconds": 8,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.64654978
+          },
+          "speedMps": 3.64654978,
+          "forwardSpeedMps": 3.64654978,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 542400.2091
+        },
+        {
+          "timeSeconds": 9,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.61010001
+          },
+          "speedMps": 3.61010001,
+          "forwardSpeedMps": 3.61010001,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 531611.077
+        },
+        {
+          "timeSeconds": 10,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.57489643
+          },
+          "speedMps": 3.57489643,
+          "forwardSpeedMps": 3.57489643,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 521293.7095
+        },
+        {
+          "timeSeconds": 11,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.54084432
+          },
+          "speedMps": 3.54084432,
+          "forwardSpeedMps": 3.54084432,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 511410.0051
+        },
+        {
+          "timeSeconds": 12,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.50785972
+          },
+          "speedMps": 3.50785972,
+          "forwardSpeedMps": 3.50785972,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 501926.3441
+        },
+        {
+          "timeSeconds": 13,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.47586791
+          },
+          "speedMps": 3.47586791,
+          "forwardSpeedMps": 3.47586791,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 492812.9163
+        },
+        {
+          "timeSeconds": 14,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.44480205
+          },
+          "speedMps": 3.44480205,
+          "forwardSpeedMps": 3.44480205,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 484043.1695
+        },
+        {
+          "timeSeconds": 15,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.41460216
+          },
+          "speedMps": 3.41460216,
+          "forwardSpeedMps": 3.41460216,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 475593.3534
+        },
+        {
+          "timeSeconds": 16,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.3852142
+          },
+          "speedMps": 3.3852142,
+          "forwardSpeedMps": 3.3852142,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 467442.1405
+        },
+        {
+          "timeSeconds": 17,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.35658928
+          },
+          "speedMps": 3.35658928,
+          "forwardSpeedMps": 3.35658928,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 459570.3084
+        },
+        {
+          "timeSeconds": 18,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.32868308
+          },
+          "speedMps": 3.32868308,
+          "forwardSpeedMps": 3.32868308,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 451960.4716
+        },
+        {
+          "timeSeconds": 19,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.30145526
+          },
+          "speedMps": 3.30145526,
+          "forwardSpeedMps": 3.30145526,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 444596.8555
+        },
+        {
+          "timeSeconds": 20,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.27486898
+          },
+          "speedMps": 3.27486898,
+          "forwardSpeedMps": 3.27486898,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 437465.1027
+        },
+        {
+          "timeSeconds": 21,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.24889056
+          },
+          "speedMps": 3.24889056,
+          "forwardSpeedMps": 3.24889056,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 430552.1085
+        },
+        {
+          "timeSeconds": 22,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.22348909
+          },
+          "speedMps": 3.22348909,
+          "forwardSpeedMps": 3.22348909,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 423845.8784
+        },
+        {
+          "timeSeconds": 23,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.19863613
+          },
+          "speedMps": 3.19863613,
+          "forwardSpeedMps": 3.19863613,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 417335.4061
+        },
+        {
+          "timeSeconds": 24,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.17430546
+          },
+          "speedMps": 3.17430546,
+          "forwardSpeedMps": 3.17430546,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 411010.5671
+        },
+        {
+          "timeSeconds": 25,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.15047288
+          },
+          "speedMps": 3.15047288,
+          "forwardSpeedMps": 3.15047288,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 404862.0265
+        },
+        {
+          "timeSeconds": 26,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.12711594
+          },
+          "speedMps": 3.12711594,
+          "forwardSpeedMps": 3.12711594,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 398881.1582
+        },
+        {
+          "timeSeconds": 27,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.10421386
+          },
+          "speedMps": 3.10421386,
+          "forwardSpeedMps": 3.10421386,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 393059.9744
+        },
+        {
+          "timeSeconds": 28,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.08174728
+          },
+          "speedMps": 3.08174728,
+          "forwardSpeedMps": 3.08174728,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 387391.0634
+        },
+        {
+          "timeSeconds": 29,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.0596982
+          },
+          "speedMps": 3.0596982,
+          "forwardSpeedMps": 3.0596982,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 381867.5351
+        },
+        {
+          "timeSeconds": 30,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 3.03804982
+          },
+          "speedMps": 3.03804982,
+          "forwardSpeedMps": 3.03804982,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 376482.9722
+        }
+      ],
+      "finalResistance": {
+        "forceBodyN": {
+          "x": 0,
+          "z": -1855.11301062
+        },
+        "yawMomentNm": 0
+      },
+      "summary": {
+        "initialSpeedMps": 4,
+        "finalSpeedMps": 3.03804982,
+        "initialAbsolutePortSpeedMps": 0,
+        "finalAbsolutePortSpeedMps": 0,
+        "initialAbsoluteYawRateRadPerSecond": 0,
+        "finalAbsoluteYawRateRadPerSecond": 0,
+        "initialKineticEnergyJ": 652642.7796,
+        "finalKineticEnergyJ": 376482.9722,
+        "maximumPositiveEnergyStepJ": 0,
+        "speedMonotonicNonIncreasing": true,
+        "encounterDisplacementM": 103.42545467,
+        "globalDistanceTravelledM": 3102.76364006
+      }
+    },
+    "sideslipDecay": {
+      "name": "port sideslip release at 4 m/s forward",
+      "configuration": {
+        "durationSeconds": 20,
+        "callerHz": 60,
+        "physicsHz": 240,
+        "voyageCompression": 30,
+        "mode": "free",
+        "initialVelocityWorldMps": {
+          "x": 1,
+          "z": 4
+        },
+        "initialYawRad": 0,
+        "initialYawRateRadPerSecond": 0
+      },
+      "samples": [
+        {
+          "timeSeconds": 0,
+          "velocityWorldMps": {
+            "x": 1,
+            "z": 4
+          },
+          "speedMps": 4.12310563,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 1,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 693432.9533
+        },
+        {
+          "timeSeconds": 1,
+          "velocityWorldMps": {
+            "x": 0.58993172,
+            "z": 3.951431
+          },
+          "speedMps": 3.99522545,
+          "forwardSpeedMps": 3.96785633,
+          "portSpeedMps": 0.46684318,
+          "yawRad": 0.03108326,
+          "yawRateRadPerSecond": 0.0401007,
+          "kineticEnergyJ": 651700.419
+        },
+        {
+          "timeSeconds": 2,
+          "velocityWorldMps": {
+            "x": 0.4478978,
+            "z": 3.90727274
+          },
+          "speedMps": 3.93286063,
+          "forwardSpeedMps": 3.92814027,
+          "portSpeedMps": 0.19263105,
+          "yawRad": 0.06513415,
+          "yawRateRadPerSecond": 0.02658496,
+          "kineticEnergyJ": 631187.8229
+        },
+        {
+          "timeSeconds": 3,
+          "velocityWorldMps": {
+            "x": 0.39949365,
+            "z": 3.86237512
+          },
+          "speedMps": 3.8829804,
+          "forwardSpeedMps": 3.88232715,
+          "portSpeedMps": 0.0712229,
+          "yawRad": 0.08472227,
+          "yawRateRadPerSecond": 0.0134866,
+          "kineticEnergyJ": 615084.8781
+        },
+        {
+          "timeSeconds": 4,
+          "velocityWorldMps": {
+            "x": 0.38285542,
+            "z": 3.81761077
+          },
+          "speedMps": 3.83676039,
+          "forwardSpeedMps": 3.83669213,
+          "portSpeedMps": 0.02288682,
+          "yawRad": 0.09398728,
+          "yawRateRadPerSecond": 0.00588016,
+          "kineticEnergyJ": 600474.3632
+        },
+        {
+          "timeSeconds": 5,
+          "velocityWorldMps": {
+            "x": 0.37612238,
+            "z": 3.7740911
+          },
+          "speedMps": 3.7927868,
+          "forwardSpeedMps": 3.79278239,
+          "portSpeedMps": 0.00578326,
+          "yawRad": 0.09780627,
+          "yawRateRadPerSecond": 0.00224788,
+          "kineticEnergyJ": 586778.031
+        },
+        {
+          "timeSeconds": 6,
+          "velocityWorldMps": {
+            "x": 0.37204027,
+            "z": 3.73222631
+          },
+          "speedMps": 3.75072355,
+          "forwardSpeedMps": 3.7507235,
+          "portSpeedMps": 0.00064866,
+          "yawRad": 0.09918204,
+          "yawRateRadPerSecond": 0.00073878,
+          "kineticEnergyJ": 573833.4015
+        },
+        {
+          "timeSeconds": 7,
+          "velocityWorldMps": {
+            "x": 0.36847458,
+            "z": 3.69204072
+          },
+          "speedMps": 3.71038248,
+          "forwardSpeedMps": 3.71038245,
+          "portSpeedMps": -0.00046132,
+          "yawRad": 0.09959735,
+          "yawRateRadPerSecond": 0.00018988,
+          "kineticEnergyJ": 561555.8131
+        },
+        {
+          "timeSeconds": 8,
+          "velocityWorldMps": {
+            "x": 0.36493789,
+            "z": 3.6534276
+          },
+          "speedMps": 3.67160903,
+          "forwardSpeedMps": 3.671609,
+          "portSpeedMps": -0.00046301,
+          "yawRad": 0.09968504,
+          "yawRateRadPerSecond": 0.00002133,
+          "kineticEnergyJ": 549880.6212
+        },
+        {
+          "timeSeconds": 9,
+          "velocityWorldMps": {
+            "x": 0.36139353,
+            "z": 3.6162559
+          },
+          "speedMps": 3.63426911,
+          "forwardSpeedMps": 3.6342691,
+          "portSpeedMps": -0.00027988,
+          "yawRad": 0.09968213,
+          "yawRateRadPerSecond": -0.00001603,
+          "kineticEnergyJ": 538753.0251
+        },
+        {
+          "timeSeconds": 10,
+          "velocityWorldMps": {
+            "x": 0.35788694,
+            "z": 3.5804033
+          },
+          "speedMps": 3.59824552,
+          "forwardSpeedMps": 3.59824552,
+          "portSpeedMps": -0.00013839,
+          "yawRad": 0.0996647,
+          "yawRateRadPerSecond": -0.00001629,
+          "kineticEnergyJ": 528125.5052
+        },
+        {
+          "timeSeconds": 11,
+          "velocityWorldMps": {
+            "x": 0.35445476,
+            "z": 3.54576265
+          },
+          "speedMps": 3.56343527,
+          "forwardSpeedMps": 3.56343527,
+          "portSpeedMps": -0.00005975,
+          "yawRad": 0.09965149,
+          "yawRateRadPerSecond": -0.00001004,
+          "kineticEnergyJ": 517956.5199
+        },
+        {
+          "timeSeconds": 12,
+          "velocityWorldMps": {
+            "x": 0.35111424,
+            "z": 3.51224084
+          },
+          "speedMps": 3.52974743,
+          "forwardSpeedMps": 3.52974743,
+          "portSpeedMps": -0.00002272,
+          "yawRad": 0.09964412,
+          "yawRateRadPerSecond": -0.00000508,
+          "kineticEnergyJ": 508209.5427
+        },
+        {
+          "timeSeconds": 13,
+          "velocityWorldMps": {
+            "x": 0.34786971,
+            "z": 3.4797563
+          },
+          "speedMps": 3.49710126,
+          "forwardSpeedMps": 3.49710126,
+          "portSpeedMps": -0.00000734,
+          "yawRad": 0.09964062,
+          "yawRateRadPerSecond": -0.00000225,
+          "kineticEnergyJ": 498852.29
+        },
+        {
+          "timeSeconds": 14,
+          "velocityWorldMps": {
+            "x": 0.34471917,
+            "z": 3.44823691
+          },
+          "speedMps": 3.4654248,
+          "forwardSpeedMps": 3.4654248,
+          "portSpeedMps": -0.00000173,
+          "yawRad": 0.09963914,
+          "yawRateRadPerSecond": -8.8e-7,
+          "kineticEnergyJ": 489856.0924
+        },
+        {
+          "timeSeconds": 15,
+          "velocityWorldMps": {
+            "x": 0.34165805,
+            "z": 3.41761836
+          },
+          "speedMps": 3.43465362,
+          "forwardSpeedMps": 3.43465362,
+          "portSpeedMps": -3e-8,
+          "yawRad": 0.09963859,
+          "yawRateRadPerSecond": -3e-7,
+          "kineticEnergyJ": 481195.3771
+        },
+        {
+          "timeSeconds": 16,
+          "velocityWorldMps": {
+            "x": 0.33868118,
+            "z": 3.38784298
+          },
+          "speedMps": 3.4047298,
+          "forwardSpeedMps": 3.4047298,
+          "portSpeedMps": 3.1e-7,
+          "yawRad": 0.09963842,
+          "yawRateRadPerSecond": -8e-8,
+          "kineticEnergyJ": 472847.2394
+        },
+        {
+          "timeSeconds": 17,
+          "velocityWorldMps": {
+            "x": 0.33578348,
+            "z": 3.35885875
+          },
+          "speedMps": 3.37560108,
+          "forwardSpeedMps": 3.37560108,
+          "portSpeedMps": 2.6e-7,
+          "yawRad": 0.09963839,
+          "yawRateRadPerSecond": -1e-8,
+          "kineticEnergyJ": 464791.0851
+        },
+        {
+          "timeSeconds": 18,
+          "velocityWorldMps": {
+            "x": 0.33296024,
+            "z": 3.33061862
+          },
+          "speedMps": 3.34722018,
+          "forwardSpeedMps": 3.34722018,
+          "portSpeedMps": 1.6e-7,
+          "yawRad": 0.0996384,
+          "yawRateRadPerSecond": 1e-8,
+          "kineticEnergyJ": 457008.3311
+        },
+        {
+          "timeSeconds": 19,
+          "velocityWorldMps": {
+            "x": 0.33020716,
+            "z": 3.30307986
+          },
+          "speedMps": 3.31954414,
+          "forwardSpeedMps": 3.31954414,
+          "portSpeedMps": 8e-8,
+          "yawRad": 0.09963841,
+          "yawRateRadPerSecond": 1e-8,
+          "kineticEnergyJ": 449482.1515
+        },
+        {
+          "timeSeconds": 20,
+          "velocityWorldMps": {
+            "x": 0.32752033,
+            "z": 3.27620353
+          },
+          "speedMps": 3.29253384,
+          "forwardSpeedMps": 3.29253384,
+          "portSpeedMps": 4e-8,
+          "yawRad": 0.09963841,
+          "yawRateRadPerSecond": 1e-8,
+          "kineticEnergyJ": 442197.2636
+        }
+      ],
+      "finalResistance": {
+        "forceBodyN": {
+          "x": -0.00124127,
+          "z": -2307.87422705
+        },
+        "yawMomentNm": -0.00342534
+      },
+      "summary": {
+        "initialSpeedMps": 4.12310563,
+        "finalSpeedMps": 3.29253384,
+        "initialAbsolutePortSpeedMps": 1,
+        "finalAbsolutePortSpeedMps": 4e-8,
+        "initialAbsoluteYawRateRadPerSecond": 0,
+        "finalAbsoluteYawRateRadPerSecond": 1e-8,
+        "initialKineticEnergyJ": 693432.9533,
+        "finalKineticEnergyJ": 442197.2636,
+        "maximumPositiveEnergyStepJ": 0,
+        "speedMonotonicNonIncreasing": true,
+        "encounterDisplacementM": 72.41830811,
+        "globalDistanceTravelledM": 2173.08306059
+      }
+    },
+    "yawDecay": {
+      "name": "positive yaw-rate release at 4 m/s forward",
+      "configuration": {
+        "durationSeconds": 20,
+        "callerHz": 60,
+        "physicsHz": 240,
+        "voyageCompression": 30,
+        "mode": "free",
+        "initialVelocityWorldMps": {
+          "x": 0,
+          "z": 4
+        },
+        "initialYawRad": 0,
+        "initialYawRateRadPerSecond": 0.16
+      },
+      "samples": [
+        {
+          "timeSeconds": 0,
+          "velocityWorldMps": {
+            "x": 0,
+            "z": 4
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0,
+          "yawRateRadPerSecond": 0.16,
+          "kineticEnergyJ": 662429.3903
+        },
+        {
+          "timeSeconds": 1,
+          "velocityWorldMps": {
+            "x": 0.14973793,
+            "z": 3.94130812
+          },
+          "speedMps": 3.94415151,
+          "forwardSpeedMps": 3.9412245,
+          "portSpeedMps": -0.151923,
+          "yawRad": 0.07650175,
+          "yawRateRadPerSecond": 0.02595553,
+          "kineticEnergyJ": 634802.9953
+        },
+        {
+          "timeSeconds": 2,
+          "velocityWorldMps": {
+            "x": 0.22419807,
+            "z": 3.88610833
+          },
+          "speedMps": 3.89257019,
+          "forwardSpeedMps": 3.89114945,
+          "portSpeedMps": -0.10516033,
+          "yawRad": 0.08464725,
+          "yawRateRadPerSecond": -0.0020076,
+          "kineticEnergyJ": 618058.4429
+        },
+        {
+          "timeSeconds": 3,
+          "velocityWorldMps": {
+            "x": 0.25537833,
+            "z": 3.83687506
+          },
+          "speedMps": 3.84536452,
+          "forwardSpeedMps": 3.84499818,
+          "portSpeedMps": -0.05307846,
+          "yawRad": 0.08026458,
+          "yawRateRadPerSecond": -0.0050814,
+          "kineticEnergyJ": 603167.1665
+        },
+        {
+          "timeSeconds": 4,
+          "velocityWorldMps": {
+            "x": 0.26561752,
+            "z": 3.79159747
+          },
+          "speedMps": 3.8008899,
+          "forwardSpeedMps": 3.80082187,
+          "portSpeedMps": -0.02274053,
+          "yawRad": 0.07592297,
+          "yawRateRadPerSecond": -0.00341815,
+          "kineticEnergyJ": 589290.4812
+        },
+        {
+          "timeSeconds": 5,
+          "velocityWorldMps": {
+            "x": 0.2671284,
+            "z": 3.74896164
+          },
+          "speedMps": 3.75846657,
+          "forwardSpeedMps": 3.75845696,
+          "portSpeedMps": -0.00850097,
+          "yawRad": 0.07339557,
+          "yawRateRadPerSecond": -0.00174429,
+          "kineticEnergyJ": 576206.0519
+        },
+        {
+          "timeSeconds": 6,
+          "velocityWorldMps": {
+            "x": 0.26548545,
+            "z": 3.70832243
+          },
+          "speedMps": 3.71781357,
+          "forwardSpeedMps": 3.71781259,
+          "portSpeedMps": -0.00270393,
+          "yawRad": 0.07219715,
+          "yawRateRadPerSecond": -0.00076027,
+          "kineticEnergyJ": 563807.6205
+        },
+        {
+          "timeSeconds": 7,
+          "velocityWorldMps": {
+            "x": 0.26291124,
+            "z": 3.66935044
+          },
+          "speedMps": 3.67875726,
+          "forwardSpeedMps": 3.6787572,
+          "portSpeedMps": -0.00064541,
+          "yawRad": 0.07170383,
+          "yawRateRadPerSecond": -0.00028984,
+          "kineticEnergyJ": 552023.8534
+        },
+        {
+          "timeSeconds": 8,
+          "velocityWorldMps": {
+            "x": 0.26018165,
+            "z": 3.63185066
+          },
+          "speedMps": 3.64115829,
+          "forwardSpeedMps": 3.64115829,
+          "portSpeedMps": -0.00003734,
+          "yawRad": 0.07152694,
+          "yawRateRadPerSecond": -0.00009438,
+          "kineticEnergyJ": 540797.5024
+        },
+        {
+          "timeSeconds": 9,
+          "velocityWorldMps": {
+            "x": 0.25752158,
+            "z": 3.59568643
+          },
+          "speedMps": 3.60489643,
+          "forwardSpeedMps": 3.60489643,
+          "portSpeedMps": 0.00008318,
+          "yawRad": 0.07147444,
+          "yawRateRadPerSecond": -0.00002334,
+          "kineticEnergyJ": 530079.6579
+        },
+        {
+          "timeSeconds": 10,
+          "velocityWorldMps": {
+            "x": 0.25497282,
+            "z": 3.56074903
+          },
+          "speedMps": 3.56986621,
+          "forwardSpeedMps": 3.56986621,
+          "portSpeedMps": 0.00007233,
+          "yawRad": 0.07146424,
+          "yawRateRadPerSecond": -0.00000171,
+          "kineticEnergyJ": 519827.7216
+        },
+        {
+          "timeSeconds": 11,
+          "velocityWorldMps": {
+            "x": 0.25252782,
+            "z": 3.52694572
+          },
+          "speedMps": 3.5359746,
+          "forwardSpeedMps": 3.5359746,
+          "portSpeedMps": 0.00004269,
+          "yawRad": 0.07146553,
+          "yawRateRadPerSecond": 0.00000284,
+          "kineticEnergyJ": 510004.2897
+        },
+        {
+          "timeSeconds": 12,
+          "velocityWorldMps": {
+            "x": 0.25017177,
+            "z": 3.49419483
+          },
+          "speedMps": 3.50313908,
+          "forwardSpeedMps": 3.50313908,
+          "portSpeedMps": 0.00002112,
+          "yawRad": 0.07146841,
+          "yawRateRadPerSecond": 0.0000026,
+          "kineticEnergyJ": 500576.3359
+        },
+        {
+          "timeSeconds": 13,
+          "velocityWorldMps": {
+            "x": 0.24789259,
+            "z": 3.46242354
+          },
+          "speedMps": 3.47128614,
+          "forwardSpeedMps": 3.47128614,
+          "portSpeedMps": 0.00000921,
+          "yawRad": 0.0714705,
+          "yawRateRadPerSecond": 0.00000159,
+          "kineticEnergyJ": 491514.5563
+        },
+        {
+          "timeSeconds": 14,
+          "velocityWorldMps": {
+            "x": 0.24568181,
+            "z": 3.43156651
+          },
+          "speedMps": 3.44035002,
+          "forwardSpeedMps": 3.44035002,
+          "portSpeedMps": 0.00000355,
+          "yawRad": 0.07147167,
+          "yawRateRadPerSecond": 8.1e-7,
+          "kineticEnergyJ": 482792.8331
+        },
+        {
+          "timeSeconds": 15,
+          "velocityWorldMps": {
+            "x": 0.24353342,
+            "z": 3.40156496
+          },
+          "speedMps": 3.41027165,
+          "forwardSpeedMps": 3.41027165,
+          "portSpeedMps": 0.00000117,
+          "yawRad": 0.07147223,
+          "yawRateRadPerSecond": 3.6e-7,
+          "kineticEnergyJ": 474387.791
+        },
+        {
+          "timeSeconds": 16,
+          "velocityWorldMps": {
+            "x": 0.24144286,
+            "z": 3.37236583
+          },
+          "speedMps": 3.38099777,
+          "forwardSpeedMps": 3.38099777,
+          "portSpeedMps": 2.8e-7,
+          "yawRad": 0.07147247,
+          "yawRateRadPerSecond": 1.5e-7,
+          "kineticEnergyJ": 466278.4279
+        },
+        {
+          "timeSeconds": 17,
+          "velocityWorldMps": {
+            "x": 0.2394064,
+            "z": 3.34392108
+          },
+          "speedMps": 3.35248022,
+          "forwardSpeedMps": 3.35248022,
+          "portSpeedMps": 1e-8,
+          "yawRad": 0.07147256,
+          "yawRateRadPerSecond": 5e-8,
+          "kineticEnergyJ": 458445.8042
+        },
+        {
+          "timeSeconds": 18,
+          "velocityWorldMps": {
+            "x": 0.23742084,
+            "z": 3.31618711
+          },
+          "speedMps": 3.32467526,
+          "forwardSpeedMps": 3.32467526,
+          "portSpeedMps": -5e-8,
+          "yawRad": 0.07147259,
+          "yawRateRadPerSecond": 1e-8,
+          "kineticEnergyJ": 450872.7825
+        },
+        {
+          "timeSeconds": 19,
+          "velocityWorldMps": {
+            "x": 0.23548331,
+            "z": 3.28912423
+          },
+          "speedMps": 3.29754311,
+          "forwardSpeedMps": 3.29754311,
+          "portSpeedMps": -4e-8,
+          "yawRad": 0.0714726,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 443543.8059
+        },
+        {
+          "timeSeconds": 20,
+          "velocityWorldMps": {
+            "x": 0.23359122,
+            "z": 3.26269617
+          },
+          "speedMps": 3.27104741,
+          "forwardSpeedMps": 3.27104741,
+          "portSpeedMps": -3e-8,
+          "yawRad": 0.07147259,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 436444.7093
+        }
+      ],
+      "finalResistance": {
+        "forceBodyN": {
+          "x": 0.00119233,
+          "z": -2264.57189071
+        },
+        "yawMomentNm": -0.00091139
+      },
+      "summary": {
+        "initialSpeedMps": 4,
+        "finalSpeedMps": 3.27104741,
+        "initialAbsolutePortSpeedMps": 0,
+        "finalAbsolutePortSpeedMps": 3e-8,
+        "initialAbsoluteYawRateRadPerSecond": 0.16,
+        "finalAbsoluteYawRateRadPerSecond": 0,
+        "initialKineticEnergyJ": 662429.3903,
+        "finalKineticEnergyJ": 436444.7093,
+        "maximumPositiveEnergyStepJ": 0,
+        "speedMonotonicNonIncreasing": true,
+        "encounterDisplacementM": 71.7980197,
+        "globalDistanceTravelledM": 2154.11438445
+      }
+    },
+    "captiveTow": {
+      "name": "4 m/s captive tow",
+      "configuration": {
+        "durationSeconds": 8,
+        "callerHz": 60,
+        "physicsHz": 240,
+        "voyageCompression": 30,
+        "mode": "captive-tow",
+        "initialVelocityWorldMps": {
+          "x": 1.557673369234602,
+          "z": 3.6842439760115404
+        },
+        "initialYawRad": 0.4,
+        "initialYawRateRadPerSecond": 0,
+        "towVelocityWorldMps": {
+          "x": 1.55767337,
+          "z": 3.68424398
+        },
+        "towYawRad": 0.4
+      },
+      "samples": [
+        {
+          "timeSeconds": 0,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 1,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 2,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 3,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 4,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 5,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 6,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 7,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        },
+        {
+          "timeSeconds": 8,
+          "velocityWorldMps": {
+            "x": 1.55767337,
+            "z": 3.68424398
+          },
+          "speedMps": 4,
+          "forwardSpeedMps": 4,
+          "portSpeedMps": 0,
+          "yawRad": 0.4,
+          "yawRateRadPerSecond": 0,
+          "kineticEnergyJ": 652642.7796
+        }
+      ],
+      "finalResistance": {
+        "forceBodyN": {
+          "x": 0,
+          "z": -4629.46907602
+        },
+        "yawMomentNm": 0
+      },
+      "summary": {
+        "initialSpeedMps": 4,
+        "finalSpeedMps": 4,
+        "initialAbsolutePortSpeedMps": 0,
+        "finalAbsolutePortSpeedMps": 0,
+        "initialAbsoluteYawRateRadPerSecond": 0,
+        "finalAbsoluteYawRateRadPerSecond": 0,
+        "initialKineticEnergyJ": 652642.7796,
+        "finalKineticEnergyJ": 652642.7796,
+        "maximumPositiveEnergyStepJ": 0,
+        "speedMonotonicNonIncreasing": true,
+        "encounterDisplacementM": 32,
+        "globalDistanceTravelledM": 960
+      }
+    }
+  },
+  "invariance": {
+    "callerRate": {
+      "durationSeconds": 12,
+      "firstCallerHz": 60,
+      "secondCallerHz": 120,
+      "velocityErrorMps": 0,
+      "yawErrorRad": 0,
+      "yawRateErrorRadPerSecond": 0,
+      "encounterDisplacementErrorM": 0
+    },
+    "voyageCompression": {
+      "durationSeconds": 10,
+      "firstCompression": 1,
+      "secondCompression": 30,
+      "localVelocityErrorMps": 0,
+      "localYawErrorRad": 0,
+      "encounterDisplacementErrorM": 0,
+      "globalDistanceRatio": 30.0000000045,
+      "expectedGlobalDistanceRatio": 30
+    }
+  }
+}

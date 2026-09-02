@@ -1,0 +1,4806 @@
+{
+  "formatVersion": 1,
+  "status": "S2a: sail forces at frozen trim drive the free hull through the external-force seam; rudder command, live trim and the full polar remain absent.",
+  "contract": {
+    "authority": "Sail geometry is derived from rig.ts corner nodes; the leeward normal is the drawn belly direction. No second geometry.",
+    "integration": "Per-sail quasi-steady aero at 240 Hz beside resistance; the wrench splits once into horizontal force + yaw moment and the BuoyantBody external wrench.",
+    "scope": "Captive straight-line force sweeps with per-sail breakdowns, free gust runs, and clock/domain invariance in flat water. The polar and added mass are S2b.",
+    "validationMeaning": "Signs, luffing, tack mirror symmetry, the generalised energy gate and invariance are validated; aero coefficients remain provisional."
+  },
+  "rigidBody": {
+    "massKg": 81580.34744897,
+    "yawInertiaKgM2": 776118.73289973
+  },
+  "sailPlan": {
+    "totalClothAreaM2": 201.468,
+    "windage": {
+      "areaM2": 17.109,
+      "coeYM": 9.992
+    },
+    "sails": [
+      {
+        "name": "mainsail",
+        "family": "boomGaff",
+        "camber": 0.085,
+        "areaM2": 57.605,
+        "coeM": {
+          "x": 1.587,
+          "y": 10.4862,
+          "z": -5.6892
+        },
+        "reefAreasM2": {
+          "reef1": 44.845,
+          "reef2": 33.682
+        }
+      },
+      {
+        "name": "foresail",
+        "family": "boomGaff",
+        "camber": 0.085,
+        "areaM2": 28.231,
+        "coeM": {
+          "x": 1.0409,
+          "y": 9.1677,
+          "z": 1.9739
+        },
+        "reefAreasM2": {
+          "reef1": 21.882
+        }
+      },
+      {
+        "name": "foreStaysail",
+        "family": "headsail",
+        "camber": 0.075,
+        "areaM2": 11.592,
+        "coeM": {
+          "x": 0.6354,
+          "y": 7.7906,
+          "z": 5.3371
+        },
+        "reefAreasM2": {}
+      },
+      {
+        "name": "jib",
+        "family": "headsail",
+        "camber": 0.07,
+        "areaM2": 16.269,
+        "coeM": {
+          "x": 0.6971,
+          "y": 9.4731,
+          "z": 6.9535
+        },
+        "reefAreasM2": {}
+      },
+      {
+        "name": "flyingJib",
+        "family": "headsail",
+        "camber": 0.065,
+        "areaM2": 22.211,
+        "coeM": {
+          "x": 0.9711,
+          "y": 10.4665,
+          "z": 8.6841
+        },
+        "reefAreasM2": {}
+      },
+      {
+        "name": "foreTopsail",
+        "family": "square",
+        "camber": 0.07,
+        "areaM2": 35.271,
+        "coeM": {
+          "x": 0,
+          "y": 15.1815,
+          "z": 3.4774
+        },
+        "reefAreasM2": {}
+      },
+      {
+        "name": "mainTopmastStaysail",
+        "family": "headsail",
+        "camber": 0.06,
+        "areaM2": 14.832,
+        "coeM": {
+          "x": 0.8791,
+          "y": 17.0333,
+          "z": -0.7449
+        },
+        "reefAreasM2": {}
+      },
+      {
+        "name": "mainGaffTopsail",
+        "family": "boomGaff",
+        "camber": 0.05,
+        "areaM2": 15.456,
+        "coeM": {
+          "x": 0.6365,
+          "y": 17.1491,
+          "z": -4.5209
+        },
+        "reefAreasM2": {}
+      }
+    ]
+  },
+  "captiveSweep": {
+    "windSpeedMps": 8,
+    "towSpeedMps": 2,
+    "settleSeconds": 20,
+    "entries": [
+      {
+        "windAngleOffBowDeg": -180,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 26.562,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 1.0901,
+            "dragCoefficient": 0.26,
+            "inducedDragCoefficient": 0.1456,
+            "forceModelN": {
+              "x": 1382.91,
+              "y": 50.712,
+              "z": 517.339
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 30.535,
+            "luffing": false,
+            "blanketFactor": 0.5011,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 1.0867,
+            "dragCoefficient": 0.321,
+            "inducedDragCoefficient": 0.1136,
+            "forceModelN": {
+              "x": 338.598,
+              "y": 11.716,
+              "z": 136.052
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 35.3,
+            "luffing": false,
+            "blanketFactor": 0.563,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.9728,
+            "dragCoefficient": 0.3606,
+            "inducedDragCoefficient": 0.0536,
+            "forceModelN": {
+              "x": 128.15,
+              "y": 56.352,
+              "z": 59.608
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 41.078,
+            "luffing": false,
+            "blanketFactor": 0.5,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.8824,
+            "dragCoefficient": 0.4545,
+            "inducedDragCoefficient": 0.0281,
+            "forceModelN": {
+              "x": 144.508,
+              "y": 64.519,
+              "z": 86.604
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 45.422,
+            "luffing": false,
+            "blanketFactor": 0.5,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.7924,
+            "dragCoefficient": 0.5271,
+            "inducedDragCoefficient": 0.0278,
+            "forceModelN": {
+              "x": 150.011,
+              "y": 123.187,
+              "z": 135.775
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 74.241,
+            "luffing": false,
+            "blanketFactor": 0.5619,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.1913,
+            "dragCoefficient": 1.1152,
+            "inducedDragCoefficient": 0.012,
+            "forceModelN": {
+              "x": -79.828,
+              "y": 29.969,
+              "z": 492.317
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 28.041,
+            "luffing": false,
+            "blanketFactor": 0.5,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.9994,
+            "dragCoefficient": 0.2522,
+            "inducedDragCoefficient": 0.1049,
+            "forceModelN": {
+              "x": 143.013,
+              "y": 78.94,
+              "z": 58.586
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 29.862,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.864,
+            "dragCoefficient": 0.3103,
+            "inducedDragCoefficient": 0.0519,
+            "forceModelN": {
+              "x": 293.659,
+              "y": 16.232,
+              "z": 124.27
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -0.048,
+          "y": 0.994,
+          "z": 377.262
+        },
+        "totals": {
+          "driveForwardN": 1987.812,
+          "sideForceN": 2500.973,
+          "heelTorqueNm": -22729.609,
+          "yawMomentNm": -7658.53
+        },
+        "steadyHeelDeg": -2.7626,
+        "luffingCount": 0
+      },
+      {
+        "windAngleOffBowDeg": -165,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 46.415,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.8779,
+            "dragCoefficient": 0.6009,
+            "inducedDragCoefficient": 0.0944,
+            "forceModelN": {
+              "x": 1385.965,
+              "y": 47.999,
+              "z": 467.278
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 50.387,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.7957,
+            "dragCoefficient": 0.6731,
+            "inducedDragCoefficient": 0.0609,
+            "forceModelN": {
+              "x": 638.372,
+              "y": 20.706,
+              "z": 270.055
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 53.505,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.6684,
+            "dragCoefficient": 0.6604,
+            "inducedDragCoefficient": 0.0253,
+            "forceModelN": {
+              "x": 201.436,
+              "y": 95.957,
+              "z": 116.965
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 59.101,
+            "luffing": false,
+            "blanketFactor": 0.9846,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.5298,
+            "dragCoefficient": 0.7468,
+            "inducedDragCoefficient": 0.0101,
+            "forceModelN": {
+              "x": 242.168,
+              "y": 114.363,
+              "z": 202.576
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 59.725,
+            "luffing": false,
+            "blanketFactor": 0.9284,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.5031,
+            "dragCoefficient": 0.756,
+            "inducedDragCoefficient": 0.0112,
+            "forceModelN": {
+              "x": 238.149,
+              "y": 207.206,
+              "z": 290.685
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 55.153,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.5154,
+            "dragCoefficient": 0.8245,
+            "inducedDragCoefficient": 0.0869,
+            "forceModelN": {
+              "x": -139.686,
+              "y": 72.201,
+              "z": 822.158
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 45.499,
+            "luffing": false,
+            "blanketFactor": 0.626,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.8217,
+            "dragCoefficient": 0.5284,
+            "inducedDragCoefficient": 0.0709,
+            "forceModelN": {
+              "x": 173.63,
+              "y": 104.074,
+              "z": 69.29
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 49.712,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.6431,
+            "dragCoefficient": 0.661,
+            "inducedDragCoefficient": 0.0287,
+            "forceModelN": {
+              "x": 292.979,
+              "y": 16.209,
+              "z": 151.539
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 131.838,
+          "y": 9.132,
+          "z": 365.534
+        },
+        "totals": {
+          "driveForwardN": 2756.08,
+          "sideForceN": 3164.851,
+          "heelTorqueNm": -27425.244,
+          "yawMomentNm": -6124.853
+        },
+        "steadyHeelDeg": -3.3991,
+        "luffingCount": 0
+      },
+      {
+        "windAngleOffBowDeg": -150,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 65.642,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.4287,
+            "dragCoefficient": 0.9214,
+            "inducedDragCoefficient": 0.0225,
+            "forceModelN": {
+              "x": 1314.808,
+              "y": 48.647,
+              "z": 658.52
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 69.6,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.343,
+            "dragCoefficient": 0.9724,
+            "inducedDragCoefficient": 0.0113,
+            "forceModelN": {
+              "x": 615.681,
+              "y": 22.427,
+              "z": 381.828
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 68.674,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.3351,
+            "dragCoefficient": 0.873,
+            "inducedDragCoefficient": 0.0064,
+            "forceModelN": {
+              "x": 200.414,
+              "y": 86.908,
+              "z": 156.824
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 72.804,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.2524,
+            "dragCoefficient": 0.9161,
+            "inducedDragCoefficient": 0.0023,
+            "forceModelN": {
+              "x": 261.329,
+              "y": 107.057,
+              "z": 257.007
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 65.769,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.3759,
+            "dragCoefficient": 0.8383,
+            "inducedDragCoefficient": 0.0062,
+            "forceModelN": {
+              "x": 274.97,
+              "y": 223.833,
+              "z": 360.815
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 36.117,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.7872,
+            "dragCoefficient": 0.4496,
+            "inducedDragCoefficient": 0.2028,
+            "forceModelN": {
+              "x": -175.477,
+              "y": 83.669,
+              "z": 866.113
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 60.24,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.511,
+            "dragCoefficient": 0.7635,
+            "inducedDragCoefficient": 0.0274,
+            "forceModelN": {
+              "x": 266.492,
+              "y": 158.839,
+              "z": 147.879
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 68.997,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.2821,
+            "dragCoefficient": 0.9651,
+            "inducedDragCoefficient": 0.0055,
+            "forceModelN": {
+              "x": 315.117,
+              "y": 18.047,
+              "z": 219.517
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 265.524,
+          "y": 17.009,
+          "z": 327.801
+        },
+        "totals": {
+          "driveForwardN": 3376.303,
+          "sideForceN": 3338.857,
+          "heelTorqueNm": -29402.771,
+          "yawMomentNm": -6415.762
+        },
+        "steadyHeelDeg": -3.3501,
+        "luffingCount": 0
+      },
+      {
+        "windAngleOffBowDeg": -135,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 83.477,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.1348,
+            "dragCoefficient": 1.0865,
+            "inducedDragCoefficient": 0.0022,
+            "forceModelN": {
+              "x": 1573.726,
+              "y": 53.727,
+              "z": 772.831
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 87.006,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.1149,
+            "dragCoefficient": 1.0971,
+            "inducedDragCoefficient": 0.0013,
+            "forceModelN": {
+              "x": 762.118,
+              "y": -1.96,
+              "z": 410.426
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 73.703,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.2433,
+            "dragCoefficient": 0.9244,
+            "inducedDragCoefficient": 0.0034,
+            "forceModelN": {
+              "x": 234.191,
+              "y": 93.799,
+              "z": 177.986
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 72.226,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.2622,
+            "dragCoefficient": 0.9105,
+            "inducedDragCoefficient": 0.0025,
+            "forceModelN": {
+              "x": 302.819,
+              "y": 122.154,
+              "z": 278.321
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 60.313,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.4904,
+            "dragCoefficient": 0.7645,
+            "inducedDragCoefficient": 0.0106,
+            "forceModelN": {
+              "x": 287.101,
+              "y": 269.095,
+              "z": 406.16
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 18.225,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.7197,
+            "dragCoefficient": 0.1625,
+            "inducedDragCoefficient": 0.1695,
+            "forceModelN": {
+              "x": -113.167,
+              "y": 76.755,
+              "z": 763.34
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 68.286,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.339,
+            "dragCoefficient": 0.8686,
+            "inducedDragCoefficient": 0.0121,
+            "forceModelN": {
+              "x": 301.053,
+              "y": 161.612,
+              "z": 184.16
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 86.958,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.0913,
+            "dragCoefficient": 1.097,
+            "inducedDragCoefficient": 0.0006,
+            "forceModelN": {
+              "x": 414.902,
+              "y": 18.833,
+              "z": 224.478
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 398.201,
+          "y": 29.808,
+          "z": 258.132
+        },
+        "totals": {
+          "driveForwardN": 3475.835,
+          "sideForceN": 4160.945,
+          "heelTorqueNm": -37221.549,
+          "yawMomentNm": -7678.898
+        },
+        "steadyHeelDeg": -4.1142,
+        "luffingCount": 0
+      },
+      {
+        "windAngleOffBowDeg": -120,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 79.146,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.1792,
+            "dragCoefficient": 1.0628,
+            "inducedDragCoefficient": 0.0039,
+            "forceModelN": {
+              "x": 1788.698,
+              "y": 77.567,
+              "z": 849.272
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 75.259,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.2366,
+            "dragCoefficient": 1.032,
+            "inducedDragCoefficient": 0.0054,
+            "forceModelN": {
+              "x": 836.979,
+              "y": 35.427,
+              "z": 459.674
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 64.45,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.4231,
+            "dragCoefficient": 0.8214,
+            "inducedDragCoefficient": 0.0101,
+            "forceModelN": {
+              "x": 251.332,
+              "y": 117.491,
+              "z": 203.626
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 60.007,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.5098,
+            "dragCoefficient": 0.7601,
+            "inducedDragCoefficient": 0.0094,
+            "forceModelN": {
+              "x": 306.666,
+              "y": 157.686,
+              "z": 330.543
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 48.871,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.7296,
+            "dragCoefficient": 0.5847,
+            "inducedDragCoefficient": 0.0235,
+            "forceModelN": {
+              "x": 271.14,
+              "y": 336.441,
+              "z": 513.313
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 1.615,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0,
+            "dragCoefficient": 0.05,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": 53.641,
+              "y": 4.596,
+              "z": 15.559
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 64.785,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.4113,
+            "dragCoefficient": 0.8258,
+            "inducedDragCoefficient": 0.0178,
+            "forceModelN": {
+              "x": 337.643,
+              "y": 192.959,
+              "z": 210.416
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 76.011,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.178,
+            "dragCoefficient": 1.0386,
+            "inducedDragCoefficient": 0.0022,
+            "forceModelN": {
+              "x": 465.911,
+              "y": 30.565,
+              "z": 225.401
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 521.652,
+          "y": 44.636,
+          "z": 151.137
+        },
+        "totals": {
+          "driveForwardN": 2958.94,
+          "sideForceN": 4833.661,
+          "heelTorqueNm": -43930.304,
+          "yawMomentNm": -8217.748
+        },
+        "steadyHeelDeg": -4.837,
+        "luffingCount": 1
+      },
+      {
+        "windAngleOffBowDeg": -105,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 63.68,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.4744,
+            "dragCoefficient": 0.8936,
+            "inducedDragCoefficient": 0.0276,
+            "forceModelN": {
+              "x": 1931.664,
+              "y": 67.039,
+              "z": 1009.475
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 59.74,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.5715,
+            "dragCoefficient": 0.8334,
+            "inducedDragCoefficient": 0.0314,
+            "forceModelN": {
+              "x": 888.329,
+              "y": 24.275,
+              "z": 594.65
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 51.225,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.7177,
+            "dragCoefficient": 0.6235,
+            "inducedDragCoefficient": 0.0292,
+            "forceModelN": {
+              "x": 261.047,
+              "y": 150.255,
+              "z": 279.627
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 46.025,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.8021,
+            "dragCoefficient": 0.5372,
+            "inducedDragCoefficient": 0.0232,
+            "forceModelN": {
+              "x": 312,
+              "y": 196.377,
+              "z": 449.896
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 36.024,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.9196,
+            "dragCoefficient": 0.372,
+            "inducedDragCoefficient": 0.0374,
+            "forceModelN": {
+              "x": 290.807,
+              "y": 391.96,
+              "z": 654.989
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -13.814,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.2898,
+            "dragCoefficient": 0.1156,
+            "inducedDragCoefficient": 0.0275,
+            "forceModelN": {
+              "x": 191.03,
+              "y": -28.096,
+              "z": -368.602
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 54.369,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.6421,
+            "dragCoefficient": 0.6742,
+            "inducedDragCoefficient": 0.0433,
+            "forceModelN": {
+              "x": 364.46,
+              "y": 245.576,
+              "z": 280.252
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 60.426,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.4399,
+            "dragCoefficient": 0.8442,
+            "inducedDragCoefficient": 0.0135,
+            "forceModelN": {
+              "x": 481.02,
+              "y": 28.587,
+              "z": 252.013
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 623.042,
+          "y": 58.571,
+          "z": 5.714
+        },
+        "totals": {
+          "driveForwardN": 3158.013,
+          "sideForceN": 5343.4,
+          "heelTorqueNm": -48964.15,
+          "yawMomentNm": -8908.858
+        },
+        "steadyHeelDeg": -5.3691,
+        "luffingCount": 1
+      },
+      {
+        "windAngleOffBowDeg": -90,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 49.105,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.8214,
+            "dragCoefficient": 0.65,
+            "inducedDragCoefficient": 0.0826,
+            "forceModelN": {
+              "x": 2186.601,
+              "y": 45.121,
+              "z": 1474.318
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 45.159,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.9059,
+            "dragCoefficient": 0.5779,
+            "inducedDragCoefficient": 0.079,
+            "forceModelN": {
+              "x": 1010.14,
+              "y": 14.248,
+              "z": 840.91
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 37.924,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.9454,
+            "dragCoefficient": 0.4026,
+            "inducedDragCoefficient": 0.0507,
+            "forceModelN": {
+              "x": 299.994,
+              "y": 175.952,
+              "z": 367.275
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 32.427,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.9713,
+            "dragCoefficient": 0.316,
+            "inducedDragCoefficient": 0.034,
+            "forceModelN": {
+              "x": 361.516,
+              "y": 220.89,
+              "z": 555.889
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 23.393,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.9416,
+            "dragCoefficient": 0.1913,
+            "inducedDragCoefficient": 0.0392,
+            "forceModelN": {
+              "x": 356.456,
+              "y": 405.813,
+              "z": 714.61
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -28.153,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.4022,
+            "dragCoefficient": 0.306,
+            "inducedDragCoefficient": 0.0529,
+            "forceModelN": {
+              "x": 375.584,
+              "y": -41.839,
+              "z": -694.343
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 42.444,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.873,
+            "dragCoefficient": 0.4772,
+            "inducedDragCoefficient": 0.08,
+            "forceModelN": {
+              "x": 419.625,
+              "y": 295.622,
+              "z": 379.756
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 45.828,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.7081,
+            "dragCoefficient": 0.5902,
+            "inducedDragCoefficient": 0.0349,
+            "forceModelN": {
+              "x": 500.033,
+              "y": 24.438,
+              "z": 342.823
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 687.271,
+          "y": 74.828,
+          "z": -172.832
+        },
+        "totals": {
+          "driveForwardN": 3808.406,
+          "sideForceN": 6197.22,
+          "heelTorqueNm": -57274.922,
+          "yawMomentNm": -10256.775
+        },
+        "steadyHeelDeg": -6.2683,
+        "luffingCount": 1
+      },
+      {
+        "windAngleOffBowDeg": -75,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 35.325,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 1.0488,
+            "dragCoefficient": 0.401,
+            "inducedDragCoefficient": 0.1347,
+            "forceModelN": {
+              "x": 2597.058,
+              "y": 51.974,
+              "z": 1810.564
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 31.378,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 1.0827,
+            "dragCoefficient": 0.3347,
+            "inducedDragCoefficient": 0.1128,
+            "forceModelN": {
+              "x": 1191.179,
+              "y": 19.158,
+              "z": 981.807
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 25.008,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 1.0045,
+            "dragCoefficient": 0.2116,
+            "inducedDragCoefficient": 0.0572,
+            "forceModelN": {
+              "x": 353.094,
+              "y": 185.364,
+              "z": 397.058
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 19.362,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.8916,
+            "dragCoefficient": 0.1455,
+            "inducedDragCoefficient": 0.0287,
+            "forceModelN": {
+              "x": 400.937,
+              "y": 209.197,
+              "z": 520.998
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 11.168,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.5824,
+            "dragCoefficient": 0.076,
+            "inducedDragCoefficient": 0.015,
+            "forceModelN": {
+              "x": 311.863,
+              "y": 271.802,
+              "z": 449.732
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -41.597,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.3566,
+            "dragCoefficient": 0.5569,
+            "inducedDragCoefficient": 0.0416,
+            "forceModelN": {
+              "x": 609.026,
+              "y": -23.198,
+              "z": -970.591
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 30.343,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.9938,
+            "dragCoefficient": 0.285,
+            "inducedDragCoefficient": 0.1037,
+            "forceModelN": {
+              "x": 497.627,
+              "y": 324.943,
+              "z": 437.536
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 32.036,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.8557,
+            "dragCoefficient": 0.3454,
+            "inducedDragCoefficient": 0.0509,
+            "forceModelN": {
+              "x": 540.959,
+              "y": 23.838,
+              "z": 410.769
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 701.618,
+          "y": 89.279,
+          "z": -372.567
+        },
+        "totals": {
+          "driveForwardN": 3665.306,
+          "sideForceN": 7203.36,
+          "heelTorqueNm": -67470.366,
+          "yawMomentNm": -12088.11
+        },
+        "steadyHeelDeg": -7.3625,
+        "luffingCount": 1
+      },
+      {
+        "windAngleOffBowDeg": -60,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 22.273,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 1.0495,
+            "dragCoefficient": 0.2008,
+            "inducedDragCoefficient": 0.1349,
+            "forceModelN": {
+              "x": 2791.421,
+              "y": 84.737,
+              "z": 1689.672
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 18.32,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.9578,
+            "dragCoefficient": 0.1537,
+            "inducedDragCoefficient": 0.0883,
+            "forceModelN": {
+              "x": 1178.033,
+              "y": 33.939,
+              "z": 817.336
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 12.289,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.6629,
+            "dragCoefficient": 0.0835,
+            "inducedDragCoefficient": 0.0249,
+            "forceModelN": {
+              "x": 286.003,
+              "y": 131.116,
+              "z": 247.812
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 6.578,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.1457,
+            "dragCoefficient": 0.051,
+            "inducedDragCoefficient": 0.0008,
+            "forceModelN": {
+              "x": 106.372,
+              "y": 40.572,
+              "z": 61.503
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -0.994,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.0008,
+            "dragCoefficient": 0.0498,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": 42.125,
+              "y": 4.967,
+              "z": -37.925
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -54.469,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.2575,
+            "dragCoefficient": 0.8116,
+            "inducedDragCoefficient": 0.0217,
+            "forceModelN": {
+              "x": 849.561,
+              "y": 4.396,
+              "z": -1333.92
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 18.092,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.8687,
+            "dragCoefficient": 0.1326,
+            "inducedDragCoefficient": 0.0792,
+            "forceModelN": {
+              "x": 496.674,
+              "y": 292.132,
+              "z": 364.231
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 18.962,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.7747,
+            "dragCoefficient": 0.1609,
+            "inducedDragCoefficient": 0.0417,
+            "forceModelN": {
+              "x": 524.762,
+              "y": 26.563,
+              "z": 358.737
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 660.18,
+          "y": 83.427,
+          "z": -576.279
+        },
+        "totals": {
+          "driveForwardN": 1591.168,
+          "sideForceN": 6935.129,
+          "heelTorqueNm": -67049.074,
+          "yawMomentNm": -13898.273
+        },
+        "steadyHeelDeg": -7.2726,
+        "luffingCount": 3
+      },
+      {
+        "windAngleOffBowDeg": -45,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 9.788,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.5858,
+            "dragCoefficient": 0.0802,
+            "inducedDragCoefficient": 0.042,
+            "forceModelN": {
+              "x": 1737.72,
+              "y": 65.58,
+              "z": 798.125
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 5.828,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.0808,
+            "dragCoefficient": 0.0524,
+            "inducedDragCoefficient": 0.0006,
+            "forceModelN": {
+              "x": 151.063,
+              "y": 6.621,
+              "z": 8.36
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -0.515,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.0001,
+            "dragCoefficient": 0.0499,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": 18.995,
+              "y": 1.244,
+              "z": -25.895
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -6.239,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.143,
+            "dragCoefficient": 0.0507,
+            "inducedDragCoefficient": 0.0007,
+            "forceModelN": {
+              "x": -70.17,
+              "y": -38.722,
+              "z": -111.393
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -13.506,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.527,
+            "dragCoefficient": 0.0924,
+            "inducedDragCoefficient": 0.0123,
+            "forceModelN": {
+              "x": -378.315,
+              "y": -299.194,
+              "z": -453.96
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -67.267,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.1447,
+            "dragCoefficient": 1.0283,
+            "inducedDragCoefficient": 0.0069,
+            "forceModelN": {
+              "x": 989.513,
+              "y": -16.748,
+              "z": -1791.002
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 5.482,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.0479,
+            "dragCoefficient": 0.0498,
+            "inducedDragCoefficient": 0.0002,
+            "forceModelN": {
+              "x": 52.79,
+              "y": 18.4,
+              "z": -11.414
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 6.431,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.114,
+            "dragCoefficient": 0.0547,
+            "inducedDragCoefficient": 0.0009,
+            "forceModelN": {
+              "x": 106.872,
+              "y": 6.194,
+              "z": 19.734
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 563.105,
+          "y": 37.537,
+          "z": -763.87
+        },
+        "totals": {
+          "driveForwardN": -2331.316,
+          "sideForceN": 3171.573,
+          "heelTorqueNm": -32671.496,
+          "yawMomentNm": -8318.865
+        },
+        "steadyHeelDeg": -3.5374,
+        "luffingCount": 7
+      },
+      {
+        "windAngleOffBowDeg": -30,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -2.524,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.0129,
+            "dragCoefficient": 0.0502,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": 29.643,
+              "y": -0.251,
+              "z": -172.681
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -6.481,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.1594,
+            "dragCoefficient": 0.0575,
+            "inducedDragCoefficient": 0.0024,
+            "forceModelN": {
+              "x": -200.075,
+              "y": -7.535,
+              "z": -198.391
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -12.69,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.5216,
+            "dragCoefficient": 0.0863,
+            "inducedDragCoefficient": 0.0154,
+            "forceModelN": {
+              "x": -275.71,
+              "y": -119.673,
+              "z": -200.224
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -18.447,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.6678,
+            "dragCoefficient": 0.1361,
+            "inducedDragCoefficient": 0.0161,
+            "forceModelN": {
+              "x": -489.386,
+              "y": -207.259,
+              "z": -379.938
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -25.144,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.7407,
+            "dragCoefficient": 0.2133,
+            "inducedDragCoefficient": 0.0242,
+            "forceModelN": {
+              "x": -636.241,
+              "y": -476.365,
+              "z": -627.692
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -79.141,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.0662,
+            "dragCoefficient": 1.1592,
+            "inducedDragCoefficient": 0.0014,
+            "forceModelN": {
+              "x": 876.649,
+              "y": -57.479,
+              "z": -2237.43
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -6.395,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.1368,
+            "dragCoefficient": 0.051,
+            "inducedDragCoefficient": 0.002,
+            "forceModelN": {
+              "x": -78.992,
+              "y": -50.845,
+              "z": -86.295
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -5.902,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.1057,
+            "dragCoefficient": 0.0554,
+            "inducedDragCoefficient": 0.0008,
+            "forceModelN": {
+              "x": -66.483,
+              "y": -4.348,
+              "z": -85.612
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 410.079,
+          "y": 7.128,
+          "z": -915.339
+        },
+        "totals": {
+          "driveForwardN": -4903.603,
+          "sideForceN": -430.517,
+          "heelTorqueNm": -1469.088,
+          "yawMomentNm": -5297.07
+        },
+        "steadyHeelDeg": -0.1598,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": -15,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -14.629,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.5814,
+            "dragCoefficient": 0.117,
+            "inducedDragCoefficient": 0.0414,
+            "forceModelN": {
+              "x": -1868.271,
+              "y": -69.568,
+              "z": -963.498
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -18.589,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.6824,
+            "dragCoefficient": 0.1567,
+            "inducedDragCoefficient": 0.0448,
+            "forceModelN": {
+              "x": -1069.233,
+              "y": -36.898,
+              "z": -580.312
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -24.309,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.7655,
+            "dragCoefficient": 0.2027,
+            "inducedDragCoefficient": 0.0332,
+            "forceModelN": {
+              "x": -456.716,
+              "y": -193.666,
+              "z": -265.454
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -30.094,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.7559,
+            "dragCoefficient": 0.2814,
+            "inducedDragCoefficient": 0.0206,
+            "forceModelN": {
+              "x": -620.452,
+              "y": -264.307,
+              "z": -434.903
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -35.889,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.7126,
+            "dragCoefficient": 0.3699,
+            "inducedDragCoefficient": 0.0224,
+            "forceModelN": {
+              "x": -676.49,
+              "y": -527.036,
+              "z": -680.569
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -84.123,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.048,
+            "dragCoefficient": 1.1879,
+            "inducedDragCoefficient": 0.0008,
+            "forceModelN": {
+              "x": 580.766,
+              "y": -106.49,
+              "z": -2473.344
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -17.6,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.5851,
+            "dragCoefficient": 0.1278,
+            "inducedDragCoefficient": 0.0359,
+            "forceModelN": {
+              "x": -430.011,
+              "y": -235.328,
+              "z": -240.741
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -17.992,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.5573,
+            "dragCoefficient": 0.1502,
+            "inducedDragCoefficient": 0.0216,
+            "forceModelN": {
+              "x": -476.334,
+              "y": -26.385,
+              "z": -266.185
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 215.882,
+          "y": -7.177,
+          "z": -1013.771
+        },
+        "totals": {
+          "driveForwardN": -6918.777,
+          "sideForceN": -4800.86,
+          "heelTorqueNm": 40185.645,
+          "yawMomentNm": -1043.394
+        },
+        "steadyHeelDeg": 4.3868,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 0,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -26.511,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.7728,
+            "dragCoefficient": 0.2592,
+            "inducedDragCoefficient": 0.0732,
+            "forceModelN": {
+              "x": -2721.9,
+              "y": -102.642,
+              "z": -1179.583
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -30.478,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.7679,
+            "dragCoefficient": 0.3201,
+            "inducedDragCoefficient": 0.0567,
+            "forceModelN": {
+              "x": -1325.454,
+              "y": -47.838,
+              "z": -654.81
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -34.977,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.7478,
+            "dragCoefficient": 0.3555,
+            "inducedDragCoefficient": 0.0317,
+            "forceModelN": {
+              "x": -484.106,
+              "y": -214.232,
+              "z": -277.901
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -40.758,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.6826,
+            "dragCoefficient": 0.4492,
+            "inducedDragCoefficient": 0.0168,
+            "forceModelN": {
+              "x": -617.976,
+              "y": -277.744,
+              "z": -468.359
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -44.947,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.6195,
+            "dragCoefficient": 0.5191,
+            "inducedDragCoefficient": 0.017,
+            "forceModelN": {
+              "x": -645.876,
+              "y": -532.385,
+              "z": -735.884
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -73.988,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.095,
+            "dragCoefficient": 1.1125,
+            "inducedDragCoefficient": 0.003,
+            "forceModelN": {
+              "x": 196.226,
+              "y": -54.556,
+              "z": -2410.042
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -27.697,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.6848,
+            "dragCoefficient": 0.2474,
+            "inducedDragCoefficient": 0.0492,
+            "forceModelN": {
+              "x": -542.571,
+              "y": -300.432,
+              "z": -273.997
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -29.824,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.6409,
+            "dragCoefficient": 0.3097,
+            "inducedDragCoefficient": 0.0286,
+            "forceModelN": {
+              "x": -604.7,
+              "y": -33.963,
+              "z": -322.359
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": 1.215,
+          "y": 10.265,
+          "z": -1047.903
+        },
+        "totals": {
+          "driveForwardN": -7370.838,
+          "sideForceN": -6745.141,
+          "heelTorqueNm": 59632.143,
+          "yawMomentNm": -196.733
+        },
+        "steadyHeelDeg": 6.7516,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 15,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -38.335,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.719,
+            "dragCoefficient": 0.454,
+            "inducedDragCoefficient": 0.0633,
+            "forceModelN": {
+              "x": -2819.405,
+              "y": -112.315,
+              "z": -1259.617
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -42.298,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.6767,
+            "dragCoefficient": 0.5256,
+            "inducedDragCoefficient": 0.0441,
+            "forceModelN": {
+              "x": -1329.298,
+              "y": -50.155,
+              "z": -719.509
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -44.922,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.6448,
+            "dragCoefficient": 0.5187,
+            "inducedDragCoefficient": 0.0236,
+            "forceModelN": {
+              "x": -462.984,
+              "y": -213.014,
+              "z": -300.259
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -50.575,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.5497,
+            "dragCoefficient": 0.6128,
+            "inducedDragCoefficient": 0.0109,
+            "forceModelN": {
+              "x": -577.574,
+              "y": -264.235,
+              "z": -517.325
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -52.29,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.5119,
+            "dragCoefficient": 0.6408,
+            "inducedDragCoefficient": 0.0116,
+            "forceModelN": {
+              "x": -607.73,
+              "y": -502.773,
+              "z": -788.755
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -62.197,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.1882,
+            "dragCoefficient": 0.9498,
+            "inducedDragCoefficient": 0.0116,
+            "forceModelN": {
+              "x": -41.489,
+              "y": -35.404,
+              "z": -2091.482
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -37.075,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.6469,
+            "dragCoefficient": 0.3889,
+            "inducedDragCoefficient": 0.0439,
+            "forceModelN": {
+              "x": -551.798,
+              "y": -312.562,
+              "z": -293.918
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -41.606,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.5702,
+            "dragCoefficient": 0.5129,
+            "inducedDragCoefficient": 0.0226,
+            "forceModelN": {
+              "x": -622.541,
+              "y": -33.391,
+              "z": -383.781
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -212.702,
+          "y": 37.742,
+          "z": -1013.766
+        },
+        "totals": {
+          "driveForwardN": -7368.413,
+          "sideForceN": -7225.52,
+          "heelTorqueNm": 65065.897,
+          "yawMomentNm": -312.338
+        },
+        "steadyHeelDeg": 7.4377,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 30,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -50.192,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.5653,
+            "dragCoefficient": 0.6696,
+            "inducedDragCoefficient": 0.0391,
+            "forceModelN": {
+              "x": -2702.886,
+              "y": -92.362,
+              "z": -1430.781
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -54.137,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.5003,
+            "dragCoefficient": 0.7396,
+            "inducedDragCoefficient": 0.0241,
+            "forceModelN": {
+              "x": -1262.846,
+              "y": -35.516,
+              "z": -827.494
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -54.016,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.5036,
+            "dragCoefficient": 0.6686,
+            "inducedDragCoefficient": 0.0144,
+            "forceModelN": {
+              "x": -431.901,
+              "y": -192.077,
+              "z": -329.881
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -59.216,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.4058,
+            "dragCoefficient": 0.7485,
+            "inducedDragCoefficient": 0.0059,
+            "forceModelN": {
+              "x": -548.112,
+              "y": -228.508,
+              "z": -560.586
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -57.33,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.4293,
+            "dragCoefficient": 0.7203,
+            "inducedDragCoefficient": 0.0081,
+            "forceModelN": {
+              "x": -592.112,
+              "y": -457.104,
+              "z": -806.838
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -50.173,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.2944,
+            "dragCoefficient": 0.7283,
+            "inducedDragCoefficient": 0.0284,
+            "forceModelN": {
+              "x": -91.79,
+              "y": -40.156,
+              "z": -1674.258
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -45.7,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.5604,
+            "dragCoefficient": 0.5317,
+            "inducedDragCoefficient": 0.033,
+            "forceModelN": {
+              "x": -534.629,
+              "y": -297.938,
+              "z": -320.805
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -53.384,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.4272,
+            "dragCoefficient": 0.7265,
+            "inducedDragCoefficient": 0.0127,
+            "forceModelN": {
+              "x": -620.4,
+              "y": -22.19,
+              "z": -460.115
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -405.634,
+          "y": 60.976,
+          "z": -915.317
+        },
+        "totals": {
+          "driveForwardN": -7326.076,
+          "sideForceN": -7190.31,
+          "heelTorqueNm": 65130.877,
+          "yawMomentNm": 73.064
+        },
+        "steadyHeelDeg": 7.3249,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 45,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -62.106,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.363,
+            "dragCoefficient": 0.8702,
+            "inducedDragCoefficient": 0.0161,
+            "forceModelN": {
+              "x": -2591.797,
+              "y": -30.331,
+              "z": -1628.069
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -65.98,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.2984,
+            "dragCoefficient": 0.926,
+            "inducedDragCoefficient": 0.0086,
+            "forceModelN": {
+              "x": -1231.924,
+              "y": -1.231,
+              "z": -918.617
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -61.381,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.3763,
+            "dragCoefficient": 0.7798,
+            "inducedDragCoefficient": 0.008,
+            "forceModelN": {
+              "x": -414.555,
+              "y": -161.253,
+              "z": -342.793
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -65.328,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.3038,
+            "dragCoefficient": 0.8327,
+            "inducedDragCoefficient": 0.0033,
+            "forceModelN": {
+              "x": -544.687,
+              "y": -189.573,
+              "z": -558.674
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -58.854,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.4038,
+            "dragCoefficient": 0.7432,
+            "inducedDragCoefficient": 0.0072,
+            "forceModelN": {
+              "x": -581.232,
+              "y": -421.104,
+              "z": -766.424
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -37.9,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.3764,
+            "dragCoefficient": 0.484,
+            "inducedDragCoefficient": 0.0464,
+            "forceModelN": {
+              "x": -32.712,
+              "y": -51.774,
+              "z": -1270.69
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -53.013,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.46,
+            "dragCoefficient": 0.6525,
+            "inducedDragCoefficient": 0.0222,
+            "forceModelN": {
+              "x": -516.432,
+              "y": -264.161,
+              "z": -338.676
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -65.128,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.26,
+            "dragCoefficient": 0.9143,
+            "inducedDragCoefficient": 0.0047,
+            "forceModelN": {
+              "x": -638.672,
+              "y": -0.75,
+              "z": -512.074
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -559.158,
+          "y": 76.68,
+          "z": -763.843
+        },
+        "totals": {
+          "driveForwardN": -7099.859,
+          "sideForceN": -7111.168,
+          "heelTorqueNm": 64446.939,
+          "yawMomentNm": 861.021
+        },
+        "steadyHeelDeg": 7.0995,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 60,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -73.707,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.186,
+            "dragCoefficient": 1.0174,
+            "inducedDragCoefficient": 0.0042,
+            "forceModelN": {
+              "x": -2609.759,
+              "y": 47.026,
+              "z": -1628.608
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -77.179,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.146,
+            "dragCoefficient": 1.0483,
+            "inducedDragCoefficient": 0.0021,
+            "forceModelN": {
+              "x": -1266.691,
+              "y": 29.333,
+              "z": -875.177
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -64.927,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.3164,
+            "dragCoefficient": 0.8276,
+            "inducedDragCoefficient": 0.0057,
+            "forceModelN": {
+              "x": -402.659,
+              "y": -137.352,
+              "z": -318.565
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -66.299,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.2883,
+            "dragCoefficient": 0.8449,
+            "inducedDragCoefficient": 0.003,
+            "forceModelN": {
+              "x": -532.743,
+              "y": -169.158,
+              "z": -499.247
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -55.971,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.4519,
+            "dragCoefficient": 0.6994,
+            "inducedDragCoefficient": 0.009,
+            "forceModelN": {
+              "x": -533.716,
+              "y": -407.25,
+              "z": -686.095
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -25.282,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.4005,
+            "dragCoefficient": 0.2598,
+            "inducedDragCoefficient": 0.0525,
+            "forceModelN": {
+              "x": 39.658,
+              "y": -54.944,
+              "z": -918.653
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -57.687,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.3892,
+            "dragCoefficient": 0.7257,
+            "inducedDragCoefficient": 0.0159,
+            "forceModelN": {
+              "x": -500.838,
+              "y": -227.576,
+              "z": -324.712
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -76.108,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.1311,
+            "dragCoefficient": 1.0395,
+            "inducedDragCoefficient": 0.0012,
+            "forceModelN": {
+              "x": -679.356,
+              "y": 18.895,
+              "z": -482.86
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -659.817,
+          "y": 86.372,
+          "z": -576.261
+        },
+        "totals": {
+          "driveForwardN": -6310.178,
+          "sideForceN": -7145.922,
+          "heelTorqueNm": 64756.443,
+          "yawMomentNm": 2526.741
+        },
+        "steadyHeelDeg": 7.0637,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 75,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -81.761,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.1063,
+            "dragCoefficient": 1.0784,
+            "inducedDragCoefficient": 0.0014,
+            "forceModelN": {
+              "x": -2599.166,
+              "y": 35.153,
+              "z": -1328.934
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -81.594,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.1074,
+            "dragCoefficient": 1.0776,
+            "inducedDragCoefficient": 0.0011,
+            "forceModelN": {
+              "x": -1240.686,
+              "y": 21.116,
+              "z": -709.661
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -62.783,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.3523,
+            "dragCoefficient": 0.7992,
+            "inducedDragCoefficient": 0.007,
+            "forceModelN": {
+              "x": -369.144,
+              "y": -130.177,
+              "z": -271.638
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -61.263,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.371,
+            "dragCoefficient": 0.7781,
+            "inducedDragCoefficient": 0.005,
+            "forceModelN": {
+              "x": -474.382,
+              "y": -171.809,
+              "z": -423.161
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -49.414,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.5565,
+            "dragCoefficient": 0.5937,
+            "inducedDragCoefficient": 0.0137,
+            "forceModelN": {
+              "x": -442.675,
+              "y": -400.713,
+              "z": -611.375
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": -12.216,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": -0.007,
+            "liftCoefficient": -0.2626,
+            "dragCoefficient": 0.1015,
+            "inducedDragCoefficient": 0.0226,
+            "forceModelN": {
+              "x": 16.817,
+              "y": -30.296,
+              "z": -477.101
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -58.319,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.3795,
+            "dragCoefficient": 0.7352,
+            "inducedDragCoefficient": 0.0151,
+            "forceModelN": {
+              "x": -468.675,
+              "y": -203.412,
+              "z": -279.546
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -80.756,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.0946,
+            "dragCoefficient": 1.0729,
+            "inducedDragCoefficient": 0.0006,
+            "forceModelN": {
+              "x": -679.414,
+              "y": 18.15,
+              "z": -378.308
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -701.917,
+          "y": 86.909,
+          "z": -372.563
+        },
+        "totals": {
+          "driveForwardN": -4852.287,
+          "sideForceN": -6959.242,
+          "heelTorqueNm": 63207.77,
+          "yawMomentNm": 4633.981
+        },
+        "steadyHeelDeg": 6.883,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 90,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -75.148,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.1684,
+            "dragCoefficient": 1.031,
+            "inducedDragCoefficient": 0.0035,
+            "forceModelN": {
+              "x": -2330.94,
+              "y": 49.139,
+              "z": -939.3
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -71.761,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.2116,
+            "dragCoefficient": 0.9971,
+            "inducedDragCoefficient": 0.0043,
+            "forceModelN": {
+              "x": -1090.779,
+              "y": 20.675,
+              "z": -507.084
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -55.643,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.4758,
+            "dragCoefficient": 0.6942,
+            "inducedDragCoefficient": 0.0128,
+            "forceModelN": {
+              "x": -309.065,
+              "y": -133.372,
+              "z": -236.442
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -52.203,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.5236,
+            "dragCoefficient": 0.6394,
+            "inducedDragCoefficient": 0.0099,
+            "forceModelN": {
+              "x": -381.21,
+              "y": -180.075,
+              "z": -376.159
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -40.421,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.6727,
+            "dragCoefficient": 0.4436,
+            "inducedDragCoefficient": 0.02,
+            "forceModelN": {
+              "x": -345.527,
+              "y": -375.247,
+              "z": -557.187
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 1.45,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0,
+            "dragCoefficient": 0.05,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": -70.785,
+              "y": 7.768,
+              "z": -17.808
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -54.443,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.4387,
+            "dragCoefficient": 0.6754,
+            "inducedDragCoefficient": 0.0202,
+            "forceModelN": {
+              "x": -408.18,
+              "y": -193.382,
+              "z": -231.676
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -71.795,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.1758,
+            "dragCoefficient": 0.9975,
+            "inducedDragCoefficient": 0.0021,
+            "forceModelN": {
+              "x": -601.446,
+              "y": 14.233,
+              "z": -253.68
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -687.209,
+          "y": 75.391,
+          "z": -172.832
+        },
+        "totals": {
+          "driveForwardN": -3292.167,
+          "sideForceN": -6225.139,
+          "heelTorqueNm": 56902.698,
+          "yawMomentNm": 5613.399
+        },
+        "steadyHeelDeg": 6.2107,
+        "luffingCount": 8
+      },
+      {
+        "windAngleOffBowDeg": 105,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -61.87,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.367,
+            "dragCoefficient": 0.8666,
+            "inducedDragCoefficient": 0.0165,
+            "forceModelN": {
+              "x": -1875.688,
+              "y": -15.233,
+              "z": -731.448
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -58.073,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.4326,
+            "dragCoefficient": 0.8063,
+            "inducedDragCoefficient": 0.018,
+            "forceModelN": {
+              "x": -859.628,
+              "y": -12.872,
+              "z": -428.654
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -45.003,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.6436,
+            "dragCoefficient": 0.5201,
+            "inducedDragCoefficient": 0.0235,
+            "forceModelN": {
+              "x": -245.829,
+              "y": -130.979,
+              "z": -223.304
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -40.52,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.6852,
+            "dragCoefficient": 0.4452,
+            "inducedDragCoefficient": 0.0169,
+            "forceModelN": {
+              "x": -295.602,
+              "y": -171.976,
+              "z": -352.968
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -29.42,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.7426,
+            "dragCoefficient": 0.2716,
+            "inducedDragCoefficient": 0.0244,
+            "forceModelN": {
+              "x": -276.021,
+              "y": -318.158,
+              "z": -493.596
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 15.919,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.6593,
+            "dragCoefficient": 0.1365,
+            "inducedDragCoefficient": 0.1423,
+            "forceModelN": {
+              "x": -343.972,
+              "y": 95.537,
+              "z": 850.47
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -46.377,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.552,
+            "dragCoefficient": 0.5431,
+            "inducedDragCoefficient": 0.032,
+            "forceModelN": {
+              "x": -332.337,
+              "y": -185.167,
+              "z": -204.232
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -58.373,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.3559,
+            "dragCoefficient": 0.8113,
+            "inducedDragCoefficient": 0.0088,
+            "forceModelN": {
+              "x": -467.321,
+              "y": -5.563,
+              "z": -190.45
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -623.001,
+          "y": 59.001,
+          "z": 5.714
+        },
+        "totals": {
+          "driveForwardN": -1768.469,
+          "sideForceN": -5319.398,
+          "heelTorqueNm": 49531.468,
+          "yawMomentNm": 4785.993
+        },
+        "steadyHeelDeg": 5.4108,
+        "luffingCount": 7
+      },
+      {
+        "windAngleOffBowDeg": 120,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -46.769,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.6173,
+            "dragCoefficient": 0.6074,
+            "inducedDragCoefficient": 0.0467,
+            "forceModelN": {
+              "x": -1470.786,
+              "y": -55.018,
+              "z": -742.406
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -42.872,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.6697,
+            "dragCoefficient": 0.536,
+            "inducedDragCoefficient": 0.0432,
+            "forceModelN": {
+              "x": -669.502,
+              "y": -27.633,
+              "z": -428.683
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -32.062,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.764,
+            "dragCoefficient": 0.3105,
+            "inducedDragCoefficient": 0.0331,
+            "forceModelN": {
+              "x": -200.702,
+              "y": -113.141,
+              "z": -206.004
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -26.99,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.76,
+            "dragCoefficient": 0.2377,
+            "inducedDragCoefficient": 0.0208,
+            "forceModelN": {
+              "x": -239.992,
+              "y": -140.878,
+              "z": -308.699
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -16.797,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.6176,
+            "dragCoefficient": 0.1202,
+            "inducedDragCoefficient": 0.0169,
+            "forceModelN": {
+              "x": -213.75,
+              "y": -205.98,
+              "z": -334.262
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 31.379,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.8161,
+            "dragCoefficient": 0.3618,
+            "inducedDragCoefficient": 0.2179,
+            "forceModelN": {
+              "x": -364.348,
+              "y": 109.344,
+              "z": 1056.419
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -35.252,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.6593,
+            "dragCoefficient": 0.3598,
+            "inducedDragCoefficient": 0.0456,
+            "forceModelN": {
+              "x": -266.531,
+              "y": -164.57,
+              "z": -187.303
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -43.285,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.5534,
+            "dragCoefficient": 0.5436,
+            "inducedDragCoefficient": 0.0213,
+            "forceModelN": {
+              "x": -343.498,
+              "y": -16.416,
+              "z": -180.946
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -522.018,
+          "y": 40.123,
+          "z": 151.138
+        },
+        "totals": {
+          "driveForwardN": -1180.747,
+          "sideForceN": -4291.126,
+          "heelTorqueNm": 40082.02,
+          "yawMomentNm": 3864.233
+        },
+        "steadyHeelDeg": 4.4034,
+        "luffingCount": 7
+      },
+      {
+        "windAngleOffBowDeg": 135,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -30.215,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.7687,
+            "dragCoefficient": 0.3159,
+            "inducedDragCoefficient": 0.0724,
+            "forceModelN": {
+              "x": -1191.036,
+              "y": -51.825,
+              "z": -689.793
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -26.284,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.7725,
+            "dragCoefficient": 0.2559,
+            "inducedDragCoefficient": 0.0574,
+            "forceModelN": {
+              "x": -536.083,
+              "y": -23.093,
+              "z": -372.977
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -17.199,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.6524,
+            "dragCoefficient": 0.1239,
+            "inducedDragCoefficient": 0.0241,
+            "forceModelN": {
+              "x": -149.666,
+              "y": -73.241,
+              "z": -136.476
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": -11.779,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": -0.028,
+            "liftCoefficient": -0.4805,
+            "dragCoefficient": 0.08,
+            "inducedDragCoefficient": 0.0083,
+            "forceModelN": {
+              "x": -148.025,
+              "y": -68.557,
+              "z": -148.676
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": -2.604,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": -0.026,
+            "liftCoefficient": -0.0136,
+            "dragCoefficient": 0.049,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": -29.575,
+              "y": -2.249,
+              "z": 10.247
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 47.993,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.6394,
+            "dragCoefficient": 0.685,
+            "inducedDragCoefficient": 0.1338,
+            "forceModelN": {
+              "x": -330.193,
+              "y": 94.798,
+              "z": 957.054
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -21.686,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.6525,
+            "dragCoefficient": 0.1711,
+            "inducedDragCoefficient": 0.0447,
+            "forceModelN": {
+              "x": -207.999,
+              "y": -124.226,
+              "z": -145.933
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -26.757,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.6437,
+            "dragCoefficient": 0.2628,
+            "inducedDragCoefficient": 0.0288,
+            "forceModelN": {
+              "x": -255.417,
+              "y": -15.6,
+              "z": -162.346
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -398.603,
+          "y": 23.804,
+          "z": 258.135
+        },
+        "totals": {
+          "driveForwardN": -430.765,
+          "sideForceN": -3246.597,
+          "heelTorqueNm": 30757.772,
+          "yawMomentNm": 4588.737
+        },
+        "steadyHeelDeg": 3.4182,
+        "luffingCount": 7
+      },
+      {
+        "windAngleOffBowDeg": 150,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": -12.328,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.5082,
+            "dragCoefficient": 0.0979,
+            "inducedDragCoefficient": 0.0316,
+            "forceModelN": {
+              "x": -676.7,
+              "y": -23.969,
+              "z": -311.277
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": -8.378,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": -0.02975,
+            "liftCoefficient": -0.283,
+            "dragCoefficient": 0.0674,
+            "inducedDragCoefficient": 0.0077,
+            "forceModelN": {
+              "x": -186.061,
+              "y": -5.585,
+              "z": -83.387
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": -0.886,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": -0.03,
+            "liftCoefficient": -0.0006,
+            "dragCoefficient": 0.0498,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": -9.111,
+              "y": 0.21,
+              "z": 10.966
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 4.76,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.0119,
+            "dragCoefficient": 0.0499,
+            "inducedDragCoefficient": 0,
+            "forceModelN": {
+              "x": -9.058,
+              "y": 1.845,
+              "z": 18.38
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 12.696,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.6482,
+            "dragCoefficient": 0.0864,
+            "inducedDragCoefficient": 0.0186,
+            "forceModelN": {
+              "x": 211.593,
+              "y": 162.028,
+              "z": 241.737
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 65.604,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.3249,
+            "dragCoefficient": 1.0038,
+            "inducedDragCoefficient": 0.0345,
+            "forceModelN": {
+              "x": -352.736,
+              "y": 70.761,
+              "z": 875.615
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": -6.438,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": -0.018,
+            "liftCoefficient": -0.139,
+            "dragCoefficient": 0.0511,
+            "inducedDragCoefficient": 0.002,
+            "forceModelN": {
+              "x": -48.145,
+              "y": -21.584,
+              "z": -13.464
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": -8.913,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": -0.0125,
+            "liftCoefficient": -0.2665,
+            "dragCoefficient": 0.0711,
+            "inducedDragCoefficient": 0.0049,
+            "forceModelN": {
+              "x": -97.135,
+              "y": -4.71,
+              "z": -41.343
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -265.945,
+          "y": 7.966,
+          "z": 327.804
+        },
+        "totals": {
+          "driveForwardN": 1025.03,
+          "sideForceN": -1433.297,
+          "heelTorqueNm": 14639.025,
+          "yawMomentNm": 4478.287
+        },
+        "steadyHeelDeg": 1.6081,
+        "luffingCount": 6
+      },
+      {
+        "windAngleOffBowDeg": 165,
+        "tack": "starboard",
+        "perSail": [
+          {
+            "name": "mainsail",
+            "state": "set",
+            "areaM2": 57.6045,
+            "aoaDeg": 6.776,
+            "luffing": true,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.0572,
+            "camberDrawn": 0.07207,
+            "liftCoefficient": 0.1861,
+            "dragCoefficient": 0.0565,
+            "inducedDragCoefficient": 0.0042,
+            "forceModelN": {
+              "x": 201.816,
+              "y": 7.941,
+              "z": 157.55
+            }
+          },
+          {
+            "name": "foresail",
+            "state": "set",
+            "areaM2": 28.231,
+            "aoaDeg": 10.735,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 3.8923,
+            "camberDrawn": 0.07258,
+            "liftCoefficient": 0.6399,
+            "dragCoefficient": 0.0864,
+            "inducedDragCoefficient": 0.0394,
+            "forceModelN": {
+              "x": 358.316,
+              "y": 12.62,
+              "z": 215.456
+            }
+          },
+          {
+            "name": "foreStaysail",
+            "state": "set",
+            "areaM2": 11.5923,
+            "aoaDeg": 16.756,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 6.606,
+            "camberDrawn": 0.0615,
+            "liftCoefficient": 0.8369,
+            "dragCoefficient": 0.1198,
+            "inducedDragCoefficient": 0.0397,
+            "forceModelN": {
+              "x": 180.198,
+              "y": 75.856,
+              "z": 110.116
+            }
+          },
+          {
+            "name": "jib",
+            "state": "set",
+            "areaM2": 16.2695,
+            "aoaDeg": 22.526,
+            "luffing": false,
+            "blanketFactor": 0.6215,
+            "aspectRatioEff": 10.3839,
+            "camberDrawn": 0.05833,
+            "liftCoefficient": 0.9542,
+            "dragCoefficient": 0.1809,
+            "inducedDragCoefficient": 0.0328,
+            "forceModelN": {
+              "x": 177.473,
+              "y": 73.232,
+              "z": 116.672
+            }
+          },
+          {
+            "name": "flyingJib",
+            "state": "set",
+            "areaM2": 22.2106,
+            "aoaDeg": 28.919,
+            "luffing": false,
+            "blanketFactor": 0.921,
+            "aspectRatioEff": 8.4724,
+            "camberDrawn": 0.05503,
+            "liftCoefficient": 0.9608,
+            "dragCoefficient": 0.2645,
+            "inducedDragCoefficient": 0.0408,
+            "forceModelN": {
+              "x": 312.242,
+              "y": 227.978,
+              "z": 264.648
+            }
+          },
+          {
+            "name": "foreTopsail",
+            "state": "set",
+            "areaM2": 35.2713,
+            "aoaDeg": 82.504,
+            "luffing": false,
+            "blanketFactor": 0.8258,
+            "aspectRatioEff": 1.1443,
+            "camberDrawn": 0.06332,
+            "liftCoefficient": 0.1081,
+            "dragCoefficient": 1.1804,
+            "inducedDragCoefficient": 0.0038,
+            "forceModelN": {
+              "x": -222.941,
+              "y": 51.635,
+              "z": 753.015
+            }
+          },
+          {
+            "name": "mainTopmastStaysail",
+            "state": "set",
+            "areaM2": 14.8319,
+            "aoaDeg": 10.31,
+            "luffing": false,
+            "blanketFactor": 0.9774,
+            "aspectRatioEff": 3.5662,
+            "camberDrawn": 0.06,
+            "liftCoefficient": 0.5645,
+            "dragCoefficient": 0.0708,
+            "inducedDragCoefficient": 0.0335,
+            "forceModelN": {
+              "x": 145.72,
+              "y": 80.656,
+              "z": 89.527
+            }
+          },
+          {
+            "name": "mainGaffTopsail",
+            "state": "set",
+            "areaM2": 15.4564,
+            "aoaDeg": 10.148,
+            "luffing": false,
+            "blanketFactor": 1,
+            "aspectRatioEff": 5.3871,
+            "camberDrawn": 0.04239,
+            "liftCoefficient": 0.4832,
+            "dragCoefficient": 0.0826,
+            "inducedDragCoefficient": 0.0162,
+            "forceModelN": {
+              "x": 147.556,
+              "y": 8.29,
+              "z": 90.329
+            }
+          }
+        ],
+        "windageForceModelN": {
+          "x": -132.145,
+          "y": -1.353,
+          "z": 365.535
+        },
+        "totals": {
+          "driveForwardN": 2162.848,
+          "sideForceN": 1168.236,
+          "heelTorqueNm": -9430.421,
+          "yawMomentNm": 1592.936
+        },
+        "steadyHeelDeg": -1.0315,
+        "luffingCount": 1
+      }
+    ],
+    "gates": {
+      "driveDeadAheadN": -7370.838,
+      "bestDriveAngleDeg": -90,
+      "bestDriveN": 3808.406,
+      "tackMirrorRelativeError": 0,
+      "heelAlwaysToLeewardWhileDrawing": true
+    }
+  },
+  "freeRuns": {
+    "gustEnergy": {
+      "windSpeedMps": 8,
+      "gustiness": 1,
+      "durationSeconds": 90,
+      "samples": [
+        {
+          "timeSeconds": 1,
+          "speedMps": 0.05399933,
+          "yawRad": -0.00308324,
+          "kineticEnergyJ": 132.9809,
+          "externalWorkJ": 169.7923,
+          "rollDeg": -2.49001
+        },
+        {
+          "timeSeconds": 2,
+          "speedMps": 0.10591438,
+          "yawRad": -0.01209403,
+          "kineticEnergyJ": 514.7573,
+          "externalWorkJ": 667.1905,
+          "rollDeg": -6.57098
+        },
+        {
+          "timeSeconds": 3,
+          "speedMps": 0.16029842,
+          "yawRad": -0.02751923,
+          "kineticEnergyJ": 1183.0541,
+          "externalWorkJ": 1592.0079,
+          "rollDeg": -8.10825
+        },
+        {
+          "timeSeconds": 4,
+          "speedMps": 0.2140226,
+          "yawRad": -0.04883197,
+          "kineticEnergyJ": 2082.8238,
+          "externalWorkJ": 2967.1831,
+          "rollDeg": -6.48006
+        },
+        {
+          "timeSeconds": 5,
+          "speedMps": 0.26112128,
+          "yawRad": -0.07339968,
+          "kineticEnergyJ": 3025.0734,
+          "externalWorkJ": 4586.6681,
+          "rollDeg": -3.93488
+        },
+        {
+          "timeSeconds": 6,
+          "speedMps": 0.29952669,
+          "yawRad": -0.09805209,
+          "kineticEnergyJ": 3881.6424,
+          "externalWorkJ": 6229.1517,
+          "rollDeg": -2.71534
+        },
+        {
+          "timeSeconds": 7,
+          "speedMps": 0.33220973,
+          "yawRad": -0.12089486,
+          "kineticEnergyJ": 4684.5136,
+          "externalWorkJ": 7880.9734,
+          "rollDeg": -3.27407
+        },
+        {
+          "timeSeconds": 8,
+          "speedMps": 0.3637158,
+          "yawRad": -0.14148864,
+          "kineticEnergyJ": 5544.4068,
+          "externalWorkJ": 9691.4841,
+          "rollDeg": -4.56857
+        },
+        {
+          "timeSeconds": 9,
+          "speedMps": 0.39702962,
+          "yawRad": -0.16014719,
+          "kineticEnergyJ": 6553.3046,
+          "externalWorkJ": 11824.8621,
+          "rollDeg": -5.41326
+        },
+        {
+          "timeSeconds": 10,
+          "speedMps": 0.43222051,
+          "yawRad": -0.17723182,
+          "kineticEnergyJ": 7723.6897,
+          "externalWorkJ": 14337.0185,
+          "rollDeg": -5.47922
+        },
+        {
+          "timeSeconds": 11,
+          "speedMps": 0.46722639,
+          "yawRad": -0.19273656,
+          "kineticEnergyJ": 8987.4872,
+          "externalWorkJ": 17147.0089,
+          "rollDeg": -5.18215
+        },
+        {
+          "timeSeconds": 12,
+          "speedMps": 0.5001803,
+          "yawRad": -0.20636645,
+          "kineticEnergyJ": 10266.4794,
+          "externalWorkJ": 20130.9499,
+          "rollDeg": -5.00896
+        },
+        {
+          "timeSeconds": 13,
+          "speedMps": 0.53109479,
+          "yawRad": -0.21790458,
+          "kineticEnergyJ": 11548.1005,
+          "externalWorkJ": 23244.6843,
+          "rollDeg": -5.10906
+        },
+        {
+          "timeSeconds": 14,
+          "speedMps": 0.5617035,
+          "yawRad": -0.22745299,
+          "kineticEnergyJ": 12898.9248,
+          "externalWorkJ": 26560.6281,
+          "rollDeg": -5.3887
+        },
+        {
+          "timeSeconds": 15,
+          "speedMps": 0.59418239,
+          "yawRad": -0.23542397,
+          "kineticEnergyJ": 14422.1357,
+          "externalWorkJ": 30217.9581,
+          "rollDeg": -5.7694
+        },
+        {
+          "timeSeconds": 16,
+          "speedMps": 0.62975616,
+          "yawRad": -0.24236757,
+          "kineticEnergyJ": 16193.9955,
+          "externalWorkJ": 34339.2371,
+          "rollDeg": -6.25883
+        },
+        {
+          "timeSeconds": 17,
+          "speedMps": 0.66787969,
+          "yawRad": -0.24873398,
+          "kineticEnergyJ": 18209.7095,
+          "externalWorkJ": 38953.8783,
+          "rollDeg": -6.81113
+        },
+        {
+          "timeSeconds": 18,
+          "speedMps": 0.70643398,
+          "yawRad": -0.25465946,
+          "kineticEnergyJ": 20368.6736,
+          "externalWorkJ": 43958.8764,
+          "rollDeg": -7.21983
+        },
+        {
+          "timeSeconds": 19,
+          "speedMps": 0.74291704,
+          "yawRad": -0.25988434,
+          "kineticEnergyJ": 22521.7606,
+          "externalWorkJ": 49147.8355,
+          "rollDeg": -7.2314
+        },
+        {
+          "timeSeconds": 20,
+          "speedMps": 0.77596318,
+          "yawRad": -0.26390649,
+          "kineticEnergyJ": 24564.6592,
+          "externalWorkJ": 54313.4264,
+          "rollDeg": -6.79665
+        },
+        {
+          "timeSeconds": 21,
+          "speedMps": 0.80622897,
+          "yawRad": -0.26633062,
+          "kineticEnergyJ": 26514.8069,
+          "externalWorkJ": 59371.0518,
+          "rollDeg": -6.20109
+        },
+        {
+          "timeSeconds": 22,
+          "speedMps": 0.83620111,
+          "yawRad": -0.26719624,
+          "kineticEnergyJ": 28521.8286,
+          "externalWorkJ": 64428.6051,
+          "rollDeg": -5.91064
+        },
+        {
+          "timeSeconds": 23,
+          "speedMps": 0.86921364,
+          "yawRad": -0.2670721,
+          "kineticEnergyJ": 30818.3369,
+          "externalWorkJ": 69767.7845,
+          "rollDeg": -6.26137
+        },
+        {
+          "timeSeconds": 24,
+          "speedMps": 0.90817244,
+          "yawRad": -0.26689035,
+          "kineticEnergyJ": 33642.8111,
+          "externalWorkJ": 75755.8899,
+          "rollDeg": -7.24086
+        },
+        {
+          "timeSeconds": 25,
+          "speedMps": 0.95426406,
+          "yawRad": -0.26761389,
+          "kineticEnergyJ": 37145.1263,
+          "externalWorkJ": 82708.2908,
+          "rollDeg": -8.50835
+        },
+        {
+          "timeSeconds": 26,
+          "speedMps": 1.00613379,
+          "yawRad": -0.26981084,
+          "kineticEnergyJ": 41295.4663,
+          "externalWorkJ": 90730.7742,
+          "rollDeg": -9.59979
+        },
+        {
+          "timeSeconds": 27,
+          "speedMps": 1.06033892,
+          "yawRad": -0.27329886,
+          "kineticEnergyJ": 45866.9864,
+          "externalWorkJ": 99630.1902,
+          "rollDeg": -10.15023
+        },
+        {
+          "timeSeconds": 28,
+          "speedMps": 1.11304929,
+          "yawRad": -0.27719779,
+          "kineticEnergyJ": 50539.4727,
+          "externalWorkJ": 108984.4791,
+          "rollDeg": -10.04479
+        },
+        {
+          "timeSeconds": 29,
+          "speedMps": 1.16181083,
+          "yawRad": -0.28041641,
+          "kineticEnergyJ": 55061.3321,
+          "externalWorkJ": 118340.5127,
+          "rollDeg": -9.46494
+        },
+        {
+          "timeSeconds": 30,
+          "speedMps": 1.206084,
+          "yawRad": -0.28218557,
+          "kineticEnergyJ": 59335.2955,
+          "externalWorkJ": 127392.6824,
+          "rollDeg": -8.77608
+        },
+        {
+          "timeSeconds": 31,
+          "speedMps": 1.24658323,
+          "yawRad": -0.2822832,
+          "kineticEnergyJ": 63386.8832,
+          "externalWorkJ": 136027.2973,
+          "rollDeg": -8.28639
+        },
+        {
+          "timeSeconds": 32,
+          "speedMps": 1.28412699,
+          "yawRad": -0.28090463,
+          "kineticEnergyJ": 67263.829,
+          "externalWorkJ": 144233.2502,
+          "rollDeg": -8.05107
+        },
+        {
+          "timeSeconds": 33,
+          "speedMps": 1.31885393,
+          "yawRad": -0.27836322,
+          "kineticEnergyJ": 70953.0415,
+          "externalWorkJ": 151974.792,
+          "rollDeg": -7.86263
+        },
+        {
+          "timeSeconds": 34,
+          "speedMps": 1.35017103,
+          "yawRad": -0.27483139,
+          "kineticEnergyJ": 74365.1925,
+          "externalWorkJ": 159129.7336,
+          "rollDeg": -7.43536
+        },
+        {
+          "timeSeconds": 35,
+          "speedMps": 1.37730231,
+          "yawRad": -0.27032609,
+          "kineticEnergyJ": 77387.036,
+          "externalWorkJ": 165532.841,
+          "rollDeg": -6.65161
+        },
+        {
+          "timeSeconds": 36,
+          "speedMps": 1.40021301,
+          "yawRad": -0.26492266,
+          "kineticEnergyJ": 79985.9772,
+          "externalWorkJ": 171115.6743,
+          "rollDeg": -5.68626
+        },
+        {
+          "timeSeconds": 37,
+          "speedMps": 1.42021569,
+          "yawRad": -0.25895214,
+          "kineticEnergyJ": 82288.6098,
+          "externalWorkJ": 176028.1339,
+          "rollDeg": -4.92025
+        },
+        {
+          "timeSeconds": 38,
+          "speedMps": 1.43973737,
+          "yawRad": -0.25300015,
+          "kineticEnergyJ": 84564.3195,
+          "externalWorkJ": 180632.3533,
+          "rollDeg": -4.7074
+        },
+        {
+          "timeSeconds": 39,
+          "speedMps": 1.46156964,
+          "yawRad": -0.24774706,
+          "kineticEnergyJ": 87143.9554,
+          "externalWorkJ": 185399.5396,
+          "rollDeg": -5.15679
+        },
+        {
+          "timeSeconds": 40,
+          "speedMps": 1.48800164,
+          "yawRad": -0.24374488,
+          "kineticEnergyJ": 90319.6542,
+          "externalWorkJ": 190775.588,
+          "rollDeg": -6.07067
+        },
+        {
+          "timeSeconds": 41,
+          "speedMps": 1.51966988,
+          "yawRad": -0.24123521,
+          "kineticEnergyJ": 94201.9122,
+          "externalWorkJ": 197000.6116,
+          "rollDeg": -7.06
+        },
+        {
+          "timeSeconds": 42,
+          "speedMps": 1.55495726,
+          "yawRad": -0.24007054,
+          "kineticEnergyJ": 98626.402,
+          "externalWorkJ": 203978.9255,
+          "rollDeg": -7.71908
+        },
+        {
+          "timeSeconds": 43,
+          "speedMps": 1.59105552,
+          "yawRad": -0.23967528,
+          "kineticEnergyJ": 103258.63,
+          "externalWorkJ": 211360.593,
+          "rollDeg": -7.7953
+        },
+        {
+          "timeSeconds": 44,
+          "speedMps": 1.62537845,
+          "yawRad": -0.23922232,
+          "kineticEnergyJ": 107761.9368,
+          "externalWorkJ": 218717.2578,
+          "rollDeg": -7.31801
+        },
+        {
+          "timeSeconds": 45,
+          "speedMps": 1.65668931,
+          "yawRad": -0.23806459,
+          "kineticEnergyJ": 111954.5075,
+          "externalWorkJ": 225753.3026,
+          "rollDeg": -6.59632
+        },
+        {
+          "timeSeconds": 46,
+          "speedMps": 1.68531645,
+          "yawRad": -0.23604635,
+          "kineticEnergyJ": 115858.1708,
+          "externalWorkJ": 232419.3229,
+          "rollDeg": -6.03841
+        },
+        {
+          "timeSeconds": 47,
+          "speedMps": 1.7126561,
+          "yawRad": -0.23346491,
+          "kineticEnergyJ": 119648.2212,
+          "externalWorkJ": 238888.7869,
+          "rollDeg": -5.90239
+        },
+        {
+          "timeSeconds": 48,
+          "speedMps": 1.74017835,
+          "yawRad": -0.23075822,
+          "kineticEnergyJ": 123524.3748,
+          "externalWorkJ": 245407.0704,
+          "rollDeg": -6.15175
+        },
+        {
+          "timeSeconds": 49,
+          "speedMps": 1.76840745,
+          "yawRad": -0.22821936,
+          "kineticEnergyJ": 127563.9586,
+          "externalWorkJ": 252100.2166,
+          "rollDeg": -6.49542
+        },
+        {
+          "timeSeconds": 50,
+          "speedMps": 1.79665126,
+          "yawRad": -0.22586681,
+          "kineticEnergyJ": 131670.973,
+          "externalWorkJ": 258886.7959,
+          "rollDeg": -6.58912
+        },
+        {
+          "timeSeconds": 51,
+          "speedMps": 1.82360606,
+          "yawRad": -0.22346286,
+          "kineticEnergyJ": 135651.8117,
+          "externalWorkJ": 265542.6482,
+          "rollDeg": -6.26636
+        },
+        {
+          "timeSeconds": 52,
+          "speedMps": 1.84823882,
+          "yawRad": -0.2207177,
+          "kineticEnergyJ": 139342.1183,
+          "externalWorkJ": 271849.2549,
+          "rollDeg": -5.6446
+        },
+        {
+          "timeSeconds": 53,
+          "speedMps": 1.87049426,
+          "yawRad": -0.21753944,
+          "kineticEnergyJ": 142718.9299,
+          "externalWorkJ": 277746.4307,
+          "rollDeg": -5.03687
+        },
+        {
+          "timeSeconds": 54,
+          "speedMps": 1.89129768,
+          "yawRad": -0.21411724,
+          "kineticEnergyJ": 145911.3029,
+          "externalWorkJ": 283368.3569,
+          "rollDeg": -4.73812
+        },
+        {
+          "timeSeconds": 55,
+          "speedMps": 1.91194952,
+          "yawRad": -0.21079556,
+          "kineticEnergyJ": 149114.4393,
+          "externalWorkJ": 288952.0051,
+          "rollDeg": -4.83509
+        },
+        {
+          "timeSeconds": 56,
+          "speedMps": 1.93330917,
+          "yawRad": -0.20785417,
+          "kineticEnergyJ": 152463.6486,
+          "externalWorkJ": 294684.0176,
+          "rollDeg": -5.15803
+        },
+        {
+          "timeSeconds": 57,
+          "speedMps": 1.95520074,
+          "yawRad": -0.20533788,
+          "kineticEnergyJ": 155935.2415,
+          "externalWorkJ": 300571.2906,
+          "rollDeg": -5.397
+        },
+        {
+          "timeSeconds": 58,
+          "speedMps": 1.97644985,
+          "yawRad": -0.2030273,
+          "kineticEnergyJ": 159342.9533,
+          "externalWorkJ": 306419.124,
+          "rollDeg": -5.2984
+        },
+        {
+          "timeSeconds": 59,
+          "speedMps": 1.99567423,
+          "yawRad": -0.20058149,
+          "kineticEnergyJ": 162458.3015,
+          "externalWorkJ": 311958.5468,
+          "rollDeg": -4.82348
+        },
+        {
+          "timeSeconds": 60,
+          "speedMps": 2.01229369,
+          "yawRad": -0.19778492,
+          "kineticEnergyJ": 165176.132,
+          "externalWorkJ": 317043.3452,
+          "rollDeg": -4.18463
+        },
+        {
+          "timeSeconds": 61,
+          "speedMps": 2.02703413,
+          "yawRad": -0.19472228,
+          "kineticEnergyJ": 167605.1246,
+          "externalWorkJ": 321773.9126,
+          "rollDeg": -3.72552
+        },
+        {
+          "timeSeconds": 62,
+          "speedMps": 2.04170042,
+          "yawRad": -0.19174627,
+          "kineticEnergyJ": 170038.5047,
+          "externalWorkJ": 326479.0119,
+          "rollDeg": -3.71761
+        },
+        {
+          "timeSeconds": 63,
+          "speedMps": 2.05849547,
+          "yawRad": -0.18928875,
+          "kineticEnergyJ": 172846.1017,
+          "externalWorkJ": 331596.5732,
+          "rollDeg": -4.20713
+        },
+        {
+          "timeSeconds": 64,
+          "speedMps": 2.0791435,
+          "yawRad": -0.18766036,
+          "kineticEnergyJ": 176329.832,
+          "externalWorkJ": 337508.6773,
+          "rollDeg": -5.00449
+        },
+        {
+          "timeSeconds": 65,
+          "speedMps": 2.10404586,
+          "yawRad": -0.18691427,
+          "kineticEnergyJ": 180578.5183,
+          "externalWorkJ": 344371.8703,
+          "rollDeg": -5.8012
+        },
+        {
+          "timeSeconds": 66,
+          "speedMps": 2.13199081,
+          "yawRad": -0.18678766,
+          "kineticEnergyJ": 185407.036,
+          "externalWorkJ": 352030.1572,
+          "rollDeg": -6.31084
+        },
+        {
+          "timeSeconds": 67,
+          "speedMps": 2.16082521,
+          "yawRad": -0.18677866,
+          "kineticEnergyJ": 190456.0825,
+          "externalWorkJ": 360099.7516,
+          "rollDeg": -6.38207
+        },
+        {
+          "timeSeconds": 68,
+          "speedMps": 2.18870596,
+          "yawRad": -0.18638351,
+          "kineticEnergyJ": 195402.815,
+          "externalWorkJ": 368193.8264,
+          "rollDeg": -6.0786
+        },
+        {
+          "timeSeconds": 69,
+          "speedMps": 2.21501271,
+          "yawRad": -0.18536859,
+          "kineticEnergyJ": 200128.7281,
+          "externalWorkJ": 376131.9581,
+          "rollDeg": -5.67016
+        },
+        {
+          "timeSeconds": 70,
+          "speedMps": 2.24044013,
+          "yawRad": -0.18387479,
+          "kineticEnergyJ": 204750.2228,
+          "externalWorkJ": 384009.1948,
+          "rollDeg": -5.48383
+        },
+        {
+          "timeSeconds": 71,
+          "speedMps": 2.26643025,
+          "yawRad": -0.18228523,
+          "kineticEnergyJ": 209528.0039,
+          "externalWorkJ": 392114.9664,
+          "rollDeg": -5.70362
+        },
+        {
+          "timeSeconds": 72,
+          "speedMps": 2.29437493,
+          "yawRad": -0.18098424,
+          "kineticEnergyJ": 214726.296,
+          "externalWorkJ": 400775.136,
+          "rollDeg": -6.26363
+        },
+        {
+          "timeSeconds": 73,
+          "speedMps": 2.32496799,
+          "yawRad": -0.18016762,
+          "kineticEnergyJ": 220490.4385,
+          "externalWorkJ": 410200.919,
+          "rollDeg": -6.91484
+        },
+        {
+          "timeSeconds": 74,
+          "speedMps": 2.35806094,
+          "yawRad": -0.17979001,
+          "kineticEnergyJ": 226811.7964,
+          "externalWorkJ": 420428.1508,
+          "rollDeg": -7.41091
+        },
+        {
+          "timeSeconds": 75,
+          "speedMps": 2.39318276,
+          "yawRad": -0.17966079,
+          "kineticEnergyJ": 233618.5306,
+          "externalWorkJ": 431401.6167,
+          "rollDeg": -7.67807
+        },
+        {
+          "timeSeconds": 76,
+          "speedMps": 2.43037346,
+          "yawRad": -0.17964188,
+          "kineticEnergyJ": 240935.9386,
+          "externalWorkJ": 443157.8126,
+          "rollDeg": -7.8679
+        },
+        {
+          "timeSeconds": 77,
+          "speedMps": 2.47068985,
+          "yawRad": -0.17981341,
+          "kineticEnergyJ": 248995.8462,
+          "externalWorkJ": 455974.186,
+          "rollDeg": -8.26441
+        },
+        {
+          "timeSeconds": 78,
+          "speedMps": 2.51597391,
+          "yawRad": -0.18048162,
+          "kineticEnergyJ": 258207.3105,
+          "externalWorkJ": 470370.3838,
+          "rollDeg": -9.09598
+        },
+        {
+          "timeSeconds": 79,
+          "speedMps": 2.56788145,
+          "yawRad": -0.18199732,
+          "kineticEnergyJ": 268972.5869,
+          "externalWorkJ": 486919.1203,
+          "rollDeg": -10.36284
+        },
+        {
+          "timeSeconds": 80,
+          "speedMps": 2.62649811,
+          "yawRad": -0.18446557,
+          "kineticEnergyJ": 281393.9012,
+          "externalWorkJ": 505900.405,
+          "rollDeg": -11.78066
+        },
+        {
+          "timeSeconds": 81,
+          "speedMps": 2.68939639,
+          "yawRad": -0.18753624,
+          "kineticEnergyJ": 295033.1244,
+          "externalWorkJ": 526954.8605,
+          "rollDeg": -12.87291
+        },
+        {
+          "timeSeconds": 82,
+          "speedMps": 2.75209878,
+          "yawRad": -0.19039255,
+          "kineticEnergyJ": 308948.9886,
+          "externalWorkJ": 549008.2974,
+          "rollDeg": -13.18398
+        },
+        {
+          "timeSeconds": 83,
+          "speedMps": 2.80989646,
+          "yawRad": -0.19208178,
+          "kineticEnergyJ": 322059.8414,
+          "externalWorkJ": 570628.9269,
+          "rollDeg": -12.54001
+        },
+        {
+          "timeSeconds": 84,
+          "speedMps": 2.85973123,
+          "yawRad": -0.19202263,
+          "kineticEnergyJ": 333584.955,
+          "externalWorkJ": 590621.4497,
+          "rollDeg": -11.2125
+        },
+        {
+          "timeSeconds": 85,
+          "speedMps": 2.90104392,
+          "yawRad": -0.190316,
+          "kineticEnergyJ": 343294.493,
+          "externalWorkJ": 608480.0012,
+          "rollDeg": -9.79085
+        },
+        {
+          "timeSeconds": 86,
+          "speedMps": 2.9354282,
+          "yawRad": -0.18763821,
+          "kineticEnergyJ": 351481.4793,
+          "externalWorkJ": 624448.504,
+          "rollDeg": -8.83141
+        },
+        {
+          "timeSeconds": 87,
+          "speedMps": 2.96546576,
+          "yawRad": -0.18481317,
+          "kineticEnergyJ": 358711.037,
+          "externalWorkJ": 639208.8598,
+          "rollDeg": -8.55334
+        },
+        {
+          "timeSeconds": 88,
+          "speedMps": 2.99343674,
+          "yawRad": -0.1824203,
+          "kineticEnergyJ": 365508.7161,
+          "externalWorkJ": 653459.1232,
+          "rollDeg": -8.76647
+        },
+        {
+          "timeSeconds": 89,
+          "speedMps": 3.02060097,
+          "yawRad": -0.18060912,
+          "kineticEnergyJ": 372171.7366,
+          "externalWorkJ": 667632.3954,
+          "rollDeg": -9.05535
+        },
+        {
+          "timeSeconds": 90,
+          "speedMps": 3.04682446,
+          "yawRad": -0.1791763,
+          "kineticEnergyJ": 378661.5693,
+          "externalWorkJ": 681739.4183,
+          "rollDeg": -9.07129
+        }
+      ],
+      "maxEnergyOverWorkJ": -0.000736,
+      "finalSpeedMps": 3.04682446,
+      "hullSpeedBoundMps": 5.875
+    },
+    "zeroWindBarePoles": {
+      "durationSeconds": 20,
+      "finalSpeedMps": 0,
+      "externalWorkJ": 0
+    }
+  },
+  "invariance": {
+    "callerRate": {
+      "durationSeconds": 24,
+      "firstCallerHz": 48,
+      "secondCallerHz": 240,
+      "velocityErrorMps": 0,
+      "yawErrorRad": 0,
+      "externalWorkErrorJ": 0
+    },
+    "voyageCompression": {
+      "durationSeconds": 24,
+      "firstCompression": 1,
+      "secondCompression": 30,
+      "localVelocityErrorMps": 0,
+      "localYawErrorRad": 0,
+      "globalDistanceRatio": 30,
+      "expectedGlobalDistanceRatio": 30
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "perf-results/2026-08-10T01-10-46Z_thermal-hour_powermetrics.txt",
+  "generatedAt": "2026-08-10T01:30:29.525Z",
+  "filter": {
+    "from": "2026-08-10T01:12:30Z",
+    "to": "2026-08-10T01:24:30Z"
+  },
+  "summary": {
+    "sampleCount": 709,
+    "startAt": "2026-08-10T01:12:30.000Z",
+    "endAt": "2026-08-10T01:24:30.000Z",
+    "durationSeconds": 720,
+    "startPressure": "Nominal",
+    "endPressure": "Nominal",
+    "maximumPressure": "Heavy",
+    "maximumPressureRank": 2,
+    "pressureCounts": {
+      "Nominal": 481,
+      "Moderate": 92,
+      "Heavy": 136
+    },
+    "firstPressureAt": {
+      "Nominal": "2026-08-10T01:12:30.000Z",
+      "Moderate": "2026-08-10T01:15:44.000Z",
+      "Heavy": "2026-08-10T01:18:37.000Z"
+    },
+    "pressureTransitionCount": 6,
+    "cpuPowerMw": {
+      "count": 709,
+      "minimum": 343,
+      "maximum": 13946,
+      "mean": 3155.602256699577,
+      "median": 2108
+    },
+    "gpuPowerMw": {
+      "count": 709,
+      "minimum": 0,
+      "maximum": 12344,
+      "mean": 4177.6445698166435,
+      "median": 512
+    },
+    "combinedPowerMw": {
+      "count": 709,
+      "minimum": 343,
+      "maximum": 20679,
+      "mean": 7333.229901269394,
+      "median": 7425
+    },
+    "gpuFrequencyMHz": {
+      "count": 709,
+      "minimum": 0,
+      "maximum": 1398,
+      "mean": 748.0930888575458,
+      "median": 848
+    },
+    "gpuActiveResidencyPercent": {
+      "count": 709,
+      "minimum": 0,
+      "maximum": 100,
+      "mean": 55.27950634696758,
+      "median": 62.2
+    },
+    "pClusterFrequencyMHz": {
+      "count": 709,
+      "minimum": 678,
+      "maximum": 3369,
+      "mean": 3292.7503526093087,
+      "median": 3318
+    }
+  }
+}

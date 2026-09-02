@@ -1,0 +1,828 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a1420;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+#scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+  outline: none;
+}
+
+#scene:active {
+  cursor: grabbing;
+}
+
+.hint {
+  position: fixed;
+  left: 50%;
+  bottom: max(5.5vh, env(safe-area-inset-bottom, 0px) + 24px);
+  transform: translateX(-50%);
+  max-width: min(90vw, 640px);
+  text-align: center;
+  font-size: clamp(11px, 1.45vw, 14px);
+  letter-spacing: 0.055em;
+  line-height: 1.6;
+  color: rgba(255, 252, 245, 0.72);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2.4s ease-in-out;
+  will-change: opacity;
+}
+
+.hint--visible {
+  opacity: 1;
+}
+
+/* Developer-only. Mounted by the developer-tools shell, never in a clean view. */
+.debug {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: min(352px, calc(100vw - 24px));
+  max-height: calc(100vh - 84px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px 14px 14px;
+  background: rgba(8, 14, 22, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #cfd8e3;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.debug h2 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7f9bb5;
+}
+
+.debug label {
+  display: block;
+  margin: 9px 0 0;
+}
+
+.debug .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.debug .row span:last-child {
+  color: #8fb7d8;
+  font-variant-numeric: tabular-nums;
+}
+
+.debug input[type='range'] {
+  width: 100%;
+  margin: 3px 0 0;
+  accent-color: #6f9ec4;
+}
+
+.debug .checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #9eb4c7;
+}
+
+.debug input[type='checkbox'] {
+  accent-color: #6f9ec4;
+}
+
+.debug .motion-readout {
+  margin-top: 11px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #8fb7d8;
+  font-variant-numeric: tabular-nums;
+}
+
+.debug .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.debug .buttons button {
+  flex: 1 1 auto;
+  padding: 5px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #dbe6f0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.debug .buttons button:hover {
+  background: rgba(120, 175, 220, 0.2);
+}
+
+.debug .month-markers {
+  position: relative;
+  height: 12px;
+  margin: -1px 2px 7px;
+  color: rgba(172, 198, 219, 0.65);
+  font-size: 8px;
+}
+
+.debug .month-markers span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.debug .month-markers span:first-child {
+  transform: none;
+}
+
+.debug .developer-globe {
+  margin: 12px 0 5px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.debug .globe-heading,
+.debug .globe-caption {
+  color: #8fb7d8;
+}
+
+.debug .developer-globe canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  border-radius: 4px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.debug .developer-globe canvas:active {
+  cursor: grabbing;
+}
+
+.debug .globe-caption {
+  margin-top: 3px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.debug .stats {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #7f9bb5;
+  white-space: pre-wrap;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * The reach prompt: what the thing you are looking at would do.
+ *
+ * Sits above the hint's line so the two never collide on first launch, and
+ * fades much faster than the hint does — it tracks what is in front of you and
+ * a 2.4 s fade would leave it naming an object you walked away from.
+ */
+/*
+ * The contextual actions, at the foot of the picture.
+ *
+ * A row rather than a line, because the seated view can offer two at once. It
+ * keeps the old prompt's position and its fade: the control appears when there
+ * is something to do and is not there when there is not, which is the argument
+ * `ActionBar.ts` sets out at length.
+ */
+.actionbar {
+  position: fixed;
+  /*
+   * Over the focus overlay, not under it. The bar is where "Close the book"
+   * lives, so a book that covered its own way out would be a book you can only
+   * shut with a key — which on a phone is no way at all.
+   */
+  z-index: 50;
+  left: 50%;
+  bottom: max(13vh, env(safe-area-inset-bottom, 0px) + 92px);
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: min(92vw, 560px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+  will-change: opacity;
+}
+
+.actionbar--visible {
+  opacity: 1;
+}
+
+.actionbar__action {
+  pointer-events: auto;
+  font: inherit;
+  font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 0.055em;
+  white-space: nowrap;
+  color: rgba(255, 252, 245, 0.92);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.65);
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 252, 245, 0.3);
+  background: rgba(18, 22, 28, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.actionbar__action:active {
+  background: rgba(40, 48, 58, 0.7);
+}
+
+.actionbar__action[hidden] {
+  display: none;
+}
+
+/*
+ * A thing off the desk, taking up the screen.
+ *
+ * Old paper, and the type has to carry it: the whole reason the manual is DOM
+ * rather than geometry is that a page is type — see `DeskFocus.ts`. The frame
+ * behind is dimmed rather than covered, because the ship is still sailing while
+ * you read and the player should be able to see her move.
+ */
+.deskfocus {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  /*
+   * The bottom margin clears the action bar, which is drawn over this. Sized
+   * to the bar's own offset plus its height: at `max(13vh, …+92px)` and about
+   * 44 px tall, anything less put the page-turn arrows underneath "Close the
+   * book" — two controls in the same place, one of them invisible.
+   */
+  padding: max(3vh, env(safe-area-inset-top, 0px) + 12px) 4vw
+    max(21vh, env(safe-area-inset-bottom, 0px) + 148px);
+  background: rgba(6, 8, 11, 0.72);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.22s ease-out;
+}
+
+.deskfocus--visible {
+  opacity: 1;
+}
+
+.deskfocus[hidden] {
+  display: none;
+}
+
+/*
+ * The leaf itself. Rag paper that has been at sea: warm, a little grubby, and
+ * lit unevenly — the gradient is a page under a cabin window rather than a
+ * scan.
+ */
+.deskfocus__sheet {
+  position: relative;
+  width: min(92vw, 660px);
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(20px, 4vw, 46px) clamp(18px, 4vw, 52px);
+  border-radius: 3px;
+  color: #2b2118;
+  background:
+    radial-gradient(120% 90% at 22% 8%, rgba(255, 250, 236, 0.9), rgba(255, 250, 236, 0) 60%),
+    linear-gradient(168deg, #efe4cd 0%, #e6d8bd 52%, #dbcbab 100%);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.55),
+    inset 0 0 60px rgba(120, 92, 52, 0.18);
+  /*
+   * Old-fashioned, and specified as a stack rather than a webfont on purpose:
+   * this project ships no font files and an artifact-style CDN import is not
+   * available to it. Every name here is a serif that exists on one of the three
+   * desktop platforms, and the generic `serif` behind them is what a phone
+   * falls back to — which is still a serif, and a serif is what the joke needs.
+   */
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua',
+    'URW Palladio L', Georgia, serif;
+  font-size: clamp(14px, 1.65vw, 17px);
+  line-height: 1.62;
+}
+
+.deskfocus__folio {
+  font-size: clamp(10px, 1.15vw, 12px);
+  letter-spacing: 0.34em;
+  color: rgba(255, 250, 238, 0.55);
+  text-transform: uppercase;
+  min-height: 1em;
+}
+
+.deskfocus__pager {
+  display: flex;
+  gap: 14px;
+}
+
+.deskfocus__pager[hidden] {
+  display: none;
+}
+
+.deskfocus__page {
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  width: 46px;
+  height: 40px;
+  color: rgba(255, 250, 238, 0.9);
+  border: 1px solid rgba(255, 250, 238, 0.28);
+  border-radius: 999px;
+  background: rgba(18, 22, 28, 0.5);
+  cursor: pointer;
+}
+
+.deskfocus__page:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* --- the pages ----------------------------------------------------------- */
+
+.page--title {
+  text-align: center;
+  padding: clamp(10px, 3vw, 34px) 0;
+}
+
+.page__rule {
+  height: 0;
+  border-top: 2px solid rgba(60, 44, 26, 0.62);
+  border-bottom: 1px solid rgba(60, 44, 26, 0.62);
+  padding-bottom: 3px;
+  margin: 6px 0 22px;
+}
+
+.page--title .page__rule:last-of-type {
+  margin: 26px 0 18px;
+}
+
+.title__super,
+.title__foot {
+  font-size: 0.72em;
+  letter-spacing: 0.24em;
+  color: rgba(60, 44, 26, 0.72);
+  margin: 0 0 14px;
+}
+
+.title__foot {
+  margin: 0;
+}
+
+.title__main {
+  font-size: clamp(26px, 5.4vw, 46px);
+  line-height: 1.14;
+  letter-spacing: 0.045em;
+  margin: 0 0 20px;
+  font-weight: 700;
+}
+
+.title__sub {
+  font-size: 0.82em;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+  color: rgba(60, 44, 26, 0.86);
+  margin: 0;
+}
+
+.page--text h2 {
+  font-size: 0.82em;
+  letter-spacing: 0.19em;
+  font-weight: 700;
+  margin: 26px 0 8px;
+  color: rgba(60, 44, 26, 0.9);
+}
+
+.page--text h2:first-child {
+  margin-top: 0;
+}
+
+.page--text p {
+  margin: 0;
+}
+
+/*
+ * The plate, and the room its caption needs.
+ *
+ * `max-height` rather than letting the SVG take the width it wants: the sheet
+ * scrolls, and a plate sized purely by width pushed its own caption off the
+ * bottom of the page on a short viewport — so the drawing was complete and the
+ * sentence explaining it was somewhere nobody scrolled to.
+ */
+.plate {
+  display: block;
+  width: 100%;
+  max-height: 46vh;
+  height: auto;
+  margin: 0 auto;
+}
+
+.plate__caption {
+  margin: 6px 0 0;
+  text-align: center;
+  font-size: 0.82em;
+  font-style: italic;
+  color: rgba(60, 44, 26, 0.82);
+}
+
+/* --- the chronometer's face ---------------------------------------------- */
+
+/*
+ * The dial is drawn on the same rag-paper sheet the manual uses, which is a
+ * deliberate re-use rather than a shortcut: opening a thing off this desk should
+ * always look like the same act. What changes is what is on the page.
+ */
+.page--dial {
+  text-align: center;
+}
+
+.dial {
+  display: block;
+  width: min(100%, 340px);
+  max-height: 42vh;
+  height: auto;
+  margin: 0 auto;
+}
+
+/*
+ * The case, the enamel and the hands. Ink-on-paper again — the plate's own rule
+ * — because a chronometer dial rendered in brass and glass on a paper page would
+ * be a photograph pasted into a book.
+ */
+.dial__case {
+  fill: none;
+  stroke: rgba(52, 38, 22, 0.5);
+  stroke-width: 2.4;
+}
+
+.dial__face {
+  fill: rgba(255, 252, 242, 0.55);
+  stroke: rgba(52, 38, 22, 0.72);
+  stroke-width: 1.6;
+}
+
+.dial__tick {
+  stroke: rgba(52, 38, 22, 0.5);
+  stroke-width: 1.1;
+}
+
+.dial__tick--major {
+  stroke: rgba(40, 28, 16, 0.85);
+  stroke-width: 2.4;
+}
+
+.dial__numeral {
+  fill: rgba(40, 28, 16, 0.88);
+  font-size: 21px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.dial__hand {
+  stroke: rgba(28, 20, 12, 0.92);
+  stroke-linecap: round;
+}
+
+/* The seconds hand is the one moving part; it gets the only colour on the page. */
+.dial__hand--second {
+  stroke: rgba(140, 46, 30, 0.85);
+}
+
+.dial__boss {
+  fill: rgba(28, 20, 12, 0.92);
+}
+
+/*
+ * The readout under the dial. Three rows of a definition list, because that is
+ * what it is — a label and a figure — and because it keeps the times in a
+ * column where they can be compared, which is the entire point of showing two.
+ */
+.dial__readout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 18px;
+  margin: 18px auto 0;
+  max-width: 380px;
+  text-align: left;
+}
+
+.dial__readout dt {
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(60, 44, 26, 0.78);
+  align-self: center;
+}
+
+.dial__readout dd {
+  margin: 0;
+  text-align: right;
+  /* Tabular figures, so the seconds do not shuffle the line as they change. */
+  font-variant-numeric: tabular-nums;
+  font-size: 1.12em;
+  color: rgba(34, 24, 14, 0.94);
+}
+
+.dial__note {
+  margin: 16px auto 0;
+  max-width: 420px;
+  font-size: 0.8em;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(60, 44, 26, 0.78);
+}
+
+/* Ink on paper: one colour, and weight instead of hue. */
+.plate-rim,
+.plate-hub {
+  fill: none;
+  stroke: rgba(52, 38, 22, 0.55);
+  stroke-width: 1.4;
+}
+
+.plate-nogo {
+  fill: rgba(52, 38, 22, 0.13);
+  stroke: rgba(52, 38, 22, 0.4);
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+}
+
+.plate-ray {
+  stroke: rgba(52, 38, 22, 0.42);
+  stroke-width: 1.2;
+}
+
+.plate-hull {
+  fill: rgba(52, 38, 22, 0.9);
+}
+
+.plate-boom {
+  stroke: rgba(52, 38, 22, 0.9);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.plate-wind,
+.plate-wind-head {
+  stroke: rgba(52, 38, 22, 0.9);
+  stroke-width: 2;
+  fill: rgba(52, 38, 22, 0.9);
+}
+
+.plate text {
+  fill: rgba(52, 38, 22, 0.86);
+  font-family: inherit;
+  letter-spacing: 0.16em;
+}
+
+.plate-point {
+  font-size: 15px;
+}
+
+.plate-wind-label {
+  font-size: 16px;
+  text-anchor: middle;
+  letter-spacing: 0.3em;
+}
+
+.plate-nogo-label,
+.plate-irons {
+  font-size: 15px;
+  text-anchor: middle;
+  letter-spacing: 0.22em;
+  fill: rgba(52, 38, 22, 0.62);
+}
+
+/*
+ * The name of whatever is under the cursor, on the desk.
+ *
+ * It follows the pointer rather than sitting in a corner, because on a desk the
+ * question is *which* of these things, and a label somewhere else makes the
+ * player look away from the thing they are pointing at to find out.
+ */
+/*
+ * Short viewports — a phone held sideways, which is how a phone is held to
+ * read something.
+ *
+ * **The portrait layout does not survive rotation, and Ash found it cut off.**
+ * The page is a column — folio, sheet, pager — stacked between a top margin and
+ * a bottom margin sized to clear the action bar. In portrait that is fine: 812
+ * px of height swallows 160 px of chrome without noticing. Turn the phone and
+ * there are 375 px total, the same 160 px of chrome takes 43% of it, and what
+ * is left cannot hold a page — so the sheet scrolls and the reader sees the top
+ * third of a plate.
+ *
+ * The fix is to stop spending height on things that do not need it. The folio
+ * goes (the running head is a nicety, and the page says what it is). The pager
+ * moves to the *sides*, flanking the sheet, where there is width going spare
+ * and none of it costs vertical room. The bottom margin drops to just clear the
+ * action bar. What is left is nearly the whole viewport for the page.
+ *
+ * Keyed on height rather than on `orientation`, because the thing that hurts is
+ * short — a small window on a laptop has exactly the same problem and no
+ * orientation at all.
+ */
+@media (max-height: 560px) {
+  /*
+   * The bar comes down to the edge. At `max(13vh, …+92px)` it floats 92 px up,
+   * which on a 375 px-tall viewport is the middle of the picture — it landed
+   * squarely across the bottom of the sailing plate. Low and out of the way is
+   * also better for the walking view on a sideways phone, where 92 px of the
+   * little vertical room there is was being spent on a gap.
+   */
+  .actionbar {
+    bottom: max(10px, env(safe-area-inset-bottom, 0px) + 8px);
+  }
+
+  .actionbar__action {
+    padding: 9px 18px;
+  }
+
+  .deskfocus {
+    padding: 8px 4vw max(11vh, env(safe-area-inset-bottom, 0px) + 54px);
+  }
+
+  .deskfocus__folio {
+    display: none;
+  }
+
+  .deskfocus__sheet {
+    /* Narrower than the full width, so the pager has somewhere to be that is
+       not on top of the page. */
+    width: min(78vw, 620px);
+    padding: clamp(12px, 2.4vh, 22px) clamp(16px, 3vw, 34px);
+    font-size: clamp(12px, 3.1vh, 15px);
+  }
+
+  .deskfocus__pager {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    padding: 0 max(8px, env(safe-area-inset-left, 0px));
+    pointer-events: none;
+  }
+
+  .deskfocus__page {
+    pointer-events: auto;
+  }
+
+  .plate {
+    /* The sheet's own padding is the only other claim on the height now. */
+    max-height: 66vh;
+  }
+
+  .plate__caption {
+    font-size: 0.76em;
+  }
+
+  .page--title {
+    padding: 0;
+  }
+
+  .page__rule {
+    margin: 2px 0 10px;
+  }
+
+  .page--title .page__rule:last-of-type {
+    margin: 12px 0 8px;
+  }
+
+  .title__main {
+    font-size: clamp(20px, 7.5vh, 34px);
+    margin: 0 0 10px;
+  }
+
+  .title__super {
+    margin: 0 0 8px;
+  }
+
+  .page--text h2 {
+    margin: 14px 0 5px;
+  }
+}
+
+.deskhover {
+  position: fixed;
+  z-index: 30;
+  transform: translate(14px, -50%);
+  pointer-events: none;
+  font-size: clamp(11px, 1.4vw, 13px);
+  letter-spacing: 0.16em;
+  color: rgba(255, 252, 245, 0.95);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 252, 245, 0.22);
+  background: rgba(18, 22, 28, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.12s ease-out;
+}
+
+.deskhover--visible {
+  opacity: 1;
+}
+
+/*
+ * The glass's face. It shares the chronometer's dial vocabulary — the same
+ * cream face, the same ticks, the same numerals — because they are two
+ * instruments in one cabin and a second visual language would make them two
+ * instruments from two games.
+ *
+ * What it adds is a second hand of a different kind. The chronometer's extra
+ * hand is the one that *moves*, so it takes the page's only colour. The
+ * glass's extra hand is the one that *does not* — the brass set-hand, left
+ * where the mercury stood when you last looked — so it is drawn back rather
+ * than forward: thinner, warmer, and behind the mercury hand in the stacking
+ * order. The reader's eye should land on the dark hand and then find the pale
+ * one, because the question is "how far has it moved", not "where is it".
+ */
+.dial__hand--set {
+  stroke: rgba(150, 112, 44, 0.85);
+  stroke-linecap: butt;
+}
+
+/* STORMY, RAIN, CHANGE, FAIR — set small, and rotated onto their own radius. */
+.dial__legend {
+  fill: rgba(72, 54, 32, 0.72);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.dial__caption {
+  margin: 12px auto 0;
+  max-width: 420px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: rgba(34, 24, 14, 0.94);
+}
+
+/*
+ * The tendency, and it is the largest thing under the dial on purpose. A
+ * pressure is a number you cannot act on; "falling" is an order to shorten
+ * sail. The instrument's whole value to a sailor is in this line.
+ */
+.dial__caption--large {
+  font-size: 1.35em;
+  letter-spacing: 0.02em;
+}
+
+.dial__aside {
+  font-size: 0.82em;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(60, 44, 26, 0.78);
+}

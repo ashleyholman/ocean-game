@@ -1,0 +1,183 @@
+You are the independent read-only code reviewer and visual-fidelity critic for a
+candidate final graphics, lighting, atmosphere and material round in an existing
+Three.js ocean-and-raft prototype.
+
+EXPECTED HARNESS
+
+Run this prompt in a separate Claude Code session using Opus 5.
+
+ROLE AND AUTHORITY
+
+Perform a fresh review of the candidate code, shader maths, tests, documentation
+and actual rendered output. Do not edit tracked files, implement fixes, or
+perform git mutations. The original Claude implementation session is the sole
+integrator.
+
+Do not anchor on the separate Sol technical review before forming your own
+conclusions. Independent model diversity is part of the purpose of this review.
+
+ORIENTATION
+
+Locate the candidate’s integrated ocean and camera work plus:
+
+- `docs/graphics/VISUAL_LIGHTING_SPEC.md`;
+- `docs/graphics/VISUAL_REFERENCE_NOTES.md`;
+- `docs/graphics/GRAPHICS_ROUND_REPORT.md`;
+- the complete screenshot matrix or a documented reproduction path;
+- the shared visible tools launcher with World/General, Buoyancy, Ocean, Camera
+  and Graphics panels.
+
+If an artifact or evidence case is unavailable, identify that limitation and
+continue with everything that can be reviewed.
+
+READ FIRST
+
+Read:
+
+- `docs/upcoming-prompts/graphics-prompt.txt`;
+- ocean and camera specifications/reports;
+- `docs/graphics/VISUAL_LIGHTING_SPEC.md`;
+- `docs/graphics/VISUAL_REFERENCE_NOTES.md`;
+- `docs/graphics/GRAPHICS_ROUND_REPORT.md`;
+- the candidate diff from its starting commit.
+
+Inspect relevant implementation beyond the changed lines where necessary to
+understand the renderer and prerequisite contracts.
+
+Run the complete current-worktree test suite, type checking and production build
+if the environment permits. Exclude nested `.claude/worktrees` from test
+discovery. Record exact commands and results.
+
+Inspect all supplied images and motion captures at native resolution where
+possible. Use a real browser to reproduce the highest-risk cases through the
+visible tools launcher.
+
+TECHNICAL CODE REVIEW
+
+Review at minimum:
+
+1. COLOUR AND POST-PROCESSING PIPELINE
+
+- Lighting/shader work occurs in an appropriate linear space.
+- Output colour conversion and tone mapping occur exactly once.
+- Colour, data and normal textures use correct colour-space treatment.
+- Exposure and bloom use intended HDR values without lifting ordinary clouds,
+  ocean or the complete frame.
+
+2. ASTRONOMICAL AUTHORITY AND CONTINUITY
+
+- Sun, Moon, star and atmosphere inputs derive from canonical planetary state.
+- No clock-label shortcut or second decorative celestial authority exists.
+- Atmosphere, exposure, star visibility, Moonlight and lamp thresholds are
+  finite and continuous through horizon, twilight, polar day and polar night.
+- Smoothing uses presentation delta rather than accelerated world time.
+
+3. SHADER AND LIGHTING CORRECTNESS
+
+- Radiance, Fresnel, glitter, foam and material-lighting terms have coherent
+  units/ranges and bounded edge cases.
+- Star limiting magnitude is monotonic and brighter stars cannot appear later
+  than fainter ones solely because of the visibility function.
+- Lamp hysteresis and forced modes are deterministic.
+- Shader variants, uniforms, disposal and resize paths cannot leak resources or
+  leave stale state.
+
+4. PREREQUISITE PRESERVATION
+
+- Graphics changes do not alter `WaveField` displacement, CPU/GPU parity,
+  sea-state transitions, persistent-foam history or `RaftBuoyancy`.
+- Close/default/far/embodied camera ownership and transitions remain intact.
+- No second observer, camera, time, world-position or ocean-physics authority is
+  introduced.
+
+5. TOOLS, TESTS AND PERFORMANCE
+
+- One shared launcher owns World/General, Buoyancy, Ocean, Camera and Graphics;
+  deep links open the same state, closed panels are lazy, and `Hide all` is safe.
+- Tests cover numerical boundaries and continuity rather than only nominal
+  screenshots.
+- Browser/shader console evidence is clean.
+- 4K, far-camera, star-heavy night and mobile performance claims are measured.
+- New assets are licensed and credited.
+
+For every technical finding, cite the exact file and tight line range, explain
+the concrete failure mode, identify missing test coverage, and provide a narrow
+acceptance condition. Do not provide a patch.
+
+REQUIRED MATRIX
+
+Review:
+
+- high-Sun near-equatorial midday;
+- southern mid-latitude summer and winter noon;
+- high-latitude low Sun;
+- polar day;
+- sunrise, golden hour, sunset and civil/nautical/astronomical twilight;
+- fixed-view star emergence at the specified Sun elevations;
+- Moon-below-horizon dark night;
+- Moonlit night with lamp on and off;
+- polar night.
+
+Review close, default, far-aerial, embodied and embodied-zenith cameras.
+
+Review the final equivalents of `DEAD_CALM`, `CURRENT_MODERATE` and
+`SOUTHERN_OCEAN_ROUGH` at midday, sunset and night, including close and far
+views. Inspect 4K, ordinary desktop, mobile portrait and mobile landscape.
+
+JUDGING CRITERIA
+
+Judge:
+
+- clear sky hue and zenith-to-horizon gradient;
+- cloud whiteness, internal shading and compositing;
+- horizon readability without a seam or broad grey veil;
+- deep-open-ocean body colour;
+- view-dependent, spatially localised Sun glitter;
+- roughness-dependent glint across calm/moderate/rough seas;
+- preservation and plausible lighting of generated/persistent foam;
+- direct-Sun versus ambient-light balance;
+- warm low-Sun sail response and restrained backlighting;
+- continuous geographically coherent sunrise/sunset/twilight;
+- magnitude-ordered star emergence and crisp 4K star points;
+- dark but readable nights;
+- restrained Moon halo and directionally correct Moonlight/reflection;
+- small warm raft-lamp refuge without ocean floodlighting;
+- stable exposure without pumping;
+- clipping, banding, gamut errors, double-gamma symptoms, oversaturation or
+  uncontrolled bloom;
+- consistency across every final camera scale and viewport;
+- discoverable tools and a genuinely clean `Hide all` state.
+
+Distinguish physical incoherence from aesthetic preference. Do not request a
+weather system, new camera mode, new sea-state physics or unrelated content.
+
+SEVERITY
+
+- BLOCKER: core acceptance scene remains wrong, a prerequisite system regresses,
+  or evidence is insufficient to support completion.
+- MAJOR: conspicuous recurring visual defect across an important state.
+- MINOR: local polish issue with limited impact.
+
+OUTPUT
+
+Return:
+
+1. Verdict: `PASS`, `PASS WITH FINDINGS`, `FAIL`, or `UNREVIEWABLE`.
+2. Candidate commit/path, starting commit and diff inspected.
+3. Commands run, test/build results and evidence inspected.
+4. All BLOCKER and MAJOR code findings, plus meaningful MINOR findings.
+5. All BLOCKER and MAJOR visual findings, plus meaningful MINOR findings.
+6. The five highest-severity findings across code and visuals.
+7. For each: severity, category, exact file/line where applicable, exact
+   state/camera/viewport where applicable, proof, reproduction, violated
+   criterion and narrow acceptance test.
+8. A compact day/twilight/night assessment.
+9. A compact calm/moderate/rough and close/default/far/embodied assessment.
+10. Colour-pipeline, astronomical-authority, shader/resource and
+    prerequisite-regression assessments.
+11. 4K/mobile and temporal-stability assessment.
+12. Developer-tools discoverability/clean-view assessment.
+13. Integration recommendation.
+
+Do not provide a replacement art direction, broad subjective mood-board advice
+or code changes. Make every finding reproducible and bounded.

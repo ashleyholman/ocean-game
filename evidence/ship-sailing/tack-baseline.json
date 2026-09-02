@@ -1,0 +1,5351 @@
+{
+  "formatVersion": 2,
+  "status": "S6c: THE S4 TACK GATE HAS FLIPPED BACK, and the coefficient round says why. The scripted tack now CROSSES THE EYE on every with-way entry and then hangs on the new bow at 21-33° — S3's ±34° in-irons attractor, returned. S4 flipped this gate by hardening the sheets, which worked because hard-sheeted lift was free; with induced drag CL²/(π·AR·e) it is not free, and the flat maneuvering trims no longer buy enough drive to sail her out to a close-hauled groove that has itself moved from ~45° to 55-60°. THE SHIP CAN STILL TACK: `evidence/ship-sailing/voyage-baseline.json` beats to windward with three tacks ordered and three completed, because the crew work the sheets continuously and stern-board her when she hangs, and this fixed-angle script does neither. What this file measures is the scripted evolution, and the scripted evolution is now the stale instrument. The irons gates flipped too, in the other direction: an aback sail carries lift now, so backing a headsail is a move that works and every escape case frees her.",
+  "contract": {
+    "method": "Free runs in flat water under steady wind, sailed on the live S4 control surface (rate-limited sheets and helm — the same path a player commands). The script holds the approach leg on the authored trims, hardens for the beat at the order, hauls across at the eye with the staysail held aback, and shifts the helm if she gathers sternway. The irons cases start her head to wind at rest with flat sheets and separate the two candidate escape mechanisms — backed sail and stern-board helm — one at a time.",
+    "scope": "Tacks from a close reach at 6 and 8 m/s, from a beam reach near best speed, and from rest; one gybe at 8 m/s worked across on the sheets; five escape-from-irons cases at 8 m/s. Her whole wardrobe, except that the tacks now HAND THE SQUARE TOPSAIL at the top of the approach leg — a square sail cannot be braced to draw close-hauled, and carrying it aback through a tack was measured to stop the maneuver dead (no entry even reached the eye). The gybe and irons cases keep the full wardrobe: off the wind the topsail draws, and head to wind it is edge-on.",
+    "validationMeaning": "Success is measured, not scripted: eye-crossing speed, completion time, the low-way non-crossing, the sound gybe, which escape mechanism actually frees her, and energy accounting through every maneuver. Timings are model results. Every gate is pinned in the direction that is TRUE, which after S6c includes two that are limitations: the scripted tack does not settle on the new board, and it is the SCRIPT that cannot, not the ship."
+  },
+  "tacks": [
+    {
+      "windSpeedMps": 6,
+      "entryAngleDeg": -65,
+      "entryDelaySeconds": 60,
+      "entrySpeedMps": 2.6096,
+      "completed": false,
+      "timeToCrossEyeS": 44.15,
+      "eyeCrossSpeedMps": 1.114,
+      "timeToCompleteS": null,
+      "minSpeedMps": 0.442,
+      "exitSpeedMps": 0.442,
+      "captureAngleDeg": 28.067,
+      "maxEnergyOverWorkJ": -13.586751,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": -65,
+          "speedMps": 2.6,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 2,
+          "windAngleOffBowDeg": -64.61,
+          "speedMps": 2.5787,
+          "yawRateRadPerS": -0.0036,
+          "rudderDeg": 0.99
+        },
+        {
+          "timeSeconds": 4,
+          "windAngleOffBowDeg": -64.33,
+          "speedMps": 2.576,
+          "yawRateRadPerS": -0.0017,
+          "rudderDeg": 1.2
+        },
+        {
+          "timeSeconds": 6,
+          "windAngleOffBowDeg": -64.17,
+          "speedMps": 2.5828,
+          "yawRateRadPerS": -0.00119,
+          "rudderDeg": 1.38
+        },
+        {
+          "timeSeconds": 8,
+          "windAngleOffBowDeg": -64.06,
+          "speedMps": 2.582,
+          "yawRateRadPerS": -0.00078,
+          "rudderDeg": 1.5
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": -63.98,
+          "speedMps": 2.5844,
+          "yawRateRadPerS": -0.00058,
+          "rudderDeg": 1.6
+        },
+        {
+          "timeSeconds": 12,
+          "windAngleOffBowDeg": -63.92,
+          "speedMps": 2.5874,
+          "yawRateRadPerS": -0.00044,
+          "rudderDeg": 1.67
+        },
+        {
+          "timeSeconds": 14,
+          "windAngleOffBowDeg": -63.88,
+          "speedMps": 2.5884,
+          "yawRateRadPerS": -0.00036,
+          "rudderDeg": 1.73
+        },
+        {
+          "timeSeconds": 16,
+          "windAngleOffBowDeg": -63.84,
+          "speedMps": 2.5901,
+          "yawRateRadPerS": -0.0003,
+          "rudderDeg": 1.78
+        },
+        {
+          "timeSeconds": 18,
+          "windAngleOffBowDeg": -63.81,
+          "speedMps": 2.5919,
+          "yawRateRadPerS": -0.00025,
+          "rudderDeg": 1.82
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": -63.78,
+          "speedMps": 2.5931,
+          "yawRateRadPerS": -0.00021,
+          "rudderDeg": 1.85
+        },
+        {
+          "timeSeconds": 22,
+          "windAngleOffBowDeg": -63.76,
+          "speedMps": 2.5944,
+          "yawRateRadPerS": -0.00017,
+          "rudderDeg": 1.88
+        },
+        {
+          "timeSeconds": 24,
+          "windAngleOffBowDeg": -63.74,
+          "speedMps": 2.5957,
+          "yawRateRadPerS": -0.00014,
+          "rudderDeg": 1.9
+        },
+        {
+          "timeSeconds": 26,
+          "windAngleOffBowDeg": -63.73,
+          "speedMps": 2.5968,
+          "yawRateRadPerS": -0.00012,
+          "rudderDeg": 1.92
+        },
+        {
+          "timeSeconds": 28,
+          "windAngleOffBowDeg": -63.71,
+          "speedMps": 2.5979,
+          "yawRateRadPerS": -0.0001,
+          "rudderDeg": 1.94
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": -63.7,
+          "speedMps": 2.599,
+          "yawRateRadPerS": -0.00008,
+          "rudderDeg": 1.95
+        },
+        {
+          "timeSeconds": 32,
+          "windAngleOffBowDeg": -63.7,
+          "speedMps": 2.5999,
+          "yawRateRadPerS": -0.00006,
+          "rudderDeg": 1.96
+        },
+        {
+          "timeSeconds": 34,
+          "windAngleOffBowDeg": -63.69,
+          "speedMps": 2.6008,
+          "yawRateRadPerS": -0.00005,
+          "rudderDeg": 1.97
+        },
+        {
+          "timeSeconds": 36,
+          "windAngleOffBowDeg": -63.68,
+          "speedMps": 2.6017,
+          "yawRateRadPerS": -0.00004,
+          "rudderDeg": 1.98
+        },
+        {
+          "timeSeconds": 38,
+          "windAngleOffBowDeg": -63.68,
+          "speedMps": 2.6025,
+          "yawRateRadPerS": -0.00004,
+          "rudderDeg": 1.98
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": -63.68,
+          "speedMps": 2.6033,
+          "yawRateRadPerS": -0.00003,
+          "rudderDeg": 1.99
+        },
+        {
+          "timeSeconds": 42,
+          "windAngleOffBowDeg": -63.67,
+          "speedMps": 2.6041,
+          "yawRateRadPerS": -0.00002,
+          "rudderDeg": 1.99
+        },
+        {
+          "timeSeconds": 44,
+          "windAngleOffBowDeg": -63.67,
+          "speedMps": 2.6048,
+          "yawRateRadPerS": -0.00002,
+          "rudderDeg": 2
+        },
+        {
+          "timeSeconds": 46,
+          "windAngleOffBowDeg": -63.67,
+          "speedMps": 2.6055,
+          "yawRateRadPerS": -0.00002,
+          "rudderDeg": 2
+        },
+        {
+          "timeSeconds": 48,
+          "windAngleOffBowDeg": -63.67,
+          "speedMps": 2.6062,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": -63.67,
+          "speedMps": 2.6068,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2
+        },
+        {
+          "timeSeconds": 52,
+          "windAngleOffBowDeg": -63.67,
+          "speedMps": 2.6074,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2
+        },
+        {
+          "timeSeconds": 54,
+          "windAngleOffBowDeg": -63.66,
+          "speedMps": 2.608,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2
+        },
+        {
+          "timeSeconds": 56,
+          "windAngleOffBowDeg": -63.66,
+          "speedMps": 2.6086,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.01
+        },
+        {
+          "timeSeconds": 58,
+          "windAngleOffBowDeg": -63.66,
+          "speedMps": 2.6091,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.01
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": -63.66,
+          "speedMps": 2.6096,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.01
+        },
+        {
+          "timeSeconds": 62,
+          "windAngleOffBowDeg": -61.09,
+          "speedMps": 2.5907,
+          "yawRateRadPerS": -0.04811,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 64,
+          "windAngleOffBowDeg": -55.54,
+          "speedMps": 2.5278,
+          "yawRateRadPerS": -0.04362,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 66,
+          "windAngleOffBowDeg": -51.17,
+          "speedMps": 2.45,
+          "yawRateRadPerS": -0.03395,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 68,
+          "windAngleOffBowDeg": -47.52,
+          "speedMps": 2.3695,
+          "yawRateRadPerS": -0.0303,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": -44.15,
+          "speedMps": 2.2895,
+          "yawRateRadPerS": -0.02855,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 72,
+          "windAngleOffBowDeg": -40.96,
+          "speedMps": 2.2118,
+          "yawRateRadPerS": -0.02718,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 74,
+          "windAngleOffBowDeg": -37.91,
+          "speedMps": 2.135,
+          "yawRateRadPerS": -0.02611,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 76,
+          "windAngleOffBowDeg": -34.97,
+          "speedMps": 2.0578,
+          "yawRateRadPerS": -0.02527,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 78,
+          "windAngleOffBowDeg": -32.12,
+          "speedMps": 1.9799,
+          "yawRateRadPerS": -0.02453,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": -29.37,
+          "speedMps": 1.9003,
+          "yawRateRadPerS": -0.02335,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 82,
+          "windAngleOffBowDeg": -26.74,
+          "speedMps": 1.8204,
+          "yawRateRadPerS": -0.02263,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 84,
+          "windAngleOffBowDeg": -24.16,
+          "speedMps": 1.7427,
+          "yawRateRadPerS": -0.02257,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 86,
+          "windAngleOffBowDeg": -21.58,
+          "speedMps": 1.6691,
+          "yawRateRadPerS": -0.02244,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 88,
+          "windAngleOffBowDeg": -19.03,
+          "speedMps": 1.5995,
+          "yawRateRadPerS": -0.0219,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": -16.55,
+          "speedMps": 1.5334,
+          "yawRateRadPerS": -0.02142,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 92,
+          "windAngleOffBowDeg": -14.12,
+          "speedMps": 1.4698,
+          "yawRateRadPerS": -0.02098,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 94,
+          "windAngleOffBowDeg": -11.74,
+          "speedMps": 1.408,
+          "yawRateRadPerS": -0.0206,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 96,
+          "windAngleOffBowDeg": -9.4,
+          "speedMps": 1.3473,
+          "yawRateRadPerS": -0.02035,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 98,
+          "windAngleOffBowDeg": -7.08,
+          "speedMps": 1.2875,
+          "yawRateRadPerS": -0.02015,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": -4.78,
+          "speedMps": 1.2289,
+          "yawRateRadPerS": -0.01998,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 102,
+          "windAngleOffBowDeg": -2.49,
+          "speedMps": 1.1722,
+          "yawRateRadPerS": -0.02005,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 104,
+          "windAngleOffBowDeg": -0.17,
+          "speedMps": 1.118,
+          "yawRateRadPerS": -0.02043,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 106,
+          "windAngleOffBowDeg": 2.15,
+          "speedMps": 1.0752,
+          "yawRateRadPerS": -0.02011,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 108,
+          "windAngleOffBowDeg": 4.47,
+          "speedMps": 1.0373,
+          "yawRateRadPerS": -0.01881,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 6.43,
+          "speedMps": 0.9972,
+          "yawRateRadPerS": -0.01545,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 112,
+          "windAngleOffBowDeg": 8.05,
+          "speedMps": 0.9581,
+          "yawRateRadPerS": -0.01318,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 114,
+          "windAngleOffBowDeg": 9.52,
+          "speedMps": 0.921,
+          "yawRateRadPerS": -0.01251,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 116,
+          "windAngleOffBowDeg": 10.92,
+          "speedMps": 0.8852,
+          "yawRateRadPerS": -0.01206,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 118,
+          "windAngleOffBowDeg": 12.32,
+          "speedMps": 0.8511,
+          "yawRateRadPerS": -0.01248,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 13.75,
+          "speedMps": 0.8195,
+          "yawRateRadPerS": -0.01219,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 122,
+          "windAngleOffBowDeg": 15.09,
+          "speedMps": 0.7889,
+          "yawRateRadPerS": -0.01132,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 124,
+          "windAngleOffBowDeg": 16.37,
+          "speedMps": 0.7595,
+          "yawRateRadPerS": -0.01097,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 126,
+          "windAngleOffBowDeg": 17.61,
+          "speedMps": 0.7313,
+          "yawRateRadPerS": -0.01073,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 128,
+          "windAngleOffBowDeg": 18.81,
+          "speedMps": 0.7045,
+          "yawRateRadPerS": -0.01002,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 19.89,
+          "speedMps": 0.6794,
+          "yawRateRadPerS": -0.0087,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 132,
+          "windAngleOffBowDeg": 20.8,
+          "speedMps": 0.6565,
+          "yawRateRadPerS": -0.00728,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 134,
+          "windAngleOffBowDeg": 21.56,
+          "speedMps": 0.6358,
+          "yawRateRadPerS": -0.00597,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 136,
+          "windAngleOffBowDeg": 22.18,
+          "speedMps": 0.6173,
+          "yawRateRadPerS": -0.00484,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 138,
+          "windAngleOffBowDeg": 22.68,
+          "speedMps": 0.601,
+          "yawRateRadPerS": -0.00396,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 23.11,
+          "speedMps": 0.5865,
+          "yawRateRadPerS": -0.00382,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 142,
+          "windAngleOffBowDeg": 23.56,
+          "speedMps": 0.5735,
+          "yawRateRadPerS": -0.00409,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 144,
+          "windAngleOffBowDeg": 24.04,
+          "speedMps": 0.5617,
+          "yawRateRadPerS": -0.00426,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 146,
+          "windAngleOffBowDeg": 24.53,
+          "speedMps": 0.5515,
+          "yawRateRadPerS": -0.00434,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 148,
+          "windAngleOffBowDeg": 25.03,
+          "speedMps": 0.543,
+          "yawRateRadPerS": -0.00438,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 25.54,
+          "speedMps": 0.536,
+          "yawRateRadPerS": -0.00443,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 152,
+          "windAngleOffBowDeg": 26.05,
+          "speedMps": 0.5307,
+          "yawRateRadPerS": -0.00448,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 154,
+          "windAngleOffBowDeg": 26.56,
+          "speedMps": 0.527,
+          "yawRateRadPerS": -0.00444,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 156,
+          "windAngleOffBowDeg": 27.06,
+          "speedMps": 0.5248,
+          "yawRateRadPerS": -0.00418,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 158,
+          "windAngleOffBowDeg": 27.5,
+          "speedMps": 0.5238,
+          "yawRateRadPerS": -0.00353,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 27.85,
+          "speedMps": 0.5237,
+          "yawRateRadPerS": -0.00243,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 162,
+          "windAngleOffBowDeg": 28.05,
+          "speedMps": 0.5238,
+          "yawRateRadPerS": -0.00107,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 164,
+          "windAngleOffBowDeg": 28.1,
+          "speedMps": 0.5236,
+          "yawRateRadPerS": 0.00004,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 166,
+          "windAngleOffBowDeg": 28.07,
+          "speedMps": 0.5226,
+          "yawRateRadPerS": 0.00055,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 168,
+          "windAngleOffBowDeg": 27.99,
+          "speedMps": 0.5206,
+          "yawRateRadPerS": 0.00065,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 27.92,
+          "speedMps": 0.5178,
+          "yawRateRadPerS": 0.00055,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 172,
+          "windAngleOffBowDeg": 27.87,
+          "speedMps": 0.5143,
+          "yawRateRadPerS": 0.00038,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 174,
+          "windAngleOffBowDeg": 27.84,
+          "speedMps": 0.5104,
+          "yawRateRadPerS": 0.0002,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 176,
+          "windAngleOffBowDeg": 27.82,
+          "speedMps": 0.5063,
+          "yawRateRadPerS": 0.00005,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 178,
+          "windAngleOffBowDeg": 27.82,
+          "speedMps": 0.5019,
+          "yawRateRadPerS": -0.00006,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 27.84,
+          "speedMps": 0.4976,
+          "yawRateRadPerS": -0.00014,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 182,
+          "windAngleOffBowDeg": 27.85,
+          "speedMps": 0.4932,
+          "yawRateRadPerS": -0.00019,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 184,
+          "windAngleOffBowDeg": 27.88,
+          "speedMps": 0.4889,
+          "yawRateRadPerS": -0.00021,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 186,
+          "windAngleOffBowDeg": 27.9,
+          "speedMps": 0.4847,
+          "yawRateRadPerS": -0.00022,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 188,
+          "windAngleOffBowDeg": 27.93,
+          "speedMps": 0.4806,
+          "yawRateRadPerS": -0.00022,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 27.95,
+          "speedMps": 0.4766,
+          "yawRateRadPerS": -0.00021,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 192,
+          "windAngleOffBowDeg": 27.98,
+          "speedMps": 0.4726,
+          "yawRateRadPerS": -0.0002,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 194,
+          "windAngleOffBowDeg": 28,
+          "speedMps": 0.4688,
+          "yawRateRadPerS": -0.00018,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 196,
+          "windAngleOffBowDeg": 28.02,
+          "speedMps": 0.465,
+          "yawRateRadPerS": -0.00017,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 198,
+          "windAngleOffBowDeg": 28.04,
+          "speedMps": 0.4614,
+          "yawRateRadPerS": -0.00017,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 28.06,
+          "speedMps": 0.4578,
+          "yawRateRadPerS": -0.00019,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 202,
+          "windAngleOffBowDeg": 28.08,
+          "speedMps": 0.4543,
+          "yawRateRadPerS": -0.00022,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 204,
+          "windAngleOffBowDeg": 28.11,
+          "speedMps": 0.451,
+          "yawRateRadPerS": -0.00026,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 206,
+          "windAngleOffBowDeg": 28.14,
+          "speedMps": 0.4478,
+          "yawRateRadPerS": -0.00031,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 208,
+          "windAngleOffBowDeg": 28.18,
+          "speedMps": 0.4448,
+          "yawRateRadPerS": -0.00036,
+          "rudderDeg": -25
+        }
+      ]
+    },
+    {
+      "windSpeedMps": 8,
+      "entryAngleDeg": -65,
+      "entryDelaySeconds": 60,
+      "entrySpeedMps": 3.3697,
+      "completed": false,
+      "timeToCrossEyeS": 33.93,
+      "eyeCrossSpeedMps": 1.4306,
+      "timeToCompleteS": null,
+      "minSpeedMps": 0.5774,
+      "exitSpeedMps": 0.6763,
+      "captureAngleDeg": 32.632,
+      "maxEnergyOverWorkJ": -34.840413,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": -65,
+          "speedMps": 3.4,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 2,
+          "windAngleOffBowDeg": -64.52,
+          "speedMps": 3.3553,
+          "yawRateRadPerS": -0.00305,
+          "rudderDeg": 1.07
+        },
+        {
+          "timeSeconds": 4,
+          "windAngleOffBowDeg": -64.3,
+          "speedMps": 3.3479,
+          "yawRateRadPerS": -0.00191,
+          "rudderDeg": 1.27
+        },
+        {
+          "timeSeconds": 6,
+          "windAngleOffBowDeg": -64.07,
+          "speedMps": 3.3586,
+          "yawRateRadPerS": -0.00166,
+          "rudderDeg": 1.58
+        },
+        {
+          "timeSeconds": 8,
+          "windAngleOffBowDeg": -63.94,
+          "speedMps": 3.3562,
+          "yawRateRadPerS": -0.00087,
+          "rudderDeg": 1.69
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": -63.84,
+          "speedMps": 3.3581,
+          "yawRateRadPerS": -0.00082,
+          "rudderDeg": 1.83
+        },
+        {
+          "timeSeconds": 12,
+          "windAngleOffBowDeg": -63.76,
+          "speedMps": 3.3615,
+          "yawRateRadPerS": -0.00059,
+          "rudderDeg": 1.93
+        },
+        {
+          "timeSeconds": 14,
+          "windAngleOffBowDeg": -63.7,
+          "speedMps": 3.3618,
+          "yawRateRadPerS": -0.00041,
+          "rudderDeg": 1.99
+        },
+        {
+          "timeSeconds": 16,
+          "windAngleOffBowDeg": -63.66,
+          "speedMps": 3.363,
+          "yawRateRadPerS": -0.00036,
+          "rudderDeg": 2.05
+        },
+        {
+          "timeSeconds": 18,
+          "windAngleOffBowDeg": -63.62,
+          "speedMps": 3.3643,
+          "yawRateRadPerS": -0.00028,
+          "rudderDeg": 2.1
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": -63.6,
+          "speedMps": 3.3649,
+          "yawRateRadPerS": -0.00021,
+          "rudderDeg": 2.13
+        },
+        {
+          "timeSeconds": 22,
+          "windAngleOffBowDeg": -63.57,
+          "speedMps": 3.3655,
+          "yawRateRadPerS": -0.00017,
+          "rudderDeg": 2.16
+        },
+        {
+          "timeSeconds": 24,
+          "windAngleOffBowDeg": -63.56,
+          "speedMps": 3.3661,
+          "yawRateRadPerS": -0.00013,
+          "rudderDeg": 2.18
+        },
+        {
+          "timeSeconds": 26,
+          "windAngleOffBowDeg": -63.54,
+          "speedMps": 3.3666,
+          "yawRateRadPerS": -0.0001,
+          "rudderDeg": 2.2
+        },
+        {
+          "timeSeconds": 28,
+          "windAngleOffBowDeg": -63.53,
+          "speedMps": 3.367,
+          "yawRateRadPerS": -0.00008,
+          "rudderDeg": 2.21
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": -63.53,
+          "speedMps": 3.3673,
+          "yawRateRadPerS": -0.00006,
+          "rudderDeg": 2.22
+        },
+        {
+          "timeSeconds": 32,
+          "windAngleOffBowDeg": -63.52,
+          "speedMps": 3.3676,
+          "yawRateRadPerS": -0.00005,
+          "rudderDeg": 2.23
+        },
+        {
+          "timeSeconds": 34,
+          "windAngleOffBowDeg": -63.51,
+          "speedMps": 3.3679,
+          "yawRateRadPerS": -0.00004,
+          "rudderDeg": 2.23
+        },
+        {
+          "timeSeconds": 36,
+          "windAngleOffBowDeg": -63.51,
+          "speedMps": 3.3682,
+          "yawRateRadPerS": -0.00003,
+          "rudderDeg": 2.24
+        },
+        {
+          "timeSeconds": 38,
+          "windAngleOffBowDeg": -63.51,
+          "speedMps": 3.3684,
+          "yawRateRadPerS": -0.00002,
+          "rudderDeg": 2.24
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": -63.51,
+          "speedMps": 3.3685,
+          "yawRateRadPerS": -0.00002,
+          "rudderDeg": 2.24
+        },
+        {
+          "timeSeconds": 42,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3687,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 44,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3689,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 46,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.369,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 48,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3691,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3693,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 52,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3694,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 54,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3695,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 56,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3696,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 58,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3696,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": -63.5,
+          "speedMps": 3.3697,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 2.25
+        },
+        {
+          "timeSeconds": 62,
+          "windAngleOffBowDeg": -59.74,
+          "speedMps": 3.3335,
+          "yawRateRadPerS": -0.06598,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 64,
+          "windAngleOffBowDeg": -52.84,
+          "speedMps": 3.2102,
+          "yawRateRadPerS": -0.05071,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 66,
+          "windAngleOffBowDeg": -47.75,
+          "speedMps": 3.072,
+          "yawRateRadPerS": -0.04016,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 68,
+          "windAngleOffBowDeg": -43.37,
+          "speedMps": 2.9368,
+          "yawRateRadPerS": -0.03682,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": -39.27,
+          "speedMps": 2.805,
+          "yawRateRadPerS": -0.03467,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 72,
+          "windAngleOffBowDeg": -35.43,
+          "speedMps": 2.6766,
+          "yawRateRadPerS": -0.03247,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 74,
+          "windAngleOffBowDeg": -31.78,
+          "speedMps": 2.5472,
+          "yawRateRadPerS": -0.03126,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 76,
+          "windAngleOffBowDeg": -28.3,
+          "speedMps": 2.4153,
+          "yawRateRadPerS": -0.0294,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 78,
+          "windAngleOffBowDeg": -24.99,
+          "speedMps": 2.2831,
+          "yawRateRadPerS": -0.02868,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": -21.67,
+          "speedMps": 2.157,
+          "yawRateRadPerS": -0.02909,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 82,
+          "windAngleOffBowDeg": -18.38,
+          "speedMps": 2.0396,
+          "yawRateRadPerS": -0.02814,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 84,
+          "windAngleOffBowDeg": -15.22,
+          "speedMps": 1.9294,
+          "yawRateRadPerS": -0.02723,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 86,
+          "windAngleOffBowDeg": -12.12,
+          "speedMps": 1.8238,
+          "yawRateRadPerS": -0.02686,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 88,
+          "windAngleOffBowDeg": -9.06,
+          "speedMps": 1.7209,
+          "yawRateRadPerS": -0.02653,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": -6.03,
+          "speedMps": 1.6199,
+          "yawRateRadPerS": -0.02648,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 92,
+          "windAngleOffBowDeg": -2.99,
+          "speedMps": 1.5213,
+          "yawRateRadPerS": -0.02669,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 94,
+          "windAngleOffBowDeg": 0.12,
+          "speedMps": 1.4276,
+          "yawRateRadPerS": -0.02759,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 96,
+          "windAngleOffBowDeg": 3.22,
+          "speedMps": 1.3571,
+          "yawRateRadPerS": -0.02659,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 98,
+          "windAngleOffBowDeg": 6.2,
+          "speedMps": 1.2932,
+          "yawRateRadPerS": -0.02352,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": 8.52,
+          "speedMps": 1.2267,
+          "yawRateRadPerS": -0.01744,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 102,
+          "windAngleOffBowDeg": 10.38,
+          "speedMps": 1.1635,
+          "yawRateRadPerS": -0.01608,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 104,
+          "windAngleOffBowDeg": 12.3,
+          "speedMps": 1.1047,
+          "yawRateRadPerS": -0.01725,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 106,
+          "windAngleOffBowDeg": 14.22,
+          "speedMps": 1.0499,
+          "yawRateRadPerS": -0.01581,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 108,
+          "windAngleOffBowDeg": 15.96,
+          "speedMps": 0.998,
+          "yawRateRadPerS": -0.01475,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 17.62,
+          "speedMps": 0.9488,
+          "yawRateRadPerS": -0.01413,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 112,
+          "windAngleOffBowDeg": 19.17,
+          "speedMps": 0.9024,
+          "yawRateRadPerS": -0.01273,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 114,
+          "windAngleOffBowDeg": 20.49,
+          "speedMps": 0.8605,
+          "yawRateRadPerS": -0.01031,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 116,
+          "windAngleOffBowDeg": 21.53,
+          "speedMps": 0.8239,
+          "yawRateRadPerS": -0.0079,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 118,
+          "windAngleOffBowDeg": 22.32,
+          "speedMps": 0.792,
+          "yawRateRadPerS": -0.00609,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 22.94,
+          "speedMps": 0.7651,
+          "yawRateRadPerS": -0.00493,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 122,
+          "windAngleOffBowDeg": 23.53,
+          "speedMps": 0.7421,
+          "yawRateRadPerS": -0.00534,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 124,
+          "windAngleOffBowDeg": 24.16,
+          "speedMps": 0.7223,
+          "yawRateRadPerS": -0.00555,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 126,
+          "windAngleOffBowDeg": 24.8,
+          "speedMps": 0.706,
+          "yawRateRadPerS": -0.00571,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 128,
+          "windAngleOffBowDeg": 25.46,
+          "speedMps": 0.6937,
+          "yawRateRadPerS": -0.0058,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 26.13,
+          "speedMps": 0.6851,
+          "yawRateRadPerS": -0.00585,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 132,
+          "windAngleOffBowDeg": 26.79,
+          "speedMps": 0.6802,
+          "yawRateRadPerS": -0.00555,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 134,
+          "windAngleOffBowDeg": 27.37,
+          "speedMps": 0.6784,
+          "yawRateRadPerS": -0.00439,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 136,
+          "windAngleOffBowDeg": 27.76,
+          "speedMps": 0.6786,
+          "yawRateRadPerS": -0.00222,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 138,
+          "windAngleOffBowDeg": 27.88,
+          "speedMps": 0.6786,
+          "yawRateRadPerS": -0.0001,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 27.84,
+          "speedMps": 0.6769,
+          "yawRateRadPerS": 0.0007,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 142,
+          "windAngleOffBowDeg": 27.75,
+          "speedMps": 0.6732,
+          "yawRateRadPerS": 0.00068,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 144,
+          "windAngleOffBowDeg": 27.69,
+          "speedMps": 0.6677,
+          "yawRateRadPerS": 0.00038,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 146,
+          "windAngleOffBowDeg": 27.66,
+          "speedMps": 0.6612,
+          "yawRateRadPerS": 0.00006,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 148,
+          "windAngleOffBowDeg": 27.67,
+          "speedMps": 0.6541,
+          "yawRateRadPerS": -0.00019,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 27.7,
+          "speedMps": 0.6469,
+          "yawRateRadPerS": -0.00036,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 152,
+          "windAngleOffBowDeg": 27.75,
+          "speedMps": 0.6398,
+          "yawRateRadPerS": -0.00045,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 154,
+          "windAngleOffBowDeg": 27.81,
+          "speedMps": 0.6328,
+          "yawRateRadPerS": -0.00049,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 156,
+          "windAngleOffBowDeg": 27.86,
+          "speedMps": 0.6261,
+          "yawRateRadPerS": -0.0005,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 158,
+          "windAngleOffBowDeg": 27.92,
+          "speedMps": 0.6197,
+          "yawRateRadPerS": -0.0005,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 27.98,
+          "speedMps": 0.6135,
+          "yawRateRadPerS": -0.00049,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 162,
+          "windAngleOffBowDeg": 28.03,
+          "speedMps": 0.6077,
+          "yawRateRadPerS": -0.00051,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 164,
+          "windAngleOffBowDeg": 28.1,
+          "speedMps": 0.6022,
+          "yawRateRadPerS": -0.00057,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 166,
+          "windAngleOffBowDeg": 28.17,
+          "speedMps": 0.597,
+          "yawRateRadPerS": -0.00066,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 168,
+          "windAngleOffBowDeg": 28.25,
+          "speedMps": 0.5923,
+          "yawRateRadPerS": -0.00077,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 28.34,
+          "speedMps": 0.5882,
+          "yawRateRadPerS": -0.0009,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 172,
+          "windAngleOffBowDeg": 28.45,
+          "speedMps": 0.5846,
+          "yawRateRadPerS": -0.00104,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 174,
+          "windAngleOffBowDeg": 28.58,
+          "speedMps": 0.5817,
+          "yawRateRadPerS": -0.0012,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 176,
+          "windAngleOffBowDeg": 28.73,
+          "speedMps": 0.5795,
+          "yawRateRadPerS": -0.00137,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 178,
+          "windAngleOffBowDeg": 28.9,
+          "speedMps": 0.578,
+          "yawRateRadPerS": -0.00156,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 29.09,
+          "speedMps": 0.5774,
+          "yawRateRadPerS": -0.00176,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 182,
+          "windAngleOffBowDeg": 29.3,
+          "speedMps": 0.5777,
+          "yawRateRadPerS": -0.00197,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 184,
+          "windAngleOffBowDeg": 29.54,
+          "speedMps": 0.5789,
+          "yawRateRadPerS": -0.0022,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 186,
+          "windAngleOffBowDeg": 29.81,
+          "speedMps": 0.581,
+          "yawRateRadPerS": -0.00245,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 188,
+          "windAngleOffBowDeg": 30.1,
+          "speedMps": 0.5841,
+          "yawRateRadPerS": -0.00272,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 30.43,
+          "speedMps": 0.5883,
+          "yawRateRadPerS": -0.00301,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 192,
+          "windAngleOffBowDeg": 30.79,
+          "speedMps": 0.5934,
+          "yawRateRadPerS": -0.00331,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 194,
+          "windAngleOffBowDeg": 31.19,
+          "speedMps": 0.5995,
+          "yawRateRadPerS": -0.00363,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 196,
+          "windAngleOffBowDeg": 31.62,
+          "speedMps": 0.6066,
+          "yawRateRadPerS": -0.00393,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 198,
+          "windAngleOffBowDeg": 32.09,
+          "speedMps": 0.6145,
+          "yawRateRadPerS": -0.00415,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 32.57,
+          "speedMps": 0.6232,
+          "yawRateRadPerS": -0.00429,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 202,
+          "windAngleOffBowDeg": 33.07,
+          "speedMps": 0.6325,
+          "yawRateRadPerS": -0.00437,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 204,
+          "windAngleOffBowDeg": 33.57,
+          "speedMps": 0.6426,
+          "yawRateRadPerS": -0.00442,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 206,
+          "windAngleOffBowDeg": 34.08,
+          "speedMps": 0.6533,
+          "yawRateRadPerS": -0.00446,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 208,
+          "windAngleOffBowDeg": 34.59,
+          "speedMps": 0.6645,
+          "yawRateRadPerS": -0.00448,
+          "rudderDeg": -25
+        }
+      ]
+    },
+    {
+      "windSpeedMps": 8,
+      "entryAngleDeg": -90,
+      "entryDelaySeconds": 60,
+      "entrySpeedMps": 4.0442,
+      "completed": false,
+      "timeToCrossEyeS": 45.67,
+      "eyeCrossSpeedMps": 1.3195,
+      "timeToCompleteS": null,
+      "minSpeedMps": 0.1916,
+      "exitSpeedMps": 0.1947,
+      "captureAngleDeg": 21.031,
+      "maxEnergyOverWorkJ": -99.281897,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": -90,
+          "speedMps": 4.2,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 2,
+          "windAngleOffBowDeg": -89.7,
+          "speedMps": 4.1455,
+          "yawRateRadPerS": -0.0017,
+          "rudderDeg": 0.65
+        },
+        {
+          "timeSeconds": 4,
+          "windAngleOffBowDeg": -89.65,
+          "speedMps": 4.1267,
+          "yawRateRadPerS": 0.00016,
+          "rudderDeg": 0.5
+        },
+        {
+          "timeSeconds": 6,
+          "windAngleOffBowDeg": -89.67,
+          "speedMps": 4.1231,
+          "yawRateRadPerS": -0.00004,
+          "rudderDeg": 0.5
+        },
+        {
+          "timeSeconds": 8,
+          "windAngleOffBowDeg": -89.64,
+          "speedMps": 4.1079,
+          "yawRateRadPerS": -0.0003,
+          "rudderDeg": 0.57
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": -89.62,
+          "speedMps": 4.1005,
+          "yawRateRadPerS": -0.00005,
+          "rudderDeg": 0.58
+        },
+        {
+          "timeSeconds": 12,
+          "windAngleOffBowDeg": -89.62,
+          "speedMps": 4.0952,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.57
+        },
+        {
+          "timeSeconds": 14,
+          "windAngleOffBowDeg": -89.61,
+          "speedMps": 4.0872,
+          "yawRateRadPerS": -0.00009,
+          "rudderDeg": 0.59
+        },
+        {
+          "timeSeconds": 16,
+          "windAngleOffBowDeg": -89.61,
+          "speedMps": 4.0822,
+          "yawRateRadPerS": -0.00002,
+          "rudderDeg": 0.59
+        },
+        {
+          "timeSeconds": 18,
+          "windAngleOffBowDeg": -89.61,
+          "speedMps": 4.0778,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 0.59
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": -89.61,
+          "speedMps": 4.073,
+          "yawRateRadPerS": -0.00003,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 22,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0695,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 24,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0663,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 26,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0632,
+          "yawRateRadPerS": -0.00001,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 28,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0608,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0585,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 32,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0565,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 34,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0548,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 36,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0532,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 38,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0519,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0507,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 42,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0496,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 44,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0487,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 46,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0478,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 48,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0471,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0465,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 52,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0459,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 54,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0454,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 56,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0449,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 58,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0445,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": -89.6,
+          "speedMps": 4.0442,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0.6
+        },
+        {
+          "timeSeconds": 62,
+          "windAngleOffBowDeg": -85,
+          "speedMps": 3.9608,
+          "yawRateRadPerS": -0.07591,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 64,
+          "windAngleOffBowDeg": -77.29,
+          "speedMps": 3.7614,
+          "yawRateRadPerS": -0.05746,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 66,
+          "windAngleOffBowDeg": -71.29,
+          "speedMps": 3.5725,
+          "yawRateRadPerS": -0.04896,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 68,
+          "windAngleOffBowDeg": -65.88,
+          "speedMps": 3.4088,
+          "yawRateRadPerS": -0.04572,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": -60.78,
+          "speedMps": 3.2638,
+          "yawRateRadPerS": -0.0433,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 72,
+          "windAngleOffBowDeg": -55.96,
+          "speedMps": 3.1317,
+          "yawRateRadPerS": -0.04085,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 74,
+          "windAngleOffBowDeg": -51.43,
+          "speedMps": 3.0066,
+          "yawRateRadPerS": -0.03827,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 76,
+          "windAngleOffBowDeg": -47.17,
+          "speedMps": 2.8866,
+          "yawRateRadPerS": -0.03609,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 78,
+          "windAngleOffBowDeg": -43.15,
+          "speedMps": 2.7705,
+          "yawRateRadPerS": -0.03415,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": -39.34,
+          "speedMps": 2.6571,
+          "yawRateRadPerS": -0.0323,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 82,
+          "windAngleOffBowDeg": -35.75,
+          "speedMps": 2.5447,
+          "yawRateRadPerS": -0.03048,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 84,
+          "windAngleOffBowDeg": -32.33,
+          "speedMps": 2.4305,
+          "yawRateRadPerS": -0.02936,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 86,
+          "windAngleOffBowDeg": -29.03,
+          "speedMps": 2.3131,
+          "yawRateRadPerS": -0.02791,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 88,
+          "windAngleOffBowDeg": -25.92,
+          "speedMps": 2.1932,
+          "yawRateRadPerS": -0.02667,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": -22.87,
+          "speedMps": 2.0753,
+          "yawRateRadPerS": -0.02678,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 92,
+          "windAngleOffBowDeg": -19.8,
+          "speedMps": 1.9649,
+          "yawRateRadPerS": -0.02663,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 94,
+          "windAngleOffBowDeg": -16.8,
+          "speedMps": 1.8613,
+          "yawRateRadPerS": -0.02569,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 96,
+          "windAngleOffBowDeg": -13.89,
+          "speedMps": 1.763,
+          "yawRateRadPerS": -0.02529,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 98,
+          "windAngleOffBowDeg": -11.01,
+          "speedMps": 1.6676,
+          "yawRateRadPerS": -0.02499,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": -8.15,
+          "speedMps": 1.574,
+          "yawRateRadPerS": -0.02487,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 102,
+          "windAngleOffBowDeg": -5.3,
+          "speedMps": 1.4815,
+          "yawRateRadPerS": -0.02492,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 104,
+          "windAngleOffBowDeg": -2.43,
+          "speedMps": 1.3913,
+          "yawRateRadPerS": -0.02524,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 106,
+          "windAngleOffBowDeg": 0.52,
+          "speedMps": 1.3063,
+          "yawRateRadPerS": -0.02619,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 108,
+          "windAngleOffBowDeg": 3.45,
+          "speedMps": 1.2448,
+          "yawRateRadPerS": -0.02574,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 6.24,
+          "speedMps": 1.1855,
+          "yawRateRadPerS": -0.02146,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 112,
+          "windAngleOffBowDeg": 8.36,
+          "speedMps": 1.1241,
+          "yawRateRadPerS": -0.01606,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 114,
+          "windAngleOffBowDeg": 10.08,
+          "speedMps": 1.0661,
+          "yawRateRadPerS": -0.01481,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 116,
+          "windAngleOffBowDeg": 11.83,
+          "speedMps": 1.0114,
+          "yawRateRadPerS": -0.0155,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 118,
+          "windAngleOffBowDeg": 13.58,
+          "speedMps": 0.9602,
+          "yawRateRadPerS": -0.01481,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 15.2,
+          "speedMps": 0.912,
+          "yawRateRadPerS": -0.01362,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 122,
+          "windAngleOffBowDeg": 16.72,
+          "speedMps": 0.866,
+          "yawRateRadPerS": -0.01298,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 124,
+          "windAngleOffBowDeg": 18.17,
+          "speedMps": 0.822,
+          "yawRateRadPerS": -0.01224,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 126,
+          "windAngleOffBowDeg": 19.47,
+          "speedMps": 0.7814,
+          "yawRateRadPerS": -0.01029,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 128,
+          "windAngleOffBowDeg": 20.53,
+          "speedMps": 0.7447,
+          "yawRateRadPerS": -0.00817,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 21.35,
+          "speedMps": 0.7119,
+          "yawRateRadPerS": -0.0062,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 132,
+          "windAngleOffBowDeg": 21.96,
+          "speedMps": 0.6833,
+          "yawRateRadPerS": -0.00449,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 134,
+          "windAngleOffBowDeg": 22.4,
+          "speedMps": 0.6586,
+          "yawRateRadPerS": -0.00327,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 136,
+          "windAngleOffBowDeg": 22.73,
+          "speedMps": 0.6368,
+          "yawRateRadPerS": -0.00281,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 138,
+          "windAngleOffBowDeg": 23.09,
+          "speedMps": 0.6175,
+          "yawRateRadPerS": -0.00347,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 23.51,
+          "speedMps": 0.6,
+          "yawRateRadPerS": -0.00376,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 142,
+          "windAngleOffBowDeg": 23.94,
+          "speedMps": 0.5851,
+          "yawRateRadPerS": -0.00361,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 144,
+          "windAngleOffBowDeg": 24.32,
+          "speedMps": 0.573,
+          "yawRateRadPerS": -0.00298,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 146,
+          "windAngleOffBowDeg": 24.59,
+          "speedMps": 0.563,
+          "yawRateRadPerS": -0.00169,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 148,
+          "windAngleOffBowDeg": 24.67,
+          "speedMps": 0.5541,
+          "yawRateRadPerS": 0.00037,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 24.52,
+          "speedMps": 0.5445,
+          "yawRateRadPerS": 0.00223,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 152,
+          "windAngleOffBowDeg": 24.21,
+          "speedMps": 0.533,
+          "yawRateRadPerS": 0.0029,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 154,
+          "windAngleOffBowDeg": 23.89,
+          "speedMps": 0.5189,
+          "yawRateRadPerS": 0.00268,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 156,
+          "windAngleOffBowDeg": 23.61,
+          "speedMps": 0.5027,
+          "yawRateRadPerS": 0.00203,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 158,
+          "windAngleOffBowDeg": 23.42,
+          "speedMps": 0.4853,
+          "yawRateRadPerS": 0.00135,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 23.3,
+          "speedMps": 0.4676,
+          "yawRateRadPerS": 0.00085,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 162,
+          "windAngleOffBowDeg": 23.21,
+          "speedMps": 0.4503,
+          "yawRateRadPerS": 0.0009,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 164,
+          "windAngleOffBowDeg": 23.06,
+          "speedMps": 0.4338,
+          "yawRateRadPerS": 0.00168,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 166,
+          "windAngleOffBowDeg": 22.84,
+          "speedMps": 0.4174,
+          "yawRateRadPerS": 0.0021,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 168,
+          "windAngleOffBowDeg": 22.6,
+          "speedMps": 0.4001,
+          "yawRateRadPerS": 0.00195,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 22.4,
+          "speedMps": 0.3819,
+          "yawRateRadPerS": 0.0015,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 172,
+          "windAngleOffBowDeg": 22.26,
+          "speedMps": 0.3636,
+          "yawRateRadPerS": 0.00105,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 174,
+          "windAngleOffBowDeg": 22.16,
+          "speedMps": 0.3458,
+          "yawRateRadPerS": 0.00071,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 176,
+          "windAngleOffBowDeg": 22.09,
+          "speedMps": 0.3288,
+          "yawRateRadPerS": 0.00048,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 178,
+          "windAngleOffBowDeg": 22.04,
+          "speedMps": 0.3128,
+          "yawRateRadPerS": 0.00034,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 22.01,
+          "speedMps": 0.298,
+          "yawRateRadPerS": 0.00029,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 182,
+          "windAngleOffBowDeg": 21.97,
+          "speedMps": 0.2843,
+          "yawRateRadPerS": 0.00033,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 184,
+          "windAngleOffBowDeg": 21.93,
+          "speedMps": 0.2716,
+          "yawRateRadPerS": 0.00049,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 186,
+          "windAngleOffBowDeg": 21.86,
+          "speedMps": 0.2598,
+          "yawRateRadPerS": 0.0007,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 188,
+          "windAngleOffBowDeg": 21.77,
+          "speedMps": 0.2487,
+          "yawRateRadPerS": 0.0009,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 21.66,
+          "speedMps": 0.2382,
+          "yawRateRadPerS": 0.00104,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 192,
+          "windAngleOffBowDeg": 21.53,
+          "speedMps": 0.2283,
+          "yawRateRadPerS": 0.00112,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 194,
+          "windAngleOffBowDeg": 21.4,
+          "speedMps": 0.219,
+          "yawRateRadPerS": 0.00115,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 196,
+          "windAngleOffBowDeg": 21.27,
+          "speedMps": 0.2107,
+          "yawRateRadPerS": 0.00114,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 198,
+          "windAngleOffBowDeg": 21.14,
+          "speedMps": 0.2035,
+          "yawRateRadPerS": 0.00111,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 21.02,
+          "speedMps": 0.1978,
+          "yawRateRadPerS": 0.00108,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 202,
+          "windAngleOffBowDeg": 20.89,
+          "speedMps": 0.1938,
+          "yawRateRadPerS": 0.00104,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 204,
+          "windAngleOffBowDeg": 20.78,
+          "speedMps": 0.1918,
+          "yawRateRadPerS": 0.00102,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 206,
+          "windAngleOffBowDeg": 20.66,
+          "speedMps": 0.1919,
+          "yawRateRadPerS": 0.00102,
+          "rudderDeg": -19.33
+        },
+        {
+          "timeSeconds": 208,
+          "windAngleOffBowDeg": 20.55,
+          "speedMps": 0.193,
+          "yawRateRadPerS": 0.00082,
+          "rudderDeg": 20.67
+        }
+      ]
+    },
+    {
+      "windSpeedMps": 8,
+      "entryAngleDeg": -65,
+      "entryDelaySeconds": 6,
+      "entrySpeedMps": 0.3261,
+      "completed": false,
+      "timeToCrossEyeS": null,
+      "eyeCrossSpeedMps": null,
+      "timeToCompleteS": null,
+      "minSpeedMps": 0.0699,
+      "exitSpeedMps": 0.0699,
+      "captureAngleDeg": -17.386,
+      "maxEnergyOverWorkJ": -0.000957,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": -65,
+          "speedMps": 0,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 2,
+          "windAngleOffBowDeg": -64.19,
+          "speedMps": 0.1118,
+          "yawRateRadPerS": -0.01435,
+          "rudderDeg": 2.82
+        },
+        {
+          "timeSeconds": 4,
+          "windAngleOffBowDeg": -61.61,
+          "speedMps": 0.2296,
+          "yawRateRadPerS": -0.02994,
+          "rudderDeg": 8.46
+        },
+        {
+          "timeSeconds": 6,
+          "windAngleOffBowDeg": -57.74,
+          "speedMps": 0.3267,
+          "yawRateRadPerS": -0.0361,
+          "rudderDeg": 14.98
+        },
+        {
+          "timeSeconds": 8,
+          "windAngleOffBowDeg": -53.87,
+          "speedMps": 0.3982,
+          "yawRateRadPerS": -0.02928,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": -51.19,
+          "speedMps": 0.4599,
+          "yawRateRadPerS": -0.01769,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 12,
+          "windAngleOffBowDeg": -49.72,
+          "speedMps": 0.5139,
+          "yawRateRadPerS": -0.00826,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 14,
+          "windAngleOffBowDeg": -49.21,
+          "speedMps": 0.5587,
+          "yawRateRadPerS": -0.00131,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 16,
+          "windAngleOffBowDeg": -49.3,
+          "speedMps": 0.5996,
+          "yawRateRadPerS": 0.00256,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 18,
+          "windAngleOffBowDeg": -49.73,
+          "speedMps": 0.6388,
+          "yawRateRadPerS": 0.00478,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": -50.35,
+          "speedMps": 0.6766,
+          "yawRateRadPerS": 0.00568,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 22,
+          "windAngleOffBowDeg": -50.98,
+          "speedMps": 0.7146,
+          "yawRateRadPerS": 0.00516,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 24,
+          "windAngleOffBowDeg": -51.5,
+          "speedMps": 0.7525,
+          "yawRateRadPerS": 0.00395,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 26,
+          "windAngleOffBowDeg": -51.87,
+          "speedMps": 0.7897,
+          "yawRateRadPerS": 0.00247,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 28,
+          "windAngleOffBowDeg": -52.07,
+          "speedMps": 0.8261,
+          "yawRateRadPerS": 0.00102,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": -52.11,
+          "speedMps": 0.8616,
+          "yawRateRadPerS": -0.00029,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 32,
+          "windAngleOffBowDeg": -52.01,
+          "speedMps": 0.8958,
+          "yawRateRadPerS": -0.00147,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 34,
+          "windAngleOffBowDeg": -51.78,
+          "speedMps": 0.9288,
+          "yawRateRadPerS": -0.0025,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 36,
+          "windAngleOffBowDeg": -51.44,
+          "speedMps": 0.9605,
+          "yawRateRadPerS": -0.00339,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 38,
+          "windAngleOffBowDeg": -51.01,
+          "speedMps": 0.9907,
+          "yawRateRadPerS": -0.00416,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": -50.49,
+          "speedMps": 1.0196,
+          "yawRateRadPerS": -0.00482,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 42,
+          "windAngleOffBowDeg": -49.91,
+          "speedMps": 1.047,
+          "yawRateRadPerS": -0.00539,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 44,
+          "windAngleOffBowDeg": -49.26,
+          "speedMps": 1.0728,
+          "yawRateRadPerS": -0.00588,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 46,
+          "windAngleOffBowDeg": -48.56,
+          "speedMps": 1.0972,
+          "yawRateRadPerS": -0.00633,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 48,
+          "windAngleOffBowDeg": -47.81,
+          "speedMps": 1.1199,
+          "yawRateRadPerS": -0.00675,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": -47.02,
+          "speedMps": 1.1407,
+          "yawRateRadPerS": -0.00713,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 52,
+          "windAngleOffBowDeg": -46.18,
+          "speedMps": 1.1592,
+          "yawRateRadPerS": -0.00743,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 54,
+          "windAngleOffBowDeg": -45.32,
+          "speedMps": 1.1752,
+          "yawRateRadPerS": -0.00765,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 56,
+          "windAngleOffBowDeg": -44.43,
+          "speedMps": 1.1885,
+          "yawRateRadPerS": -0.00782,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 58,
+          "windAngleOffBowDeg": -43.52,
+          "speedMps": 1.1991,
+          "yawRateRadPerS": -0.00798,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": -42.6,
+          "speedMps": 1.2072,
+          "yawRateRadPerS": -0.00813,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 62,
+          "windAngleOffBowDeg": -41.66,
+          "speedMps": 1.2131,
+          "yawRateRadPerS": -0.00828,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 64,
+          "windAngleOffBowDeg": -40.7,
+          "speedMps": 1.2169,
+          "yawRateRadPerS": -0.00843,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 66,
+          "windAngleOffBowDeg": -39.73,
+          "speedMps": 1.2185,
+          "yawRateRadPerS": -0.00854,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 68,
+          "windAngleOffBowDeg": -38.75,
+          "speedMps": 1.218,
+          "yawRateRadPerS": -0.00861,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": -37.76,
+          "speedMps": 1.2152,
+          "yawRateRadPerS": -0.00864,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 72,
+          "windAngleOffBowDeg": -36.77,
+          "speedMps": 1.2102,
+          "yawRateRadPerS": -0.00864,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 74,
+          "windAngleOffBowDeg": -35.78,
+          "speedMps": 1.203,
+          "yawRateRadPerS": -0.00863,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 76,
+          "windAngleOffBowDeg": -34.79,
+          "speedMps": 1.1937,
+          "yawRateRadPerS": -0.00859,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 78,
+          "windAngleOffBowDeg": -33.81,
+          "speedMps": 1.1824,
+          "yawRateRadPerS": -0.00854,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": -32.83,
+          "speedMps": 1.1689,
+          "yawRateRadPerS": -0.00849,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 82,
+          "windAngleOffBowDeg": -31.86,
+          "speedMps": 1.153,
+          "yawRateRadPerS": -0.00853,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 84,
+          "windAngleOffBowDeg": -30.88,
+          "speedMps": 1.1343,
+          "yawRateRadPerS": -0.00866,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 86,
+          "windAngleOffBowDeg": -29.87,
+          "speedMps": 1.1125,
+          "yawRateRadPerS": -0.00885,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 88,
+          "windAngleOffBowDeg": -28.85,
+          "speedMps": 1.0877,
+          "yawRateRadPerS": -0.009,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": -27.81,
+          "speedMps": 1.0602,
+          "yawRateRadPerS": -0.00907,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 92,
+          "windAngleOffBowDeg": -26.77,
+          "speedMps": 1.0296,
+          "yawRateRadPerS": -0.00911,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 94,
+          "windAngleOffBowDeg": -25.74,
+          "speedMps": 0.9961,
+          "yawRateRadPerS": -0.00886,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 96,
+          "windAngleOffBowDeg": -24.76,
+          "speedMps": 0.9601,
+          "yawRateRadPerS": -0.00817,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 98,
+          "windAngleOffBowDeg": -23.84,
+          "speedMps": 0.9226,
+          "yawRateRadPerS": -0.008,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": -22.95,
+          "speedMps": 0.8836,
+          "yawRateRadPerS": -0.00745,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 102,
+          "windAngleOffBowDeg": -22.13,
+          "speedMps": 0.844,
+          "yawRateRadPerS": -0.00677,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 104,
+          "windAngleOffBowDeg": -21.4,
+          "speedMps": 0.8042,
+          "yawRateRadPerS": -0.00606,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 106,
+          "windAngleOffBowDeg": -20.73,
+          "speedMps": 0.7649,
+          "yawRateRadPerS": -0.00568,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 108,
+          "windAngleOffBowDeg": -20.1,
+          "speedMps": 0.7265,
+          "yawRateRadPerS": -0.0052,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": -19.53,
+          "speedMps": 0.6891,
+          "yawRateRadPerS": -0.00473,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 112,
+          "windAngleOffBowDeg": -19.02,
+          "speedMps": 0.6527,
+          "yawRateRadPerS": -0.00432,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 114,
+          "windAngleOffBowDeg": -18.54,
+          "speedMps": 0.6173,
+          "yawRateRadPerS": -0.00397,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 116,
+          "windAngleOffBowDeg": -18.1,
+          "speedMps": 0.5829,
+          "yawRateRadPerS": -0.0037,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 118,
+          "windAngleOffBowDeg": -17.69,
+          "speedMps": 0.5493,
+          "yawRateRadPerS": -0.00342,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": -17.32,
+          "speedMps": 0.5166,
+          "yawRateRadPerS": -0.00312,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 122,
+          "windAngleOffBowDeg": -16.98,
+          "speedMps": 0.4847,
+          "yawRateRadPerS": -0.00279,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 124,
+          "windAngleOffBowDeg": -16.68,
+          "speedMps": 0.4534,
+          "yawRateRadPerS": -0.00242,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 126,
+          "windAngleOffBowDeg": -16.43,
+          "speedMps": 0.4228,
+          "yawRateRadPerS": -0.00202,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 128,
+          "windAngleOffBowDeg": -16.22,
+          "speedMps": 0.3929,
+          "yawRateRadPerS": -0.00159,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": -16.06,
+          "speedMps": 0.3635,
+          "yawRateRadPerS": -0.00115,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 132,
+          "windAngleOffBowDeg": -15.96,
+          "speedMps": 0.3347,
+          "yawRateRadPerS": -0.00067,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 134,
+          "windAngleOffBowDeg": -15.91,
+          "speedMps": 0.3064,
+          "yawRateRadPerS": -0.00016,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 136,
+          "windAngleOffBowDeg": -15.92,
+          "speedMps": 0.2788,
+          "yawRateRadPerS": 0.00039,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 138,
+          "windAngleOffBowDeg": -16,
+          "speedMps": 0.2516,
+          "yawRateRadPerS": 0.00099,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": -16.15,
+          "speedMps": 0.225,
+          "yawRateRadPerS": 0.00164,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 142,
+          "windAngleOffBowDeg": -16.38,
+          "speedMps": 0.1991,
+          "yawRateRadPerS": 0.00235,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 144,
+          "windAngleOffBowDeg": -16.69,
+          "speedMps": 0.1737,
+          "yawRateRadPerS": 0.00313,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 146,
+          "windAngleOffBowDeg": -17.1,
+          "speedMps": 0.1491,
+          "yawRateRadPerS": 0.00399,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 148,
+          "windAngleOffBowDeg": -17.61,
+          "speedMps": 0.1257,
+          "yawRateRadPerS": 0.00477,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": -18.18,
+          "speedMps": 0.1042,
+          "yawRateRadPerS": 0.00516,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 152,
+          "windAngleOffBowDeg": -18.76,
+          "speedMps": 0.0864,
+          "yawRateRadPerS": 0.00482,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 154,
+          "windAngleOffBowDeg": -19.25,
+          "speedMps": 0.0744,
+          "yawRateRadPerS": 0.00364,
+          "rudderDeg": -25
+        }
+      ]
+    }
+  ],
+  "gybe": {
+    "windSpeedMps": 8,
+    "completed": true,
+    "timeToCompleteS": 50.85,
+    "transitSeconds": 13.1,
+    "maxYawRateRadPerS": 0.043245,
+    "maxEnergyOverWorkJ": -40.34777,
+    "trace": [
+      {
+        "timeSeconds": 0,
+        "windAngleOffBowDeg": -140,
+        "speedMps": 3.5,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0
+      },
+      {
+        "timeSeconds": 2,
+        "windAngleOffBowDeg": -139.84,
+        "speedMps": 3.4872,
+        "yawRateRadPerS": -0.00117,
+        "rudderDeg": 0.37
+      },
+      {
+        "timeSeconds": 4,
+        "windAngleOffBowDeg": -139.83,
+        "speedMps": 3.4801,
+        "yawRateRadPerS": 0.00064,
+        "rudderDeg": 0.19
+      },
+      {
+        "timeSeconds": 6,
+        "windAngleOffBowDeg": -139.91,
+        "speedMps": 3.4755,
+        "yawRateRadPerS": 0.00048,
+        "rudderDeg": 0.08
+      },
+      {
+        "timeSeconds": 8,
+        "windAngleOffBowDeg": -139.93,
+        "speedMps": 3.4666,
+        "yawRateRadPerS": 0.00013,
+        "rudderDeg": 0.08
+      },
+      {
+        "timeSeconds": 10,
+        "windAngleOffBowDeg": -139.97,
+        "speedMps": 3.4603,
+        "yawRateRadPerS": 0.00039,
+        "rudderDeg": 0.01
+      },
+      {
+        "timeSeconds": 12,
+        "windAngleOffBowDeg": -140,
+        "speedMps": 3.4541,
+        "yawRateRadPerS": 0.00021,
+        "rudderDeg": -0.03
+      },
+      {
+        "timeSeconds": 14,
+        "windAngleOffBowDeg": -140.02,
+        "speedMps": 3.4475,
+        "yawRateRadPerS": 0.00009,
+        "rudderDeg": -0.04
+      },
+      {
+        "timeSeconds": 16,
+        "windAngleOffBowDeg": -140.03,
+        "speedMps": 3.4421,
+        "yawRateRadPerS": 0.00017,
+        "rudderDeg": -0.07
+      },
+      {
+        "timeSeconds": 18,
+        "windAngleOffBowDeg": -140.05,
+        "speedMps": 3.4369,
+        "yawRateRadPerS": 0.00009,
+        "rudderDeg": -0.08
+      },
+      {
+        "timeSeconds": 20,
+        "windAngleOffBowDeg": -140.06,
+        "speedMps": 3.4318,
+        "yawRateRadPerS": 0.00005,
+        "rudderDeg": -0.09
+      },
+      {
+        "timeSeconds": 22,
+        "windAngleOffBowDeg": -140.06,
+        "speedMps": 3.4274,
+        "yawRateRadPerS": 0.00007,
+        "rudderDeg": -0.1
+      },
+      {
+        "timeSeconds": 24,
+        "windAngleOffBowDeg": -140.07,
+        "speedMps": 3.4231,
+        "yawRateRadPerS": 0.00004,
+        "rudderDeg": -0.11
+      },
+      {
+        "timeSeconds": 26,
+        "windAngleOffBowDeg": -140.07,
+        "speedMps": 3.4191,
+        "yawRateRadPerS": 0.00003,
+        "rudderDeg": -0.11
+      },
+      {
+        "timeSeconds": 28,
+        "windAngleOffBowDeg": -140.08,
+        "speedMps": 3.4155,
+        "yawRateRadPerS": 0.00003,
+        "rudderDeg": -0.12
+      },
+      {
+        "timeSeconds": 30,
+        "windAngleOffBowDeg": -140.08,
+        "speedMps": 3.4121,
+        "yawRateRadPerS": 0.00002,
+        "rudderDeg": -0.12
+      },
+      {
+        "timeSeconds": 32,
+        "windAngleOffBowDeg": -140.08,
+        "speedMps": 3.4089,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": -0.12
+      },
+      {
+        "timeSeconds": 34,
+        "windAngleOffBowDeg": -140.08,
+        "speedMps": 3.4059,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 36,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.4032,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 38,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.4006,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 40,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3982,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 42,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.396,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 44,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3939,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 46,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.392,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 48,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3902,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 50,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3886,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 52,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.387,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 54,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3856,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 56,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3842,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 58,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.383,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 60,
+        "windAngleOffBowDeg": -140.09,
+        "speedMps": 3.3818,
+        "yawRateRadPerS": 0,
+        "rudderDeg": -0.13
+      },
+      {
+        "timeSeconds": 62,
+        "windAngleOffBowDeg": -143,
+        "speedMps": 3.3571,
+        "yawRateRadPerS": 0.04318,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 64,
+        "windAngleOffBowDeg": -147.6,
+        "speedMps": 3.3213,
+        "yawRateRadPerS": 0.03569,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 66,
+        "windAngleOffBowDeg": -151.35,
+        "speedMps": 3.2838,
+        "yawRateRadPerS": 0.0308,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 68,
+        "windAngleOffBowDeg": -154.79,
+        "speedMps": 3.2456,
+        "yawRateRadPerS": 0.02942,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 70,
+        "windAngleOffBowDeg": -158.13,
+        "speedMps": 3.207,
+        "yawRateRadPerS": 0.02898,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 72,
+        "windAngleOffBowDeg": -161.43,
+        "speedMps": 3.168,
+        "yawRateRadPerS": 0.02865,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 74,
+        "windAngleOffBowDeg": -164.7,
+        "speedMps": 3.1281,
+        "yawRateRadPerS": 0.0283,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 76,
+        "windAngleOffBowDeg": -167.92,
+        "speedMps": 3.0879,
+        "yawRateRadPerS": 0.02808,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 78,
+        "windAngleOffBowDeg": -171.12,
+        "speedMps": 3.0475,
+        "yawRateRadPerS": 0.02766,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 80,
+        "windAngleOffBowDeg": -174.24,
+        "speedMps": 3.0059,
+        "yawRateRadPerS": 0.02671,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 82,
+        "windAngleOffBowDeg": -177.25,
+        "speedMps": 2.9625,
+        "yawRateRadPerS": 0.02586,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 84,
+        "windAngleOffBowDeg": 179.81,
+        "speedMps": 2.916,
+        "yawRateRadPerS": 0.02579,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 86,
+        "windAngleOffBowDeg": 176.78,
+        "speedMps": 2.8637,
+        "yawRateRadPerS": 0.02723,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 88,
+        "windAngleOffBowDeg": 173.65,
+        "speedMps": 2.8165,
+        "yawRateRadPerS": 0.02666,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 90,
+        "windAngleOffBowDeg": 170.59,
+        "speedMps": 2.7714,
+        "yawRateRadPerS": 0.02656,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 92,
+        "windAngleOffBowDeg": 167.62,
+        "speedMps": 2.741,
+        "yawRateRadPerS": 0.02525,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 94,
+        "windAngleOffBowDeg": 164.78,
+        "speedMps": 2.7184,
+        "yawRateRadPerS": 0.02445,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 96,
+        "windAngleOffBowDeg": 162.01,
+        "speedMps": 2.6999,
+        "yawRateRadPerS": 0.02402,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 98,
+        "windAngleOffBowDeg": 159.28,
+        "speedMps": 2.6852,
+        "yawRateRadPerS": 0.02368,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 100,
+        "windAngleOffBowDeg": 156.57,
+        "speedMps": 2.6737,
+        "yawRateRadPerS": 0.02361,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 102,
+        "windAngleOffBowDeg": 153.86,
+        "speedMps": 2.6651,
+        "yawRateRadPerS": 0.02356,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 104,
+        "windAngleOffBowDeg": 151.17,
+        "speedMps": 2.6597,
+        "yawRateRadPerS": 0.02343,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 106,
+        "windAngleOffBowDeg": 148.49,
+        "speedMps": 2.6568,
+        "yawRateRadPerS": 0.02343,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 108,
+        "windAngleOffBowDeg": 145.8,
+        "speedMps": 2.6558,
+        "yawRateRadPerS": 0.02344,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 110,
+        "windAngleOffBowDeg": 143.12,
+        "speedMps": 2.6562,
+        "yawRateRadPerS": 0.02342,
+        "rudderDeg": 15
+      },
+      {
+        "timeSeconds": 112,
+        "windAngleOffBowDeg": 141.03,
+        "speedMps": 2.6632,
+        "yawRateRadPerS": 0.00239,
+        "rudderDeg": 1.24
+      },
+      {
+        "timeSeconds": 114,
+        "windAngleOffBowDeg": 141.31,
+        "speedMps": 2.6903,
+        "yawRateRadPerS": -0.00248,
+        "rudderDeg": 2.25
+      },
+      {
+        "timeSeconds": 116,
+        "windAngleOffBowDeg": 141.39,
+        "speedMps": 2.7225,
+        "yawRateRadPerS": 0.00076,
+        "rudderDeg": 2
+      },
+      {
+        "timeSeconds": 118,
+        "windAngleOffBowDeg": 141.23,
+        "speedMps": 2.7545,
+        "yawRateRadPerS": 0.00171,
+        "rudderDeg": 1.65
+      },
+      {
+        "timeSeconds": 120,
+        "windAngleOffBowDeg": 141.03,
+        "speedMps": 2.7853,
+        "yawRateRadPerS": 0.00166,
+        "rudderDeg": 1.36
+      },
+      {
+        "timeSeconds": 122,
+        "windAngleOffBowDeg": 140.86,
+        "speedMps": 2.815,
+        "yawRateRadPerS": 0.00137,
+        "rudderDeg": 1.13
+      },
+      {
+        "timeSeconds": 124,
+        "windAngleOffBowDeg": 140.72,
+        "speedMps": 2.8434,
+        "yawRateRadPerS": 0.00111,
+        "rudderDeg": 0.95
+      },
+      {
+        "timeSeconds": 126,
+        "windAngleOffBowDeg": 140.6,
+        "speedMps": 2.8705,
+        "yawRateRadPerS": 0.00089,
+        "rudderDeg": 0.8
+      },
+      {
+        "timeSeconds": 128,
+        "windAngleOffBowDeg": 140.51,
+        "speedMps": 2.8963,
+        "yawRateRadPerS": 0.00071,
+        "rudderDeg": 0.69
+      },
+      {
+        "timeSeconds": 130,
+        "windAngleOffBowDeg": 140.44,
+        "speedMps": 2.9209,
+        "yawRateRadPerS": 0.00057,
+        "rudderDeg": 0.59
+      },
+      {
+        "timeSeconds": 132,
+        "windAngleOffBowDeg": 140.38,
+        "speedMps": 2.9443,
+        "yawRateRadPerS": 0.00046,
+        "rudderDeg": 0.52
+      },
+      {
+        "timeSeconds": 134,
+        "windAngleOffBowDeg": 140.33,
+        "speedMps": 2.9665,
+        "yawRateRadPerS": 0.00037,
+        "rudderDeg": 0.46
+      },
+      {
+        "timeSeconds": 136,
+        "windAngleOffBowDeg": 140.3,
+        "speedMps": 2.9875,
+        "yawRateRadPerS": 0.0003,
+        "rudderDeg": 0.41
+      },
+      {
+        "timeSeconds": 138,
+        "windAngleOffBowDeg": 140.26,
+        "speedMps": 3.0075,
+        "yawRateRadPerS": 0.00024,
+        "rudderDeg": 0.37
+      },
+      {
+        "timeSeconds": 140,
+        "windAngleOffBowDeg": 140.24,
+        "speedMps": 3.0265,
+        "yawRateRadPerS": 0.00019,
+        "rudderDeg": 0.34
+      },
+      {
+        "timeSeconds": 142,
+        "windAngleOffBowDeg": 140.22,
+        "speedMps": 3.0445,
+        "yawRateRadPerS": 0.00016,
+        "rudderDeg": 0.31
+      },
+      {
+        "timeSeconds": 144,
+        "windAngleOffBowDeg": 140.2,
+        "speedMps": 3.0615,
+        "yawRateRadPerS": 0.00013,
+        "rudderDeg": 0.29
+      },
+      {
+        "timeSeconds": 146,
+        "windAngleOffBowDeg": 140.19,
+        "speedMps": 3.0777,
+        "yawRateRadPerS": 0.00011,
+        "rudderDeg": 0.27
+      },
+      {
+        "timeSeconds": 148,
+        "windAngleOffBowDeg": 140.18,
+        "speedMps": 3.0931,
+        "yawRateRadPerS": 0.00009,
+        "rudderDeg": 0.26
+      },
+      {
+        "timeSeconds": 150,
+        "windAngleOffBowDeg": 140.17,
+        "speedMps": 3.1077,
+        "yawRateRadPerS": 0.00008,
+        "rudderDeg": 0.24
+      },
+      {
+        "timeSeconds": 152,
+        "windAngleOffBowDeg": 140.16,
+        "speedMps": 3.1216,
+        "yawRateRadPerS": 0.00007,
+        "rudderDeg": 0.23
+      },
+      {
+        "timeSeconds": 154,
+        "windAngleOffBowDeg": 140.15,
+        "speedMps": 3.1348,
+        "yawRateRadPerS": 0.00006,
+        "rudderDeg": 0.22
+      },
+      {
+        "timeSeconds": 156,
+        "windAngleOffBowDeg": 140.15,
+        "speedMps": 3.1474,
+        "yawRateRadPerS": 0.00006,
+        "rudderDeg": 0.21
+      },
+      {
+        "timeSeconds": 158,
+        "windAngleOffBowDeg": 140.14,
+        "speedMps": 3.1593,
+        "yawRateRadPerS": 0.00005,
+        "rudderDeg": 0.2
+      },
+      {
+        "timeSeconds": 160,
+        "windAngleOffBowDeg": 140.13,
+        "speedMps": 3.1707,
+        "yawRateRadPerS": 0.00005,
+        "rudderDeg": 0.19
+      },
+      {
+        "timeSeconds": 162,
+        "windAngleOffBowDeg": 140.13,
+        "speedMps": 3.1815,
+        "yawRateRadPerS": 0.00005,
+        "rudderDeg": 0.19
+      },
+      {
+        "timeSeconds": 164,
+        "windAngleOffBowDeg": 140.12,
+        "speedMps": 3.1917,
+        "yawRateRadPerS": 0.00004,
+        "rudderDeg": 0.18
+      },
+      {
+        "timeSeconds": 166,
+        "windAngleOffBowDeg": 140.12,
+        "speedMps": 3.2014,
+        "yawRateRadPerS": 0.00004,
+        "rudderDeg": 0.17
+      },
+      {
+        "timeSeconds": 168,
+        "windAngleOffBowDeg": 140.11,
+        "speedMps": 3.2106,
+        "yawRateRadPerS": 0.00003,
+        "rudderDeg": 0.17
+      },
+      {
+        "timeSeconds": 170,
+        "windAngleOffBowDeg": 140.11,
+        "speedMps": 3.2199,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.17
+      },
+      {
+        "timeSeconds": 172,
+        "windAngleOffBowDeg": 140.11,
+        "speedMps": 3.2292,
+        "yawRateRadPerS": 0.00002,
+        "rudderDeg": 0.16
+      },
+      {
+        "timeSeconds": 174,
+        "windAngleOffBowDeg": 140.11,
+        "speedMps": 3.2379,
+        "yawRateRadPerS": 0.00003,
+        "rudderDeg": 0.16
+      },
+      {
+        "timeSeconds": 176,
+        "windAngleOffBowDeg": 140.1,
+        "speedMps": 3.2461,
+        "yawRateRadPerS": 0.00002,
+        "rudderDeg": 0.15
+      },
+      {
+        "timeSeconds": 178,
+        "windAngleOffBowDeg": 140.1,
+        "speedMps": 3.2538,
+        "yawRateRadPerS": 0.00002,
+        "rudderDeg": 0.15
+      },
+      {
+        "timeSeconds": 180,
+        "windAngleOffBowDeg": 140.1,
+        "speedMps": 3.2611,
+        "yawRateRadPerS": 0.00002,
+        "rudderDeg": 0.15
+      },
+      {
+        "timeSeconds": 182,
+        "windAngleOffBowDeg": 140.1,
+        "speedMps": 3.2679,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 184,
+        "windAngleOffBowDeg": 140.1,
+        "speedMps": 3.2743,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 186,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.2803,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 188,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.2859,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 190,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.2912,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 192,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.2962,
+        "yawRateRadPerS": 0.00001,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 194,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3008,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 196,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3051,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 198,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3092,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 200,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.313,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.14
+      },
+      {
+        "timeSeconds": 202,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3165,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.13
+      },
+      {
+        "timeSeconds": 204,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3198,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.13
+      },
+      {
+        "timeSeconds": 206,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3229,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.13
+      },
+      {
+        "timeSeconds": 208,
+        "windAngleOffBowDeg": 140.09,
+        "speedMps": 3.3258,
+        "yawRateRadPerS": 0,
+        "rudderDeg": 0.13
+      }
+    ]
+  },
+  "ironsEscapes": [
+    {
+      "method": "drift",
+      "windSpeedMps": 8,
+      "escaped": true,
+      "timeToPayOffS": 44.25,
+      "fellOffToward": "starboard",
+      "settledAngleDeg": null,
+      "backedToward": "port",
+      "maxSternwayMps": 1.2652,
+      "exitSpeedMps": 0.7782,
+      "meanYawRateDegPerS": 0.69342,
+      "maxEnergyOverWorkJ": -0.000577,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": 0,
+          "speedMps": 0,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 5,
+          "windAngleOffBowDeg": 0.52,
+          "speedMps": 0.2399,
+          "yawRateRadPerS": -0.00596,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": 2.84,
+          "speedMps": 0.4191,
+          "yawRateRadPerS": -0.01135,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 15,
+          "windAngleOffBowDeg": 6.81,
+          "speedMps": 0.5711,
+          "yawRateRadPerS": -0.01645,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": 12.12,
+          "speedMps": 0.6954,
+          "yawRateRadPerS": -0.02039,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 25,
+          "windAngleOffBowDeg": 18.37,
+          "speedMps": 0.7914,
+          "yawRateRadPerS": -0.02296,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": 25.15,
+          "speedMps": 0.8661,
+          "yawRateRadPerS": -0.02419,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 35,
+          "windAngleOffBowDeg": 32.14,
+          "speedMps": 0.9311,
+          "yawRateRadPerS": -0.02447,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": 39.13,
+          "speedMps": 0.9964,
+          "yawRateRadPerS": -0.0243,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 45,
+          "windAngleOffBowDeg": 46.02,
+          "speedMps": 1.0696,
+          "yawRateRadPerS": -0.02171,
+          "rudderDeg": -11
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": 51.08,
+          "speedMps": 1.1811,
+          "yawRateRadPerS": -0.01756,
+          "rudderDeg": -3.9
+        },
+        {
+          "timeSeconds": 55,
+          "windAngleOffBowDeg": 57.09,
+          "speedMps": 1.2786,
+          "yawRateRadPerS": -0.02573,
+          "rudderDeg": 6.04
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": 66.57,
+          "speedMps": 1.3225,
+          "yawRateRadPerS": -0.0414,
+          "rudderDeg": 22.03
+        },
+        {
+          "timeSeconds": 65,
+          "windAngleOffBowDeg": 79.3,
+          "speedMps": 1.2863,
+          "yawRateRadPerS": -0.04361,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": 90.18,
+          "speedMps": 1.2036,
+          "yawRateRadPerS": -0.03136,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 75,
+          "windAngleOffBowDeg": 97.73,
+          "speedMps": 1.1253,
+          "yawRateRadPerS": -0.02291,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": 103.86,
+          "speedMps": 1.0652,
+          "yawRateRadPerS": -0.02033,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 85,
+          "windAngleOffBowDeg": 109.51,
+          "speedMps": 1.0187,
+          "yawRateRadPerS": -0.01923,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": 114.92,
+          "speedMps": 0.9796,
+          "yawRateRadPerS": -0.01855,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 95,
+          "windAngleOffBowDeg": 120.14,
+          "speedMps": 0.9417,
+          "yawRateRadPerS": -0.01784,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": 125.09,
+          "speedMps": 0.8995,
+          "yawRateRadPerS": -0.01664,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 105,
+          "windAngleOffBowDeg": 129.6,
+          "speedMps": 0.8487,
+          "yawRateRadPerS": -0.01477,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 133.51,
+          "speedMps": 0.7855,
+          "yawRateRadPerS": -0.01239,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 115,
+          "windAngleOffBowDeg": 136.66,
+          "speedMps": 0.7111,
+          "yawRateRadPerS": -0.00967,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 139.17,
+          "speedMps": 0.6328,
+          "yawRateRadPerS": -0.00803,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 125,
+          "windAngleOffBowDeg": 141.35,
+          "speedMps": 0.5559,
+          "yawRateRadPerS": -0.00732,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 143.35,
+          "speedMps": 0.4828,
+          "yawRateRadPerS": -0.00646,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 135,
+          "windAngleOffBowDeg": 144.94,
+          "speedMps": 0.4179,
+          "yawRateRadPerS": -0.00455,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 145.97,
+          "speedMps": 0.3699,
+          "yawRateRadPerS": -0.00271,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 145,
+          "windAngleOffBowDeg": 146.52,
+          "speedMps": 0.3496,
+          "yawRateRadPerS": -0.00113,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 146.62,
+          "speedMps": 0.3597,
+          "yawRateRadPerS": 0.00006,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 155,
+          "windAngleOffBowDeg": 146.79,
+          "speedMps": 0.3753,
+          "yawRateRadPerS": -0.00145,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 147.47,
+          "speedMps": 0.3979,
+          "yawRateRadPerS": -0.00343,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 165,
+          "windAngleOffBowDeg": 148.83,
+          "speedMps": 0.4347,
+          "yawRateRadPerS": -0.00581,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 150.53,
+          "speedMps": 0.4884,
+          "yawRateRadPerS": -0.00535,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 175,
+          "windAngleOffBowDeg": 151.72,
+          "speedMps": 0.5554,
+          "yawRateRadPerS": -0.00299,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 152.24,
+          "speedMps": 0.6294,
+          "yawRateRadPerS": -0.0005,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 185,
+          "windAngleOffBowDeg": 151.95,
+          "speedMps": 0.7024,
+          "yawRateRadPerS": 0.00259,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 150.74,
+          "speedMps": 0.7665,
+          "yawRateRadPerS": 0.00579,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 195,
+          "windAngleOffBowDeg": 148.72,
+          "speedMps": 0.8146,
+          "yawRateRadPerS": 0.00795,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 146.43,
+          "speedMps": 0.8442,
+          "yawRateRadPerS": 0.00776,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 205,
+          "windAngleOffBowDeg": 144.38,
+          "speedMps": 0.8576,
+          "yawRateRadPerS": 0.00647,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 210,
+          "windAngleOffBowDeg": 142.71,
+          "speedMps": 0.8592,
+          "yawRateRadPerS": 0.00518,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 215,
+          "windAngleOffBowDeg": 141.4,
+          "speedMps": 0.8525,
+          "yawRateRadPerS": 0.00404,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 220,
+          "windAngleOffBowDeg": 140.38,
+          "speedMps": 0.8408,
+          "yawRateRadPerS": 0.00307,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 225,
+          "windAngleOffBowDeg": 139.62,
+          "speedMps": 0.8261,
+          "yawRateRadPerS": 0.00227,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 230,
+          "windAngleOffBowDeg": 139.07,
+          "speedMps": 0.8101,
+          "yawRateRadPerS": 0.00161,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 235,
+          "windAngleOffBowDeg": 138.69,
+          "speedMps": 0.7939,
+          "yawRateRadPerS": 0.00104,
+          "rudderDeg": 25
+        }
+      ]
+    },
+    {
+      "method": "backed-headsail",
+      "windSpeedMps": 8,
+      "escaped": true,
+      "timeToPayOffS": 48.35,
+      "fellOffToward": "starboard",
+      "settledAngleDeg": null,
+      "backedToward": "port",
+      "maxSternwayMps": 1.5238,
+      "exitSpeedMps": 0.787,
+      "meanYawRateDegPerS": 0.72187,
+      "maxEnergyOverWorkJ": -0.000577,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": 0,
+          "speedMps": 0,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 5,
+          "windAngleOffBowDeg": 0.35,
+          "speedMps": 0.2478,
+          "yawRateRadPerS": -0.00464,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": 2.26,
+          "speedMps": 0.4373,
+          "yawRateRadPerS": -0.00979,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 15,
+          "windAngleOffBowDeg": 5.72,
+          "speedMps": 0.6006,
+          "yawRateRadPerS": -0.01448,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": 10.39,
+          "speedMps": 0.739,
+          "yawRateRadPerS": -0.01791,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 25,
+          "windAngleOffBowDeg": 15.88,
+          "speedMps": 0.8529,
+          "yawRateRadPerS": -0.02021,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": 21.89,
+          "speedMps": 0.9466,
+          "yawRateRadPerS": -0.02159,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 35,
+          "windAngleOffBowDeg": 28.17,
+          "speedMps": 1.0286,
+          "yawRateRadPerS": -0.02213,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": 34.52,
+          "speedMps": 1.1068,
+          "yawRateRadPerS": -0.02215,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 45,
+          "windAngleOffBowDeg": 40.83,
+          "speedMps": 1.1871,
+          "yawRateRadPerS": -0.0219,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": 46.72,
+          "speedMps": 1.2789,
+          "yawRateRadPerS": -0.01398,
+          "rudderDeg": -10.84
+        },
+        {
+          "timeSeconds": 55,
+          "windAngleOffBowDeg": 49.98,
+          "speedMps": 1.3929,
+          "yawRateRadPerS": -0.01156,
+          "rudderDeg": -6.23
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": 54.1,
+          "speedMps": 1.4975,
+          "yawRateRadPerS": -0.01859,
+          "rudderDeg": 0.75
+        },
+        {
+          "timeSeconds": 65,
+          "windAngleOffBowDeg": 61.71,
+          "speedMps": 1.5615,
+          "yawRateRadPerS": -0.0369,
+          "rudderDeg": 14.23
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": 75.79,
+          "speedMps": 1.5223,
+          "yawRateRadPerS": -0.0566,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 75,
+          "windAngleOffBowDeg": 91.45,
+          "speedMps": 1.3997,
+          "yawRateRadPerS": -0.05071,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": 104.21,
+          "speedMps": 1.2841,
+          "yawRateRadPerS": -0.03785,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 85,
+          "windAngleOffBowDeg": 113.35,
+          "speedMps": 1.1951,
+          "yawRateRadPerS": -0.02712,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": 120.34,
+          "speedMps": 1.1222,
+          "yawRateRadPerS": -0.02232,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 95,
+          "windAngleOffBowDeg": 126.29,
+          "speedMps": 1.0523,
+          "yawRateRadPerS": -0.01927,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": 131.39,
+          "speedMps": 0.9746,
+          "yawRateRadPerS": -0.01626,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 105,
+          "windAngleOffBowDeg": 135.54,
+          "speedMps": 0.8833,
+          "yawRateRadPerS": -0.01267,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 138.67,
+          "speedMps": 0.784,
+          "yawRateRadPerS": -0.00927,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 115,
+          "windAngleOffBowDeg": 140.89,
+          "speedMps": 0.6843,
+          "yawRateRadPerS": -0.00634,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 142.43,
+          "speedMps": 0.5907,
+          "yawRateRadPerS": -0.00473,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 125,
+          "windAngleOffBowDeg": 143.76,
+          "speedMps": 0.5073,
+          "yawRateRadPerS": -0.00477,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 145.14,
+          "speedMps": 0.4347,
+          "yawRateRadPerS": -0.00455,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 135,
+          "windAngleOffBowDeg": 146.27,
+          "speedMps": 0.3755,
+          "yawRateRadPerS": -0.00333,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 147.04,
+          "speedMps": 0.3396,
+          "yawRateRadPerS": -0.00208,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 145,
+          "windAngleOffBowDeg": 147.46,
+          "speedMps": 0.3379,
+          "yawRateRadPerS": -0.00076,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 147.72,
+          "speedMps": 0.3546,
+          "yawRateRadPerS": -0.00158,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 155,
+          "windAngleOffBowDeg": 148.46,
+          "speedMps": 0.3785,
+          "yawRateRadPerS": -0.00376,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 149.99,
+          "speedMps": 0.4186,
+          "yawRateRadPerS": -0.0067,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 165,
+          "windAngleOffBowDeg": 151.99,
+          "speedMps": 0.4789,
+          "yawRateRadPerS": -0.00651,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 153.62,
+          "speedMps": 0.5561,
+          "yawRateRadPerS": -0.00486,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 175,
+          "windAngleOffBowDeg": 154.69,
+          "speedMps": 0.643,
+          "yawRateRadPerS": -0.00237,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 154.88,
+          "speedMps": 0.731,
+          "yawRateRadPerS": 0.00118,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 185,
+          "windAngleOffBowDeg": 153.97,
+          "speedMps": 0.8118,
+          "yawRateRadPerS": 0.00512,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 151.98,
+          "speedMps": 0.8777,
+          "yawRateRadPerS": 0.00869,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 195,
+          "windAngleOffBowDeg": 149.13,
+          "speedMps": 0.921,
+          "yawRateRadPerS": 0.01078,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 146.13,
+          "speedMps": 0.94,
+          "yawRateRadPerS": 0.00973,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 205,
+          "windAngleOffBowDeg": 143.64,
+          "speedMps": 0.9401,
+          "yawRateRadPerS": 0.00772,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 210,
+          "windAngleOffBowDeg": 141.68,
+          "speedMps": 0.9278,
+          "yawRateRadPerS": 0.00596,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 215,
+          "windAngleOffBowDeg": 140.19,
+          "speedMps": 0.908,
+          "yawRateRadPerS": 0.00455,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 220,
+          "windAngleOffBowDeg": 139.04,
+          "speedMps": 0.8843,
+          "yawRateRadPerS": 0.00346,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 225,
+          "windAngleOffBowDeg": 138.19,
+          "speedMps": 0.8591,
+          "yawRateRadPerS": 0.00253,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 230,
+          "windAngleOffBowDeg": 137.59,
+          "speedMps": 0.8339,
+          "yawRateRadPerS": 0.0017,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 235,
+          "windAngleOffBowDeg": 137.21,
+          "speedMps": 0.8096,
+          "yawRateRadPerS": 0.00096,
+          "rudderDeg": 25
+        }
+      ]
+    },
+    {
+      "method": "helm-only",
+      "windSpeedMps": 8,
+      "escaped": true,
+      "timeToPayOffS": 47.95,
+      "fellOffToward": "starboard",
+      "settledAngleDeg": null,
+      "backedToward": "port",
+      "maxSternwayMps": 1.1539,
+      "exitSpeedMps": 0.7954,
+      "meanYawRateDegPerS": 0.68532,
+      "maxEnergyOverWorkJ": -0.000577,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": 0,
+          "speedMps": 0,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 5,
+          "windAngleOffBowDeg": 0.49,
+          "speedMps": 0.2393,
+          "yawRateRadPerS": -0.00562,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": 2.57,
+          "speedMps": 0.4149,
+          "yawRateRadPerS": -0.00991,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 15,
+          "windAngleOffBowDeg": 5.98,
+          "speedMps": 0.5592,
+          "yawRateRadPerS": -0.01413,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": 10.56,
+          "speedMps": 0.6736,
+          "yawRateRadPerS": -0.01766,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 25,
+          "windAngleOffBowDeg": 16,
+          "speedMps": 0.7593,
+          "yawRateRadPerS": -0.02011,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": 22,
+          "speedMps": 0.8207,
+          "yawRateRadPerS": -0.0216,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 35,
+          "windAngleOffBowDeg": 28.3,
+          "speedMps": 0.8674,
+          "yawRateRadPerS": -0.02227,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": 34.72,
+          "speedMps": 0.9082,
+          "yawRateRadPerS": -0.02249,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 45,
+          "windAngleOffBowDeg": 41.18,
+          "speedMps": 0.9493,
+          "yawRateRadPerS": -0.02262,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": 47.82,
+          "speedMps": 1.0119,
+          "yawRateRadPerS": -0.0245,
+          "rudderDeg": -6
+        },
+        {
+          "timeSeconds": 55,
+          "windAngleOffBowDeg": 53.85,
+          "speedMps": 1.1223,
+          "yawRateRadPerS": -0.02178,
+          "rudderDeg": 0.73
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": 61.33,
+          "speedMps": 1.2022,
+          "yawRateRadPerS": -0.03156,
+          "rudderDeg": 13.06
+        },
+        {
+          "timeSeconds": 65,
+          "windAngleOffBowDeg": 71.93,
+          "speedMps": 1.2206,
+          "yawRateRadPerS": -0.03862,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": 81.85,
+          "speedMps": 1.1787,
+          "yawRateRadPerS": -0.02955,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 75,
+          "windAngleOffBowDeg": 89.11,
+          "speedMps": 1.1142,
+          "yawRateRadPerS": -0.02236,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": 95.12,
+          "speedMps": 1.0547,
+          "yawRateRadPerS": -0.01996,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 85,
+          "windAngleOffBowDeg": 100.66,
+          "speedMps": 1.0054,
+          "yawRateRadPerS": -0.01882,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": 105.93,
+          "speedMps": 0.965,
+          "yawRateRadPerS": -0.01808,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 95,
+          "windAngleOffBowDeg": 111.04,
+          "speedMps": 0.931,
+          "yawRateRadPerS": -0.01757,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": 116.01,
+          "speedMps": 0.9006,
+          "yawRateRadPerS": -0.01717,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 105,
+          "windAngleOffBowDeg": 120.86,
+          "speedMps": 0.8693,
+          "yawRateRadPerS": -0.01661,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 125.48,
+          "speedMps": 0.8332,
+          "yawRateRadPerS": -0.01555,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 115,
+          "windAngleOffBowDeg": 129.7,
+          "speedMps": 0.7888,
+          "yawRateRadPerS": -0.01386,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 133.4,
+          "speedMps": 0.7331,
+          "yawRateRadPerS": -0.01192,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 125,
+          "windAngleOffBowDeg": 136.55,
+          "speedMps": 0.667,
+          "yawRateRadPerS": -0.01018,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 139.3,
+          "speedMps": 0.5957,
+          "yawRateRadPerS": -0.00908,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 135,
+          "windAngleOffBowDeg": 141.76,
+          "speedMps": 0.5234,
+          "yawRateRadPerS": -0.00805,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 143.8,
+          "speedMps": 0.4544,
+          "yawRateRadPerS": -0.00602,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 145,
+          "windAngleOffBowDeg": 145.2,
+          "speedMps": 0.3972,
+          "yawRateRadPerS": -0.00376,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 146,
+          "speedMps": 0.3622,
+          "yawRateRadPerS": -0.0019,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 155,
+          "windAngleOffBowDeg": 146.3,
+          "speedMps": 0.3581,
+          "yawRateRadPerS": -0.00019,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 146.28,
+          "speedMps": 0.3723,
+          "yawRateRadPerS": -0.00032,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 165,
+          "windAngleOffBowDeg": 146.62,
+          "speedMps": 0.3886,
+          "yawRateRadPerS": -0.00208,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 147.51,
+          "speedMps": 0.4142,
+          "yawRateRadPerS": -0.00438,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 175,
+          "windAngleOffBowDeg": 149.04,
+          "speedMps": 0.4552,
+          "yawRateRadPerS": -0.00596,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 150.57,
+          "speedMps": 0.5116,
+          "yawRateRadPerS": -0.00426,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 185,
+          "windAngleOffBowDeg": 151.43,
+          "speedMps": 0.5787,
+          "yawRateRadPerS": -0.00177,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 151.56,
+          "speedMps": 0.6493,
+          "yawRateRadPerS": 0.0009,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 195,
+          "windAngleOffBowDeg": 150.87,
+          "speedMps": 0.7157,
+          "yawRateRadPerS": 0.00393,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 149.35,
+          "speedMps": 0.7705,
+          "yawRateRadPerS": 0.00655,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 205,
+          "windAngleOffBowDeg": 147.3,
+          "speedMps": 0.8089,
+          "yawRateRadPerS": 0.00737,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 210,
+          "windAngleOffBowDeg": 145.28,
+          "speedMps": 0.8311,
+          "yawRateRadPerS": 0.00657,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 215,
+          "windAngleOffBowDeg": 143.57,
+          "speedMps": 0.8403,
+          "yawRateRadPerS": 0.0054,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 220,
+          "windAngleOffBowDeg": 142.18,
+          "speedMps": 0.84,
+          "yawRateRadPerS": 0.00431,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 225,
+          "windAngleOffBowDeg": 141.08,
+          "speedMps": 0.8332,
+          "yawRateRadPerS": 0.00335,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 230,
+          "windAngleOffBowDeg": 140.24,
+          "speedMps": 0.8224,
+          "yawRateRadPerS": 0.00253,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 235,
+          "windAngleOffBowDeg": 139.62,
+          "speedMps": 0.8094,
+          "yawRateRadPerS": 0.00185,
+          "rudderDeg": 25
+        }
+      ]
+    },
+    {
+      "method": "backed-headsail-and-helm",
+      "windSpeedMps": 8,
+      "escaped": true,
+      "timeToPayOffS": 50.58,
+      "fellOffToward": "starboard",
+      "settledAngleDeg": null,
+      "backedToward": "port",
+      "maxSternwayMps": 1.2737,
+      "exitSpeedMps": 0.794,
+      "meanYawRateDegPerS": 0.69323,
+      "maxEnergyOverWorkJ": -0.000577,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": 0,
+          "speedMps": 0,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 5,
+          "windAngleOffBowDeg": 0.32,
+          "speedMps": 0.2471,
+          "yawRateRadPerS": -0.00428,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": 1.97,
+          "speedMps": 0.4324,
+          "yawRateRadPerS": -0.00831,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 15,
+          "windAngleOffBowDeg": 4.9,
+          "speedMps": 0.5865,
+          "yawRateRadPerS": -0.01236,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": 8.94,
+          "speedMps": 0.7126,
+          "yawRateRadPerS": -0.01573,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 25,
+          "windAngleOffBowDeg": 13.83,
+          "speedMps": 0.812,
+          "yawRateRadPerS": -0.01819,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": 19.32,
+          "speedMps": 0.8877,
+          "yawRateRadPerS": -0.02002,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 35,
+          "windAngleOffBowDeg": 25.24,
+          "speedMps": 0.9463,
+          "yawRateRadPerS": -0.02123,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": 31.44,
+          "speedMps": 0.9954,
+          "yawRateRadPerS": -0.02195,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 45,
+          "windAngleOffBowDeg": 37.79,
+          "speedMps": 1.0409,
+          "yawRateRadPerS": -0.02239,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": 44.25,
+          "speedMps": 1.0861,
+          "yawRateRadPerS": -0.02268,
+          "rudderDeg": 35
+        },
+        {
+          "timeSeconds": 55,
+          "windAngleOffBowDeg": 50.71,
+          "speedMps": 1.1863,
+          "yawRateRadPerS": -0.01884,
+          "rudderDeg": -4.3
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": 56.76,
+          "speedMps": 1.2844,
+          "yawRateRadPerS": -0.02535,
+          "rudderDeg": 5.5
+        },
+        {
+          "timeSeconds": 65,
+          "windAngleOffBowDeg": 66.1,
+          "speedMps": 1.3303,
+          "yawRateRadPerS": -0.04096,
+          "rudderDeg": 21.28
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": 78.92,
+          "speedMps": 1.2953,
+          "yawRateRadPerS": -0.04441,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 75,
+          "windAngleOffBowDeg": 90.09,
+          "speedMps": 1.2115,
+          "yawRateRadPerS": -0.03238,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": 97.84,
+          "speedMps": 1.1316,
+          "yawRateRadPerS": -0.02329,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 85,
+          "windAngleOffBowDeg": 104.04,
+          "speedMps": 1.0704,
+          "yawRateRadPerS": -0.02048,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": 109.72,
+          "speedMps": 1.0232,
+          "yawRateRadPerS": -0.01933,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 95,
+          "windAngleOffBowDeg": 115.16,
+          "speedMps": 0.9835,
+          "yawRateRadPerS": -0.01863,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": 120.39,
+          "speedMps": 0.9449,
+          "yawRateRadPerS": -0.01788,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 105,
+          "windAngleOffBowDeg": 125.36,
+          "speedMps": 0.9018,
+          "yawRateRadPerS": -0.01663,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": 129.86,
+          "speedMps": 0.8498,
+          "yawRateRadPerS": -0.01471,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 115,
+          "windAngleOffBowDeg": 133.74,
+          "speedMps": 0.7852,
+          "yawRateRadPerS": -0.01227,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": 136.85,
+          "speedMps": 0.7097,
+          "yawRateRadPerS": -0.00952,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 125,
+          "windAngleOffBowDeg": 139.31,
+          "speedMps": 0.6308,
+          "yawRateRadPerS": -0.00789,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": 141.46,
+          "speedMps": 0.5535,
+          "yawRateRadPerS": -0.00721,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 135,
+          "windAngleOffBowDeg": 143.43,
+          "speedMps": 0.4806,
+          "yawRateRadPerS": -0.00637,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": 145,
+          "speedMps": 0.4159,
+          "yawRateRadPerS": -0.00448,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 145,
+          "windAngleOffBowDeg": 146.01,
+          "speedMps": 0.3685,
+          "yawRateRadPerS": -0.00266,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": 146.55,
+          "speedMps": 0.3491,
+          "yawRateRadPerS": -0.0011,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 155,
+          "windAngleOffBowDeg": 146.65,
+          "speedMps": 0.3596,
+          "yawRateRadPerS": 0.00003,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": 146.83,
+          "speedMps": 0.3755,
+          "yawRateRadPerS": -0.00151,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 165,
+          "windAngleOffBowDeg": 147.53,
+          "speedMps": 0.3986,
+          "yawRateRadPerS": -0.00354,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": 148.92,
+          "speedMps": 0.4362,
+          "yawRateRadPerS": -0.00588,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 175,
+          "windAngleOffBowDeg": 150.63,
+          "speedMps": 0.4906,
+          "yawRateRadPerS": -0.00528,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": 151.79,
+          "speedMps": 0.5582,
+          "yawRateRadPerS": -0.00294,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 185,
+          "windAngleOffBowDeg": 152.29,
+          "speedMps": 0.6326,
+          "yawRateRadPerS": -0.00043,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": 151.98,
+          "speedMps": 0.7058,
+          "yawRateRadPerS": 0.0027,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 195,
+          "windAngleOffBowDeg": 150.74,
+          "speedMps": 0.7697,
+          "yawRateRadPerS": 0.0059,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": 148.7,
+          "speedMps": 0.8175,
+          "yawRateRadPerS": 0.00803,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 205,
+          "windAngleOffBowDeg": 146.38,
+          "speedMps": 0.8465,
+          "yawRateRadPerS": 0.00779,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 210,
+          "windAngleOffBowDeg": 144.33,
+          "speedMps": 0.8595,
+          "yawRateRadPerS": 0.00648,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 215,
+          "windAngleOffBowDeg": 142.67,
+          "speedMps": 0.8606,
+          "yawRateRadPerS": 0.00518,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 220,
+          "windAngleOffBowDeg": 141.35,
+          "speedMps": 0.8535,
+          "yawRateRadPerS": 0.00403,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 225,
+          "windAngleOffBowDeg": 140.34,
+          "speedMps": 0.8414,
+          "yawRateRadPerS": 0.00306,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 230,
+          "windAngleOffBowDeg": 139.58,
+          "speedMps": 0.8265,
+          "yawRateRadPerS": 0.00226,
+          "rudderDeg": 25
+        },
+        {
+          "timeSeconds": 235,
+          "windAngleOffBowDeg": 139.03,
+          "speedMps": 0.8103,
+          "yawRateRadPerS": 0.0016,
+          "rudderDeg": 25
+        }
+      ]
+    },
+    {
+      "method": "helm-only",
+      "windSpeedMps": 8,
+      "escaped": true,
+      "timeToPayOffS": 64.05,
+      "fellOffToward": "port",
+      "settledAngleDeg": null,
+      "backedToward": "starboard",
+      "maxSternwayMps": 1.1645,
+      "exitSpeedMps": 0.4595,
+      "meanYawRateDegPerS": 0.61341,
+      "maxEnergyOverWorkJ": -0.000577,
+      "trace": [
+        {
+          "timeSeconds": 0,
+          "windAngleOffBowDeg": 0,
+          "speedMps": 0,
+          "yawRateRadPerS": 0,
+          "rudderDeg": 0
+        },
+        {
+          "timeSeconds": 5,
+          "windAngleOffBowDeg": 0.44,
+          "speedMps": 0.2401,
+          "yawRateRadPerS": -0.00496,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 10,
+          "windAngleOffBowDeg": 1.98,
+          "speedMps": 0.4181,
+          "yawRateRadPerS": -0.00646,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 15,
+          "windAngleOffBowDeg": 3.78,
+          "speedMps": 0.5661,
+          "yawRateRadPerS": -0.00606,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 20,
+          "windAngleOffBowDeg": 5.28,
+          "speedMps": 0.6893,
+          "yawRateRadPerS": -0.00417,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 25,
+          "windAngleOffBowDeg": 6.04,
+          "speedMps": 0.7951,
+          "yawRateRadPerS": -0.0009,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 30,
+          "windAngleOffBowDeg": 5.68,
+          "speedMps": 0.8893,
+          "yawRateRadPerS": 0.00369,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 35,
+          "windAngleOffBowDeg": 3.8,
+          "speedMps": 0.9758,
+          "yawRateRadPerS": 0.00963,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 40,
+          "windAngleOffBowDeg": -0.01,
+          "speedMps": 1.0554,
+          "yawRateRadPerS": 0.01723,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 45,
+          "windAngleOffBowDeg": -6.15,
+          "speedMps": 1.1211,
+          "yawRateRadPerS": 0.02643,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 50,
+          "windAngleOffBowDeg": -16.33,
+          "speedMps": 1.1652,
+          "yawRateRadPerS": 0.0448,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 55,
+          "windAngleOffBowDeg": -29.44,
+          "speedMps": 1.1508,
+          "yawRateRadPerS": 0.04497,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 60,
+          "windAngleOffBowDeg": -39.57,
+          "speedMps": 1.0703,
+          "yawRateRadPerS": 0.02657,
+          "rudderDeg": -35
+        },
+        {
+          "timeSeconds": 65,
+          "windAngleOffBowDeg": -46.14,
+          "speedMps": 0.9639,
+          "yawRateRadPerS": 0.02109,
+          "rudderDeg": -16
+        },
+        {
+          "timeSeconds": 70,
+          "windAngleOffBowDeg": -52.85,
+          "speedMps": 1.0198,
+          "yawRateRadPerS": 0.02461,
+          "rudderDeg": 0.45
+        },
+        {
+          "timeSeconds": 75,
+          "windAngleOffBowDeg": -60.96,
+          "speedMps": 1.0927,
+          "yawRateRadPerS": 0.03267,
+          "rudderDeg": -12.64
+        },
+        {
+          "timeSeconds": 80,
+          "windAngleOffBowDeg": -71,
+          "speedMps": 1.1168,
+          "yawRateRadPerS": 0.03172,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 85,
+          "windAngleOffBowDeg": -78.67,
+          "speedMps": 1.1069,
+          "yawRateRadPerS": 0.02368,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 90,
+          "windAngleOffBowDeg": -85.08,
+          "speedMps": 1.0907,
+          "yawRateRadPerS": 0.02135,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 95,
+          "windAngleOffBowDeg": -90.94,
+          "speedMps": 1.0725,
+          "yawRateRadPerS": 0.01953,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 100,
+          "windAngleOffBowDeg": -96.33,
+          "speedMps": 1.0556,
+          "yawRateRadPerS": 0.01827,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 105,
+          "windAngleOffBowDeg": -101.5,
+          "speedMps": 1.0477,
+          "yawRateRadPerS": 0.01791,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 110,
+          "windAngleOffBowDeg": -106.42,
+          "speedMps": 1.0328,
+          "yawRateRadPerS": 0.01592,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 115,
+          "windAngleOffBowDeg": -110.6,
+          "speedMps": 1.0033,
+          "yawRateRadPerS": 0.01341,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 120,
+          "windAngleOffBowDeg": -114.16,
+          "speedMps": 0.9715,
+          "yawRateRadPerS": 0.01149,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 125,
+          "windAngleOffBowDeg": -117.2,
+          "speedMps": 0.9378,
+          "yawRateRadPerS": 0.00975,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 130,
+          "windAngleOffBowDeg": -119.76,
+          "speedMps": 0.9026,
+          "yawRateRadPerS": 0.00812,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 135,
+          "windAngleOffBowDeg": -121.86,
+          "speedMps": 0.8669,
+          "yawRateRadPerS": 0.0066,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 140,
+          "windAngleOffBowDeg": -123.55,
+          "speedMps": 0.8313,
+          "yawRateRadPerS": 0.00518,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 145,
+          "windAngleOffBowDeg": -124.84,
+          "speedMps": 0.7967,
+          "yawRateRadPerS": 0.0039,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 150,
+          "windAngleOffBowDeg": -125.8,
+          "speedMps": 0.7637,
+          "yawRateRadPerS": 0.00278,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 155,
+          "windAngleOffBowDeg": -126.47,
+          "speedMps": 0.7329,
+          "yawRateRadPerS": 0.002,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 160,
+          "windAngleOffBowDeg": -126.99,
+          "speedMps": 0.7047,
+          "yawRateRadPerS": 0.00171,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 165,
+          "windAngleOffBowDeg": -127.49,
+          "speedMps": 0.6792,
+          "yawRateRadPerS": 0.00179,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 170,
+          "windAngleOffBowDeg": -128.03,
+          "speedMps": 0.6557,
+          "yawRateRadPerS": 0.00206,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 175,
+          "windAngleOffBowDeg": -128.68,
+          "speedMps": 0.6337,
+          "yawRateRadPerS": 0.00242,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 180,
+          "windAngleOffBowDeg": -129.42,
+          "speedMps": 0.6127,
+          "yawRateRadPerS": 0.00274,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 185,
+          "windAngleOffBowDeg": -130.23,
+          "speedMps": 0.592,
+          "yawRateRadPerS": 0.00293,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 190,
+          "windAngleOffBowDeg": -131.07,
+          "speedMps": 0.5716,
+          "yawRateRadPerS": 0.0029,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 195,
+          "windAngleOffBowDeg": -131.86,
+          "speedMps": 0.5513,
+          "yawRateRadPerS": 0.00252,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 200,
+          "windAngleOffBowDeg": -132.48,
+          "speedMps": 0.5315,
+          "yawRateRadPerS": 0.00173,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 205,
+          "windAngleOffBowDeg": -132.85,
+          "speedMps": 0.5131,
+          "yawRateRadPerS": 0.00086,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 210,
+          "windAngleOffBowDeg": -132.98,
+          "speedMps": 0.4973,
+          "yawRateRadPerS": 0.0001,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 215,
+          "windAngleOffBowDeg": -132.92,
+          "speedMps": 0.4845,
+          "yawRateRadPerS": -0.00051,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 220,
+          "windAngleOffBowDeg": -132.71,
+          "speedMps": 0.4749,
+          "yawRateRadPerS": -0.00094,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 225,
+          "windAngleOffBowDeg": -132.4,
+          "speedMps": 0.4681,
+          "yawRateRadPerS": -0.0012,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 230,
+          "windAngleOffBowDeg": -132.04,
+          "speedMps": 0.4636,
+          "yawRateRadPerS": -0.00133,
+          "rudderDeg": -25
+        },
+        {
+          "timeSeconds": 235,
+          "windAngleOffBowDeg": -131.65,
+          "speedMps": 0.4609,
+          "yawRateRadPerS": -0.00135,
+          "rudderDeg": -25
+        }
+      ]
+    }
+  ],
+  "gates": {
+    "classicTackCompletesAtAnyEntry": false,
+    "everyWithWayEntryCompletes": false,
+    "everyWithWayEntryCrossesEye": true,
+    "captureAngleBandDeg": [
+      21.031,
+      32.632
+    ],
+    "eyeCrossSpeedBandMps": [
+      1.114,
+      1.4306
+    ],
+    "lowWayFailsBeforeEye": true,
+    "maxEnergyOverWorkJ": -0.000577,
+    "gybeCompleted": true,
+    "gybeMaxYawRateRadPerS": 0.043245,
+    "ironsSternBoardEscapes": true,
+    "ironsBackedHeadsailAloneEscapes": true,
+    "ironsBackedHeadsailSecondsSaved": -2.63,
+    "ironsSternBoardPayOffS": 47.95,
+    "ironsDriftPayOffS": 44.25,
+    "ironsTowardSheetsAttractorDeg": null
+  }
+}

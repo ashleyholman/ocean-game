@@ -1,0 +1,1975 @@
+You are the sole implementation lead for the next graphics-development round of an existing Three.js ocean-and-raft prototype.
+
+Work directly in the existing repository. Implement, test, visually inspect, and refine the working application. Do not merely provide a visual design document or isolated code examples.
+
+Use deep reasoning and inspect the existing rendering architecture before changing it. This is a focused graphics and lighting round. The principal goal is to make every phase of the existing astronomical day—from clear midday through sunrise, sunset, twilight, and night—visually beautiful, coherent, and materially convincing.
+
+PROJECT ROUND
+
+Planned implementation stage 3 of 3 — Clear-Sky Atmosphere, Ocean Optics,
+Lighting, and Full-Day Visual Fidelity
+
+IMPLEMENTATION ORDER AND DEPENDENCIES
+
+This is the final round in the current three-stage plan and is intended to
+follow the integrated:
+
+1. Open-ocean sea states and whitewater.
+2. Multi-scale cinematic and embodied camera.
+
+Use their specifications, reports, deterministic presets, automated tests and
+development labs as the starting foundation.
+
+This round owns the finished cinematic look across the already-established
+close, default, far-aerial and embodied viewpoints. It may make narrow
+compatibility fixes, but it must not redesign camera architecture, sea-state
+physics, raft buoyancy or world positioning.
+
+PRIMARY GOAL
+
+Transform the existing technically correct astronomical day/night cycle into a visually compelling clear-weather ocean experience.
+
+The current planetary core already supplies:
+
+- canonical WGS84/ECEF world state;
+- absolute world date and UTC;
+- local apparent solar time;
+- real Sun direction;
+- real Moon direction;
+- real star-catalogue orientation;
+- latitude- and season-dependent Sun paths;
+- polar day and polar night;
+- raft-centred Three.js rendering;
+- distributed 24-station force-based buoyancy with fixed-step integration;
+- the final shared CPU/GPU `WaveField` and sea-state transition model;
+- persistent crest foam, whitewater, spindrift and separate raft-contact spray;
+- deterministic calm, moderate, crossing, post-storm and rough sea presets;
+- multi-scale cinematic and embodied camera modes;
+- development labs at `?debug=buoyancy` and `?debug=ocean`.
+
+Preserve that authority.
+
+This round must improve the downstream visual presentation of:
+
+- clear daytime sky;
+- daytime ocean colour;
+- atmospheric horizon;
+- existing clouds;
+- direct sunlight and ambient sky lighting;
+- raft, sail, wood, rope, and character materials;
+- sunrise;
+- sunset;
+- civil, nautical, and astronomical twilight;
+- progressive star visibility;
+- star point rendering;
+- Moon presentation and clear-sky halo;
+- night exposure and darkness;
+- Moonlit water;
+- a small warm lamp on the raft at night.
+
+This round is not a weather-system round.
+
+Implement one high-quality, fixed, clear maritime atmosphere and one clear, deep, open-ocean optical profile. Architect them so future weather, biological productivity, sediment, coastal depth, and geographic water profiles can modify them later without requiring a complete rewrite.
+
+CORE VISUAL INTENT
+
+The daytime experience should feel bright, clear, inviting, and beautiful—similar in emotional effect to being outside on an exceptional clear-weather ocean or tropical holiday.
+
+However:
+
+- the raft is in deep open ocean;
+- do not turn the ocean into shallow turquoise lagoon water;
+- do not use exaggerated postcard saturation;
+- do not impose tropical midday lighting on physically incompatible high-latitude winter scenes;
+- preserve real geographic, seasonal, and solar-angle differences.
+
+Beauty must be robust across the supported environment controls rather than
+belonging only to a small set of showcase coordinates and times. Every valid
+combination of latitude, season, Sun angle, sea state and camera view should
+lean into the visual qualities of that condition: calm water may be serene and
+reflective, rough water powerful and sculptural, low polar light austere and
+luminous, and night dark but richly legible. Do not force all conditions toward
+one universal midday look.
+
+Under suitable clear high-Sun conditions, the intended impression is:
+
+- a recognisably rich blue sky;
+- a deeper blue zenith;
+- a lighter blue atmospheric horizon;
+- clean, bright white clouds with visible internal shading;
+- a clearly legible but naturally softened ocean horizon;
+- a deep cobalt, navy, or ultramarine ocean;
+- a spatially limited silver-white Sun-glitter path;
+- an inviting, luminous appearance without broad grey washout.
+
+At night, the intended impression is:
+
+- genuine darkness and solitude;
+- a deep navy to near-black sky and ocean;
+- readable tonal separation rather than crushed featureless black;
+- sharp real stars appearing progressively as twilight darkens;
+- restrained Moon glow;
+- a small warm pool of light around the raft;
+- surrounding ocean that remains enormous and dark.
+
+OBSERVED BASELINE PROBLEM
+
+A representative current midday scene was observed at approximately:
+
+- latitude: 4.33° south;
+- longitude: 178.84° east;
+- date: 24 January;
+- local apparent solar time: approximately 12:53;
+- wave amplitude: approximately 0.76 metres;
+- wind: approximately 6 metres per second;
+- camera distance: approximately 58 metres;
+- sail lowered.
+
+The current result has:
+
+- a nearly uniform pale-grey or grey-blue sky;
+- clouds and clear sky blending into a broad washed layer;
+- a weak or indistinct blue zenith;
+- a washed or low-contrast horizon;
+- ocean reflection that is excessively broad, pale, and grey;
+- insufficient deep-blue water-body colour;
+- daylight that feels overcast despite low cloud coverage.
+
+A second known problem occurs around sunset:
+
+- when the low Sun is behind the camera and directly illuminates the sail,
+  the sail receives too little warm directional colour;
+- the cool directionless ambient contribution is currently strong enough to
+  suppress the expected warm orange, red, or gold direct-light response;
+- the sail therefore remains relatively neutral or cool instead of visibly
+  belonging to the sunset illumination.
+
+Do not solve these problems by merely:
+
+- increasing global saturation;
+- hard-coding the sky to blue;
+- assigning one darker-blue RGB value to the ocean;
+- reducing exposure globally;
+- adding an orange full-screen colour grade at sunset;
+- applying a broad grey or blue fog;
+- making the Sun or Moon bloom larger.
+
+Diagnose and correct the underlying rendering, lighting, tone-mapping, colour-management, atmosphere, material, and reflection relationships.
+
+PRESERVE EXISTING FOUNDATIONS
+
+Before modifying production code, inspect and preserve:
+
+- `PlanetaryWorld`;
+- WGS84/ECEF state;
+- world and presentation clocks;
+- real Sun and Moon directions;
+- real star-catalogue coordinates;
+- celestial-to-ECEF transforms;
+- world-to-render adapter;
+- current camera architecture;
+- the complete multi-scale and embodied camera architecture;
+- current ocean displacement, sea-state transitions and raft-wave coupling;
+- `RaftBuoyancy`, its stations/forces and fixed-step timing;
+- the `WaveField` CPU/GPU, inverse-sampling and orbital-velocity contract;
+- persistent foam history and separation of crest, spray and raft-contact
+  effects;
+- existing debug location and time controls;
+- existing camera, ocean and buoyancy debug controls;
+- every existing tracked planetary, raft-water, ocean and camera test.
+
+Do not create a second decorative Sun, Moon, star clock, or time-of-day authority.
+
+All lighting and visual transitions must derive from the existing astronomical state, particularly:
+
+- Sun direction;
+- Sun elevation;
+- Sun azimuth;
+- Moon direction;
+- Moon elevation;
+- date;
+- observer location;
+- sky brightness or a physically justified approximation derived from those quantities.
+
+Do not use local clock labels such as “18:00 means sunset” as the visual authority. Sunset may occur at very different local times depending on date and latitude.
+
+BASELINE WORKFLOW
+
+Before substantial implementation:
+
+1. Inspect the complete relevant rendering code.
+
+2. Read:
+   - `docs/world/WORLD_MODEL.md`;
+   - the planetary ADR;
+   - `docs/world/REPORT.md`;
+   - `docs/ocean/RAFT_WATER_COUPLING_SPEC.md`;
+   - `docs/ocean/RAFT_WATER_COUPLING_REPORT.md`;
+   - `docs/ocean/OCEAN_SEA_STATE_SPEC.md`;
+   - `docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`;
+   - `docs/ocean/OCEAN_SEA_STATE_REPORT.md`;
+   - `docs/ocean/OCEAN_COMPOSITION_REPORT.md` — the composition round sits between the
+     sea-state round and this one; its "For the graphics round" section is
+     this round's direct handoff (foam shading and quantity, far-field
+     bleach, foam-stepping re-verification, microChop re-judgement), and its
+     perceptual-invariant tests (`tests/composition.test.ts`) are contracts
+     this round must not regress;
+   - `docs/camera/CAMERA_SYSTEM.md`;
+   - `docs/camera/CAMERA_ROUND_REPORT.md`;
+   - the original ocean prototype specification;
+   - `docs/project/FUTURE_ROUNDS.md`;
+   - existing asset and licence credits.
+
+3. Run:
+   - `npm ci`;
+   - `npm test`;
+   - `npm run typecheck`;
+   - `npm run build`.
+
+   Ensure Vitest is testing this worktree only. Exclude nested
+   `.claude/worktrees` rather than accepting duplicate discovery of another
+   worktree's tests.
+
+4. Launch the application in a real browser in normal and debug modes.
+
+5. Reproduce and capture the current midday problem under conditions close to
+   the representative baseline above.
+
+6. Capture existing screenshots at:
+   - high-Sun midday;
+   - morning;
+   - sunrise;
+   - low-Sun golden hour;
+   - sunset;
+   - civil twilight;
+   - nautical twilight;
+   - astronomical night;
+   - Moonlit night;
+   - Moon-below-horizon night.
+
+7. Using the required multi-scale camera system, capture:
+   - close cinematic;
+   - default cinematic;
+   - far aerial;
+   - embodied on-raft;
+   - embodied zenith view.
+
+   Capture representative close/default/far and embodied baselines in the
+   documented calm, current-moderate and Southern-Ocean-rough presets (or their
+   final equivalent names). Preserve their wave physics and whitewater
+   behaviour while improving how those surfaces are lit.
+
+8. Record current:
+   - renderer colour-space configuration;
+   - tone mapper;
+   - exposure;
+   - bloom configuration;
+   - light types and intensities;
+   - ambient-light contribution;
+   - directional Sun contribution;
+   - Moon-light contribution;
+   - material colour spaces;
+   - sky shader inputs;
+   - cloud blending;
+   - water Fresnel and specular implementation;
+   - water roughness or wave-normal distribution;
+   - star sprite size and alpha model;
+   - star visibility model;
+   - Moon halo model;
+   - shadow configuration;
+   - performance at 1440p and 4K.
+
+9. Identify the actual causes of:
+   - grey midday sky;
+   - broad grey ocean glare;
+   - insufficient warm direct sunlight on the sail;
+   - premature appearance of faint stars;
+   - fuzzy star appearance;
+   - excessive Moon halo;
+   - inadequate or washed-out night darkness.
+
+Do not discard or rewrite unrelated working systems.
+
+SUBAGENT WORKFLOW
+
+Use at most three bounded, read-only analytical subagents.
+
+The main agent remains the sole production integrator and code editor.
+
+Do not allow several subagents to independently rewrite shaders or lighting systems in parallel worktrees.
+
+SUBAGENT 1 — ATMOSPHERE, LIGHTING, AND COLOUR-PIPELINE ANALYST
+
+Inspect the current:
+
+- atmosphere;
+- sky shader;
+- Sun disc;
+- cloud shading;
+- direct light;
+- ambient or hemisphere light;
+- environment lighting;
+- material response;
+- colour management;
+- tone mapping;
+- exposure;
+- bloom;
+- shadows;
+- sail shader.
+
+Research current official Three.js colour-management and rendering guidance and authoritative clear-sky or atmospheric-scattering references.
+
+Return:
+
+- the most likely causes of the grey daytime result;
+- whether the scene has a colour-space, gamma, exposure, or tone-mapping error;
+- whether ambient fill is overpowering directional Sun;
+- whether the atmosphere uses excessive Mie haze or turbidity;
+- whether cloud blending creates an unintended grey veil;
+- the smallest robust implementation plan;
+- recommended validation cases;
+- likely risks at sunrise, sunset, polar day, and night.
+
+Do not edit production code.
+
+SUBAGENT 2 — OCEAN OPTICS AND WATER-MATERIAL ANALYST
+
+Inspect the current ocean shader and determine how it combines:
+
+- intrinsic water-body colour;
+- Fresnel sky reflection;
+- direct Sun glitter;
+- wave normals;
+- roughness;
+- generated crest foam, persistent foam and whitewater age;
+- spindrift and separate raft-contact spray;
+- tone mapping;
+- atmospheric distance.
+
+Research authoritative deep-open-ocean optics and Sun-glitter behaviour.
+
+Return:
+
+- why the current ocean appears broad, grey, metallic, or over-glary;
+- a practical clear deep-ocean optical model suitable for real-time Three.js;
+- how to separate body colour, sky reflection, solar glitter, and foam;
+- how the established sea-state roughness and whitewater systems should receive
+  light without being replaced by a static visual foam mask;
+- how Sun elevation and camera angle should alter appearance;
+- how wave roughness should change glint width;
+- how to keep far-distance water stable;
+- a future-compatible optical-profile interface;
+- validation cases for noon, sunset, twilight, and Moonlit night.
+
+Do not edit production code.
+Do not change displacement equations, preset energy, CPU sampling, buoyancy or
+foam-history semantics.
+
+SUBAGENT 3 — VISUAL FIDELITY CRITIC
+
+Run only after the first integrated implementation.
+
+Review actual browser screenshots and, where useful, short time-sequence
+captures.
+
+Rank the five most damaging visual defects by severity.
+
+Judge:
+
+- daytime sky colour;
+- zenith-to-horizon gradient;
+- cloud whiteness and shading;
+- horizon clarity;
+- ocean body colour;
+- Sun-glitter localisation;
+- material lighting;
+- sail sunset response;
+- sunrise and sunset colour;
+- twilight progression;
+- star emergence;
+- star sharpness;
+- nighttime darkness;
+- Moon halo;
+- raft lamp;
+- direct-versus-ambient balance;
+- colour clipping;
+- banding;
+- oversaturation;
+- mobile and 4K presentation.
+
+The critic must not request:
+
+- new weather;
+- volumetric clouds;
+- gameplay systems;
+- terrain;
+- ships;
+- islands;
+- swimming;
+- navigation;
+- new camera modes.
+
+REVIEW LOOP
+
+Perform no more than three focused visual-review passes.
+
+For each pass:
+
+1. Capture the required screenshots from a real browser.
+2. Give them to the visual-critic subagent.
+3. Receive the five highest-severity defects.
+4. Fix those defects.
+5. Re-run tests, type checking, and relevant browser checks.
+6. Stop when no severity-one defect remains and remaining limitations are minor
+   or documented.
+
+Do not run an unlimited “make it perfect” loop.
+
+POST-ROUND EXTERNAL REVIEW
+
+This implementation prompt must complete its own critic loop and final report
+without waiting for user orchestration. Afterwards, the user may run the
+companion Opus code-and-visual review and Sol technical review prompts and use
+their reports to seed an optional follow-up improvement pass.
+
+RESEARCH AND DESIGN DOCUMENTS
+
+Before substantial shader or lighting work, create:
+
+1. `docs/graphics/VISUAL_LIGHTING_SPEC.md`
+
+   Define:
+
+   - renderer colour pipeline;
+   - working and output colour spaces;
+   - HDR and tone-mapping strategy;
+   - exposure strategy;
+   - direct Sun lighting;
+   - ambient sky lighting;
+   - Moon lighting;
+   - clear-atmosphere profile;
+   - twilight model;
+   - cloud-lighting treatment;
+   - ocean optical components;
+   - star visibility;
+   - star point rendering;
+   - raft lamp;
+   - material response;
+   - future weather extension points;
+   - performance budget;
+   - visual invariants.
+
+2. `docs/graphics/VISUAL_REFERENCE_NOTES.md`
+
+   Record concise findings from authoritative references concerning:
+
+   - clear-sky atmospheric scattering;
+   - twilight;
+   - deep-water colour;
+   - Fresnel reflection;
+   - Sun glitter;
+   - star visibility in twilight;
+   - night adaptation and exposure;
+   - Moon halo under clear conditions.
+
+Do not build a large aesthetic mood board or copy the grading of one photograph.
+
+Use references to understand physical relationships, not to reproduce a copyrighted image.
+
+COLOUR PIPELINE AUDIT
+
+Before tuning visual constants, verify the complete colour pipeline.
+
+Check:
+
+- lighting and shader calculations occur in an appropriate linear working space;
+- output is transformed exactly once to the intended display colour space;
+- colour textures are tagged correctly;
+- data or normal textures are not incorrectly treated as colour;
+- there is no accidental double gamma;
+- there is no accidental double tone mapping;
+- post-processing does not apply an additional unintended transfer function;
+- bloom operates on HDR values rather than broad low-intensity regions;
+- exposure is not clipping most of the daytime atmosphere to pale grey;
+- ambient light is not acting as an unbounded constant grey term.
+
+Use the current Three.js version’s official conventions rather than copying obsolete API patterns.
+
+Do not begin by changing every colour constant.
+
+CLEAR-WEATHER ATMOSPHERE
+
+Implement one fixed, high-quality, clear maritime atmosphere profile.
+
+This profile should form the base state that a future weather system can later modify.
+
+It should support continuous, astronomy-driven rendering across:
+
+- midday;
+- morning;
+- afternoon;
+- golden hour;
+- sunrise;
+- sunset;
+- civil twilight;
+- nautical twilight;
+- astronomical twilight;
+- night;
+- polar day;
+- polar night.
+
+The atmosphere should derive from Sun elevation and direction, not discrete clock presets.
+
+DAYTIME SKY
+
+Under suitable clear high-Sun geometry:
+
+- the zenith must be distinctly and recognisably blue;
+- the sky should become lighter and less saturated toward the horizon;
+- the region close to the Sun may be brighter and less saturated;
+- most of the clear sky must not be white or grey;
+- only the solar disc, very close circumsolar region, and bright cloud highlights
+  should approach display white;
+- the sky must retain blue colour after tone mapping;
+- the result should feel luminous and inviting without neon saturation.
+
+The representative near-equatorial January midday baseline must no longer look overcast or grey.
+
+Do not impose the same saturated blue on all geographic conditions.
+
+For example:
+
+- high-latitude winter daylight may be pale, low-angle, and cool or warm;
+- low Sun should alter colour naturally;
+- polar day must remain coherent;
+- latitude and date must continue to matter.
+
+ATMOSPHERIC HORIZON
+
+The horizon should be clearly readable under clear conditions.
+
+This does not mean drawing a hard digital line.
+
+Implement:
+
+- a distinct transition between ocean and sky;
+- a relatively narrow, physically plausible haze band;
+- lighter atmospheric blue near the horizon;
+- no broad white or grey wash that consumes the lower half of the sky;
+- no visible sky-dome seam;
+- no conflict with far-camera ocean rendering.
+
+At clear midday, the user should be able to identify the horizon immediately.
+
+SUNRISE AND SUNSET
+
+Improve both sunrise and sunset continuously.
+
+Required behaviour:
+
+- warm colour remains concentrated primarily near the low Sun and along the
+  illuminated horizon;
+- the entire sky must not become uniformly orange;
+- the opposite side of the sky may remain blue, indigo, pink, or neutral as
+  appropriate;
+- clouds facing the Sun should acquire warm edges and illuminated surfaces;
+- direct Sun light on the raft should shift toward gold, orange, or red as the
+  Sun descends;
+- non-Sun-facing ambient fill should remain cooler;
+- ocean warmth should concentrate in the reflected Sun path rather than tinting
+  the whole sea;
+- sunrise and sunset must emerge from the same astronomical and scattering
+  system, not separate painted gradients;
+- transitions must be smooth as the Sun crosses the horizon.
+
+Avoid:
+
+- a uniform orange full-screen filter;
+- oversized bloom;
+- crushed silhouettes;
+- abrupt phase changes;
+- neon magenta or purple unless naturally restrained within twilight.
+
+TWILIGHT
+
+Create a continuous visual progression through:
+
+- civil twilight;
+- nautical twilight;
+- astronomical twilight;
+- full night.
+
+The visual system may use Sun elevation and estimated sky luminance as the
+principal controls.
+
+Do not make all twilight stages equally bright.
+
+As the Sun descends:
+
+- blue daylight should deepen;
+- warm horizon light should diminish;
+- sky brightness should fall continuously;
+- the ocean should lose broad daylight reflection;
+- increasingly faint stars should become visible;
+- artificial raft light should become perceptually more important;
+- the scene must not suddenly switch from bright sunset to black night.
+
+CLOUDS
+
+Preserve the existing cloud geometry, coverage system, and broad motion.
+
+Do not implement:
+
+- a new weather system;
+- global forecast simulation;
+- volumetric cloud architecture;
+- storms;
+- rain;
+- dynamic cloud formation;
+- geographic cloud fields.
+
+Improve only the lighting and compositing of the existing clouds.
+
+Under clear midday conditions:
+
+- Sun-facing cloud regions should be bright neutral white;
+- internal detail must remain visible rather than clipping into flat white;
+- shaded lower regions may be soft neutral or cool grey;
+- clouds must not impose a grey translucent veil over cloudless portions of sky;
+- cloud alpha blending must preserve the blue sky behind them.
+
+At sunrise and sunset:
+
+- Sun-facing cloud regions may become gold, peach, orange, or subdued red;
+- shadowed regions may remain cooler;
+- colour must follow the real Sun direction.
+
+At night:
+
+- clouds should become dark silhouettes or softly Moonlit forms;
+- they should not remain bright daytime grey;
+- if practical within the existing system, stars behind dense cloud should be
+  attenuated, but this is secondary to the principal visual goals.
+
+OCEAN OPTICAL MODEL
+
+Treat the ocean as a combination of physically distinct components rather than
+one fixed blue surface colour.
+
+The model should explicitly or conceptually separate:
+
+1. WATER-BODY RADIANCE
+
+   Light that enters clear deep water, is spectrally absorbed and scattered,
+   and emerges again.
+
+2. FRESNEL SKY REFLECTION
+
+   Reflection of the current procedural sky, increasingly dominant at grazing
+   viewing angles.
+
+3. DIRECT SOLAR GLITTER
+
+   High-intensity reflection from wave facets whose normals align appropriately
+   with the real Sun and camera.
+
+4. FOAM OR WHITECAPS
+
+   Approximately neutral bright material where already supported and
+   physically justified.
+
+For this round, implement one fixed:
+
+- clear;
+- deep;
+- low-productivity;
+- open-ocean optical profile.
+
+Do not yet implement:
+
+- chlorophyll maps;
+- phytoplankton;
+- sediment;
+- coloured dissolved organic matter;
+- shallow bottom reflection;
+- reefs;
+- coastal turbidity;
+- geographic water-quality data;
+- weather-driven water profiles.
+
+CLEAR DEEP-OCEAN COLOUR
+
+Under high clear-weather Sun:
+
+- more downward-looking water should show deep cobalt, ultramarine, or navy
+  body colour;
+- grazing-angle regions should reflect more of the blue horizon sky;
+- distant ocean may become lighter and more sky-reflective;
+- the result must remain recognisably blue outside the Sun-glitter region;
+- the surface must not look like a broad grey metal sheet;
+- the ocean must not become tropical turquoise merely to feel attractive;
+- the water should look deep.
+
+The emotional target is beautiful open ocean, not shallow lagoon water.
+
+At lower solar elevation:
+
+- preserve dark blue or blue-grey body colour;
+- allow warm gold, amber, or orange primarily inside the Sun-reflection path;
+- do not tint the entire ocean orange.
+
+At night:
+
+- use deep indigo, navy-black, or blue-black water;
+- preserve subtle tonal and wave variation;
+- allow Moon reflection when the Moon is above the horizon;
+- do not make the entire ocean uniformly black;
+- do not make the entire ocean uniformly silver.
+
+SUN GLITTER
+
+The current broad pale glare must be replaced or recalibrated into a spatially
+limited, view-dependent Sun-glitter region.
+
+Requirements:
+
+- glint follows the real Sun direction;
+- glint position changes correctly with camera azimuth and elevation;
+- glint consists of wave-facet highlights rather than one flat white patch;
+- the brightest highlights may approach white;
+- most water outside the glint remains chromatic;
+- glint width and fragmentation respond to the existing wave roughness;
+- smoother water produces a tighter, more coherent path;
+- rougher water produces a broader, more fragmented path;
+- roughness must not merely raise the brightness of the entire ocean;
+- tone mapping must preserve blue around the highlights;
+- distant glint must not alias severely or shimmer uncontrollably.
+
+MOON GLITTER
+
+When the Moon is above the horizon:
+
+- allow a much weaker, narrower Moon-reflection path;
+- use the real Moon direction;
+- scale intensity according to available lunar illumination if the current
+  astronomy provider exposes it cleanly;
+- do not create a broad grey night ocean.
+
+Detailed wave-optics simulation is unnecessary.
+
+OCEAN PROFILE INTERFACE
+
+Architect the implementation so a future optical profile can eventually provide
+concepts such as:
+
+```ts
+interface OceanOpticsProfile {
+  absorptionRgbPerM: Vec3;
+  backscatterRgb: Vec3;
+  surfaceRoughnessScale: number;
+  foamBrightness: number;
+  suspendedMatter?: number;
+  chlorophyllProxy?: number;
+  shallowBottomContribution?: number;
+}
+```
+
+The exact representation may differ.
+
+Only the clear deep-open-ocean profile is required now.
+
+Do not overengineer or implement unused geographic data.
+
+DIRECT SUN VERSUS AMBIENT SKY LIGHTING
+
+Recalibrate the relationship between:
+
+- directional Sun light;
+- sky-derived ambient or hemisphere light;
+- Moon light;
+- raft lamp;
+- material albedo;
+- exposure.
+
+Under clear daylight:
+
+- the directional Sun should be the dominant source on surfaces facing it;
+- ambient sky light should fill shadows without flattening the scene;
+- the ambient term must not be so strong that warm low-angle Sun colour becomes
+  imperceptible;
+- shadowed surfaces may carry cooler blue-sky illumination;
+- illuminated surfaces should visibly follow Sun colour and direction.
+
+Avoid one large directionless cool or grey term that overwhelms direct light.
+
+If the current scene uses a constant `AmbientLight`, consider replacing,
+reducing, or supplementing it with a sky-derived hemisphere, irradiance,
+environment, or equivalent physically coherent fill.
+
+Choose the smallest robust method compatible with the current renderer.
+
+SAIL LIGHTING AND MATERIAL RESPONSE
+
+The sail is a key visual test object.
+
+Inspect its current material or custom shader.
+
+It should behave as rough, weathered, off-white cloth rather than a flat neutral
+plane.
+
+Required behaviour:
+
+FRONT-LIT SUNSET CASE
+
+When:
+
+- the Sun is low;
+- the Sun is behind the camera;
+- the camera looks toward the sail;
+- the sail face is oriented toward the Sun;
+
+the sail must visibly receive:
+
+- warm gold, orange, or red direct light;
+- stronger directional modelling;
+- clear distinction from its cooler shadowed side.
+
+This exact case must be captured and validated.
+
+BACKLIT CASE
+
+When the Sun is behind the sail relative to the camera:
+
+- the thin cloth may show restrained warm transmission or back-scattering;
+- the sail may glow around thinner or brighter regions;
+- the effect must not resemble neon emissive fabric;
+- do not remove physical occlusion.
+
+MIDDAY CASE
+
+At high Sun:
+
+- the sail should appear naturally off-white;
+- Sun-facing surfaces should be bright without clipping all detail;
+- folds, patches, seams, or roughness should remain visible;
+- shaded regions should retain cool ambient detail.
+
+NIGHT CASE
+
+At night:
+
+- the sail should be dark unless reached by Moonlight or the raft lamp;
+- lamp-facing fabric should acquire a warm local response;
+- it must not retain daylight brightness.
+
+Use two-sided material handling where physically appropriate.
+
+Do not solve sail lighting with a time-of-day colour overlay unrelated to Sun
+direction.
+
+RAFT AND CHARACTER MATERIALS
+
+Check:
+
+- weathered wood;
+- rope;
+- mast;
+- cloth;
+- skin or character silhouette;
+- metallic or glass lamp components.
+
+Ensure materials respond coherently to:
+
+- high-Sun direct light;
+- cool sky fill;
+- golden-hour direct light;
+- Moonlight;
+- warm lamp light.
+
+Do not redesign the raft or character.
+
+Improve only material and lighting response where necessary.
+
+SHADOWS
+
+Use shadows to reinforce directional lighting where practical.
+
+Requirements:
+
+- sail, mast, character, and raft should cast or receive useful directional
+  shadows in close/default views;
+- shadows should not become pure black under daylight;
+- low-Sun shadows should lengthen coherently;
+- lamp shadows may be included if performance permits;
+- far-camera shadow cost may be reduced using existing or new distance-aware
+  settings.
+
+Do not undertake an unrelated global shadow-system rewrite unless required.
+
+STAR VISIBILITY
+
+Do not fade all stars in together with one global alpha.
+
+Implement magnitude-dependent visibility driven by:
+
+- star apparent magnitude;
+- estimated local sky brightness;
+- Sun elevation;
+- atmospheric extinction near the horizon;
+- optionally Moon brightness where practical.
+
+Required qualitative progression:
+
+- during bright daytime, no ordinary catalogue stars are visible;
+- shortly after sunset, only the brightest stars become visible;
+- as civil twilight deepens, additional bright stars emerge;
+- through nautical twilight, moderately bright stars appear;
+- only under sufficiently dark astronomical-night conditions should the full
+  configured magnitude range become visible;
+- dawn reverses this process continuously;
+- bright stars remain visible longer than faint stars.
+
+Do not base this solely on elapsed minutes after sunset.
+
+Latitude, season, and polar conditions must work because the system follows
+actual sky brightness and Sun geometry.
+
+Expose a diagnostic estimate such as:
+
+- limiting visible magnitude;
+- sky brightness factor;
+- twilight factor;
+
+under `?debug=1`.
+
+STAR POINT RENDERING
+
+The real HYG catalogue remains authoritative.
+
+Do not replace it with procedural random stars.
+
+Improve visual rendering so stars appear as crisp astronomical point sources.
+
+Requirements:
+
+- sharp high-intensity core;
+- magnitude-dependent brightness;
+- restrained magnitude-dependent apparent size;
+- correct high-DPI and 4K behaviour;
+- no uniform fuzzy round discs;
+- no large soft sprites for ordinary stars;
+- little or no bloom on faint stars;
+- only the brightest stars may receive a very small controlled halo;
+- subtle B−V-derived colour may remain, but avoid exaggerated red and blue dots;
+- stars near the horizon should be dimmed by atmospheric extinction;
+- no labels in normal gameplay mode;
+- no visible pixel-square aliasing during camera movement;
+- no severe temporal shimmer.
+
+A practical implementation may use:
+
+- a crisp core sprite;
+- a minimal secondary halo only for bright stars;
+- analytic point rendering;
+- another high-quality approach suitable for Three.js.
+
+Do not increase the star catalogue size solely to make the sky denser.
+
+NIGHT SKY AND DARKNESS
+
+Night must feel genuinely dark.
+
+However, do not crush the entire image to featureless black.
+
+The night system should preserve:
+
+- a deep navy or near-black sky;
+- subtle variation between zenith and horizon;
+- a faint atmospheric or airglow floor if useful;
+- visible real stars;
+- Moonlight when applicable;
+- enough local raft detail around the lamp;
+- slight readable water movement near the raft or Moon reflection;
+- truly dark distant ocean.
+
+Avoid:
+
+- lifted charcoal-grey blacks across the entire frame;
+- a uniformly bright blue “day-for-night” treatment;
+- pure black clipping that erases every form;
+- excessive blue tint;
+- exposure that turns the lamp or Moon into a giant white blob;
+- a night sky as bright as twilight.
+
+If gradient banding is visible, add subtle dithering or another restrained
+solution. Do not add visibly noisy film grain.
+
+EXPOSURE AND TONE MAPPING
+
+Implement or recalibrate an HDR exposure strategy that works continuously from
+midday to night.
+
+Possible approaches include:
+
+- a deterministic exposure curve driven primarily by Sun elevation and sky
+  luminance;
+- a restrained temporally adapted scene-luminance exposure;
+- a hybrid of both.
+
+Choose the simplest approach that produces stable, coherent results.
+
+Requirements:
+
+- no abrupt exposure jump at sunrise, sunset, or lamp activation;
+- no distracting exposure pumping as waves or the sail move;
+- midday sky retains blue rather than clipping broadly to pale grey;
+- Sun highlights may clip locally without desaturating the entire sky;
+- sunset retains both warm highlights and cool shadow colour;
+- night remains dark;
+- stars are not made visible in daylight merely by exposure;
+- the raft lamp remains bright but retains a discernible source;
+- manual debug exposure bias still works as an artistic override;
+- exposure changes use presentation time, not accelerated world time, for
+  temporal smoothing.
+
+If automatic exposure is used, cap and smooth it carefully.
+
+Do not use exposure to compensate for an incorrect direct-to-ambient light
+ratio.
+
+MOON PRESENTATION
+
+Preserve the real Moon direction from the astronomy system.
+
+Improve the existing Moon presentation.
+
+Mandatory:
+
+- sharpen the lunar disc;
+- remove or greatly reduce the current giant clear-sky halo;
+- keep only a restrained aureole or bloom in clear conditions;
+- prevent Moon glow from washing out a large portion of the sky;
+- make Moonlight directionally coherent;
+- ensure Moonlight is absent when the Moon is below the horizon;
+- keep the Moon visually subordinate to the daytime Sun.
+
+If Astronomy Engine already exposes illuminated fraction or phase cleanly,
+implement a basic phase-aware brightness and disc mask if this can be done
+without destabilising the round.
+
+Detailed lunar:
+
+- libration;
+- topographic relief;
+- exact surface orientation;
+- eclipse rendering;
+- high-resolution lunar texture work;
+
+are not required.
+
+Architect halo intensity so a future weather system can enlarge it under thin
+cloud or high atmospheric moisture. The clear-weather default should be small.
+
+RAFT LAMP
+
+Add one small warm lamp or lantern to the raft.
+
+The design should be visually consistent with the crude improvised raft.
+
+It may be:
+
+- mounted low on the mast;
+- tied to a post;
+- placed securely near the seated castaway;
+- positioned elsewhere if inspection shows a better composition.
+
+Do not redesign the raft around it.
+
+The lamp should include:
+
+- a visible physical source;
+- warm yellow or amber emissive appearance;
+- a local physically plausible point or compact area-light approximation;
+- limited range;
+- inverse-square or otherwise convincing falloff;
+- warm illumination on nearby wood, rope, sail, and character;
+- optionally a very subtle nearby water response;
+- a tiny warm visible point in far cinematic views;
+- no large glowing orb.
+
+Suggested colour temperature range:
+
+- approximately 1,900–2,400 K.
+
+Treat this as an artistic target rather than an observatory-grade requirement.
+
+AUTOMATIC LAMP BEHAVIOUR
+
+For this round, the lamp operates automatically.
+
+Use:
+
+- Sun elevation;
+- ambient sky brightness;
+- or a similarly coherent quantity.
+
+Add hysteresis so it does not flicker on and off near the threshold.
+
+Conceptually:
+
+- lamp turns on during sufficiently dark twilight;
+- lamp remains on through night;
+- lamp turns off after dawn becomes sufficiently bright.
+
+Do not create:
+
+- an inventory item;
+- fuel;
+- battery;
+- durability;
+- interaction animation;
+- lamp-management gameplay.
+
+Under `?debug=1`, provide:
+
+- automatic;
+- forced on;
+- forced off;
+
+modes and an intensity control.
+
+A tiny, slow, restrained flame-like variation is acceptable, but no distracting
+rapid flicker.
+
+The lamp must not materially illuminate the distant ocean. Its purpose is to
+create a small warm human-scale refuge inside the dark environment.
+
+CLOUD, SUN, MOON, STAR, AND LAMP BLOOM
+
+Audit bloom comprehensively.
+
+Bloom should be source-selective and restrained.
+
+Appropriate bloom candidates:
+
+- Sun;
+- very bright Sun glitter;
+- Moon, weakly;
+- brightest stars, minimally;
+- lamp source.
+
+Inappropriate broad bloom:
+
+- ordinary daytime clouds;
+- the whole horizon;
+- the full ocean surface;
+- all stars equally;
+- large areas of sail;
+- dark water.
+
+If the current bloom pass causes the grey midday or giant Moon halo, correct its
+threshold, intensity, radius, or source contribution.
+
+DEBUG CONTROLS
+
+Extend the shared visible developer-tools launcher with a `Visual` or
+`Graphics` panel. Keep `?debug=1` as a supported direct link for bookmarks,
+automation and deterministic evidence capture, but do not require users to know
+or type query parameters.
+
+Include controls or telemetry for:
+
+- active clear-atmosphere profile;
+- Sun elevation and azimuth;
+- estimated sky brightness;
+- exposure target;
+- actual adapted exposure, if applicable;
+- exposure bias;
+- direct Sun intensity multiplier;
+- ambient sky intensity multiplier;
+- clear-air turbidity or haze;
+- ocean body-radiance strength;
+- Fresnel reflection strength;
+- Sun-glitter intensity;
+- Sun-glitter width or roughness scale;
+- star limiting magnitude;
+- star point-size scale;
+- Moon halo intensity;
+- Moon-light intensity;
+- lamp mode;
+- lamp intensity.
+
+Do not expose every internal shader constant individually unless necessary for
+diagnosis.
+
+Preserve all camera, ocean and buoyancy debug controls. New graphics controls
+must coexist with `?debug=1`, `?debug=ocean` and `?debug=buoyancy` without
+changing their underlying state contracts.
+
+The common `Tools`/`Debug` button must expose World/General, Buoyancy, Ocean,
+Camera and Graphics. `Hide all` must tuck every panel away for a clean,
+screenshot-ready view. Closed panels must remain dynamically unloaded. The
+compact launcher is intentional during early development and must itself be
+hideable/restorable through the documented clean-view interaction.
+
+VISUAL VALIDATION MATRIX
+
+Use the real developer globe and astronomical sliders.
+
+Capture all screenshots in a real browser.
+
+BASELINE REPRODUCTION
+
+1. Reproduce the representative current baseline:
+   - approximately 4.33° south;
+   - approximately 178.84° east;
+   - 24 January;
+   - local apparent solar time approximately 12:53;
+   - clear-weather profile;
+   - the closest documented equivalent of the former approximately 58-metre
+     default composition; do not override the final camera architecture merely
+     to reproduce an exact distance.
+
+The revised result must show:
+
+- recognisably blue sky;
+- visible zenith-to-horizon gradient;
+- clean white clouds;
+- clear horizon;
+- deep-blue ocean;
+- localised rather than global glare.
+
+DAYTIME
+
+2. Equatorial or near-equatorial noon near an equinox.
+3. Near-equatorial January noon.
+4. Southern mid-latitude (34°S) summer local solar noon.
+5. Southern mid-latitude (34°S) winter local solar noon.
+6. High-latitude summer daylight.
+7. High-latitude low-Sun daylight.
+8. Polar day.
+
+For each, inspect:
+
+- sky hue;
+- horizon;
+- clouds;
+- ocean colour;
+- Sun glitter;
+- raft material;
+- exposure.
+
+SUNRISE AND SUNSET
+
+9. Sun elevation approximately −6° before sunrise.
+10. Sun elevation approximately −2° before sunrise.
+11. Sun just above the horizon after sunrise.
+12. Morning golden hour.
+13. Evening golden hour.
+14. Sun just above the horizon before sunset.
+15. Sun elevation approximately −2° after sunset.
+16. Sun elevation approximately −6° after sunset.
+
+DIRECT-LIGHT MATERIAL TESTS
+
+17. Low Sun behind the camera, looking at the Sun-facing sail.
+18. Low Sun behind the sail, looking at the backlit cloth.
+19. High-Sun front-lit sail.
+20. Night sail lit only by the raft lamp.
+21. Moonlit sail with lamp forced off.
+
+STAR PROGRESSION
+
+Capture fixed-view screenshots with Sun elevation approximately:
+
+22. +2°.
+23. 0°.
+24. −4°.
+25. −6°.
+26. −9°.
+27. −12°.
+28. −15°.
+29. −18° or darker.
+
+Verify that:
+
+- bright stars emerge first;
+- faint stars emerge later;
+- the full catalogue does not appear immediately after sunset;
+- dawn reverses the sequence;
+- star points remain sharp at 4K.
+
+NIGHT
+
+30. Dark night with Moon below horizon and lamp on.
+31. Moonlit night with lamp on.
+32. Moonlit night with lamp forced off.
+33. Polar night.
+34. Embodied zenith view.
+35. Far cinematic night view.
+36. Close raft-level night view.
+
+CAMERA AND DISPLAY COVERAGE
+
+Validate the required multi-scale camera system at:
+
+- close external;
+- default cinematic;
+- far aerial;
+- embodied on-raft;
+- embodied zenith.
+
+Also capture:
+
+- 3840×2160 desktop;
+- 1440×900 desktop;
+- 390×844 mobile portrait;
+- representative mobile landscape.
+
+SEA-STATE COVERAGE
+
+Use the final documented preset names. At minimum, validate the equivalents of:
+
+- `DEAD_CALM`;
+- `CURRENT_MODERATE`;
+- `SOUTHERN_OCEAN_ROUGH`.
+
+Capture each at high-Sun midday, sunset and night in at least the default
+cinematic view. Also cover calm and rough conditions at close, far-aerial and
+embodied scales.
+
+Verify that:
+
+- calm water remains optically calm rather than gaining fake roughness;
+- roughness changes the width and fragmentation of glitter for physically
+  legible reasons;
+- generated and persistent whitewater retain their structure and history;
+- foam receives plausible daylight, sunset and Moon/lamp illumination without
+  becoming self-lit;
+- far-camera filtering does not turn foam into oversized white tiles;
+- graphics changes do not alter displacement, transitions, orbital velocity,
+  raft response or survivability classifications.
+
+CONDITION-INTERACTION AND ADVERSARIAL COVERAGE
+
+Do not validate latitude, sea state, time of day and camera only as independent
+lists. Exercise their interactions using a compact pairwise matrix plus the
+explicit stress cases below. Record the latitude, longitude, date, Sun
+elevation and azimuth, camera azimuth and elevation, sea-state preset, foam
+coverage and exposure for every capture so a failure can be reproduced.
+
+At minimum, capture:
+
+1. Near-equatorial January rough water at high Sun.
+2. Near-equatorial January rough water in mid-afternoon with the Sun ahead of,
+   beside and behind the camera.
+3. High-latitude summer rough water under low grazing Sun.
+4. High-latitude winter calm and rough water during the available low daylight.
+5. Polar day with calm and rough water.
+6. Rough water through sunset, civil twilight and Moonlit night.
+7. A high-whitewater stress case in every external camera scale.
+8. The `Extreme (debug only)` preset at near-equatorial high Sun and
+   mid-afternoon, including the closest reproducible equivalents of:
+   - approximately 6° south in mid-January at approximately 11:05 local apparent
+     solar time;
+   - approximately 6° south in mid-January at approximately 16:05 local apparent
+     solar time.
+
+The extreme preset is a rendering stress test, not permission to retune,
+normalise or legitimise its debug-only wave physics. Its purpose is to expose
+clipping, invalid normals, unstable glitter, excessive foam radiance,
+colour-space failures, tiling and precision defects that may be subtle in
+ordinary presets.
+
+For high-whitewater and extreme cases, verify that:
+
+- foam remains neutral or naturally illuminated rather than turning electric
+  blue, cyan or self-luminous;
+- foam retains large- and small-scale tonal structure instead of clipping into
+  a featureless white field;
+- neighbouring non-foam water retains plausible deep-water colour;
+- high foam coverage does not cause exposure, bloom or tone mapping to bleach
+  the whole scene;
+- glint remains distinguishable from foam;
+- the result remains compositionally beautiful and legible even when the sea
+  is violent.
+
+SPRAY AND SPINDRIFT READABILITY COVERAGE
+
+Treat crest spindrift, general spray and raft-contact spray as distinct physical
+effects. Do not assume that a moving particle automatically reads as water.
+Capture short sequences, not only still frames, for high-whitewater rough and
+extreme cases in close, default and far external views. Include particles seen
+against bright foam, dark water, the horizon and the sky at high Sun, grazing
+Sun, sunset and night.
+
+Verify that:
+
+- droplets and mist inherit plausible environmental illumination and remain
+  neutral or subtly water-coloured rather than appearing as electric-blue,
+  cyan, black or opaque screen-space speckles;
+- alpha, premultiplication, colour-space and tone-mapping behaviour do not
+  produce coloured fringes, dark cut-outs or halos against whitewater;
+- particle depth and occlusion are correct, with no particles visible through
+  nearer waves or the raft;
+- apparent particle size, density and filtering remain coherent across camera
+  distances and display resolutions;
+- emission is visibly connected to a crest event, breaking wave or raft contact
+  rather than appearing from empty screen space;
+- initial velocity, wind advection, gravity, drag and lifetime produce
+  recognisable spray or spindrift rather than unexplained slowly floating dots;
+- particles dissipate naturally and do not linger as orphan flecks;
+- crest spindrift and raft-contact spray remain visually and behaviourally
+  distinguishable;
+- if an effect cannot be made to read convincingly in a condition, restraining
+  its opacity or visibility is preferable to preserving distracting artefacts.
+
+OCEAN DOMAIN, WRAP AND LOD SEAM COVERAGE
+
+Use every existing diagnostic phase-origin control, including `0`, `+6 km`,
+`−6 km`, `+60 km`, `−60 km`, `diag`, `Wrap −ε`, `Wrap +ε` and `+1 wrap`.
+Repeat the wrap-boundary checks in moderate, rough and extreme/high-whitewater
+conditions, at both high Sun and a grazing side-light angle, while the camera
+and waves are moving.
+
+Inspect the complete visible water surface from the foreground through the
+horizon. There must be no stationary or moving line, wedge, brightness step or
+texture discontinuity at:
+
+- the world or diagnostic phase origin;
+- a periodic wrap boundary;
+- an ocean tile or clipmap boundary;
+- a near/far or LOD transition;
+- a foam-history or whitewater-history boundary;
+- a normal, reflection, Sun-glitter or atmospheric transition.
+
+Crossing or shifting any such boundary must preserve displacement, normals,
+foam history, water-body colour, reflection, glint and exposure continuously.
+Test both sides of each boundary and capture at least one clean-view screenshot
+with diagnostic panels hidden; panel edges must not be mistaken for rendering
+seams.
+
+VISUAL CRITIC QUESTIONS
+
+The visual critic must explicitly answer:
+
+1. Is the high-Sun clear sky recognisably blue rather than grey?
+2. Is the zenith deeper blue than the horizon?
+3. Is the horizon immediately legible without looking like a hard seam?
+4. Do clouds appear white and dimensional rather than as a grey veil?
+5. Does the ocean read as deep open water?
+6. Is the water predominantly blue outside direct glitter?
+7. Is Sun glitter localised and view-dependent?
+8. Does the ocean avoid shallow turquoise?
+9. Does sunset warm the sail when the Sun actually illuminates it?
+10. Is the cool ambient term subordinate to warm direct light where appropriate?
+11. Does backlit cloth respond plausibly?
+12. Are sunrise and sunset continuous and geographically coherent?
+13. Do bright stars appear before faint stars?
+14. Are stars crisp at 4K?
+15. Does the night feel genuinely dark?
+16. Are dark forms still perceptible where physically illuminated?
+17. Is the Moon halo restrained?
+18. Does Moonlight follow the Moon?
+19. Does the raft lamp create a small warm refuge without flooding the ocean?
+20. Are exposure transitions smooth?
+21. Is there clipping, banding, colour-space error, or oversaturation?
+22. Has any planetary, astronomical, camera, ocean-motion, or raft-wave behaviour
+    regressed?
+23. Do difficult latitude, season, sea-state and Sun-angle combinations remain
+    deliberately beautiful rather than merely technically valid?
+24. Does heavy whitewater preserve neutral colour and internal tonal detail?
+25. Does heavy whitewater leave neighbouring water and global exposure intact?
+26. Are tile, wrap, phase-origin, foam-history and LOD transitions invisible?
+27. Does boundary continuity hold while both the ocean and camera are moving?
+28. Do spray and spindrift unmistakably read as airborne water rather than
+    floating coloured speckles or rendering noise?
+29. Are spray origin, motion, depth, scale, illumination and disappearance
+    physically coherent in motion?
+
+AUTOMATED TESTS
+
+Add focused deterministic tests for non-visual logic.
+
+Do not remove or weaken any existing tracked planetary, raft-water, sea-state,
+CPU/GPU parity, diagnostic-lab or camera test. Run the complete
+current-worktree suite plus the new graphics tests.
+
+Test at minimum:
+
+1. ATMOSPHERE INPUTS
+
+- all relevant Sun elevations produce finite parameters;
+- transitions are continuous;
+- no NaN at zenith, horizon, polar day, or polar night;
+- Sun elevation rather than local clock label controls the atmosphere.
+
+2. EXPOSURE
+
+- target exposure remains finite and bounded;
+- exposure is continuous around sunrise and sunset;
+- exposure smoothing uses presentation delta;
+- debug scrubbing does not create invalid adaptation state;
+- daylight, twilight, and night targets are ordered sensibly.
+
+3. STAR VISIBILITY
+
+- limiting magnitude changes monotonically as the sky darkens;
+- a brighter star becomes visible no later than a fainter star;
+- ordinary stars remain hidden in daylight;
+- full catalogue visibility requires sufficiently dark conditions;
+- near-horizon extinction does not brighten stars;
+- all values remain finite.
+
+4. LAMP LOGIC
+
+- automatic lamp activation follows the selected light threshold;
+- hysteresis prevents rapid toggling;
+- forced-on and forced-off modes work;
+- lamp state does not alter canonical world time or planetary state.
+
+5. OCEAN OPTICAL FUNCTIONS
+
+- Fresnel term remains bounded;
+- body-radiance contribution remains non-negative;
+- glint contribution is view- and Sun-direction dependent;
+- non-glint water is not forced to white;
+- night and daylight profiles remain finite;
+- foam and water compositing remains finite and bounded at zero, ordinary and
+  near-total foam coverage;
+- extreme-but-supported lighting and roughness inputs do not produce NaN,
+  negative radiance or pathological chromatic excursions before tone mapping;
+- periodic phase/wrap inputs produce continuous optical parameters on both
+  sides of the boundary;
+- future optical-profile inputs can be supplied without changing planetary code.
+
+6. LIGHTING
+
+- direct Sun intensity falls appropriately below the horizon;
+- Moonlight is zero or negligible when Moon is below the horizon;
+- ambient fill remains finite;
+- material-light functions do not produce negative or NaN output.
+
+7. SPRAY AND SPINDRIFT PARAMETERS
+
+- spawn, velocity, drag, gravity, wind-advection, lifetime, size, opacity and
+  illumination inputs remain finite over ordinary and extreme supported ranges;
+- particle age changes opacity and size continuously without a pop at spawn or
+  expiry;
+- spray simulation and fading use the correct simulation or presentation time
+  authority as documented and do not inherit accelerated world-clock delta;
+- distance filtering remains bounded and does not turn sub-pixel droplets into
+  persistent single-pixel coloured flecks.
+
+8. WORLD-STATE ISOLATION
+
+Verify that graphics controls do not mutate:
+
+- ECEF position;
+- ECEF velocity;
+- UTC;
+- latitude;
+- longitude;
+- transported canonical frame;
+- world-time multiplier, except through the existing explicit control.
+
+9. SHADER AND BROWSER VALIDATION
+
+- no shader compile errors;
+- no duplicate declarations;
+- no WebGL warnings;
+- no material programme-link failures;
+- no fresh normal/debug console errors.
+
+PERFORMANCE
+
+Maintain practical real-time performance.
+
+Targets:
+
+- no material regression at the existing default view;
+- smooth operation at 1440p desktop;
+- usable performance at 3840×2160;
+- stable approximately 30 frames per second or better on a modern 4K desktop;
+- usable mobile-sized performance;
+- no large per-frame allocations in lighting or atmosphere code;
+- no per-star CPU update every frame if one shared transform or GPU approach is
+  available;
+- no full-screen high-cost effect added without measured justification.
+
+Measure:
+
+- baseline frame rate;
+- final midday frame rate;
+- final sunset frame rate;
+- final star-heavy night frame rate;
+- lamp-on night frame rate;
+- far-camera frame rate.
+
+Use presentation time for visual smoothing.
+
+Do not use 72× world-time delta for exposure adaptation, lamp flicker, clouds,
+waves, or visual transitions.
+
+MINIMAL ASSET SCOPE
+
+Prefer procedural or existing assets.
+
+The raft lamp may be created from simple geometry.
+
+Do not add a large external skybox, stock sunset panorama, or fixed environment
+photograph.
+
+The world must remain driven by the real procedural Sun and sky.
+
+Any new texture or asset must be:
+
+- permissively licensed;
+- documented;
+- added to asset and licence credits.
+
+OUT OF SCOPE
+
+Do not implement:
+
+- a global weather system;
+- dynamic pressure systems;
+- rain;
+- storms;
+- lightning;
+- dynamic fog banks;
+- geographic cloud generation;
+- volumetric-cloud overhaul;
+- global wind fields;
+- ocean currents;
+- new swell physics;
+- a complete spectral-ocean rewrite;
+- chlorophyll or sediment maps;
+- coastal or shallow-water rendering;
+- terrain;
+- islands;
+- coastlines;
+- ships;
+- whales;
+- birds;
+- radio;
+- binoculars;
+- compass;
+- GPS;
+- routes;
+- autopilot;
+- destination selection;
+- offline voyage progression;
+- swimming;
+- diving;
+- raft construction;
+- salvage;
+- inventory;
+- hunger;
+- stamina;
+- character locomotion;
+- first-person hands;
+- narrative opening;
+- a new or redesigned camera system;
+- changes to camera architecture except narrowly required compatibility fixes;
+- new sea-state physics or preset retuning;
+- changes to raft buoyancy or the CPU/GPU wave-sampling contract;
+- replacement of persistent foam history with a static lighting mask;
+- observatory-grade atmospheric science;
+- exact lunar libration;
+- eclipse simulation;
+- detailed lunar topography.
+
+Do not add adjacent features merely because they would look attractive.
+
+IMPLEMENTATION PRIORITY
+
+Use this priority order:
+
+1. Correct colour pipeline and diagnose the grey midday scene.
+2. Clear daytime atmosphere and horizon.
+3. Deep-open-ocean optical colour and controlled Sun glitter.
+4. Direct-Sun versus ambient-light calibration.
+5. Sail and raft material response.
+6. Sunrise, sunset, and twilight.
+7. Progressive star visibility and sharp stars.
+8. Night exposure and darkness.
+9. Moon halo and Moonlight.
+10. Automatic warm raft lamp.
+11. Cross-camera, high-DPI, mobile, and performance polish.
+
+Do not spend most of the round polishing the lamp while the midday sky remains
+grey.
+
+IMPLEMENTATION SEQUENCE
+
+Use approximately this sequence:
+
+1. Inspect the integrated ocean and camera rounds’ documents, implementation,
+   labs and evidence.
+2. Run baseline tests, type check, and production build.
+3. Capture the complete baseline screenshot matrix.
+4. Run the atmosphere/lighting and ocean-optics research subagents.
+5. Create `docs/graphics/VISUAL_LIGHTING_SPEC.md`.
+6. Create `docs/graphics/VISUAL_REFERENCE_NOTES.md`.
+7. Audit and correct colour management and tone-mapping assumptions.
+8. Implement or recalibrate the clear-atmosphere profile.
+9. Correct horizon and current cloud compositing.
+10. Implement or recalibrate the clear deep-ocean optical model.
+11. Constrain and improve Sun glitter.
+12. Rebalance direct Sun and ambient sky illumination.
+13. Improve sail, wood, rope, and character material response.
+14. Implement continuous sunrise, sunset, and twilight refinement.
+15. Implement magnitude- and sky-brightness-dependent star visibility.
+16. Improve crisp star point rendering.
+17. Implement stable day-to-night exposure.
+18. Improve Moon disc, halo, and Moonlight.
+19. Add and integrate the automatic warm raft lamp.
+20. Add debug controls and telemetry.
+21. Add deterministic tests.
+22. Run the full existing and new test suite.
+23. Capture the required browser screenshot matrix.
+24. Run the internal visual-critic subagent.
+25. Fix the five highest-severity findings.
+26. Repeat for no more than three focused visual passes.
+27. Run final 4K, standard-desktop, and mobile checks.
+28. Run final type check, tests, production build, and console validation.
+29. Update documentation and the final report.
+
+Do not begin by adding a global colour-grading filter.
+
+ACCEPTANCE CRITERIA
+
+The round is complete only when all of the following are true:
+
+1. The representative near-equatorial January midday scene has a recognisably
+   blue clear sky.
+
+2. The zenith is visually deeper blue than the horizon under clear high-Sun
+   conditions.
+
+3. Cloudless portions of the sky are not broadly grey or white.
+
+4. Existing midday clouds appear bright white with retained shading and detail.
+
+5. Clouds do not create a full-screen grey veil.
+
+6. The clear-weather horizon is distinct but not a hard artificial seam.
+
+7. Daytime ocean outside the glint region appears deep blue rather than broadly
+   grey or metallic.
+
+8. The ocean reads as deep open water rather than a turquoise lagoon.
+
+9. Sun glitter is spatially localised, view-dependent, and controlled.
+
+10. Roughness changes glint distribution rather than globally bleaching the
+    ocean.
+
+11. Sunrise and sunset are continuous and derive from the real Sun direction.
+
+12. Warm sunset colour is concentrated near the Sun, directly illuminated
+    surfaces, clouds, and reflected Sun path rather than the whole frame.
+
+13. A Sun-facing sail under low warm Sun becomes visibly gold, orange, or red.
+
+14. Cool ambient fill no longer suppresses the low-Sun directional response.
+
+15. Backlit sailcloth receives restrained physically plausible transmission or
+    back-scattering if implemented.
+
+16. High-Sun sailcloth remains off-white with visible detail rather than clipping
+    uniformly white.
+
+17. Night sailcloth is dark except where lit by Moon or lamp.
+
+18. Bright stars become visible before faint stars.
+
+19. The full star catalogue does not appear immediately after sunset.
+
+20. Star visibility responds continuously to sky darkness and Sun elevation.
+
+21. Stars have crisp point-like cores at 4K rather than uniform fuzzy discs.
+
+22. Ordinary stars have little or no broad bloom.
+
+23. Full night feels genuinely dark.
+
+24. Night is not lifted into uniform grey or bright blue.
+
+25. Night retains readable detail where Moonlight or lamp light physically
+    reaches the scene.
+
+26. The Moon disc is sharper.
+
+27. The clear-sky Moon halo is substantially smaller than before.
+
+28. Moonlight and Moon reflection follow the real Moon direction.
+
+29. A small warm lamp exists physically on the raft.
+
+30. The lamp activates automatically during sufficiently dark twilight and
+    night.
+
+31. Lamp hysteresis prevents threshold flicker.
+
+32. The lamp illuminates only the immediate raft area and does not flood the
+    ocean.
+
+33. The lamp creates an attractive warm-versus-cool night contrast.
+
+34. Exposure changes continuously without visible pumping or abrupt jumps.
+
+35. The daytime sky retains blue after tone mapping.
+
+36. The Sun, Moon, stars, and lamp do not produce uncontrolled full-screen bloom.
+
+37. Polar day and polar night remain valid.
+
+38. Real stars remain geographically and astronomically oriented correctly.
+
+39. Graphics controls do not alter canonical planetary state.
+
+40. All existing tracked world, movement, astronomy, raft-water, sea-state,
+    CPU/GPU parity, diagnostic-lab and camera tests continue to pass.
+
+41. New visual-logic tests pass.
+
+42. Type checking passes.
+
+43. Production build passes.
+
+44. Fresh loads and every tools-panel/deep-link path produce no material console
+    or shader errors.
+
+45. The scene remains usable at 4K and mobile-sized viewports.
+
+46. No full weather, cloud-generation, current, gameplay, or navigation system
+    was added.
+
+47. The final visual review contains no unresolved severity-one defect in:
+    - midday sky;
+    - ocean colour;
+    - direct lighting;
+    - sunset sail response;
+    - star progression;
+    - nighttime darkness;
+    - Moon halo;
+    - raft lamp.
+
+48. `?debug=buoyancy`, `?debug=ocean` and all camera debug controls remain
+    operable.
+
+49. Calm, moderate and rough sea states retain their documented displacement,
+    transition, foam-history, orbital-velocity and raft-response behaviour.
+
+50. Close, default, far-aerial and embodied camera modes retain their controls,
+    framing contracts and transitions.
+
+51. World/General, Buoyancy, Ocean, Camera and Graphics diagnostics are
+    discoverable from the visible tools launcher without a query parameter;
+    `Hide all` returns to a clean view and direct-link queries open the same
+    shared panels.
+
+52. The explicit condition-interaction and adversarial screenshot cases have
+    been captured and reviewed; none contains unresolved clipping,
+    oversaturation, electric-blue foam, global bleaching or loss of scene
+    legibility.
+
+53. Every supported sea state remains intentionally attractive at the tested
+    high-Sun, grazing-Sun, twilight and night conditions, with its own visual
+    character rather than a forced universal treatment.
+
+54. No visible phase-origin, periodic-wrap, tile, clipmap, LOD, foam-history,
+    normal, reflection, glint or lighting seam appears in any required static or
+    moving-camera boundary test.
+
+55. The `Extreme (debug only)` stress cases remain finite, coherent and free of
+    catastrophic rendering artefacts without changing the preset's debug-only
+    physical semantics.
+
+56. Crest spindrift, general spray and raft-contact spray read convincingly as
+    airborne water in motion and do not appear as blue, cyan, black or opaque
+    floating speckles against whitewater.
+
+57. Spray and spindrift retain coherent origin, motion, depth, scale,
+    illumination, filtering and lifetime in every required camera and lighting
+    stress case.
+
+DOCUMENTATION
+
+Create:
+
+- `docs/graphics/VISUAL_LIGHTING_SPEC.md`;
+- `docs/graphics/VISUAL_REFERENCE_NOTES.md`;
+- `docs/graphics/GRAPHICS_ROUND_REPORT.md`.
+
+Update:
+
+- `README.md` with the tools launcher, clean-view behaviour, visual controls and
+  optional debug deep links;
+- `docs/project/FUTURE_ROUNDS.md`;
+- `docs/project/ASSET_CREDITS.md`, if any asset or data is added.
+
+Record in `docs/project/FUTURE_ROUNDS.md`, without implementing:
+
+- full weather system;
+- variable atmospheric turbidity;
+- fog and rain;
+- volumetric clouds;
+- global weather fields;
+- geographic water optics;
+- chlorophyll and sediment;
+- coastal and shallow-water rendering;
+- advanced lunar surface orientation;
+- cloud-dependent Moon halos;
+- lightning and storms.
+
+FINAL REPORT
+
+At completion, report:
+
+- the identified causes of the original grey midday scene;
+- colour-space and tone-mapping configuration;
+- exposure strategy;
+- clear-atmosphere model;
+- daytime sky changes;
+- cloud-lighting changes;
+- horizon treatment;
+- ocean optical model;
+- selected clear deep-ocean profile;
+- body-radiance method;
+- Fresnel method;
+- Sun-glitter method;
+- roughness/glint relationship;
+- direct-Sun versus ambient-light calibration;
+- sail-material changes;
+- sunrise, sunset, and twilight treatment;
+- star-visibility function;
+- star point-rendering method;
+- night-darkness strategy;
+- Moon changes;
+- lamp design and activation threshold;
+- performance before and after;
+- automated-test coverage;
+- visual-review findings and fixes;
+- known limitations;
+- exact principal files;
+- verification commands;
+- repository paths for before-and-after screenshots.
+
+Do not claim completion if the clear midday scene remains predominantly grey.
+
+Do not claim completion if making the ocean blue required removing all
+physically coherent sky reflection.
+
+Do not claim completion if all stars still appear at approximately the same
+time after sunset.
+
+Do not claim completion if sunset direct light remains visually weaker than
+the cool ambient term on a Sun-facing sail.
+
+Do not claim completion if night is either uniformly grey or completely
+featureless black.
+
+Begin now.

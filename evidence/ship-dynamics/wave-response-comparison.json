@@ -1,0 +1,1145 @@
+{
+  "formatVersion": 1,
+  "note": "The production free-motion mode released from the historical 4 m/s captive initial condition, compared over the same CURRENT_MODERATE headings and windows.",
+  "limitations": [
+    "This is an unpowered release: speed is expected to decay because sail drive is not implemented.",
+    "Passive yaw is free; no helmsman or commanded rudder force holds the initial heading.",
+    "Resistance coefficients remain provisional and current is absent.",
+    "The separately tracked captive baseline remains the unchanged control."
+  ],
+  "regenerateCommand": "npm run ship:dynamics:response",
+  "configuration": {
+    "seaStateName": "CURRENT_MODERATE",
+    "headingsDeg": [
+      9,
+      54,
+      99,
+      144,
+      189,
+      234,
+      279,
+      324
+    ],
+    "initialSpeedMps": 4,
+    "warmupSeconds": 20,
+    "measurementSeconds": 70,
+    "callerHz": 60,
+    "physicsHz": 240,
+    "mode": "free-release"
+  },
+  "cases": [
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 9,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.130746,
+          "max": 3.265592,
+          "mean": 2.612712,
+          "rms": 2.632139,
+          "standardDeviation": 0.319204,
+          "peakAbsolute": 3.265592
+        },
+        "forwardSpeedMps": {
+          "min": 2.130242,
+          "max": 3.264435,
+          "mean": 2.611826,
+          "rms": 2.631235,
+          "standardDeviation": 0.319005,
+          "peakAbsolute": 3.264435
+        },
+        "portSpeedMps": {
+          "min": -0.178994,
+          "max": 0.187942,
+          "mean": 0.009223,
+          "rms": 0.068975,
+          "standardDeviation": 0.068356,
+          "peakAbsolute": 0.187942
+        },
+        "yawChangeDeg": {
+          "min": -1.440893,
+          "max": 2.889155,
+          "mean": 0.666564,
+          "rms": 1.125018,
+          "standardDeviation": 0.906288,
+          "peakAbsolute": 2.889155
+        },
+        "yawRateDegPerSecond": {
+          "min": -2.204997,
+          "max": 1.781876,
+          "mean": 0.032024,
+          "rms": 0.715656,
+          "standardDeviation": 0.714939,
+          "peakAbsolute": 2.204997
+        },
+        "endSpeedMps": 2.130746,
+        "endForwardSpeedMps": 2.130242,
+        "endPortSpeedMps": -0.046358,
+        "endYawChangeDeg": 1.802963,
+        "endYawRateDegPerSecond": 1.144918,
+        "measuredDisplacementM": {
+          "x": 25.934061,
+          "z": -181.017658,
+          "magnitude": 182.865984
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.763407,
+          "max": 0.626964,
+          "mean": 0,
+          "rms": 0.324971,
+          "standardDeviation": 0.324971,
+          "peakAbsolute": 0.763407
+        },
+        "pitchDeg": {
+          "min": -5.69871,
+          "max": 4.597144,
+          "mean": -0.008822,
+          "rms": 2.152654,
+          "standardDeviation": 2.152636,
+          "peakAbsolute": 5.69871
+        },
+        "rollDeg": {
+          "min": -12.612711,
+          "max": 13.842577,
+          "mean": 0.242713,
+          "rms": 5.522268,
+          "standardDeviation": 5.516932,
+          "peakAbsolute": 13.842577
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.212669,
+          "max": 1.179665,
+          "mean": 0.000886,
+          "rms": 0.541341,
+          "standardDeviation": 0.54134,
+          "peakAbsolute": 1.212669
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 54,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.119195,
+          "max": 3.263781,
+          "mean": 2.599501,
+          "rms": 2.619491,
+          "standardDeviation": 0.323002,
+          "peakAbsolute": 3.263781
+        },
+        "forwardSpeedMps": {
+          "min": 2.118692,
+          "max": 3.262283,
+          "mean": 2.598784,
+          "rms": 2.618748,
+          "standardDeviation": 0.32274,
+          "peakAbsolute": 3.262283
+        },
+        "portSpeedMps": {
+          "min": -0.144791,
+          "max": 0.14663,
+          "mean": 0.007317,
+          "rms": 0.062389,
+          "standardDeviation": 0.061958,
+          "peakAbsolute": 0.14663
+        },
+        "yawChangeDeg": {
+          "min": -4.662749,
+          "max": 0.680211,
+          "mean": -2.666322,
+          "rms": 2.926573,
+          "standardDeviation": 1.206464,
+          "peakAbsolute": 4.662749
+        },
+        "yawRateDegPerSecond": {
+          "min": -2.381117,
+          "max": 1.989771,
+          "mean": -0.073657,
+          "rms": 0.82182,
+          "standardDeviation": 0.818512,
+          "peakAbsolute": 2.381117
+        },
+        "endSpeedMps": 2.119195,
+        "endForwardSpeedMps": 2.118692,
+        "endPortSpeedMps": 0.046168,
+        "endYawChangeDeg": -4.662749,
+        "endYawRateDegPerSecond": -0.154288,
+        "measuredDisplacementM": {
+          "x": 151.535989,
+          "z": -100.681215,
+          "magnitude": 181.933677
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.712758,
+          "max": 0.87014,
+          "mean": 0,
+          "rms": 0.326291,
+          "standardDeviation": 0.326291,
+          "peakAbsolute": 0.87014
+        },
+        "pitchDeg": {
+          "min": -8.843931,
+          "max": 6.771804,
+          "mean": -0.106146,
+          "rms": 3.049239,
+          "standardDeviation": 3.047391,
+          "peakAbsolute": 8.843931
+        },
+        "rollDeg": {
+          "min": -15.884429,
+          "max": 16.157643,
+          "mean": 0.106191,
+          "rms": 7.958475,
+          "standardDeviation": 7.957766,
+          "peakAbsolute": 16.157643
+        },
+        "verticalAccelerationMps2": {
+          "min": -0.746885,
+          "max": 0.692646,
+          "mean": 0.005839,
+          "rms": 0.261022,
+          "standardDeviation": 0.260956,
+          "peakAbsolute": 0.746885
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 99,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.132991,
+          "max": 3.263342,
+          "mean": 2.613092,
+          "rms": 2.632543,
+          "standardDeviation": 0.319426,
+          "peakAbsolute": 3.263342
+        },
+        "forwardSpeedMps": {
+          "min": 2.132934,
+          "max": 3.262653,
+          "mean": 2.612353,
+          "rms": 2.6318,
+          "standardDeviation": 0.319342,
+          "peakAbsolute": 3.262653
+        },
+        "portSpeedMps": {
+          "min": -0.131877,
+          "max": 0.13641,
+          "mean": -0.001919,
+          "rms": 0.062554,
+          "standardDeviation": 0.062524,
+          "peakAbsolute": 0.13641
+        },
+        "yawChangeDeg": {
+          "min": -3.857263,
+          "max": 0.658234,
+          "mean": -1.816561,
+          "rms": 2.055204,
+          "standardDeviation": 0.961233,
+          "peakAbsolute": 3.857263
+        },
+        "yawRateDegPerSecond": {
+          "min": -1.526654,
+          "max": 1.368037,
+          "mean": -0.037761,
+          "rms": 0.67958,
+          "standardDeviation": 0.67853,
+          "peakAbsolute": 1.526654
+        },
+        "endSpeedMps": 2.132991,
+        "endForwardSpeedMps": 2.132934,
+        "endPortSpeedMps": -0.015684,
+        "endYawChangeDeg": -1.982968,
+        "endYawRateDegPerSecond": -0.062057,
+        "measuredDisplacementM": {
+          "x": 179.653715,
+          "z": 34.258148,
+          "magnitude": 182.890891
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.628078,
+          "max": 0.71375,
+          "mean": 0,
+          "rms": 0.326323,
+          "standardDeviation": 0.326323,
+          "peakAbsolute": 0.71375
+        },
+        "pitchDeg": {
+          "min": -4.588647,
+          "max": 4.967777,
+          "mean": 0.089074,
+          "rms": 1.884087,
+          "standardDeviation": 1.88198,
+          "peakAbsolute": 4.967777
+        },
+        "rollDeg": {
+          "min": -12.195817,
+          "max": 10.969547,
+          "mean": -0.23013,
+          "rms": 5.485695,
+          "standardDeviation": 5.480865,
+          "peakAbsolute": 12.195817
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.135316,
+          "max": 1.015841,
+          "mean": -0.001858,
+          "rms": 0.591667,
+          "standardDeviation": 0.591664,
+          "peakAbsolute": 1.135316
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 144,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.120149,
+          "max": 3.254169,
+          "mean": 2.599762,
+          "rms": 2.619539,
+          "standardDeviation": 0.32128,
+          "peakAbsolute": 3.254169
+        },
+        "forwardSpeedMps": {
+          "min": 2.114644,
+          "max": 3.24921,
+          "mean": 2.598526,
+          "rms": 2.618261,
+          "standardDeviation": 0.320866,
+          "peakAbsolute": 3.24921
+        },
+        "portSpeedMps": {
+          "min": -0.179581,
+          "max": 0.176349,
+          "mean": -0.008535,
+          "rms": 0.08179,
+          "standardDeviation": 0.081344,
+          "peakAbsolute": 0.179581
+        },
+        "yawChangeDeg": {
+          "min": -1.316948,
+          "max": 5.198566,
+          "mean": 2.196428,
+          "rms": 2.473816,
+          "standardDeviation": 1.138188,
+          "peakAbsolute": 5.198566
+        },
+        "yawRateDegPerSecond": {
+          "min": -1.672966,
+          "max": 3.320926,
+          "mean": 0.049597,
+          "rms": 0.922289,
+          "standardDeviation": 0.920954,
+          "peakAbsolute": 3.320926
+        },
+        "endSpeedMps": 2.120149,
+        "endForwardSpeedMps": 2.114644,
+        "endPortSpeedMps": -0.152673,
+        "endYawChangeDeg": 5.198566,
+        "endYawRateDegPerSecond": 0.605328,
+        "measuredDisplacementM": {
+          "x": 111.819143,
+          "z": 143.52738,
+          "magnitude": 181.944029
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.766219,
+          "max": 0.956342,
+          "mean": 0,
+          "rms": 0.397793,
+          "standardDeviation": 0.397793,
+          "peakAbsolute": 0.956342
+        },
+        "pitchDeg": {
+          "min": -5.474834,
+          "max": 5.966159,
+          "mean": -0.006555,
+          "rms": 2.318919,
+          "standardDeviation": 2.31891,
+          "peakAbsolute": 5.966159
+        },
+        "rollDeg": {
+          "min": -21.373011,
+          "max": 21.333199,
+          "mean": -0.376666,
+          "rms": 10.331343,
+          "standardDeviation": 10.324475,
+          "peakAbsolute": 21.373011
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.89802,
+          "max": 1.398381,
+          "mean": -0.001512,
+          "rms": 0.686711,
+          "standardDeviation": 0.686709,
+          "peakAbsolute": 1.89802
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 189,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.135628,
+          "max": 3.263625,
+          "mean": 2.611789,
+          "rms": 2.630974,
+          "standardDeviation": 0.317153,
+          "peakAbsolute": 3.263625
+        },
+        "forwardSpeedMps": {
+          "min": 2.13533,
+          "max": 3.262569,
+          "mean": 2.611127,
+          "rms": 2.630301,
+          "standardDeviation": 0.317011,
+          "peakAbsolute": 3.262569
+        },
+        "portSpeedMps": {
+          "min": -0.117033,
+          "max": 0.13288,
+          "mean": 0.008699,
+          "rms": 0.059547,
+          "standardDeviation": 0.058909,
+          "peakAbsolute": 0.13288
+        },
+        "yawChangeDeg": {
+          "min": -6.555113,
+          "max": 0.313202,
+          "mean": -3.083938,
+          "rms": 3.646285,
+          "standardDeviation": 1.945436,
+          "peakAbsolute": 6.555113
+        },
+        "yawRateDegPerSecond": {
+          "min": -1.361492,
+          "max": 1.266369,
+          "mean": -0.06963,
+          "rms": 0.540447,
+          "standardDeviation": 0.535943,
+          "peakAbsolute": 1.361492
+        },
+        "endSpeedMps": 2.135628,
+        "endForwardSpeedMps": 2.13533,
+        "endPortSpeedMps": -0.035703,
+        "endYawChangeDeg": -6.215906,
+        "endYawRateDegPerSecond": 0.108564,
+        "measuredDisplacementM": {
+          "x": -36.948129,
+          "z": 178.931808,
+          "magnitude": 182.706749
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.854654,
+          "max": 0.827225,
+          "mean": 0,
+          "rms": 0.373627,
+          "standardDeviation": 0.373627,
+          "peakAbsolute": 0.854654
+        },
+        "pitchDeg": {
+          "min": -4.911521,
+          "max": 6.237539,
+          "mean": -0.06474,
+          "rms": 2.052998,
+          "standardDeviation": 2.051977,
+          "peakAbsolute": 6.237539
+        },
+        "rollDeg": {
+          "min": -10.658349,
+          "max": 9.618042,
+          "mean": -0.220698,
+          "rms": 5.499322,
+          "standardDeviation": 5.494892,
+          "peakAbsolute": 10.658349
+        },
+        "verticalAccelerationMps2": {
+          "min": -2.100667,
+          "max": 2.045873,
+          "mean": 0.027081,
+          "rms": 0.808791,
+          "standardDeviation": 0.808337,
+          "peakAbsolute": 2.100667
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 234,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.165822,
+          "max": 3.277176,
+          "mean": 2.635342,
+          "rms": 2.654017,
+          "standardDeviation": 0.31429,
+          "peakAbsolute": 3.277176
+        },
+        "forwardSpeedMps": {
+          "min": 2.165671,
+          "max": 3.276686,
+          "mean": 2.63526,
+          "rms": 2.653933,
+          "standardDeviation": 0.314264,
+          "peakAbsolute": 3.276686
+        },
+        "portSpeedMps": {
+          "min": -0.059344,
+          "max": 0.053039,
+          "mean": 0.004896,
+          "rms": 0.021201,
+          "standardDeviation": 0.020627,
+          "peakAbsolute": 0.059344
+        },
+        "yawChangeDeg": {
+          "min": -2.563225,
+          "max": 0.205103,
+          "mean": -1.586629,
+          "rms": 1.702313,
+          "standardDeviation": 0.616827,
+          "peakAbsolute": 2.563225
+        },
+        "yawRateDegPerSecond": {
+          "min": -0.897614,
+          "max": 0.816569,
+          "mean": -0.032784,
+          "rms": 0.336493,
+          "standardDeviation": 0.334892,
+          "peakAbsolute": 0.897614
+        },
+        "endSpeedMps": 2.165822,
+        "endForwardSpeedMps": 2.165671,
+        "endPortSpeedMps": 0.02554,
+        "endYawChangeDeg": -2.539807,
+        "endYawRateDegPerSecond": -0.200352,
+        "measuredDisplacementM": {
+          "x": -151.86615,
+          "z": 104.714541,
+          "magnitude": 184.468054
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.765857,
+          "max": 0.918687,
+          "mean": 0,
+          "rms": 0.363292,
+          "standardDeviation": 0.363292,
+          "peakAbsolute": 0.918687
+        },
+        "pitchDeg": {
+          "min": -7.036336,
+          "max": 7.339399,
+          "mean": -0.050947,
+          "rms": 2.964737,
+          "standardDeviation": 2.964299,
+          "peakAbsolute": 7.339399
+        },
+        "rollDeg": {
+          "min": -2.736008,
+          "max": 3.160164,
+          "mean": -0.073428,
+          "rms": 1.275833,
+          "standardDeviation": 1.273718,
+          "peakAbsolute": 3.160164
+        },
+        "verticalAccelerationMps2": {
+          "min": -2.7711,
+          "max": 1.940527,
+          "mean": -0.01073,
+          "rms": 0.909532,
+          "standardDeviation": 0.909469,
+          "peakAbsolute": 2.7711
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 279,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.151082,
+          "max": 3.273129,
+          "mean": 2.626224,
+          "rms": 2.645361,
+          "standardDeviation": 0.317619,
+          "peakAbsolute": 3.273129
+        },
+        "forwardSpeedMps": {
+          "min": 2.151012,
+          "max": 3.272976,
+          "mean": 2.625812,
+          "rms": 2.644955,
+          "standardDeviation": 0.317645,
+          "peakAbsolute": 3.272976
+        },
+        "portSpeedMps": {
+          "min": -0.140111,
+          "max": 0.093165,
+          "mean": -0.018226,
+          "rms": 0.046305,
+          "standardDeviation": 0.042567,
+          "peakAbsolute": 0.140111
+        },
+        "yawChangeDeg": {
+          "min": 1.151633,
+          "max": 11.633984,
+          "mean": 6.070355,
+          "rms": 6.921337,
+          "standardDeviation": 3.325009,
+          "peakAbsolute": 11.633984
+        },
+        "yawRateDegPerSecond": {
+          "min": -0.991551,
+          "max": 1.558245,
+          "mean": 0.145087,
+          "rms": 0.494093,
+          "standardDeviation": 0.472311,
+          "peakAbsolute": 1.558245
+        },
+        "endSpeedMps": 2.151082,
+        "endForwardSpeedMps": 2.151012,
+        "endPortSpeedMps": 0.017456,
+        "endYawChangeDeg": 11.452824,
+        "endYawRateDegPerSecond": -0.251358,
+        "measuredDisplacementM": {
+          "x": -183.167869,
+          "z": -11.910784,
+          "magnitude": 183.55472
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.99911,
+          "max": 1.085119,
+          "mean": 0,
+          "rms": 0.426213,
+          "standardDeviation": 0.426213,
+          "peakAbsolute": 1.085119
+        },
+        "pitchDeg": {
+          "min": -6.22247,
+          "max": 7.014897,
+          "mean": -0.127361,
+          "rms": 3.01491,
+          "standardDeviation": 3.012219,
+          "peakAbsolute": 7.014897
+        },
+        "rollDeg": {
+          "min": -8.321861,
+          "max": 10.065595,
+          "mean": 0.111003,
+          "rms": 4.050069,
+          "standardDeviation": 4.048548,
+          "peakAbsolute": 10.065595
+        },
+        "verticalAccelerationMps2": {
+          "min": -2.778514,
+          "max": 2.191567,
+          "mean": 0.002948,
+          "rms": 1.129096,
+          "standardDeviation": 1.129092,
+          "peakAbsolute": 2.778514
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 324,
+      "initialSpeedMps": 4,
+      "horizontal": {
+        "speedMps": {
+          "min": 2.13966,
+          "max": 3.261315,
+          "mean": 2.614215,
+          "rms": 2.633429,
+          "standardDeviation": 0.317537,
+          "peakAbsolute": 3.261315
+        },
+        "forwardSpeedMps": {
+          "min": 2.139522,
+          "max": 3.260863,
+          "mean": 2.613609,
+          "rms": 2.632806,
+          "standardDeviation": 0.317361,
+          "peakAbsolute": 3.260863
+        },
+        "portSpeedMps": {
+          "min": -0.109455,
+          "max": 0.148518,
+          "mean": 0.000665,
+          "rms": 0.057266,
+          "standardDeviation": 0.057262,
+          "peakAbsolute": 0.148518
+        },
+        "yawChangeDeg": {
+          "min": 0.688866,
+          "max": 3.273189,
+          "mean": 1.888756,
+          "rms": 1.992033,
+          "standardDeviation": 0.633088,
+          "peakAbsolute": 3.273189
+        },
+        "yawRateDegPerSecond": {
+          "min": -1.859268,
+          "max": 1.313165,
+          "mean": 0.014162,
+          "rms": 0.638959,
+          "standardDeviation": 0.638802,
+          "peakAbsolute": 1.859268
+        },
+        "endSpeedMps": 2.13966,
+        "endForwardSpeedMps": 2.139522,
+        "endPortSpeedMps": 0.024345,
+        "endYawChangeDeg": 1.82831,
+        "endYawRateDegPerSecond": -0.2382,
+        "measuredDisplacementM": {
+          "x": -112.419289,
+          "z": -144.374827,
+          "magnitude": 182.981385
+        }
+      },
+      "motion": {
+        "heaveDisplacementMetres": {
+          "min": -0.842116,
+          "max": 0.657939,
+          "mean": 0,
+          "rms": 0.318769,
+          "standardDeviation": 0.318769,
+          "peakAbsolute": 0.842116
+        },
+        "pitchDeg": {
+          "min": -5.798485,
+          "max": 5.758419,
+          "mean": -0.002374,
+          "rms": 2.437675,
+          "standardDeviation": 2.437674,
+          "peakAbsolute": 5.798485
+        },
+        "rollDeg": {
+          "min": -16.366305,
+          "max": 17.470698,
+          "mean": 0.43325,
+          "rms": 8.443422,
+          "standardDeviation": 8.432299,
+          "peakAbsolute": 17.470698
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.576249,
+          "max": 1.532026,
+          "mean": 0.002285,
+          "rms": 0.648515,
+          "standardDeviation": 0.648511,
+          "peakAbsolute": 1.576249
+        }
+      },
+      "contact": {
+        "overtoppingFrames": 0,
+        "touchedSafetyLimiter": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    }
+  ],
+  "horizontalSummary": {
+    "lowestEndSpeedMps": {
+      "presentationHeadingDeg": 54,
+      "value": 2.119195
+    },
+    "largestPeakPortSpeedMps": {
+      "presentationHeadingDeg": 9,
+      "value": 0.187942
+    },
+    "largestPeakYawChangeDeg": {
+      "presentationHeadingDeg": 279,
+      "value": 11.633984
+    },
+    "largestPeakYawRateDegPerSecond": {
+      "presentationHeadingDeg": 144,
+      "value": 3.320926
+    }
+  },
+  "comparisonToPrescribedBaseline": {
+    "source": "evidence/ship-response/prescribed-speed-baseline.json",
+    "sourceFormatVersion": 2,
+    "meaning": "Captive prescribes 4 m/s and heading. Free release begins at the same condition, then integrates passive surge, sway and yaw without propulsion or steering.",
+    "largestAbsoluteChangePercent": {
+      "heaveRms": {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 189,
+        "changePercent": 76.531427
+      },
+      "rollRms": {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 189,
+        "changePercent": 103.972388
+      },
+      "rollPeak": {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 189,
+        "changePercent": 61.703634
+      },
+      "pitchRms": {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 279,
+        "changePercent": 35.745427
+      },
+      "pitchPeak": {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 54,
+        "changePercent": 45.841867
+      },
+      "verticalAccelerationPeak": {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 54,
+        "changePercent": 82.741148
+      }
+    },
+    "cases": [
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 9,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.326197,
+            "freeRelease": 0.324971,
+            "changePercent": -0.375846
+          },
+          "rollRms": {
+            "captive": 4.592059,
+            "freeRelease": 5.522268,
+            "changePercent": 20.256904
+          },
+          "rollPeak": {
+            "captive": 12.636302,
+            "freeRelease": 13.842577,
+            "changePercent": 9.546108
+          },
+          "pitchRms": {
+            "captive": 2.066698,
+            "freeRelease": 2.152654,
+            "changePercent": 4.159098
+          },
+          "pitchPeak": {
+            "captive": 4.299072,
+            "freeRelease": 5.69871,
+            "changePercent": 32.556747
+          },
+          "verticalAccelerationPeak": {
+            "captive": 1.25106,
+            "freeRelease": 1.212669,
+            "changePercent": -3.068678
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 54,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.287737,
+            "freeRelease": 0.326291,
+            "changePercent": 13.399041
+          },
+          "rollRms": {
+            "captive": 6.046735,
+            "freeRelease": 7.958475,
+            "changePercent": 31.61607
+          },
+          "rollPeak": {
+            "captive": 12.787098,
+            "freeRelease": 16.157643,
+            "changePercent": 26.358952
+          },
+          "pitchRms": {
+            "captive": 2.756156,
+            "freeRelease": 3.049239,
+            "changePercent": 10.633759
+          },
+          "pitchPeak": {
+            "captive": 6.064055,
+            "freeRelease": 8.843931,
+            "changePercent": 45.841867
+          },
+          "verticalAccelerationPeak": {
+            "captive": 0.408712,
+            "freeRelease": 0.746885,
+            "changePercent": 82.741148
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 99,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.305328,
+            "freeRelease": 0.326323,
+            "changePercent": 6.876212
+          },
+          "rollRms": {
+            "captive": 3.64113,
+            "freeRelease": 5.485695,
+            "changePercent": 50.659136
+          },
+          "rollPeak": {
+            "captive": 8.969183,
+            "freeRelease": 12.195817,
+            "changePercent": 35.97467
+          },
+          "pitchRms": {
+            "captive": 1.886095,
+            "freeRelease": 1.884087,
+            "changePercent": -0.106463
+          },
+          "pitchPeak": {
+            "captive": 4.239073,
+            "freeRelease": 4.967777,
+            "changePercent": 17.190173
+          },
+          "verticalAccelerationPeak": {
+            "captive": 1.119275,
+            "freeRelease": 1.135316,
+            "changePercent": 1.43316
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 144,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.319813,
+            "freeRelease": 0.397793,
+            "changePercent": 24.382999
+          },
+          "rollRms": {
+            "captive": 7.676189,
+            "freeRelease": 10.331343,
+            "changePercent": 34.589482
+          },
+          "rollPeak": {
+            "captive": 15.534969,
+            "freeRelease": 21.373011,
+            "changePercent": 37.580004
+          },
+          "pitchRms": {
+            "captive": 2.046972,
+            "freeRelease": 2.318919,
+            "changePercent": 13.285331
+          },
+          "pitchPeak": {
+            "captive": 5.55667,
+            "freeRelease": 5.966159,
+            "changePercent": 7.369324
+          },
+          "verticalAccelerationPeak": {
+            "captive": 1.830533,
+            "freeRelease": 1.89802,
+            "changePercent": 3.68674
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 189,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.211649,
+            "freeRelease": 0.373627,
+            "changePercent": 76.531427
+          },
+          "rollRms": {
+            "captive": 2.696111,
+            "freeRelease": 5.499322,
+            "changePercent": 103.972388
+          },
+          "rollPeak": {
+            "captive": 6.591286,
+            "freeRelease": 10.658349,
+            "changePercent": 61.703634
+          },
+          "pitchRms": {
+            "captive": 2.145816,
+            "freeRelease": 2.052998,
+            "changePercent": -4.325534
+          },
+          "pitchPeak": {
+            "captive": 5.387341,
+            "freeRelease": 6.237539,
+            "changePercent": 15.781403
+          },
+          "verticalAccelerationPeak": {
+            "captive": 2.041455,
+            "freeRelease": 2.100667,
+            "changePercent": 2.90048
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 234,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.378402,
+            "freeRelease": 0.363292,
+            "changePercent": -3.993108
+          },
+          "rollRms": {
+            "captive": 1.076345,
+            "freeRelease": 1.275833,
+            "changePercent": 18.533834
+          },
+          "rollPeak": {
+            "captive": 2.624539,
+            "freeRelease": 3.160164,
+            "changePercent": 20.408346
+          },
+          "pitchRms": {
+            "captive": 2.929532,
+            "freeRelease": 2.964737,
+            "changePercent": 1.201728
+          },
+          "pitchPeak": {
+            "captive": 8.149809,
+            "freeRelease": 7.339399,
+            "changePercent": -9.943914
+          },
+          "verticalAccelerationPeak": {
+            "captive": 3.599781,
+            "freeRelease": 2.7711,
+            "changePercent": -23.020317
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 279,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.392222,
+            "freeRelease": 0.426213,
+            "changePercent": 8.666266
+          },
+          "rollRms": {
+            "captive": 4.972873,
+            "freeRelease": 4.050069,
+            "changePercent": -18.556758
+          },
+          "rollPeak": {
+            "captive": 10.719006,
+            "freeRelease": 10.065595,
+            "changePercent": -6.095817
+          },
+          "pitchRms": {
+            "captive": 2.221003,
+            "freeRelease": 3.01491,
+            "changePercent": 35.745427
+          },
+          "pitchPeak": {
+            "captive": 5.862646,
+            "freeRelease": 7.014897,
+            "changePercent": 19.654112
+          },
+          "verticalAccelerationPeak": {
+            "captive": 2.345886,
+            "freeRelease": 2.778514,
+            "changePercent": 18.441987
+          }
+        }
+      },
+      {
+        "seaState": "CURRENT_MODERATE",
+        "presentationHeadingDeg": 324,
+        "selectedMetrics": {
+          "heaveRms": {
+            "captive": 0.362783,
+            "freeRelease": 0.318769,
+            "changePercent": -12.132322
+          },
+          "rollRms": {
+            "captive": 9.212642,
+            "freeRelease": 8.443422,
+            "changePercent": -8.349613
+          },
+          "rollPeak": {
+            "captive": 21.268047,
+            "freeRelease": 17.470698,
+            "changePercent": -17.854714
+          },
+          "pitchRms": {
+            "captive": 2.220612,
+            "freeRelease": 2.437675,
+            "changePercent": 9.774918
+          },
+          "pitchPeak": {
+            "captive": 5.107574,
+            "freeRelease": 5.798485,
+            "changePercent": 13.527185
+          },
+          "verticalAccelerationPeak": {
+            "captive": 2.065073,
+            "freeRelease": 1.576249,
+            "changePercent": -23.671028
+          }
+        }
+      }
+    ]
+  }
+}

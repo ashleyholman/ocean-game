@@ -1,0 +1,1283 @@
+You are the sole implementation lead for the next development round of an existing Three.js ocean-and-raft prototype.
+
+Work directly in the existing repository. Implement and verify the working camera system; do not merely write a proposal or provide isolated code excerpts.
+
+Use deep reasoning and inspect the existing implementation before choosing an architecture. The principal deliverable is a camera system that materially changes how the ocean’s scale and the castaway’s embodiment are experienced.
+
+PROJECT ROUND
+
+Planned implementation stage 2 of 3 — Multi-Scale Cinematic and Embodied Camera
+
+IMPLEMENTATION ORDER AND DEPENDENCIES
+
+This round is intended to follow the integrated open-ocean sea-state and
+whitewater round.
+
+Use the resulting `docs/ocean/OCEAN_SEA_STATE_SPEC.md`,
+`docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`, `docs/ocean/OCEAN_SEA_STATE_REPORT.md`, deterministic
+presets, `?debug=ocean` lab, persistent-foam implementation and final
+`WaveField` contract as its starting foundation.
+
+This is followed by the final graphics round. The boundary is:
+
+- This camera round owns viewpoint architecture, controls, framing, horizon and
+  ocean-topology correctness, clipping, distance LOD/filtering, transition
+  quality and a credible default composition using the integrated visual style.
+- The final graphics round owns the finished cinematic look: lighting,
+  atmosphere, colour response, water optics, material refinement, sky/cloud
+  art direction and final visual polish across all camera scales.
+
+Make every required viewpoint structurally and compositionally sound, but do
+not pre-empt the final graphics round by redesigning those visual systems.
+
+PRIMARY GOAL
+
+Implement two complementary camera modes:
+
+1. A genuinely multi-scale cinematic camera that can move from a relatively close external view to a high, expansive aerial view showing a vastly larger area of ocean.
+
+2. An embodied on-raft camera located approximately at the castaway’s eye position, with unrestricted looking around the raft, up to the zenith, down into the water, and towards the horizon.
+
+Provide a quick, polished manual transition between these modes.
+
+This round is about:
+
+- composition;
+- scale;
+- embodiment;
+- camera interaction;
+- maintaining convincing ocean rendering across a much larger viewing range.
+
+It is not a gameplay, swimming, navigation, world-simulation, or character-locomotion round.
+
+EXISTING FOUNDATION
+
+The repository already contains:
+
+- a visually strong Three.js ocean and raft scene;
+- a crude wooden raft with a castaway and rag sail;
+- animated ocean waves;
+- sunset, daytime, night, real Sun, Moon position, and a real star catalogue;
+- a canonical WGS84/ECEF planetary world state;
+- a pole-safe transported surface frame;
+- an explicit world-to-render adapter;
+- an existing external orbit camera;
+- an existing camera-distance range of approximately 22–60 metres;
+- distributed 24-station force-based raft buoyancy at fixed 240 Hz substeps;
+- a verified shared CPU/GPU `WaveField` sampling contract;
+- independently controlled local wind sea, primary/secondary swell and
+  deterministic sea-state transitions from the preceding ocean round;
+- persistent foam, whitewater and spray with documented distance-LOD hooks;
+- developer controls under `?debug=1`;
+- dedicated `?debug=buoyancy` and `?debug=ocean` laboratories;
+- the complete tracked planetary and raft-water suite, including the 65 tests
+  established before the ocean round and every test added by that round.
+
+Preserve the planetary core. The camera is downstream of the canonical world state and local presentation pose.
+
+Do not rewrite or weaken:
+
+- `PlanetaryWorld`;
+- WGS84/ECEF state;
+- geodesic propagation;
+- world and presentation clocks;
+- astronomy;
+- real star orientation;
+- the world-render adapter;
+- `RaftBuoyancy`, its station/force model and fixed-step simulation;
+- the final sea-state parameter and transition model;
+- `WaveField` CPU/GPU equations, inverse sampling and orbital-velocity contract;
+- persistent foam history and the separation between crest, spray and
+  raft-contact effects;
+- `?debug=buoyancy` and `?debug=ocean`;
+- existing numerical tests.
+
+The camera’s altitude and position are local presentation coordinates. They must not alter the raft’s canonical latitude, longitude, ECEF position, solar time, or astronomical observer location.
+
+CORE EXPERIENCE
+
+The cinematic view should communicate:
+
+> One tiny person and one tiny raft inside an immense ocean.
+
+The embodied view should communicate:
+
+> I am the person on the raft.
+
+The external camera should be capable of producing the kind of vast-ocean impression seen from a low-flying aircraft: the camera gains real altitude, the visible ocean footprint expands substantially, individual waves become visually smaller, and the raft becomes a minute mark in the scene.
+
+Do not constrain the far camera merely because it may eventually reveal information unavailable to the castaway. There are currently no actionable distant objects. Do not introduce artificial fog, event culling, or character-knowledge rules solely to restrict the camera.
+
+Atmospheric haze may still be used for visual realism.
+
+BASELINE INSPECTION
+
+Before changing production code:
+
+1. Inspect all existing camera, input, raft-pose, ocean, sky, atmosphere, post-processing, audio-listener, and debug-control code.
+
+2. Read:
+   - `docs/world/WORLD_MODEL.md`;
+   - the planetary-world ADR;
+   - the previous round report;
+   - any original ocean prototype specification;
+   - `docs/ocean/RAFT_WATER_COUPLING_SPEC.md`;
+   - `docs/ocean/RAFT_WATER_COUPLING_REPORT.md`;
+   - `docs/ocean/OCEAN_SEA_STATE_SPEC.md`;
+   - `docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`;
+   - `docs/ocean/OCEAN_SEA_STATE_REPORT.md`;
+   - `docs/project/FUTURE_ROUNDS.md`.
+
+3. Run:
+   - `npm ci`;
+   - `npm test`;
+   - `npm run typecheck`;
+   - `npm run build`.
+
+   Ensure Vitest is testing this worktree only. Exclude nested
+   `.claude/worktrees` rather than accepting duplicated test discovery.
+
+4. Launch the current application in a real browser.
+
+5. Capture baseline screenshots at:
+   - current minimum camera distance;
+   - current default composition;
+   - current maximum camera distance;
+   - sunset;
+   - night.
+
+   Repeat representative camera baselines in the documented calm, current
+   moderate and Southern-Ocean-rough presets (or their final equivalent names)
+   so camera decisions are not tuned to one sea only.
+
+6. Record:
+   - current camera distances;
+   - current camera altitude;
+   - vertical FOV;
+   - orbit elevation limits;
+   - optical pitch;
+   - horizon position;
+   - raft screen-space size;
+   - water mesh dimensions or projected-grid behaviour;
+   - clipping planes;
+   - current GPU and CPU performance.
+
+7. Identify which current controls or assumptions prevent:
+   - close raft inspection;
+   - substantial aerial altitude;
+   - looking directly upward;
+   - first-person or embodied viewing.
+
+Do not discard unrelated work.
+
+SUBAGENT WORKFLOW
+
+Use at most three bounded, read-only subagents.
+
+The main agent is the sole production integrator and code editor.
+
+Do not allow multiple agents to implement competing camera systems in parallel worktrees.
+
+SUBAGENT 1 — CAMERA GEOMETRY AND COMPOSITION ANALYST
+
+Inspect the current camera implementation and baseline screenshots.
+
+Recommend:
+
+- a multi-scale zoom curve;
+- near, default, medium, and far camera ranges;
+- altitude progression;
+- optical pitch and framing behaviour;
+- FOV behaviour;
+- orbit limits;
+- horizon placement;
+- raft screen-space placement;
+- input mapping;
+- a stable embodied-camera anchor;
+- how to avoid the sail dominating the default first-person view.
+
+Explicitly distinguish:
+
+- camera position elevation relative to the raft;
+- optical pitch;
+- framing target;
+- raft screen-space position.
+
+The analyst must not assume that `lookAt(raftPosition)` is necessarily the correct composition.
+
+SUBAGENT 2 — OCEAN SCALE AND RENDERING ANALYST
+
+Inspect the existing ocean mesh, wave shader, normal detail, atmosphere, horizon treatment, clipping planes, post-processing, and performance.
+
+Determine what will fail when the camera is moved hundreds of metres away and hundreds of metres upward.
+
+Preserve the integrated sea-state system’s physical and sampling contracts while
+inspecting persistent foam, whitewater, spindrift and their documented LOD hooks
+across representative calm, moderate and rough presets.
+
+Specifically inspect for:
+
+- visible ocean edges;
+- insufficient mesh extent;
+- obvious tiling;
+- repeating wave patterns;
+- high-frequency shimmering;
+- moiré patterns;
+- aliasing on distant waves;
+- excessive whitecap size;
+- foam/spray density or history that fails at distance;
+- normal-map detail that remains too large at altitude;
+- horizon seams;
+- depth-buffer precision problems;
+- near/far clipping conflicts;
+- raft disappearing prematurely;
+- performance regressions at 4K.
+
+Return the smallest robust set of rendering changes needed to support the new camera range.
+
+Do not propose a complete ocean rewrite unless the current architecture genuinely cannot support the required range.
+Do not collapse, replace or retune the documented sea-state presets to make the
+camera screenshots easier.
+
+SUBAGENT 3 — VISUAL AND MOTION CRITIC
+
+Run only after the first working implementation.
+
+Review actual screenshots and transition frame sequences.
+
+Rank the most damaging defects by severity, focusing on:
+
+- whether the far view genuinely shows more ocean area;
+- whether the raft feels appropriately tiny;
+- whether the camera simply moves away without gaining meaningful altitude;
+- horizon and sky composition;
+- ocean repetition or visible boundaries;
+- first-person embodiment;
+- sail obstruction;
+- ability to inspect the zenith;
+- camera clipping;
+- transition quality;
+- motion sickness risk;
+- mobile framing;
+- 4K rendering quality.
+
+The critic must not request new gameplay systems.
+
+BOUND THE REVIEW LOOP
+
+Perform no more than three focused visual-review passes.
+
+For each pass:
+
+1. Capture actual browser screenshots or transition frames.
+2. Ask the visual-critic subagent for the five highest-severity defects.
+3. Fix those defects.
+4. Re-run relevant tests and browser checks.
+5. Stop once no severity-one defect remains and remaining defects are minor or explicitly documented.
+
+Do not enter an unlimited “make it perfect” loop.
+
+POST-ROUND EXTERNAL REVIEW
+
+This implementation prompt must complete its own critic loop and final report
+without waiting for user orchestration. Afterwards, the user may run the
+companion Opus code-and-visual review and Sol technical review prompts and use
+their reports to seed an optional follow-up improvement pass.
+
+DESIGN DOCUMENT
+
+Before substantial implementation, create:
+
+`docs/camera/CAMERA_SYSTEM.md`
+
+It must define:
+
+- camera modes;
+- coordinate spaces;
+- active-camera ownership;
+- input routing;
+- cinematic scale parameter;
+- distance and altitude curves;
+- optical framing;
+- embodied-camera anchor;
+- head stabilisation;
+- mode transitions;
+- clipping strategy;
+- audio-listener behaviour;
+- ocean-rendering implications;
+- responsive/mobile controls;
+- invariants;
+- deferred features.
+
+It must also state the camera/graphics boundary: composition and geometric
+correctness are requirements now; final art direction and cinematic lighting
+remain inputs to the next round.
+
+CAMERA ARCHITECTURE
+
+Prefer explicit components with responsibilities similar to:
+
+- `CameraModeManager`;
+- `CinematicCameraController`;
+- `EmbodiedCameraController`;
+- `CameraTransition`;
+- `CameraInputController`;
+- optional camera tuning/configuration module.
+
+The exact names may differ.
+
+There should be one active Three.js camera or one clearly controlled camera rig at a time.
+
+Do not scatter camera logic throughout:
+
+- the raft;
+- the ocean;
+- the world simulation;
+- the astronomy system;
+- unrelated UI components.
+
+The camera system may consume:
+
+- the raft’s stable render anchor;
+- the raft’s current presentation pose;
+- the local horizon/up direction;
+- user input;
+- presentation delta time.
+
+It must not mutate the canonical global world state.
+
+MODE 1 — MULTI-SCALE CINEMATIC CAMERA
+
+The cinematic camera must support a much larger range than the existing approximately 22–60 metres.
+
+The implementation should have a normalised cinematic scale parameter, conceptually:
+
+```ts
+cinematicScale01: number; // 0 = close external, 1 = far aerial
+```
+
+Use logarithmic or otherwise perceptually well-behaved interpolation.
+
+Do not use a simple linear distance slider if that makes most of the control range visually ineffective.
+
+ZOOM MUST CHANGE BOTH DISTANCE AND ALTITUDE
+
+The current problem is not merely that the raft remains too large.
+
+At far zoom, the player must see a materially larger area of ocean.
+
+As cinematic scale increases:
+
+- horizontal distance must increase;
+- altitude must increase substantially;
+- camera position elevation may increase;
+- optical pitch and framing target may change;
+- distant wave detail should attenuate appropriately;
+- the raft should occupy dramatically less screen space.
+
+Do not implement zoom-out as predominantly horizontal movement.
+
+TARGET RANGE
+
+Treat these as initial tuning targets, not arbitrary constants:
+
+Close external view:
+
+- camera-to-raft distance approximately 6–12 metres;
+- altitude approximately 2.5–6 metres;
+- raft large enough for detailed external inspection;
+- no camera collision with mast, sail, or character.
+
+Default cinematic view:
+
+- approximately similar to the strongest integrated pre-camera composition;
+- roughly 25–45 metres away;
+- roughly 8–18 metres altitude;
+- clear horizon;
+- raft readable but subordinate to ocean and sky.
+
+Medium vista:
+
+- approximately 100–300 metres away;
+- approximately 40–120 metres altitude;
+- individual waves visibly smaller;
+- substantially more ocean surface visible.
+
+Far aerial view:
+
+- target approximately 600–1,200 metres camera distance;
+- target approximately 200–450 metres altitude;
+- raft becomes a tiny but still discernible mark;
+- ocean dominates;
+- visible water footprint is vastly greater than at the old 60-metre limit.
+
+The final maximum should be determined through actual browser screenshots and ocean-rendering limits.
+
+Minimum acceptance:
+
+- maximum camera distance must be at least 600 metres;
+- maximum altitude must be at least 180 metres;
+- the far view must visibly reveal much more ocean surface, not merely a smaller raft.
+
+Prefer reaching approximately 800–1,000 metres distance and 250–350 metres altitude if the existing renderer can be made stable at that range.
+
+RAFT SCALE
+
+Do not artificially enlarge the raft at far distance.
+
+At the farthest useful 4K composition, the raft may be only several pixels across.
+
+Tune the maximum range so the raft is:
+
+- extremely small;
+- still locatable;
+- not replaced with an oversized icon;
+- not billboard-scaled;
+- not surrounded by a UI marker in normal mode.
+
+CINEMATIC COMPOSITION
+
+The camera should orbit around the raft but should not be rigidly attached to its pitch and roll.
+
+Use smooth damping.
+
+The camera should follow the raft’s horizontal/local anchor while remaining visually stabilised against rapid wave motion.
+
+Do not rely solely on:
+
+```ts
+camera.lookAt(raftPosition);
+```
+
+Camera position and optical aim should be decoupled where necessary.
+
+At close and default scales:
+
+- preserve a strong horizon;
+- keep the raft in the lower-middle portion of the frame;
+- allow substantial sky;
+- avoid a sailing-simulator chase-camera composition.
+
+At far aerial scales:
+
+- allow the horizon to move nearer the top of the frame;
+- allow ocean to occupy most of the image;
+- preserve at least a thin band of sky in the default far composition;
+- allow the user to orbit toward a more top-down view if desired.
+
+The default far composition should remain cinematic rather than becoming a flat orthographic map.
+
+CINEMATIC ORBIT
+
+Required controls:
+
+Desktop:
+
+- pointer drag: orbit around raft;
+- wheel: cinematic scale/zoom;
+- no unrestricted free panning away from the raft.
+
+Touch:
+
+- one-finger drag: orbit;
+- pinch: cinematic scale/zoom.
+
+Suggested elevation freedom:
+
+- allow a much broader elevation range than the current system;
+- permit low horizon-level views;
+- permit high bird’s-eye views;
+- do not allow the camera below the water;
+- it is acceptable for a deliberately steep user-controlled view to lose the horizon;
+- the default framing at each scale should remain composed.
+
+Retain the user’s azimuth while zooming.
+
+Zooming should not unexpectedly rotate the scene.
+
+CINEMATIC CAMERA INVARIANTS
+
+- No NaN or infinity at any scale.
+- No abrupt jumps in position, altitude, pitch, target, or FOV.
+- Zoom curve is monotonic.
+- Altitude increases materially with scale.
+- Camera does not cross the ocean surface.
+- Camera does not clip through the raft at the close limit.
+- Raft remains the orbit anchor.
+- Camera does not inherit full raft roll or pitch.
+- Resize and orientation changes preserve a valid composition.
+
+MODE 2 — EMBODIED ON-RAFT CAMERA
+
+Implement a separate on-raft viewing mode located approximately at the castaway’s eye position.
+
+This is an embodied viewing camera, not yet a complete first-person character controller.
+
+Required abilities:
+
+- look through a full 360° horizontally;
+- look straight up to the zenith;
+- look down at the raft and water;
+- look towards the horizon;
+- inspect mast, sail, rope, logs, and ocean;
+- see the real astronomical star field overhead;
+- observe the Sun and Moon from raft level.
+
+Do not implement:
+
+- walking;
+- crawling;
+- shuffling around the raft;
+- visible first-person hands;
+- swimming;
+- jumping;
+- body interaction;
+- inventory use;
+- camera-controlled bird movement;
+- first-person gameplay mechanics.
+
+EMBODIED CAMERA ANCHOR
+
+Inspect the current castaway pose.
+
+Place the camera at a plausible eye position for that pose.
+
+If the character is seated or reclining, do not arbitrarily place the camera at standing eye height.
+
+A likely starting point is approximately:
+
+- 1.0–1.4 metres above the raft deck;
+- slightly aft of the mast;
+- slightly to one side of the mast or sail;
+- positioned so the initial view opens onto ocean rather than directly into cloth.
+
+Create an authored local eye anchor rather than inferring the position from an unstable animated vertex.
+
+The embodied camera should move with the raft’s presentation pose.
+
+SAIL OCCLUSION
+
+The sail is real physical geometry and must block the view when the player looks through it.
+
+Do not:
+
+- fade the sail;
+- make it transparent;
+- hide it solely because it obstructs the camera;
+- render it only from one side;
+- magically move it away from the player.
+
+The default embodied look direction should avoid placing the entire sail in the centre of the screen.
+
+When the sail is raised:
+
+- the sail may obscure part of the sky and horizon;
+- this is expected.
+
+When the sail is lowered:
+
+- the corresponding view should naturally open.
+
+The existing sail-up/sail-down action must continue to function in both camera modes.
+
+CHARACTER-MESH CLIPPING
+
+The embodied camera must not render from inside the castaway’s head.
+
+Use an appropriate technique such as:
+
+- camera visibility layers;
+- hiding the head or entire character only in embodied mode;
+- a dedicated first-person visibility mask.
+
+Do not build new first-person body geometry in this round.
+
+Document the chosen compromise.
+
+HEAD STABILISATION
+
+A rigid camera inheriting every degree of raft roll and pitch is likely to be unpleasant.
+
+Implement a configurable head-stabilisation model.
+
+The embodied camera should:
+
+- inherit the raft’s translational heave sufficiently to feel physically present;
+- inherit some low-frequency pitch and roll;
+- attenuate high-frequency or excessive angular motion;
+- remain visibly connected to the raft;
+- avoid looking like a perfectly horizon-locked floating drone;
+- avoid severe motion sickness.
+
+The player’s independent look yaw and pitch should remain stable while the raft moves.
+
+Suggested debug controls:
+
+- roll-follow fraction;
+- pitch-follow fraction;
+- heave-follow fraction;
+- stabilisation smoothing.
+
+Do not expose these controls in normal mode.
+
+EMBODIED LOOK INPUT
+
+Desktop:
+
+- pointer drag to look;
+- optionally support pointer lock only if it clearly improves the experience;
+- do not require pointer lock for basic use.
+
+Touch:
+
+- one-finger drag to look.
+
+Pitch range:
+
+- approximately −85° downward to +89° upward;
+- allow direct zenith viewing;
+- avoid mathematical singularities or yaw inversion near the poles of the view sphere.
+
+Embodied mode should use a stable FOV appropriate for human-scale observation, likely around 55–70° vertical depending on the existing renderer.
+
+Do not use wheel zoom in embodied mode unless there is a clearly justified, subtle FOV adjustment. A fixed embodied FOV is acceptable and preferable to adding unnecessary controls.
+
+MODE SWITCHING
+
+Provide an explicit manual mode toggle.
+
+Use:
+
+- `V` by default, unless it conflicts with an existing control;
+- a developer-panel mode selector;
+- an optional unobtrusive temporary control hint.
+
+The mode switch must preserve:
+
+- the last cinematic azimuth;
+- the last cinematic elevation;
+- the last cinematic scale;
+- embodied look yaw and pitch where sensible.
+
+Returning to cinematic mode should restore the prior cinematic composition rather than resetting arbitrarily.
+
+CAMERA TRANSITION
+
+Implement a quick cinematic transition between the modes.
+
+Target duration:
+
+- approximately 0.7–1.4 seconds;
+- configurable in debug mode.
+
+The transition should:
+
+- use smooth ease-in/ease-out;
+- avoid instantaneous teleportation;
+- avoid moving through mast, sail, character, or raft;
+- work with sail raised and lowered;
+- work from close, default, and far cinematic scales;
+- end precisely at the destination camera state;
+- suppress conflicting camera input while blending;
+- not mutate canonical world state.
+
+A safe spline or staged path may be used:
+
+- cinematic position;
+- safe point above/aft of raft;
+- embodied eye anchor.
+
+When transitioning out from a very distant aerial view, the camera may move rapidly, but the movement must remain visually comprehensible and not produce a severe disorienting spin.
+
+If a direct transition from the maximum aerial distance is visually poor, use a deliberately authored multi-stage dolly rather than silently reducing the supported range.
+
+Do not add an automatic idle-to-cinematic transition in this round.
+
+Leave an explicit hook for a future watch/idle mode, but manual switching is the only required behaviour now.
+
+OCEAN RENDERING ACROSS SCALE
+
+The camera range is not complete unless the ocean remains credible at every supported scale.
+
+At far aerial range, ensure:
+
+- no visible edge to the ocean;
+- no obvious square or circular mesh boundary;
+- no repeating tile pattern;
+- no large-scale shader seam;
+- no obvious finite sky/ocean junction;
+- no severe distant-wave shimmer;
+- no moiré pattern;
+- no high-frequency normal detail that looks centimetres wide from hundreds of metres up;
+- no whitecaps that remain implausibly large;
+- no abrupt LOD ring;
+- no precision instability.
+
+Use the smallest suitable improvement, which may include:
+
+- enlarging or replacing the raft-centred ocean topology;
+- concentric LOD rings;
+- a projected-grid ocean;
+- distance-based geometric detail;
+- distance-based normal/detail attenuation;
+- derivative-aware antialiasing;
+- mipmapping or anisotropic filtering;
+- atmospheric blending at the horizon;
+- revised clipping planes;
+- separate near-plane values by camera mode;
+- camera-relative rendering.
+
+Do not perform a complete spectral-ocean rewrite unless required to satisfy the actual camera range.
+
+Do not alter the canonical planetary world model to solve a local water-rendering issue.
+Do not reintroduce the removed planar world-position or renderer-recentering
+model. The renderer remains raft-centred; any obsolete camera translation hook
+that survives in source is not an architectural requirement.
+
+Preserve the final sea-state displacement, CPU/GPU sampling, transition and
+persistent-foam contracts. Distance filtering may change presentation detail,
+but must not change the physical surface sampled by the raft or flatten rough
+presets at altitude.
+
+WAVE SCALE
+
+Physical wave amplitude should remain consistent.
+
+Do not reduce actual wave height merely because the camera moves farther away.
+
+Instead, allow perspective and distance filtering to make individual waves appear smaller naturally.
+
+The raft must continue to sample and respond to the same local wave model as before.
+
+CLOUDS, SKY, SUN, MOON, AND STARS
+
+Do not redesign astronomy.
+
+Verify that:
+
+- the real star catalogue remains correctly oriented;
+- the Sun and Moon remain in the correct world directions;
+- far camera motion does not rotate or detach the sky incorrectly;
+- embodied zenith viewing works;
+- stars remain visible when looking straight up at night;
+- horizon atmosphere survives the expanded camera range.
+
+The camera should use the raft’s astronomical location. Do not recalculate astronomy from the aerial camera’s temporary altitude.
+
+Any parallax difference over a few hundred metres is irrelevant for this game and should not create a second observer state.
+
+AUDIO
+
+The current baseline uses non-positional Web Audio through `Ambience` and does
+not attach a Three.js `AudioListener` to the camera. Preserve uninterrupted
+ambience through camera switching; the absence of a listener is valid.
+
+If inspection shows that the preceding integrated work has since added a
+listener, keep exactly one and make it follow the active camera.
+
+Ensure:
+
+- a listener follows the active camera if one exists;
+- switching modes does not duplicate a listener;
+- audio does not disappear permanently after switching;
+- ocean ambience remains coherent;
+- no loud discontinuity is introduced during transition.
+
+Do not create a new audio system.
+
+DEBUG CONTROLS
+
+Extend the shared visible developer-tools launcher established by the ocean
+round with a `Camera` panel. Keep `?debug=1` as a direct link for bookmarks and
+automation, but do not require users to know it.
+
+Expose:
+
+- active camera mode;
+- cinematic scale;
+- actual camera-to-raft distance;
+- horizontal distance;
+- altitude above local ocean plane;
+- optical pitch;
+- orbit elevation;
+- vertical FOV;
+- transition duration;
+- head roll-follow fraction;
+- head pitch-follow fraction;
+- heave-follow fraction;
+- reset cinematic camera;
+- reset embodied look.
+
+The existing approximately 22–60 metre distance slider may be replaced or adapted.
+
+It must not remain artificially capped at 60 metres.
+
+Show read-only telemetry for the actual derived camera parameters when the system uses curves.
+
+Preserve `?debug=buoyancy` and `?debug=ocean` as working, dynamically loaded
+diagnostic surfaces. Camera controls must coexist with them without changing
+their canonical simulation or sea-state behaviour.
+
+The common `Tools`/`Debug` button must continue to open the general/world,
+buoyancy and ocean panels as well as Camera. `Hide all` must close every panel
+for a clean view. Closed panels must not be constructed eagerly.
+
+NORMAL-MODE CONTROLS
+
+With developer panels tucked away, the scene should remain visually minimal.
+
+A temporary hint may appear:
+
+“Drag to look · Scroll or pinch to change scale · V to change view”
+
+Fade it after several seconds.
+
+Do not add a permanent camera HUD. The compact early-development tools launcher
+is intentional and must itself be hideable/restorable through the documented
+clean-view interaction.
+
+RESPONSIVE BEHAVIOUR
+
+Support:
+
+- 4K desktop;
+- ordinary desktop;
+- mobile landscape;
+- mobile portrait;
+- mouse;
+- trackpad;
+- touchscreen.
+
+On portrait mobile:
+
+- preserve a useful horizon when appropriate;
+- avoid placing the raft beneath browser UI;
+- prevent embodied view controls from fighting page scrolling;
+- prevent accidental browser pinch zoom if the canvas is intended to consume pinch gestures.
+
+Do not disable ordinary accessibility behaviours outside the game canvas.
+
+PERFORMANCE
+
+Measure performance rather than assuming success.
+
+Targets:
+
+- no material regression at the existing default camera;
+- smooth camera motion at 1440p desktop;
+- usable performance at 3840×2160;
+- at least a stable approximately 30 frames per second on a modern 4K desktop for the far aerial view;
+- usable approximately 30 frames per second at mobile-sized viewports;
+- no unbounded allocations in camera update loops;
+- no frame-rate-dependent camera damping;
+- no camera updates tied to world-time acceleration.
+
+Presentation camera motion must use presentation delta time, not 72× world time.
+
+AUTOMATED TESTS
+
+Add focused tests for the camera system.
+
+Do not remove or weaken any existing tracked planetary, raft-water, sea-state,
+CPU/GPU parity or debug-lab test. Run the entire current-worktree suite plus the
+new camera tests.
+
+Include tests for:
+
+1. CINEMATIC SCALE CURVE
+
+- scale clamps safely to [0, 1];
+- distance is monotonic;
+- altitude is monotonic;
+- far altitude is materially greater than near altitude;
+- no discontinuities;
+- no NaN or infinity;
+- minimum and maximum meet the required supported range.
+
+2. CAMERA FRAMING STATE
+
+- orbit azimuth is retained while zooming;
+- user elevation offset is retained sensibly;
+- resize does not produce invalid parameters;
+- reset restores a documented composition.
+
+3. MODE MANAGER
+
+- manual toggle works;
+- last cinematic state is preserved;
+- embodied look state is preserved where intended;
+- only one mode owns input;
+- only one camera is active;
+- no duplicate audio listener exists if the application has one;
+- the existing no-listener `Ambience` architecture remains valid and survives
+  mode switching.
+
+4. TRANSITION
+
+- transition reaches exact target state;
+- progress is monotonic;
+- input is handled consistently during transition;
+- final camera matrices are finite;
+- transition works from minimum, default, and maximum cinematic scale;
+- transition works with sail raised and lowered.
+
+5. EMBODIED LOOK
+
+- full 360° yaw;
+- zenith pitch is reachable;
+- downward pitch is reachable;
+- no yaw inversion;
+- no NaN near vertical look limits;
+- head stabilisation remains finite under representative raft poses.
+
+6. WORLD-STATE ISOLATION
+
+Verify that camera movement and mode changes do not modify:
+
+- ECEF raft position;
+- ECEF raft velocity;
+- UTC;
+- latitude;
+- longitude;
+- world-time rate;
+- transported canonical frame.
+
+7. INPUT
+
+Where practical, test:
+
+- wheel zoom;
+- pointer drag;
+- touch orbit;
+- pinch zoom;
+- mode toggle;
+- resize;
+- portrait/landscape changes.
+
+8. SERIALISATION BOUNDARY
+
+Do not add camera presentation state to the canonical planetary snapshot unless explicitly justified.
+
+If camera preferences are persisted separately, test that they do not contaminate canonical world snapshots.
+
+BROWSER VERIFICATION
+
+Use a real browser.
+
+Capture screenshots at minimum in these cases:
+
+Use the documented current-moderate preset for the full matrix below. Also
+capture close/default/far cinematic and embodied-horizon views in the calm and
+Southern-Ocean-rough presets (or their documented equivalents). Verify that
+persistent foam, spray and sea-state transitions remain coherent at every
+camera scale.
+
+CINEMATIC
+
+1. Close external view at sunset.
+2. Original/default-style view at sunset.
+3. Medium vista at sunset.
+4. Maximum far aerial view at sunset.
+5. Maximum far aerial view at local noon.
+6. Maximum far aerial view at night.
+7. High user-controlled bird’s-eye orbit.
+8. Low horizon-level orbit.
+
+EMBODIED
+
+9. Default on-raft view with sail raised.
+10. Same direction with sail lowered.
+11. Looking straight up at a real night sky.
+12. Looking down at raft logs and surrounding water.
+13. Looking towards the horizon at sunset.
+14. Looking towards the Moon at night.
+
+RESPONSIVE
+
+15. 3840×2160 desktop.
+16. 1440×900 desktop.
+17. 390×844 mobile portrait.
+18. Representative mobile landscape.
+
+TRANSITION
+
+Capture either:
+
+- a short screen recording; or
+- frame sequences at approximately 0%, 25%, 50%, 75%, and 100%.
+
+Test transitions:
+
+- close cinematic → embodied;
+- default cinematic → embodied;
+- maximum aerial → embodied;
+- embodied → previous cinematic state;
+- sail raised;
+- sail lowered.
+
+VISUAL ACCEPTANCE QUESTIONS
+
+The visual critic must explicitly answer:
+
+1. Does zooming out reveal a substantially larger area of ocean?
+2. Does the camera gain meaningful altitude?
+3. Do waves appear naturally smaller through perspective?
+4. Does the far view communicate extreme solitude and scale?
+5. Is the raft tiny without becoming an artificial icon?
+6. Can the user inspect raft detail closely?
+7. Does embodied view feel located on the raft?
+8. Can the user look directly upward at the stars?
+9. Does the sail obstruct the view physically but tolerably?
+10. Does lowering the sail naturally open the view?
+11. Are transitions smooth and free of clipping?
+12. Does the ocean remain convincing at the farthest range?
+13. Are there any visible mesh edges, repetition, or shimmering?
+14. Does mobile composition remain usable?
+15. Has any planetary or astronomical behaviour regressed?
+
+MINIMAL GRAPHICAL SCOPE
+
+This is a camera and camera-support round.
+
+Graphical work is allowed where required for:
+
+- ocean rendering at altitude;
+- clipping;
+- LOD;
+- horizon geometry and continuity;
+- first-person camera compatibility;
+- transition quality.
+
+“Cinematic” in this round means deliberate framing, motion and scale. Use the
+integrated lighting, atmosphere, colour, water-optics and material style as the
+baseline for judging those camera decisions.
+
+Do not expand into:
+
+- new weather;
+- new cloud systems;
+- new sky colour grading;
+- new lighting art direction;
+- broad water-optics or material redesign;
+- final post-processing/look-development polish;
+- moon phase rendering;
+- star-material polish unrelated to camera visibility;
+- raft redesign;
+- character redesign;
+- new animations beyond what the camera needs.
+
+OUT OF SCOPE
+
+Do not implement:
+
+- automatic idle/watch camera switching;
+- gameplay autopilot;
+- destination selection;
+- routes;
+- GPS;
+- compass;
+- binoculars;
+- radio;
+- shouting;
+- ships;
+- whales;
+- islands;
+- coastlines;
+- global weather;
+- ocean currents;
+- new wind physics;
+- new swell physics;
+- replacement or simplification of the integrated sea-state model;
+- replacement of persistent foam or whitewater history;
+- raft buoyancy changes;
+- swimming;
+- diving;
+- jumping from the raft;
+- first-person hands;
+- character locomotion;
+- bird-controlled camera;
+- raft expansion;
+- salvage;
+- inventory;
+- crafting;
+- hunger;
+- oxygen;
+- stamina;
+- offline travel;
+- narrative opening;
+- awakening animation.
+
+Do not add adjacent features merely because the camera architecture could support them.
+
+IMPLEMENTATION SEQUENCE
+
+Use approximately this sequence:
+
+1. Inspect the integrated ocean round’s documents, implementation, labs and
+   evidence.
+2. Run existing tests, type checking, and build.
+3. Capture baseline repository screenshots and run read-only camera and
+   ocean-scale analyses.
+4. Write `docs/camera/CAMERA_SYSTEM.md`.
+5. Refactor active-camera ownership and input routing.
+6. Implement cinematic scale curve.
+7. Implement altitude, distance, framing, and expanded orbit.
+8. Make the ocean renderer stable at the required far range.
+9. Implement the embodied eye anchor and free-look controller.
+10. Handle character visibility and sail occlusion.
+11. Implement manual mode transition.
+12. Preserve ambience and update listener ownership only if a listener exists.
+13. Add debug controls and telemetry.
+14. Add automated camera tests.
+15. Run full existing and new tests.
+16. Capture all required browser screenshots and transition frames.
+17. Run the internal visual-critic subagent.
+18. Fix the highest-severity findings.
+19. Repeat for no more than three focused review passes.
+20. Run final typecheck, production build, and console validation.
+21. Update documentation and final report.
+
+Do not begin by rewriting the ocean shader.
+
+ACCEPTANCE CRITERIA
+
+The round is complete only when all of the following are true:
+
+1. Two explicit camera modes exist:
+   - cinematic;
+   - embodied on-raft.
+
+2. Cinematic zoom extends substantially beyond the old 60-metre limit.
+
+3. Maximum cinematic distance is at least 600 metres.
+
+4. Maximum cinematic altitude is at least 180 metres.
+
+5. Zoom-out materially increases visible ocean area.
+
+6. The far view makes the raft extremely small and communicates oceanic vastness.
+
+7. The raft is not artificially enlarged or replaced with an icon.
+
+8. The cinematic camera supports close external inspection substantially nearer than the old 22-metre limit.
+
+9. Cinematic orbit supports low horizon-level and high bird’s-eye compositions.
+
+10. The default far view remains visually composed and does not accidentally become a broken top-down map.
+
+11. The embodied camera is placed at a plausible castaway eye position.
+
+12. The embodied camera supports full horizontal look.
+
+13. The embodied camera can look directly to the zenith.
+
+14. The embodied camera can look down at the raft and surrounding water.
+
+15. The sail physically occludes the embodied view.
+
+16. Lowering the sail naturally clears that obstruction.
+
+17. No camera renders from inside the castaway’s head.
+
+18. Head stabilisation feels connected to the raft without producing severe motion sickness.
+
+19. Manual mode switching works with a quick cinematic transition.
+
+20. Transition works from near, default, and far cinematic scales.
+
+21. Transition does not visibly pass through the sail, mast, raft, or character.
+
+22. Last cinematic composition is restored after leaving embodied mode.
+
+23. Existing sail controls function in both camera modes.
+
+24. Existing Sun, Moon direction, stars, and astronomy remain correct.
+
+25. The ocean has no visible edge at the supported far range.
+
+26. Distant water does not exhibit severe repetition, shimmer, moiré, or implausibly large detail.
+
+27. Camera actions do not mutate canonical planetary state.
+
+28. Camera motion uses presentation time rather than accelerated world time.
+
+29. Desktop and touch controls work.
+
+30. 4K, standard desktop, mobile portrait, and mobile landscape are usable.
+
+31. All existing tracked planetary, raft-water, sea-state, CPU/GPU parity and
+    diagnostic-lab tests continue to pass.
+
+32. New camera tests pass.
+
+33. Type checking passes.
+
+34. Production build passes.
+
+35. Fresh loads and every tools-panel/deep-link path produce no material console
+    errors.
+
+36. The visible developer-tools launcher exposes World/General, Buoyancy, Ocean
+    and Camera without requiring query parameters; `Hide all` produces a clean
+    view with no permanent camera HUD or open debug panel.
+
+37. No major out-of-scope gameplay system was added.
+
+38. The final visual review has no unresolved severity-one camera or ocean-scale defect.
+
+39. Existing debug deep links remain operable and open the same shared panels as
+    the visible launcher.
+
+40. Representative calm, moderate and rough sea states remain physically and
+    visually coherent in close, default, far and embodied views.
+
+41. No final-round lighting, atmosphere, colour-grading, water-material or
+    general graphics redesign has been smuggled into this camera round.
+
+DOCUMENTATION
+
+Update:
+
+- `README.md` with camera controls, tools-launcher access, clean-view behaviour
+  and optional debug deep links;
+- `docs/project/FUTURE_ROUNDS.md` to mark the manual cinematic and embodied camera work complete;
+- future automatic idle/watch transitions as still deferred;
+- the final graphics/lighting/atmosphere/material round as the next planned
+  implementation stage.
+
+Create:
+
+- `docs/camera/CAMERA_SYSTEM.md`;
+- `docs/camera/CAMERA_ROUND_REPORT.md`.
+
+FINAL REPORT
+
+At completion, report:
+
+- camera architecture;
+- cinematic scale curve;
+- final minimum and maximum distances;
+- final minimum and maximum altitudes;
+- FOV behaviour;
+- orbit limits;
+- embodied eye-anchor position;
+- sail-occlusion handling;
+- head-stabilisation model;
+- transition design;
+- ocean-rendering changes needed for far view;
+- performance at 4K and mobile-sized viewports;
+- automated test coverage;
+- visual-review findings and fixes;
+- known limitations;
+- exact principal files;
+- commands used for verification.
+
+Include before-and-after screenshots or their repository paths.
+
+Do not claim completion if the far camera merely makes the raft smaller without revealing substantially more ocean area.
+
+Do not claim completion if the embodied camera cannot look directly upward.
+
+Do not claim completion if the ocean visibly fails at the maximum supported camera range.
+
+Begin now.

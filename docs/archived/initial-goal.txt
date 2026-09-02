@@ -1,0 +1,1 @@
+/goal The application satisfies every acceptance criterion in OCEAN_PROTOTYPE_SPEC.md, the production build succeeds, there are no material browser errors, and the latest visual review contains no unresolved severity-one defects.

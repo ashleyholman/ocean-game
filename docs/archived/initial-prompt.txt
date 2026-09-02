@@ -1,0 +1,470 @@
+You are the lead real-time graphics engineer, interaction designer and visual director for a small experimental web game.
+
+Build the working application. Do not merely provide a design document or code excerpts.
+
+PROJECT NAME
+Drift — Atmospheric Ocean Prototype 0.1
+
+CORE EXPERIENCE
+
+The page should create an immediate feeling of romanticised solitude: one tiny human on a crude wooden raft, surrounded by an apparently limitless ocean at sunset.
+
+This prototype is not a sailing simulator, survival game, crafting game or management game. It should not contain technical nautical controls, resources, meters, objectives, quests, inventory, health, hunger, maps or navigation systems.
+
+The visual hierarchy must be:
+
+1. Vast ocean and sky.
+2. Changing light, waves and atmosphere.
+3. A very small raft and human figure.
+4. Almost no interface.
+
+The player should feel that the world is immense and autonomous, and that the raft is only a minute presence within it.
+
+SCOPE
+
+This pass is only an atmospheric visual and interaction prototype.
+
+Implement:
+
+- A beautiful animated ocean.
+- A coherent sunset-to-night sky.
+- A small wooden raft moving convincingly with the waves.
+- A tiny human figure for scale and emotional presence.
+- A distant oblique camera that preserves the horizon.
+- User-controlled camera orbit and zoom.
+- One interaction: raise or lower a crude rag sail.
+- Simple drift caused by wind when the sail is raised.
+- Responsive desktop and mobile presentation.
+
+Do not implement:
+
+- A radio.
+- Islands or land.
+- Ships, whales, birds or encounters.
+- Storms or multiple weather states.
+- Fishing.
+- Paddling or steering.
+- Survival mechanics.
+- Inventory or collectible objects.
+- A map or compass.
+- Saving or offline progression.
+- Multiplayer.
+- Narrative text.
+- A title menu.
+- Any permanent HUD.
+- Additional gameplay systems simply because they seem conventional.
+
+The purpose is to discover whether merely inhabiting this scene is compelling.
+
+TECHNOLOGY
+
+If the repository is empty, initialise a minimal Vite + TypeScript application using Three.js.
+
+Prefer:
+
+- Plain TypeScript rather than React unless the existing repository already requires React.
+- Three.js with WebGL rendering.
+- Modular, readable source files.
+- Strict TypeScript.
+- No heavyweight physics engine.
+- Procedural geometry and shaders where practical.
+- Permissively licensed or CC0 assets only.
+- An ASSET_CREDITS.md file for every external texture, model, sound or environment asset.
+
+Suggested source structure:
+
+src/
+  main.ts
+  scene/
+    Ocean.ts
+    Raft.ts
+    SkySystem.ts
+    CameraRig.ts
+    TimeOfDay.ts
+    WindSystem.ts
+  input/
+    InputController.ts
+  styles.css
+
+This structure is guidance, not a rigid requirement.
+
+WORKFLOW AND SUBAGENTS
+
+Before implementation:
+
+1. Inspect the repository and existing tools.
+2. Write OCEAN_PROTOTYPE_SPEC.md summarising the requirements and technical plan.
+3. Delegate at most three bounded subagent tasks:
+
+   A. Graphics-tech analyst:
+      Investigate the best practical Three.js implementation for animated
+      ocean displacement, reflections, atmospheric sky and stars. This agent
+      is read-only and returns a concise recommendation.
+
+   B. Camera/composition analyst:
+      Review the specified composition and recommend exact camera distances,
+      field of view, orbit limits and responsive behaviour. This agent is
+      read-only.
+
+   C. Visual critic:
+      This agent runs only after the first working implementation. It examines
+      actual screenshots and identifies the five most damaging visual defects,
+      ranked by severity. It must judge composition, scale, water, lighting,
+      horizon, raft integration and visual clutter. It does not edit code.
+
+The main agent is the sole integrator and code editor unless isolated
+worktrees are deliberately created. Wait for relevant subagent findings
+before final integration.
+
+Do not create a large hierarchy of agents. Do not allow agents to add features
+outside this specification.
+
+CAMERA AND COMPOSITION
+
+Use a wide, elevated, three-quarter observer camera.
+
+The default composition should approximately use:
+
+- Camera distance from raft: 30–45 metres.
+- Camera height above water: 10–16 metres.
+- Vertical field of view: approximately 45–52 degrees.
+- Downward viewing angle: approximately 15–25 degrees.
+- Horizon positioned near the upper third of the frame.
+- Raft occupying approximately 8–12% of viewport width.
+
+These are starting values. Adjust them based on actual screenshots.
+
+The camera must not be:
+
+- Top-down.
+- First-person.
+- Closely attached behind the raft.
+- Rigidly parented to the raft.
+- Constantly rotating in a distracting way.
+
+The camera should follow the raft’s horizontal world position using smooth
+spring damping. It should remain substantially stabilised against the raft’s
+pitch and roll, with only extremely subtle vertical movement.
+
+Controls:
+
+- Pointer drag or one-finger drag: orbit around the raft.
+- Mouse wheel or pinch: zoom.
+- Disable free panning away from the raft.
+- Clamp camera elevation so the horizon is always visible.
+- Prevent the camera going below the water.
+- Suggested orbit elevation range: 7–30 degrees above the horizontal.
+- Suggested distance range: 20–65 metres.
+
+After approximately 20 seconds without camera input, allow a very gentle
+cinematic drift of no more than about 10–15 degrees over 30 seconds. Stop this
+immediately when the player interacts. Do not perform a perpetual full orbit.
+
+Frame the raft in the lower-middle area rather than filling the centre of the
+screen. Ocean and sky must dominate every composition.
+
+OCEAN
+
+Create an ocean that looks natural and materially convincing rather than like
+a flat blue plane or swimming pool.
+
+Use a custom animated water surface or an equivalent high-quality approach
+with:
+
+- Several broad Gerstner-style wave components or another coherent wave model.
+- Moderate swell suitable for a small raft.
+- Approximate broad wave amplitude of 0.3–0.7 metres in the default scene.
+- Smaller high-frequency normal detail.
+- Fresnel reflection.
+- View-dependent specular highlights.
+- A visible trail of reflected sunlight across the water.
+- Subtle moonlight reflection after sunset.
+- Atmospheric fading and haze towards the horizon.
+- Sparse, restrained foam or whitecaps where appropriate.
+- Natural deep-blue and slate-blue water rather than tropical turquoise.
+
+Avoid exaggerated storm waves in this version.
+
+The ocean should appear effectively infinite. Re-centre or tile the surface as
+needed so the player cannot see an edge. Avoid precision problems during
+drift.
+
+The wave system must expose a CPU-side sampling function, or an equivalent
+method, so the raft can use the same wave definition as the rendered water.
+
+RAFT MOVEMENT
+
+The raft must visibly belong to the water rather than floating through an
+unrelated animation.
+
+Sample wave height and surface orientation at multiple positions beneath the
+raft. Use those samples to calculate:
+
+- Vertical position.
+- Pitch.
+- Roll.
+
+Apply damping so the response has mass and does not jitter.
+
+Do not rigidly copy a single wave normal. Use at least three sample points or
+another robust method that produces convincing orientation.
+
+The raft should slowly drift across the hidden world. It may remain near the
+render origin while world offsets are accumulated internally.
+
+RAFT DESIGN
+
+Build a small, visually credible improvised raft, approximately 3.2 by
+2.2 metres:
+
+- Uneven weathered logs or heavy planks.
+- Visible rope lashings.
+- Imperfect construction.
+- One crude mast.
+- One faded, patched, off-white rag sail.
+- No polished yacht components.
+- No elaborate equipment.
+- No visible engine.
+- No technical instrument panel.
+
+Include one small seated or reclining human figure, approximately 1.75 metres
+tall, primarily as a silhouette and scale reference.
+
+Do not spend excessive time producing a detailed face or character model. A
+tasteful, low-detail figure is preferable to an uncanny high-detail one.
+
+SAIL INTERACTION
+
+Spacebar, or tapping/clicking the sail or mast, toggles the sail between raised
+and lowered.
+
+Animate the transition over roughly 1–1.5 seconds.
+
+When raised:
+
+- The sail should have subtle cloth deformation and flutter.
+- The raft’s drift should gradually accelerate in the fixed wind direction.
+- Suggested target drift speed: approximately 0.4–0.7 metres per second.
+
+When lowered:
+
+- Show the cloth gathered or rolled near the mast.
+- The raft should retain a much slower background drift.
+- Suggested drift speed: approximately 0.05–0.15 metres per second.
+
+There is no steering, trimming, tacking, port/starboard control or optimisation.
+The sail is deliberately binary: up or down.
+
+The wind determines the direction. The player does not.
+
+SKY, SUNSET AND NIGHT
+
+Construct a coherent world-space sky rather than applying a simple
+screen-space gradient.
+
+The western direction should contain:
+
+- A low sun close to the horizon.
+- Warm, natural gold and subdued orange light.
+- Thin illuminated clouds.
+- A reflected sun path across the water.
+
+The opposite side of the world should transition into:
+
+- Cooler indigo and deep blue.
+- The first visible stars.
+- A moon or moon glow once the sun has set sufficiently.
+- Noticeably darker water and sky.
+
+Do not force the western sunset and eastern night sky into one narrow camera
+view. They exist in different world directions. The player discovers the
+contrast by orbiting around the raft.
+
+The default experience should begin shortly before sunset and transition
+gradually into early night over approximately 8–12 real minutes.
+
+Implement:
+
+- Continuous sun movement.
+- Directional light and colour-temperature change.
+- Atmospheric scattering or a convincing approximation.
+- Stars fading in based on solar elevation.
+- Moonlight fading in gradually.
+- Exposure adjustments that avoid abrupt changes.
+- Clouds that remain subtle and do not cover the entire sky.
+
+The effect should be cinematic but physically plausible enough to avoid
+looking like a generic oversaturated fantasy wallpaper.
+
+Avoid:
+
+- Excessive bloom.
+- Neon purple shadows.
+- Extreme orange-and-teal grading.
+- Heavy lens flares.
+- Chromatic aberration.
+- Artificially dense stars while the sun is still bright.
+
+Provide a developer-only tuning panel enabled by `?debug=1`. It may expose:
+
+- Time of day.
+- Time progression speed.
+- Sun direction.
+- Wave amplitude.
+- Wind direction and strength.
+- Camera distance.
+- Exposure.
+
+The debug interface must never appear during normal use.
+
+LIGHTING AND RENDERING
+
+Use appropriate colour management and cinematic tone mapping.
+
+Recommended qualities:
+
+- Physically coherent sun direction.
+- Soft ambient sky illumination.
+- ACES-style filmic tone mapping or an equivalent restrained method.
+- Subtle bloom only around genuinely bright light sources.
+- High-quality anti-aliasing where practical.
+- Soft atmospheric haze at the horizon.
+- Correct sRGB output.
+- Dynamic pixel ratio capped to protect performance.
+
+The raft should receive warm sunset light on one side and cool ambient light
+on the other. It must not appear pasted onto the scene.
+
+AUDIO
+
+Visual quality takes priority.
+
+After the visual scene is stable, add minimal ocean and wind ambience only if
+it can be done cleanly with a permissively licensed asset or a convincing
+procedural implementation.
+
+Because browsers may block autoplay, begin audio after the first user
+interaction while allowing the visual scene to animate immediately.
+
+Provide `M` as a mute toggle.
+
+Do not delay completion of the prototype for audio.
+
+INTERFACE
+
+The scene should render immediately without a title screen.
+
+A small translucent hint may appear temporarily:
+
+“Drag to look · Pinch or scroll to zoom · Space to raise sail”
+
+Fade it out completely after several seconds.
+
+Do not add:
+
+- Buttons around the edge.
+- Numerical readouts.
+- Coordinates.
+- Icons.
+- A minimap.
+- A clock.
+- A settings panel in normal mode.
+- A tutorial window.
+- A logbook.
+- Decorative UI frames.
+
+PERFORMANCE
+
+Target:
+
+- Smooth rendering on a modern desktop at 1440p.
+- At least a usable 30 frames per second at a mobile-sized viewport.
+- Responsive layout in landscape and portrait.
+- Touch camera controls.
+- No enormous textures or unnecessary geometry.
+- No unbounded object allocation inside the animation loop.
+
+Cap device pixel ratio where appropriate and reduce expensive effects
+gracefully on smaller devices.
+
+QUALITY REVIEW
+
+After the first implementation:
+
+1. Run the application in a real browser.
+2. Capture screenshots at approximately:
+   - 1440 × 900 desktop.
+   - 390 × 844 mobile portrait.
+   - At least two different camera directions.
+   - Sunset and early-night states.
+3. Give those screenshots to the visual-critic subagent.
+4. Fix the critic’s highest-severity findings.
+5. Repeat visual review for no more than three focused passes.
+
+Do not allow the critic to request additional gameplay systems.
+
+The critic should specifically reject:
+
+- A raft that is too large.
+- A camera that resembles a sailing simulator.
+- A flat or obviously tiled ocean.
+- A missing or unconvincing horizon.
+- Water motion not reflected in raft motion.
+- Oversaturated lighting.
+- Excessive UI.
+- A sky that looks like a static background image.
+- Mobile framing that crops out the horizon.
+- An uncanny or dominant character model.
+
+VERIFICATION
+
+Before declaring completion:
+
+- Install dependencies successfully.
+- Run the production build.
+- Run linting or type checking if configured.
+- Confirm there are no material browser console errors.
+- Verify camera orbit, zoom and touch behaviour.
+- Verify the sail can be raised and lowered repeatedly.
+- Verify the raft remains synchronised with the waves.
+- Verify resize and orientation changes.
+- Verify normal mode contains no debug interface.
+- Confirm every external asset has provenance recorded.
+
+ACCEPTANCE CRITERIA
+
+The prototype is complete only when:
+
+1. Opening the page immediately communicates “one tiny person drifting on a
+   raft in an immense ocean.”
+2. The horizon is visible in the default view.
+3. The raft is small but still readable.
+4. The ocean has convincing large-scale motion and fine surface detail.
+5. The raft visibly rises, pitches and rolls with the same waves.
+6. Camera orbit reveals a spatially coherent sunset side and darker
+   star-emerging side of the world.
+7. Raising the sail visibly changes the raft and modestly increases drift,
+   without introducing sailing controls.
+8. After the temporary instruction fades, the normal scene has no visible UI.
+9. Desktop and mobile layouts remain usable.
+10. The production build succeeds with no material errors.
+
+DELIVERABLES
+
+Leave the repository with:
+
+- A working implementation.
+- OCEAN_PROTOTYPE_SPEC.md.
+- A concise README containing setup and run commands.
+- ASSET_CREDITS.md.
+- A brief final report describing:
+  - What was implemented.
+  - The ocean and sky techniques used.
+  - Performance considerations.
+  - Known visual limitations.
+  - The exact files containing the major systems.
+
+Do not claim visual quality that was not verified. Do not add unrequested
+features to make the project appear more complete.
+
+Build this prototype now.

@@ -1,0 +1,1717 @@
+{
+  "formatVersion": 2,
+  "note": "Committed prescribed-speed ship-response baseline. Regenerate intentionally after an encounter or motion change and review the Git diff; exact cells are evidence, while CI enforces broader physical invariants.",
+  "limitations": [
+    "Horizontal travel is a prescribed bow-forward tow; surge, sway and yaw are not force-integrated.",
+    "Speed is through still mean water; current, leeway, propulsion and steering are absent.",
+    "Sea-state purpose is environmental metadata, not a schooner safety rating.",
+    "Overtopping is the current longitudinal crown-entry detector, not a deck-water volume model.",
+    "Point acceleration and jerk are rigid-body kinematics and exclude gravity, rig flex and impacts."
+  ],
+  "regenerateCommand": "npm run ship:encounter",
+  "configuration": {
+    "seaStates": [
+      "CURRENT_MODERATE"
+    ],
+    "headingsDeg": [
+      9,
+      54,
+      99,
+      144,
+      189,
+      234,
+      279,
+      324
+    ],
+    "referenceWaveHeadingDeg": 54,
+    "headingConvention": "Presentation heading is the true-style bearing the bow points toward, degrees clockwise from presentation north. Model yaw is also recorded; model yaw 0 degrees points the bow toward presentation heading 180 degrees.",
+    "warmupSeconds": 20,
+    "measurementSeconds": 70,
+    "callerHz": 60,
+    "physicsHz": 240,
+    "speedThroughWaterMps": 4,
+    "waveInitialTimeSeconds": 0,
+    "representativePoints": [
+      {
+        "name": "deck",
+        "localMetres": {
+          "x": 0,
+          "y": 4.83735573411249,
+          "z": 0
+        },
+        "description": "Standing-body centre one metre above the working deck amidships."
+      },
+      {
+        "name": "cabin",
+        "localMetres": {
+          "x": 0,
+          "y": 3.45,
+          "z": -5
+        },
+        "description": "Standing-body centre one metre above the captain's-cabin sole."
+      },
+      {
+        "name": "lookout",
+        "localMetres": {
+          "x": 0,
+          "y": 13.600000000000001,
+          "z": 3.26862941728581
+        },
+        "description": "Standing-body centre one metre above the foremast lookout platform."
+      }
+    ]
+  },
+  "vessel": {
+    "hullLengthMetres": 15.5,
+    "maximumBeamMetres": 5,
+    "designDraughtMetres": 2.3,
+    "displacementTonnes": 81.580347,
+    "stationCount": 39
+  },
+  "freeDecay": {
+    "initialAngleDeg": 5,
+    "durationSeconds": 30,
+    "roll": {
+      "measuredPeriodSeconds": 5.955472,
+      "zeroCrossingCount": 10
+    },
+    "pitch": {
+      "measuredPeriodSeconds": 3.249314,
+      "effectiveDampingRatio": 0.405902,
+      "closedFormUndampedPeriodSeconds": 2.750559,
+      "measuredToClosedFormRatio": 1.181329,
+      "zeroCrossingsSeconds": [
+        1.015617,
+        2.634789,
+        4.267024,
+        5.894815,
+        7.525116,
+        9.156016,
+        10.787731,
+        12.419747,
+        14.051551,
+        15.682478,
+        17.311826,
+        18.938903,
+        20.563095,
+        22.183928,
+        23.801077,
+        25.414368,
+        27.023762,
+        28.629304
+      ],
+      "peaks": [
+        {
+          "timeSeconds": 0,
+          "pitchDeg": 5
+        },
+        {
+          "timeSeconds": 1.6125,
+          "pitchDeg": -1.28463
+        },
+        {
+          "timeSeconds": 3.233333,
+          "pitchDeg": 0.319574
+        },
+        {
+          "timeSeconds": 4.8625,
+          "pitchDeg": -0.077885
+        },
+        {
+          "timeSeconds": 6.491667,
+          "pitchDeg": 0.019076
+        },
+        {
+          "timeSeconds": 8.120833,
+          "pitchDeg": -0.004668
+        },
+        {
+          "timeSeconds": 9.754167,
+          "pitchDeg": 0.001145
+        },
+        {
+          "timeSeconds": 11.3875,
+          "pitchDeg": -0.000282
+        },
+        {
+          "timeSeconds": 13.016667,
+          "pitchDeg": 0.000069
+        },
+        {
+          "timeSeconds": 14.65,
+          "pitchDeg": -0.000017
+        },
+        {
+          "timeSeconds": 16.283333,
+          "pitchDeg": 0.000004
+        },
+        {
+          "timeSeconds": 17.9125,
+          "pitchDeg": -0.000001
+        }
+      ]
+    }
+  },
+  "summary": {
+    "caseCount": 8,
+    "maximumPeakHeave": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 234,
+      "value": 1.08802
+    },
+    "maximumRmsHeave": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 279,
+      "value": 0.392222
+    },
+    "maximumPeakRoll": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 324,
+      "value": 21.268047
+    },
+    "maximumPeakPitch": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 234,
+      "value": 8.149809
+    },
+    "maximumVerticalAcceleration": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 234,
+      "value": 3.599781
+    },
+    "maximumLookoutAcceleration": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 234,
+      "value": 7.997673
+    },
+    "smallestRollLimiterMargin": {
+      "seaState": "CURRENT_MODERATE",
+      "presentationHeadingDeg": 324,
+      "value": 18.838999
+    },
+    "overtoppingCaseCount": 0,
+    "limiterContactCaseCount": 0
+  },
+  "cases": [
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 9,
+      "modelYawDeg": 171,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.366275,
+        "heaveDisplacementMetres": {
+          "min": -0.686701,
+          "max": 0.756673,
+          "mean": 0,
+          "rms": 0.326197,
+          "standardDeviation": 0.326197,
+          "peakAbsolute": 0.756673
+        },
+        "verticalSpeedMps": {
+          "min": -0.757018,
+          "max": 0.824144,
+          "mean": -0.0032,
+          "rms": 0.365298,
+          "standardDeviation": 0.365283,
+          "peakAbsolute": 0.824144
+        },
+        "pitchDeg": {
+          "min": -4.299072,
+          "max": 3.665544,
+          "mean": -0.03682,
+          "rms": 2.066698,
+          "standardDeviation": 2.06637,
+          "peakAbsolute": 4.299072
+        },
+        "rollDeg": {
+          "min": -12.636302,
+          "max": 8.170859,
+          "mean": 0.148316,
+          "rms": 4.592059,
+          "standardDeviation": 4.589664,
+          "peakAbsolute": 12.636302
+        },
+        "pitchRateDegPerSecond": {
+          "min": -4.492596,
+          "max": 4.889823,
+          "mean": -0.036796,
+          "rms": 1.719299,
+          "standardDeviation": 1.718905,
+          "peakAbsolute": 4.889823
+        },
+        "rollRateDegPerSecond": {
+          "min": -12.788613,
+          "max": 12.372375,
+          "mean": -0.086107,
+          "rms": 5.151286,
+          "standardDeviation": 5.150566,
+          "peakAbsolute": 12.788613
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.25106,
+          "max": 1.119677,
+          "mean": 0.004889,
+          "rms": 0.536928,
+          "standardDeviation": 0.536905,
+          "peakAbsolute": 1.25106
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -5.587795,
+          "max": 5.910575,
+          "mean": 0.016763,
+          "rms": 2.456573,
+          "standardDeviation": 2.456516,
+          "peakAbsolute": 5.910575
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -15.4004,
+          "max": 17.428823,
+          "mean": 0.096439,
+          "rms": 7.312699,
+          "standardDeviation": 7.312063,
+          "peakAbsolute": 17.428823
+        },
+        "verticalJerkMps3": {
+          "min": -1.610757,
+          "max": 2.284047,
+          "mean": 0.001958,
+          "rms": 0.903387,
+          "standardDeviation": 0.903385,
+          "peakAbsolute": 2.284047
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.050963,
+            "max": 1.33219,
+            "mean": 0.598852,
+            "rms": 0.663705,
+            "standardDeviation": 0.286149,
+            "peakAbsolute": 1.33219
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.069375,
+            "max": 2.236756,
+            "mean": 0.982017,
+            "rms": 1.102984,
+            "standardDeviation": 0.502213,
+            "peakAbsolute": 2.236756
+          },
+          "peakAccelerationG": 0.135799
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.041064,
+            "max": 1.290892,
+            "mean": 0.540394,
+            "rms": 0.622413,
+            "standardDeviation": 0.308823,
+            "peakAbsolute": 1.290892
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.026976,
+            "max": 2.481336,
+            "mean": 0.919735,
+            "rms": 1.071084,
+            "standardDeviation": 0.548916,
+            "peakAbsolute": 2.481336
+          },
+          "peakAccelerationG": 0.131589
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.220257,
+            "max": 3.679962,
+            "mean": 1.509915,
+            "rms": 1.668503,
+            "standardDeviation": 0.70997,
+            "peakAbsolute": 3.679962
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.155423,
+            "max": 6.482877,
+            "mean": 2.460832,
+            "rms": 2.766429,
+            "standardDeviation": 1.263896,
+            "peakAbsolute": 6.482877
+          },
+          "peakAccelerationG": 0.375124
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.923077,
+          "max": 0.974359,
+          "mean": 0.95381,
+          "rms": 0.953914,
+          "standardDeviation": 0.014113,
+          "peakAbsolute": 0.974359
+        },
+        "submergedVolumeRatio": {
+          "min": 0.838265,
+          "max": 1.148866,
+          "mean": 1.002962,
+          "rms": 1.00553,
+          "standardDeviation": 0.071809,
+          "peakAbsolute": 1.148866
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 35.807974,
+        "rollMarginDeg": 27.470744,
+        "pitchRateMarginDegPerSecond": 338.884854,
+        "rollRateMarginDegPerSecond": 330.986064,
+        "verticalSpeedMarginMps": 11.175856,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 54,
+      "modelYawDeg": 126,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.372072,
+        "heaveDisplacementMetres": {
+          "min": -0.628248,
+          "max": 0.550718,
+          "mean": 0,
+          "rms": 0.287737,
+          "standardDeviation": 0.287737,
+          "peakAbsolute": 0.628248
+        },
+        "verticalSpeedMps": {
+          "min": -0.438206,
+          "max": 0.418311,
+          "mean": 0.006221,
+          "rms": 0.220034,
+          "standardDeviation": 0.219946,
+          "peakAbsolute": 0.438206
+        },
+        "pitchDeg": {
+          "min": -6.064055,
+          "max": 5.625498,
+          "mean": 0.062449,
+          "rms": 2.756156,
+          "standardDeviation": 2.755449,
+          "peakAbsolute": 6.064055
+        },
+        "rollDeg": {
+          "min": -12.787098,
+          "max": 12.442045,
+          "mean": 0.078224,
+          "rms": 6.046735,
+          "standardDeviation": 6.046229,
+          "peakAbsolute": 12.787098
+        },
+        "pitchRateDegPerSecond": {
+          "min": -4.596884,
+          "max": 4.474141,
+          "mean": 0.049812,
+          "rms": 2.148441,
+          "standardDeviation": 2.147863,
+          "peakAbsolute": 4.596884
+        },
+        "rollRateDegPerSecond": {
+          "min": -12.238971,
+          "max": 12.295378,
+          "mean": 0.002934,
+          "rms": 5.92986,
+          "standardDeviation": 5.929859,
+          "peakAbsolute": 12.295378
+        },
+        "verticalAccelerationMps2": {
+          "min": -0.353288,
+          "max": 0.408712,
+          "mean": 0.003489,
+          "rms": 0.180413,
+          "standardDeviation": 0.180379,
+          "peakAbsolute": 0.408712
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -3.380432,
+          "max": 4.646913,
+          "mean": -0.010635,
+          "rms": 1.8775,
+          "standardDeviation": 1.87747,
+          "peakAbsolute": 4.646913
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -11.696605,
+          "max": 12.430041,
+          "mean": -0.084451,
+          "rms": 6.08228,
+          "standardDeviation": 6.081694,
+          "peakAbsolute": 12.430041
+        },
+        "verticalJerkMps3": {
+          "min": -0.320046,
+          "max": 0.39436,
+          "mean": -0.002671,
+          "rms": 0.169685,
+          "standardDeviation": 0.169664,
+          "peakAbsolute": 0.39436
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.06042,
+            "max": 0.645863,
+            "mean": 0.338242,
+            "rms": 0.367627,
+            "standardDeviation": 0.14402,
+            "peakAbsolute": 0.645863
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.026563,
+            "max": 0.711212,
+            "mean": 0.342014,
+            "rms": 0.375432,
+            "standardDeviation": 0.154839,
+            "peakAbsolute": 0.711212
+          },
+          "peakAccelerationG": 0.065837
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.022235,
+            "max": 0.520454,
+            "mean": 0.284719,
+            "rms": 0.306448,
+            "standardDeviation": 0.113339,
+            "peakAbsolute": 0.520454
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.01501,
+            "max": 0.623301,
+            "mean": 0.275247,
+            "rms": 0.295535,
+            "standardDeviation": 0.107611,
+            "peakAbsolute": 0.623301
+          },
+          "peakAccelerationG": 0.053053
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.031092,
+            "max": 2.485629,
+            "mean": 1.172575,
+            "rms": 1.317189,
+            "standardDeviation": 0.600046,
+            "peakAbsolute": 2.485629
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.052036,
+            "max": 2.756783,
+            "mean": 1.238933,
+            "rms": 1.40372,
+            "standardDeviation": 0.659906,
+            "peakAbsolute": 2.756783
+          },
+          "peakAccelerationG": 0.253377
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.923077,
+          "max": 0.974359,
+          "mean": 0.954347,
+          "rms": 0.95446,
+          "standardDeviation": 0.014717,
+          "peakAbsolute": 0.974359
+        },
+        "submergedVolumeRatio": {
+          "min": 0.922003,
+          "max": 1.086806,
+          "mean": 1.002354,
+          "rms": 1.003165,
+          "standardDeviation": 0.040326,
+          "peakAbsolute": 1.086806
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 34.042991,
+        "rollMarginDeg": 27.319948,
+        "pitchRateMarginDegPerSecond": 339.177793,
+        "rollRateMarginDegPerSecond": 331.479299,
+        "verticalSpeedMarginMps": 11.561794,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 99,
+      "modelYawDeg": 81,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.372848,
+        "heaveDisplacementMetres": {
+          "min": -0.659427,
+          "max": 0.725188,
+          "mean": 0,
+          "rms": 0.305328,
+          "standardDeviation": 0.305328,
+          "peakAbsolute": 0.725188
+        },
+        "verticalSpeedMps": {
+          "min": -0.786153,
+          "max": 0.824266,
+          "mean": -0.003876,
+          "rms": 0.316521,
+          "standardDeviation": 0.316498,
+          "peakAbsolute": 0.824266
+        },
+        "pitchDeg": {
+          "min": -4.239073,
+          "max": 3.997161,
+          "mean": 0.007099,
+          "rms": 1.886095,
+          "standardDeviation": 1.886082,
+          "peakAbsolute": 4.239073
+        },
+        "rollDeg": {
+          "min": -8.969183,
+          "max": 7.60632,
+          "mean": -0.074656,
+          "rms": 3.64113,
+          "standardDeviation": 3.640364,
+          "peakAbsolute": 8.969183
+        },
+        "pitchRateDegPerSecond": {
+          "min": -3.241003,
+          "max": 3.661056,
+          "mean": 0.057702,
+          "rms": 1.417921,
+          "standardDeviation": 1.416746,
+          "peakAbsolute": 3.661056
+        },
+        "rollRateDegPerSecond": {
+          "min": -8.903351,
+          "max": 8.947555,
+          "mean": -0.081834,
+          "rms": 3.685855,
+          "standardDeviation": 3.684946,
+          "peakAbsolute": 8.947555
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.115396,
+          "max": 1.119275,
+          "mean": -0.007798,
+          "rms": 0.481723,
+          "standardDeviation": 0.48166,
+          "peakAbsolute": 1.119275
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -3.561156,
+          "max": 3.761166,
+          "mean": 0.028795,
+          "rms": 1.678283,
+          "standardDeviation": 1.678036,
+          "peakAbsolute": 3.761166
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -9.987855,
+          "max": 11.806618,
+          "mean": 0.07124,
+          "rms": 4.898231,
+          "standardDeviation": 4.897712,
+          "peakAbsolute": 11.806618
+        },
+        "verticalJerkMps3": {
+          "min": -1.782296,
+          "max": 2.133697,
+          "mean": -0.000558,
+          "rms": 0.850877,
+          "standardDeviation": 0.850877,
+          "peakAbsolute": 2.133697
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.031496,
+            "max": 1.221935,
+            "mean": 0.4843,
+            "rms": 0.548994,
+            "standardDeviation": 0.25855,
+            "peakAbsolute": 1.221935
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.107321,
+            "max": 2.226219,
+            "mean": 0.838266,
+            "rms": 0.955603,
+            "standardDeviation": 0.458789,
+            "peakAbsolute": 2.226219
+          },
+          "peakAccelerationG": 0.12456
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.016826,
+            "max": 1.208545,
+            "mean": 0.43843,
+            "rms": 0.517352,
+            "standardDeviation": 0.274648,
+            "peakAbsolute": 1.208545
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.085387,
+            "max": 2.059626,
+            "mean": 0.764146,
+            "rms": 0.904094,
+            "standardDeviation": 0.483185,
+            "peakAbsolute": 2.059626
+          },
+          "peakAccelerationG": 0.123195
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.118206,
+            "max": 2.456555,
+            "mean": 1.055455,
+            "rms": 1.167969,
+            "standardDeviation": 0.500167,
+            "peakAbsolute": 2.456555
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.176839,
+            "max": 4.124162,
+            "mean": 1.798719,
+            "rms": 1.96797,
+            "standardDeviation": 0.798446,
+            "peakAbsolute": 4.124162
+          },
+          "peakAccelerationG": 0.250413
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.923077,
+          "max": 0.974359,
+          "mean": 0.954212,
+          "rms": 0.954298,
+          "standardDeviation": 0.012754,
+          "peakAbsolute": 0.974359
+        },
+        "submergedVolumeRatio": {
+          "min": 0.835266,
+          "max": 1.179785,
+          "mean": 1.00236,
+          "rms": 1.004561,
+          "standardDeviation": 0.066463,
+          "peakAbsolute": 1.179785
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 35.867973,
+        "rollMarginDeg": 31.137863,
+        "pitchRateMarginDegPerSecond": 340.113621,
+        "rollRateMarginDegPerSecond": 334.827122,
+        "verticalSpeedMarginMps": 11.175734,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 144,
+      "modelYawDeg": 36,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.362986,
+        "heaveDisplacementMetres": {
+          "min": -0.68484,
+          "max": 0.713268,
+          "mean": 0,
+          "rms": 0.319813,
+          "standardDeviation": 0.319813,
+          "peakAbsolute": 0.713268
+        },
+        "verticalSpeedMps": {
+          "min": -1.052607,
+          "max": 0.971435,
+          "mean": 0.007242,
+          "rms": 0.39101,
+          "standardDeviation": 0.390943,
+          "peakAbsolute": 1.052607
+        },
+        "pitchDeg": {
+          "min": -5.55667,
+          "max": 5.150829,
+          "mean": -0.035024,
+          "rms": 2.046972,
+          "standardDeviation": 2.046673,
+          "peakAbsolute": 5.55667
+        },
+        "rollDeg": {
+          "min": -14.875032,
+          "max": 15.534969,
+          "mean": -0.419589,
+          "rms": 7.676189,
+          "standardDeviation": 7.664713,
+          "peakAbsolute": 15.534969
+        },
+        "pitchRateDegPerSecond": {
+          "min": -8.87051,
+          "max": 8.127153,
+          "mean": 0.005355,
+          "rms": 3.396327,
+          "standardDeviation": 3.396323,
+          "peakAbsolute": 8.87051
+        },
+        "rollRateDegPerSecond": {
+          "min": -15.746276,
+          "max": 14.71998,
+          "mean": 0.02073,
+          "rms": 7.730127,
+          "standardDeviation": 7.730099,
+          "peakAbsolute": 15.746276
+        },
+        "verticalAccelerationMps2": {
+          "min": -1.830533,
+          "max": 1.531491,
+          "mean": -0.001306,
+          "rms": 0.714347,
+          "standardDeviation": 0.714346,
+          "peakAbsolute": 1.830533
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -18.900059,
+          "max": 17.79395,
+          "mean": 0.127351,
+          "rms": 8.032557,
+          "standardDeviation": 8.031547,
+          "peakAbsolute": 18.900059
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -23.658574,
+          "max": 16.857308,
+          "mean": -0.010436,
+          "rms": 8.889656,
+          "standardDeviation": 8.88965,
+          "peakAbsolute": 23.658574
+        },
+        "verticalJerkMps3": {
+          "min": -3.417091,
+          "max": 4.207966,
+          "mean": -0.021166,
+          "rms": 1.725768,
+          "standardDeviation": 1.725638,
+          "peakAbsolute": 4.207966
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.084886,
+            "max": 1.953318,
+            "mean": 0.861442,
+            "rms": 0.950207,
+            "standardDeviation": 0.401012,
+            "peakAbsolute": 1.953318
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.173396,
+            "max": 5.458856,
+            "mean": 1.980572,
+            "rms": 2.201313,
+            "standardDeviation": 0.960788,
+            "peakAbsolute": 5.458856
+          },
+          "peakAccelerationG": 0.199115
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.043044,
+            "max": 2.599596,
+            "mean": 0.758575,
+            "rms": 0.900434,
+            "standardDeviation": 0.485123,
+            "peakAbsolute": 2.599596
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.081724,
+            "max": 6.69652,
+            "mean": 1.797636,
+            "rms": 2.137059,
+            "standardDeviation": 1.155649,
+            "peakAbsolute": 6.69652
+          },
+          "peakAccelerationG": 0.264994
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.151669,
+            "max": 5.880376,
+            "mean": 2.408499,
+            "rms": 2.647707,
+            "standardDeviation": 1.099766,
+            "peakAbsolute": 5.880376
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.550367,
+            "max": 14.340686,
+            "mean": 5.150991,
+            "rms": 5.818469,
+            "standardDeviation": 2.705898,
+            "peakAbsolute": 14.340686
+          },
+          "peakAccelerationG": 0.599427
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.897436,
+          "max": 1,
+          "mean": 0.953748,
+          "rms": 0.953909,
+          "standardDeviation": 0.017491,
+          "peakAbsolute": 1
+        },
+        "submergedVolumeRatio": {
+          "min": 0.763991,
+          "max": 1.233147,
+          "mean": 1.005843,
+          "rms": 1.010255,
+          "standardDeviation": 0.09431,
+          "peakAbsolute": 1.233147
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 34.550376,
+        "rollMarginDeg": 24.572077,
+        "pitchRateMarginDegPerSecond": 334.904167,
+        "rollRateMarginDegPerSecond": 328.028401,
+        "verticalSpeedMarginMps": 10.947393,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 189,
+      "modelYawDeg": 351,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.375678,
+        "heaveDisplacementMetres": {
+          "min": -0.581422,
+          "max": 0.467038,
+          "mean": 0,
+          "rms": 0.211649,
+          "standardDeviation": 0.211649,
+          "peakAbsolute": 0.581422
+        },
+        "verticalSpeedMps": {
+          "min": -0.96202,
+          "max": 0.837721,
+          "mean": 0.010457,
+          "rms": 0.34473,
+          "standardDeviation": 0.344572,
+          "peakAbsolute": 0.96202
+        },
+        "pitchDeg": {
+          "min": -5.082161,
+          "max": 5.387341,
+          "mean": -0.102268,
+          "rms": 2.145816,
+          "standardDeviation": 2.143378,
+          "peakAbsolute": 5.387341
+        },
+        "rollDeg": {
+          "min": -6.591286,
+          "max": 5.894389,
+          "mean": -0.11433,
+          "rms": 2.696111,
+          "standardDeviation": 2.693686,
+          "peakAbsolute": 6.591286
+        },
+        "pitchRateDegPerSecond": {
+          "min": -11.366356,
+          "max": 7.825582,
+          "mean": -0.030032,
+          "rms": 3.87017,
+          "standardDeviation": 3.870054,
+          "peakAbsolute": 11.366356
+        },
+        "rollRateDegPerSecond": {
+          "min": -8.534421,
+          "max": 8.278302,
+          "mean": -0.031325,
+          "rms": 3.550521,
+          "standardDeviation": 3.550383,
+          "peakAbsolute": 8.534421
+        },
+        "verticalAccelerationMps2": {
+          "min": -2.015478,
+          "max": 2.041455,
+          "mean": 0.006035,
+          "rms": 0.693591,
+          "standardDeviation": 0.693564,
+          "peakAbsolute": 2.041455
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -26.292021,
+          "max": 21.484677,
+          "mean": 0.128497,
+          "rms": 9.209026,
+          "standardDeviation": 9.208129,
+          "peakAbsolute": 26.292021
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -14.117795,
+          "max": 13.277583,
+          "mean": -0.049383,
+          "rms": 5.529147,
+          "standardDeviation": 5.528926,
+          "peakAbsolute": 14.117795
+        },
+        "verticalJerkMps3": {
+          "min": -4.223953,
+          "max": 4.970569,
+          "mean": -0.022728,
+          "rms": 1.709942,
+          "standardDeviation": 1.709791,
+          "peakAbsolute": 4.970569
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.082306,
+            "max": 2.107272,
+            "mean": 0.796422,
+            "rms": 0.887791,
+            "standardDeviation": 0.39228,
+            "peakAbsolute": 2.107272
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.053987,
+            "max": 6.137666,
+            "mean": 2.02219,
+            "rms": 2.270145,
+            "standardDeviation": 1.031651,
+            "peakAbsolute": 6.137666
+          },
+          "peakAccelerationG": 0.214809
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.041284,
+            "max": 3.147015,
+            "mean": 0.851198,
+            "rms": 1.046181,
+            "standardDeviation": 0.60824,
+            "peakAbsolute": 3.147015
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.044718,
+            "max": 8.766315,
+            "mean": 2.23399,
+            "rms": 2.729907,
+            "standardDeviation": 1.568975,
+            "peakAbsolute": 8.766315
+          },
+          "peakAccelerationG": 0.320797
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.172232,
+            "max": 6.197425,
+            "mean": 2.133661,
+            "rms": 2.382727,
+            "standardDeviation": 1.060603,
+            "peakAbsolute": 6.197425
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.18863,
+            "max": 18.549093,
+            "mean": 5.653011,
+            "rms": 6.386031,
+            "standardDeviation": 2.970666,
+            "peakAbsolute": 18.549093
+          },
+          "peakAccelerationG": 0.631746
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.923077,
+          "max": 1,
+          "mean": 0.954096,
+          "rms": 0.954243,
+          "standardDeviation": 0.01674,
+          "peakAbsolute": 1
+        },
+        "submergedVolumeRatio": {
+          "min": 0.76003,
+          "max": 1.283192,
+          "mean": 1.006939,
+          "rms": 1.011353,
+          "standardDeviation": 0.094386,
+          "peakAbsolute": 1.283192
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 34.719705,
+        "rollMarginDeg": 33.51576,
+        "pitchRateMarginDegPerSecond": 332.408321,
+        "rollRateMarginDegPerSecond": 335.240256,
+        "verticalSpeedMarginMps": 11.03798,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 234,
+      "modelYawDeg": 306,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.369059,
+        "heaveDisplacementMetres": {
+          "min": -0.932837,
+          "max": 1.08802,
+          "mean": 0,
+          "rms": 0.378402,
+          "standardDeviation": 0.378402,
+          "peakAbsolute": 1.08802
+        },
+        "verticalSpeedMps": {
+          "min": -1.807579,
+          "max": 1.705874,
+          "mean": -0.011405,
+          "rms": 0.619344,
+          "standardDeviation": 0.619239,
+          "peakAbsolute": 1.807579
+        },
+        "pitchDeg": {
+          "min": -8.149809,
+          "max": 7.753157,
+          "mean": -0.023011,
+          "rms": 2.929532,
+          "standardDeviation": 2.929442,
+          "peakAbsolute": 8.149809
+        },
+        "rollDeg": {
+          "min": -2.294583,
+          "max": 2.624539,
+          "mean": -0.014495,
+          "rms": 1.076345,
+          "standardDeviation": 1.076247,
+          "peakAbsolute": 2.624539
+        },
+        "pitchRateDegPerSecond": {
+          "min": -15.286821,
+          "max": 13.956045,
+          "mean": 0.06493,
+          "rms": 5.16831,
+          "standardDeviation": 5.167902,
+          "peakAbsolute": 15.286821
+        },
+        "rollRateDegPerSecond": {
+          "min": -4.505857,
+          "max": 4.457103,
+          "mean": -0.028012,
+          "rms": 1.915247,
+          "standardDeviation": 1.915042,
+          "peakAbsolute": 4.505857
+        },
+        "verticalAccelerationMps2": {
+          "min": -3.599781,
+          "max": 2.760283,
+          "mean": -0.012059,
+          "rms": 1.101388,
+          "standardDeviation": 1.101322,
+          "peakAbsolute": 3.599781
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -34.741006,
+          "max": 23.491312,
+          "mean": -0.084045,
+          "rms": 10.710923,
+          "standardDeviation": 10.710593,
+          "peakAbsolute": 34.741006
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -9.458317,
+          "max": 8.722959,
+          "mean": 0.034694,
+          "rms": 3.730888,
+          "standardDeviation": 3.730727,
+          "peakAbsolute": 9.458317
+        },
+        "verticalJerkMps3": {
+          "min": -4.968345,
+          "max": 9.718407,
+          "mean": 0.019867,
+          "rms": 2.20554,
+          "standardDeviation": 2.20545,
+          "peakAbsolute": 9.718407
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.150017,
+            "max": 3.789487,
+            "mean": 1.101576,
+            "rms": 1.256022,
+            "standardDeviation": 0.603423,
+            "peakAbsolute": 3.789487
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.112584,
+            "max": 12.006891,
+            "mean": 2.325812,
+            "rms": 2.709625,
+            "standardDeviation": 1.390203,
+            "peakAbsolute": 12.006891
+          },
+          "peakAccelerationG": 0.386288
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.050936,
+            "max": 3.71173,
+            "mean": 1.067162,
+            "rms": 1.270751,
+            "standardDeviation": 0.689908,
+            "peakAbsolute": 3.71173
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.058074,
+            "max": 9.285868,
+            "mean": 2.378568,
+            "rms": 2.858098,
+            "standardDeviation": 1.584658,
+            "peakAbsolute": 9.285868
+          },
+          "peakAccelerationG": 0.378362
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.189134,
+            "max": 7.997673,
+            "mean": 2.396518,
+            "rms": 2.719846,
+            "standardDeviation": 1.286184,
+            "peakAbsolute": 7.997673
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.293044,
+            "max": 26.124485,
+            "mean": 5.635107,
+            "rms": 6.766541,
+            "standardDeviation": 3.745883,
+            "peakAbsolute": 26.124485
+          },
+          "peakAccelerationG": 0.815257
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.871795,
+          "max": 1,
+          "mean": 0.953431,
+          "rms": 0.953762,
+          "standardDeviation": 0.02513,
+          "peakAbsolute": 1
+        },
+        "submergedVolumeRatio": {
+          "min": 0.565926,
+          "max": 1.42285,
+          "mean": 1.006913,
+          "rms": 1.017765,
+          "standardDeviation": 0.148232,
+          "peakAbsolute": 1.42285
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 31.957237,
+        "rollMarginDeg": 37.482507,
+        "pitchRateMarginDegPerSecond": 328.487856,
+        "rollRateMarginDegPerSecond": 339.26882,
+        "verticalSpeedMarginMps": 10.192421,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 279,
+      "modelYawDeg": 261,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.376264,
+        "heaveDisplacementMetres": {
+          "min": -0.840174,
+          "max": 0.860429,
+          "mean": 0,
+          "rms": 0.392222,
+          "standardDeviation": 0.392222,
+          "peakAbsolute": 0.860429
+        },
+        "verticalSpeedMps": {
+          "min": -1.510502,
+          "max": 1.214303,
+          "mean": 0.010996,
+          "rms": 0.595654,
+          "standardDeviation": 0.595552,
+          "peakAbsolute": 1.510502
+        },
+        "pitchDeg": {
+          "min": -5.060009,
+          "max": 5.862646,
+          "mean": -0.107722,
+          "rms": 2.221003,
+          "standardDeviation": 2.218389,
+          "peakAbsolute": 5.862646
+        },
+        "rollDeg": {
+          "min": -9.727818,
+          "max": 10.719006,
+          "mean": 0.176562,
+          "rms": 4.972873,
+          "standardDeviation": 4.969737,
+          "peakAbsolute": 10.719006
+        },
+        "pitchRateDegPerSecond": {
+          "min": -10.586287,
+          "max": 8.684503,
+          "mean": -0.007355,
+          "rms": 4.070324,
+          "standardDeviation": 4.070318,
+          "peakAbsolute": 10.586287
+        },
+        "rollRateDegPerSecond": {
+          "min": -14.682558,
+          "max": 12.502002,
+          "mean": 0.010831,
+          "rms": 6.409854,
+          "standardDeviation": 6.409845,
+          "peakAbsolute": 14.682558
+        },
+        "verticalAccelerationMps2": {
+          "min": -2.345886,
+          "max": 2.164792,
+          "mean": -0.00626,
+          "rms": 0.975607,
+          "standardDeviation": 0.975587,
+          "peakAbsolute": 2.345886
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -21.828773,
+          "max": 15.555913,
+          "mean": 0.191766,
+          "rms": 8.368988,
+          "standardDeviation": 8.36679,
+          "peakAbsolute": 21.828773
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -18.657789,
+          "max": 18.301845,
+          "mean": 0.006024,
+          "rms": 8.611975,
+          "standardDeviation": 8.611972,
+          "peakAbsolute": 18.657789
+        },
+        "verticalJerkMps3": {
+          "min": -3.308318,
+          "max": 6.440082,
+          "mean": -0.026013,
+          "rms": 1.820517,
+          "standardDeviation": 1.820332,
+          "peakAbsolute": 6.440082
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.060195,
+            "max": 2.376153,
+            "mean": 1.052092,
+            "rms": 1.148971,
+            "standardDeviation": 0.461777,
+            "peakAbsolute": 2.376153
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.044527,
+            "max": 7.504417,
+            "mean": 1.957516,
+            "rms": 2.177243,
+            "standardDeviation": 0.953162,
+            "peakAbsolute": 7.504417
+          },
+          "peakAccelerationG": 0.242217
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.081564,
+            "max": 2.836472,
+            "mean": 0.976411,
+            "rms": 1.120708,
+            "standardDeviation": 0.550099,
+            "peakAbsolute": 2.836472
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.100134,
+            "max": 5.30339,
+            "mean": 1.928064,
+            "rms": 2.232083,
+            "standardDeviation": 1.124619,
+            "peakAbsolute": 5.30339
+          },
+          "peakAccelerationG": 0.289141
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.316561,
+            "max": 5.766704,
+            "mean": 2.550524,
+            "rms": 2.711772,
+            "standardDeviation": 0.921158,
+            "peakAbsolute": 5.766704
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.293162,
+            "max": 19.151736,
+            "mean": 4.748219,
+            "rms": 5.331287,
+            "standardDeviation": 2.424258,
+            "peakAbsolute": 19.151736
+          },
+          "peakAccelerationG": 0.587839
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.897436,
+          "max": 1,
+          "mean": 0.954139,
+          "rms": 0.954384,
+          "standardDeviation": 0.021606,
+          "peakAbsolute": 1
+        },
+        "submergedVolumeRatio": {
+          "min": 0.696897,
+          "max": 1.29754,
+          "mean": 1.009064,
+          "rms": 1.017747,
+          "standardDeviation": 0.132662,
+          "peakAbsolute": 1.29754
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 34.2444,
+        "rollMarginDeg": 29.38804,
+        "pitchRateMarginDegPerSecond": 333.18839,
+        "rollRateMarginDegPerSecond": 329.092119,
+        "verticalSpeedMarginMps": 10.489498,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    },
+    {
+      "seaState": "CURRENT_MODERATE",
+      "presetPurpose": "PLAYABLE",
+      "presentationHeadingDeg": 324,
+      "modelYawDeg": 216,
+      "speedThroughWaterMps": 4,
+      "sampleFrames": 4200,
+      "finite": true,
+      "motion": {
+        "meanComWorldYMetres": -0.371923,
+        "heaveDisplacementMetres": {
+          "min": -0.783618,
+          "max": 0.758088,
+          "mean": 0,
+          "rms": 0.362783,
+          "standardDeviation": 0.362783,
+          "peakAbsolute": 0.783618
+        },
+        "verticalSpeedMps": {
+          "min": -1.022044,
+          "max": 1.13992,
+          "mean": 0.000605,
+          "rms": 0.469052,
+          "standardDeviation": 0.469052,
+          "peakAbsolute": 1.13992
+        },
+        "pitchDeg": {
+          "min": -5.054161,
+          "max": 5.107574,
+          "mean": -0.135711,
+          "rms": 2.220612,
+          "standardDeviation": 2.216461,
+          "peakAbsolute": 5.107574
+        },
+        "rollDeg": {
+          "min": -21.268047,
+          "max": 20.771577,
+          "mean": 0.272004,
+          "rms": 9.212642,
+          "standardDeviation": 9.208626,
+          "peakAbsolute": 21.268047
+        },
+        "pitchRateDegPerSecond": {
+          "min": -8.224313,
+          "max": 7.575379,
+          "mean": -0.059414,
+          "rms": 3.62091,
+          "standardDeviation": 3.620422,
+          "peakAbsolute": 8.224313
+        },
+        "rollRateDegPerSecond": {
+          "min": -21.289941,
+          "max": 22.578489,
+          "mean": 0.073904,
+          "rms": 9.341506,
+          "standardDeviation": 9.341213,
+          "peakAbsolute": 22.578489
+        },
+        "verticalAccelerationMps2": {
+          "min": -2.065073,
+          "max": 1.659528,
+          "mean": 0.015634,
+          "rms": 0.761127,
+          "standardDeviation": 0.760966,
+          "peakAbsolute": 2.065073
+        },
+        "pitchAccelerationDegPerSecond2": {
+          "min": -20.202037,
+          "max": 18.110686,
+          "mean": 0.028676,
+          "rms": 8.078488,
+          "standardDeviation": 8.078437,
+          "peakAbsolute": 20.202037
+        },
+        "rollAccelerationDegPerSecond2": {
+          "min": -21.218756,
+          "max": 27.263748,
+          "mean": 0.115974,
+          "rms": 10.013572,
+          "standardDeviation": 10.012901,
+          "peakAbsolute": 27.263748
+        },
+        "verticalJerkMps3": {
+          "min": -3.953001,
+          "max": 4.037735,
+          "mean": 0.003782,
+          "rms": 1.583662,
+          "standardDeviation": 1.583657,
+          "peakAbsolute": 4.037735
+        }
+      },
+      "locations": {
+        "deck": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.275182,
+            "max": 2.173586,
+            "mean": 0.961482,
+            "rms": 1.023355,
+            "standardDeviation": 0.35044,
+            "peakAbsolute": 2.173586
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.100426,
+            "max": 5.42892,
+            "mean": 2.04615,
+            "rms": 2.26704,
+            "standardDeviation": 0.976086,
+            "peakAbsolute": 5.42892
+          },
+          "peakAccelerationG": 0.221568
+        },
+        "cabin": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.112751,
+            "max": 2.132628,
+            "mean": 0.853525,
+            "rms": 0.960375,
+            "standardDeviation": 0.440245,
+            "peakAbsolute": 2.132628
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.057165,
+            "max": 6.331925,
+            "mean": 2.099374,
+            "rms": 2.497187,
+            "standardDeviation": 1.352246,
+            "peakAbsolute": 6.331925
+          },
+          "peakAccelerationG": 0.217393
+        },
+        "lookout": {
+          "accelerationMagnitudeMps2": {
+            "min": 0.242967,
+            "max": 6.363073,
+            "mean": 2.686762,
+            "rms": 2.86502,
+            "standardDeviation": 0.994811,
+            "peakAbsolute": 6.363073
+          },
+          "jerkMagnitudeMps3": {
+            "min": 0.280129,
+            "max": 17.649296,
+            "mean": 6.086115,
+            "rms": 6.822922,
+            "standardDeviation": 3.084065,
+            "peakAbsolute": 17.649296
+          },
+          "peakAccelerationG": 0.648631
+        }
+      },
+      "contact": {
+        "wetStationFraction": {
+          "min": 0.923077,
+          "max": 1,
+          "mean": 0.955116,
+          "rms": 0.955318,
+          "standardDeviation": 0.019626,
+          "peakAbsolute": 1
+        },
+        "submergedVolumeRatio": {
+          "min": 0.764325,
+          "max": 1.211886,
+          "mean": 1.010159,
+          "rms": 1.015457,
+          "standardDeviation": 0.103592,
+          "peakAbsolute": 1.211886
+        },
+        "fullAirborneFrames": 0,
+        "longestFullAirborneSeconds": 0,
+        "overtoppingFrames": 0,
+        "overtoppingFrameFraction": 0,
+        "overtoppingEventSamples": 0,
+        "maxOvertoppingDepthMetres": 0,
+        "maxOvertoppingVerticalEntrySpeedMps": 0
+      },
+      "limits": {
+        "attitudeLimitDeg": 40.107046,
+        "angularRateLimitDegPerSecond": 343.774677,
+        "verticalSpeedLimitMps": 12,
+        "pitchMarginDeg": 34.999472,
+        "rollMarginDeg": 18.838999,
+        "pitchRateMarginDegPerSecond": 335.550364,
+        "rollRateMarginDegPerSecond": 321.196188,
+        "verticalSpeedMarginMps": 10.86008,
+        "touchedAttitudeLimit": false,
+        "touchedAngularRateLimit": false,
+        "touchedVerticalSpeedLimit": false
+      },
+      "maxWaveInverseSolveResidualMetres": 1e-8
+    }
+  ]
+}

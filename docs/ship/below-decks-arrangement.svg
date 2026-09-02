@@ -1,0 +1,653 @@
+<svg viewBox="0 0 1000 770" xmlns="http://www.w3.org/2000/svg" role="img" width="100%" style="font-family:ui-sans-serif,system-ui,sans-serif">
+<title>Below-decks arrangement with every space given a use</title>
+<desc>Plan and side view of the schooner's below-decks arrangement, drawn from the built ship. The captain's cabin aft has its furniture at the low sides and a clear standing strip on the centreline; a pantry and spirit locker flank a short ship's ladder; the wardroom carries the mainmast, the pump well, a mess table with a form each side, runs of chests along both sides, and the mate's and surgeon's cabins flanking the hatchway; the forecastle holds the galley hearth to port, its dresser to starboard, a hinged table at the foremast and four berths in two tiers in the bow; and the peak is the sail and boatswain's store.</desc>
+<style>svg{--paper:#F7F4EE;--panel:#EFE9DE;--ink:#3A2E22;--ink2:#6B5B49;--ink3:#8C7D6B;--rule:#D2C8B7;--rule2:#B0A18B;--warm:#9C5B2E;--cask:#B98A55}@media (prefers-color-scheme:dark){svg{--paper:#191613;--panel:#272119;--ink:#E9E0D3;--ink2:#B5A793;--ink3:#8A7C6A;--rule:#3A3229;--rule2:#5A4C3C;--warm:#D9924F;--cask:#8A6236}}</style>
+<rect width="1000" height="770" fill="var(--paper)"/>
+<text x="48" y="22" font-size="13" fill="var(--ink2)">Plan — front of the ship on the right. 49.3 m² of walkable floor, drawn from the built ship.</text>
+<path d="M3 144L17 143L34 142L53 141L74 140L93 139L112 138L128 137L141 135L152 133L164 132L176 130L187 128L199 127L210 125L222 123L234 122L245 120L257 119L268 117L280 115L292 114L303 112L315 111L326 109L338 108L350 106L361 101L373 100L384 98L396 97L408 95L419 94L431 93L442 91L454 90L466 89L477 88L489 86L500 85L512 84L524 83L535 83L547 82L558 82L570 83L582 83L593 84L605 85L616 86L628 87L640 88L651 89L663 91L674 92L686 94L698 95L709 97L721 99L732 101L744 104L756 106L767 110L779 113L790 116L802 119L814 123L825 126L837 130L848 134L860 139L872 144L883 149L895 155L906 162L918 171L930 181L941 196L941 232L930 247L918 257L906 266L895 273L883 279L872 284L860 289L848 294L837 298L825 302L814 305L802 309L790 312L779 315L767 318L756 322L744 324L732 327L721 329L709 331L698 333L686 334L674 336L663 337L651 339L640 340L628 341L616 342L605 343L593 344L582 345L570 345L558 346L547 346L535 345L524 345L512 344L500 343L489 342L477 340L466 339L454 338L442 337L431 335L419 334L408 333L396 331L384 330L373 328L361 327L350 322L338 320L326 319L315 317L303 316L292 314L280 313L268 311L257 309L245 308L234 306L222 305L210 303L199 301L187 300L176 298L164 296L152 295L141 293L128 291L112 290L93 289L74 288L53 287L34 286L17 285L3 284Z" fill="var(--panel)" stroke="var(--rule2)" stroke-width="1"/>
+<path d="M45 148L54 147L63 147L71 146L80 145L89 144L97 144L106 143L115 142L123 141L132 140L141 139L150 137L158 136L167 135L176 134L184 132L193 131L202 130L210 129L219 127L228 126L237 125L245 124L248 305L239 304L231 302L222 301L213 300L205 299L196 297L187 296L178 295L170 294L161 292L152 291L144 290L135 288L126 287L118 286L109 286L100 285L91 284L83 283L74 282L65 282L57 281L48 280Z" fill="var(--warm)" opacity="0.3"/>
+<path d="M248 123L257 122L266 121L274 120L283 118L292 117L300 116L309 115L318 114L326 113L335 111L344 110L353 109L358 319L350 318L341 317L332 316L324 315L315 314L306 313L297 312L289 310L280 309L271 308L263 307L254 306Z" fill="var(--warm)" opacity="0.12"/>
+<line x1="248" y1="123" x2="248" y2="305" stroke="var(--ink)" stroke-width="1.8"/>
+<path d="M358 109L367 104L376 103L384 102L393 101L402 100L411 99L419 98L428 97L437 96L445 95L454 94L463 93L471 92L480 91L489 90L497 89L506 88L515 88L524 87L532 86L541 86L550 86L558 86L567 86L576 87L585 87L593 88L602 88L611 89L619 89L628 90L637 91L645 92L648 336L640 337L631 337L622 338L614 339L605 340L596 340L587 341L579 341L570 342L561 342L553 342L544 342L535 342L527 341L518 341L509 340L500 339L492 338L483 337L474 337L466 336L457 335L448 334L440 333L431 332L422 331L413 330L405 329L396 328L387 327L379 326L370 324L361 323Z" fill="var(--warm)" opacity="0.2"/>
+<line x1="358" y1="109" x2="358" y2="319" stroke="var(--ink)" stroke-width="1.8"/>
+<path d="M648 92L657 93L666 94L674 96L683 97L692 98L701 99L709 101L718 102L727 104L735 106L744 107L753 109L761 111L770 114L779 116L788 119L796 121L805 123L814 126L822 129L831 132L840 135L848 146L857 165L857 263L848 282L840 293L831 296L822 299L814 302L805 305L796 307L787 309L779 312L770 314L761 317L753 319L744 321L735 322L727 324L718 326L709 327L700 329L692 330L683 331L674 332L666 334L657 335L648 336Z" fill="var(--warm)" opacity="0.3"/>
+<line x1="648" y1="92" x2="648" y2="336" stroke="var(--ink)" stroke-width="1.8"/>
+<path d="M857 165L866 203L875 214L883 214L892 214L901 214L909 214L915 214L906 214L898 214L889 214L880 214L872 214L863 241Z" fill="var(--warm)" opacity="0.08"/>
+<line x1="857" y1="165" x2="857" y2="263" stroke="var(--ink)" stroke-width="1.8"/>
+<line x1="48" y1="214" x2="947" y2="214" stroke="var(--rule2)" stroke-width="0.7" stroke-dasharray="9 6"/>
+<path d="M415 187L415 177L424 177L424 187Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M408 173L408 171L430 171L430 173Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M428 192L428 172L430 172L430 192Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M408 193L408 191L430 191L430 193Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M408 192L408 172L411 172L411 192Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M424 188L424 187L425 187L425 188Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 293L669 262L673 262L673 293Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 264L669 260L673 260L673 264Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M669 295L669 292L673 292L673 295Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M85 180L81 146L90 145L94 179Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M132 175L128 140L130 140L134 175Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M158 172L154 137L156 137L160 172Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M134 175L130 140L154 137L158 172Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M85 180L81 146L156 137L160 172Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="128" y="161.5" font-size="9" fill="var(--ink)" text-anchor="middle">chart desk</text>
+<path d="M89 146L89 145L139 139L140 140Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M90 159L89 145L90 145L91 158Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M140 153L138 139L139 139L141 153Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M90 159L89 145L139 139L141 153Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M90 159L89 145L139 139L141 153Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M90 159L89 145L139 139L141 153Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M103 157L101 143L102 143L104 157Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M115 156L114 142L114 142L116 156Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M127 155L126 141L127 141L128 154Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M95 158L95 156L97 156L97 158Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M97 158L97 156L99 156L99 158Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M119 156L119 153L122 153L122 156Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M122 155L122 153L124 153L124 155Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M99 149L99 146L102 146L102 149Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M103 184L100 161L123 158L125 182Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M101 186L101 183L104 183L104 186Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M124 183L124 181L127 181L127 183Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M99 161L99 159L101 159L101 161Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M122 159L122 157L124 157L124 159Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M102 184L102 182L104 182L104 184Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M124 181L124 180L125 180L125 181Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M103 184L103 181L105 181L105 184Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M122 181L122 179L124 179L124 181Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M104 185L103 183L125 181L125 183Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M109 184L109 183L119 182L119 183Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M103 183L101 161L122 159L124 181Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="113" y="180.5" font-size="9" fill="var(--ink)" text-anchor="middle">seat</text>
+<path d="M106 171L104 154L117 152L119 170Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M107 171L105 154L117 153L118 169Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M106 171L104 154L117 152L119 170Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M106 171L104 154L105 154L107 171Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M109 167L108 157L114 157L115 166Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M107 171L107 168L110 168L110 171Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M116 170L116 167L119 167L119 170Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M106 157L105 154L108 153L108 156Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M114 156L114 153L117 152L117 155Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M142 152L140 142L150 141L151 151Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M142 152L141 143L149 142L150 151Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M140 143L140 142L150 141L150 142Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M141 143L141 143L149 142L149 142Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M142 150L142 143L149 143L149 150Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M143 149L143 144L148 144L148 149Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M141 148L141 146L142 146L142 148Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M145 147L145 146L146 146L146 147Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M145 147L145 146L146 146L146 147Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M45 204L45 149L71 149L71 204Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M40 204L40 149L73 149L73 204Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="57" y="179.5" font-size="9" fill="var(--ink)" text-anchor="middle">bench</text>
+<path d="M45 279L45 224L71 224L71 279Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M40 279L40 224L73 224L73 279Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="57" y="255.5" font-size="9" fill="var(--ink)" text-anchor="middle">bench</text>
+<path d="M75 281L80 240L189 253L184 294Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M80 241L80 240L189 253L189 255Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="133" y="260.5" font-size="9" fill="var(--ink)" text-anchor="middle">box berth</text>
+<path d="M197 298L201 272L203 273L199 298Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M229 302L232 277L234 277L231 302Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M197 298L201 272L234 277L231 302Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="216" y="290.5" font-size="9" fill="var(--ink)" text-anchor="middle">wash</text>
+<path d="M197 163L193 131L235 125L240 157Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="216" y="147.5" font-size="9" fill="var(--ink)" text-anchor="middle">press</text>
+<path d="M161 163L157 136L186 132L190 159Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M161 164L156 136L187 132L191 160Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="174" y="151.5" font-size="9" fill="var(--ink)" text-anchor="middle">chest</text>
+<path d="M58 215L58 213L59 213L59 215Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M50 222L50 206L67 206L67 222Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M52 220L52 208L65 208L65 220Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M53 214L53 214L54 214L54 214Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M58 215L58 213L59 213L59 215Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M136 289L136 288L183 295L183 296Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M136 289L138 277L139 277L137 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M182 295L184 284L185 284L183 296Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M136 289L138 277L185 284L183 296Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M136 289L138 277L185 284L183 296Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M136 289L138 277L185 284L183 296Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M138 288L139 279L142 279L140 288Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M141 288L142 280L144 280L142 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M143 289L144 280L147 280L146 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M146 289L147 280L149 281L148 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M148 289L149 281L152 281L151 290Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M151 290L152 281L154 281L153 290Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M138 288L139 279L141 279L140 288Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M140 288L141 279L144 280L143 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M143 289L144 280L146 280L145 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M145 289L146 280L149 281L148 289Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M148 289L149 281L151 281L150 290Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M150 290L151 281L154 281L153 290Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M138 278L138 277L185 284L185 285Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M138 278L138 277L185 284L185 285Z" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M422 233L422 195L426 195L426 233Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M474 233L474 195L478 195L478 233Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M411 238L411 190L489 190L489 238Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="450" y="217.5" font-size="9" fill="var(--ink)" text-anchor="middle">table</text>
+<path d="M433 185L433 169L489 169L489 185Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M411 259L411 243L489 243L489 259Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M535 141L535 86L538 86L538 141Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M535 141L535 139L544 139L544 141Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M585 141L585 139L647 139L647 141Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M544 141L544 139L585 139L585 141Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M537 132L539 86L645 92L642 138Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M537 132L537 131L642 137L642 138Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="573" y="133.5" font-size="9" fill="var(--ink)" text-anchor="middle">mate's cabin</text>
+<path d="M535 342L535 261L538 261L538 342Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M535 263L535 261L544 261L544 263Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M585 263L585 261L647 261L647 263Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M544 263L544 261L585 261L585 263Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M539 342L537 306L643 300L645 336Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M537 308L537 306L643 300L643 302Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="573" y="289.5" font-size="9" fill="var(--ink)" text-anchor="middle">surgeon's cabin</text>
+<path d="M363 127L360 105L488 90L490 112Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M363 128L360 105L488 90L491 113Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="425" y="112.5" font-size="9" fill="var(--ink)" text-anchor="middle">chests · stores</text>
+<path d="M360 323L363 301L490 316L488 338Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M360 323L363 300L491 315L488 338Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="425" y="322.5" font-size="9" fill="var(--ink)" text-anchor="middle">chests · stores</text>
+<path d="M650 139L650 99L698 99L698 139Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M650 140L650 99L698 99L698 140Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="674" y="122.5" font-size="9" fill="var(--ink)" text-anchor="middle">galley</text>
+<path d="M704 328L700 304L742 296L747 320Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M704 328L700 302L742 295L747 320Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="723" y="315.5" font-size="9" fill="var(--ink)" text-anchor="middle">dresser</text>
+<path d="M749 148L764 115L854 156L839 189Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M749 148L750 146L839 187L839 189Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M749 148L764 115L854 156L839 189Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="799" y="160.5" font-size="9" fill="var(--ink)" text-anchor="middle">two berths</text>
+<path d="M764 313L749 280L839 239L854 272Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M750 282L749 280L839 239L839 241Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M764 313L749 280L839 239L854 272Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="799" y="274.5" font-size="9" fill="var(--ink)" text-anchor="middle">two berths</text>
+<path d="M713 230L713 198L753 198L753 230Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="733" y="217.5" font-size="9" fill="var(--ink)" text-anchor="middle">mess</text>
+<path d="M699 125L703 100L747 108L742 133Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M698 126L703 100L747 108L743 134Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="723" y="120.5" font-size="9" fill="var(--ink)" text-anchor="middle">chest</text>
+<path d="M654 335L651 310L694 304L698 329Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<path d="M653 335L650 309L695 303L699 329Z" fill="var(--warm)" opacity="0.42" stroke="var(--warm)" stroke-width="0.8"/>
+<text x="674" y="322.5" font-size="9" fill="var(--ink)" text-anchor="middle">chest</text>
+<text x="63" y="135.5" font-size="9" fill="var(--warm)" text-anchor="middle">rudder</text>
+<text x="144" y="218.5" font-size="9" fill="var(--warm)" text-anchor="middle">clear — the only 1.85 m</text>
+<rect x="283" y="190" width="75" height="49" fill="var(--warm)" opacity="0.5" stroke="var(--warm)" stroke-width="1.2"/><text x="320.5" y="218" font-size="9" fill="var(--ink)" text-anchor="middle">ladder</text>
+<rect x="254" y="114" width="61" height="68" fill="var(--warm)" opacity="0.3" stroke="var(--warm)" stroke-width="1.2"/><text x="284.5" y="151.5" font-size="9" fill="var(--ink)" text-anchor="middle">pantry</text>
+<rect x="254" y="246" width="41" height="68" fill="var(--warm)" opacity="0.3" stroke="var(--warm)" stroke-width="1.2"/><text x="274.5" y="283.5" font-size="9" fill="var(--ink)" text-anchor="middle">spirits</text>
+<rect x="326" y="249" width="26" height="64" fill="var(--warm)" opacity="0.22" stroke="var(--warm)" stroke-width="1.2"/><text x="339" y="284.5" font-size="9" fill="var(--ink)" text-anchor="middle">oilskins</text>
+<rect x="527" y="171" width="104" height="87" fill="var(--warm)" opacity="0.14" stroke="var(--warm)" stroke-width="2"/>
+<line x1="527" y1="188" x2="631" y2="188" stroke="var(--warm)" stroke-width="0.7" opacity="0.8"/>
+<line x1="527" y1="205" x2="631" y2="205" stroke="var(--warm)" stroke-width="0.7" opacity="0.8"/>
+<line x1="527" y1="223" x2="631" y2="223" stroke="var(--warm)" stroke-width="0.7" opacity="0.8"/>
+<line x1="527" y1="240" x2="631" y2="240" stroke="var(--warm)" stroke-width="0.7" opacity="0.8"/>
+<text x="579" y="216.5" font-size="9" fill="var(--warm)" text-anchor="middle">hatchway</text>
+<text x="419" y="197.5" font-size="9" fill="var(--warm)" text-anchor="middle">pump</text>
+<text x="887" y="193.5" font-size="9.5" fill="var(--ink2)" text-anchor="middle">sail room,</text>
+<text x="887" y="217.5" font-size="9.5" fill="var(--ink2)" text-anchor="middle">bosun’s store</text>
+<circle cx="387" cy="214" r="10" fill="var(--ink3)"/>
+<circle cx="735" cy="214" r="10" fill="var(--ink3)"/>
+<text x="387" y="197.5" font-size="8.5" fill="var(--ink3)" text-anchor="middle">mast</text>
+<text x="735" y="196.5" font-size="8.5" fill="var(--ink3)" text-anchor="middle">mast</text>
+<line x1="49" y1="199" x2="49" y2="181" stroke="var(--warm)" stroke-width="4"/>
+<line x1="49" y1="247" x2="49" y2="229" stroke="var(--warm)" stroke-width="4"/>
+<line x1="49" y1="175" x2="49" y2="158" stroke="var(--warm)" stroke-width="4"/>
+<line x1="49" y1="270" x2="49" y2="253" stroke="var(--warm)" stroke-width="4"/>
+<line x1="248" y1="234" x2="248" y2="194" stroke="var(--paper)" stroke-width="4"/>
+<path d="M248 194 A 41 41 0 0 1 289 173" fill="none" stroke="var(--warm)" stroke-width="1.1" stroke-dasharray="3 3"/>
+<line x1="248" y1="173" x2="289" y2="173" stroke="var(--warm)" stroke-width="2.4"/>
+<line x1="358" y1="278" x2="358" y2="237" stroke="var(--paper)" stroke-width="4"/>
+<path d="M358 278 A 41 41 0 0 0 399 298" fill="none" stroke="var(--warm)" stroke-width="1.1" stroke-dasharray="3 3"/>
+<line x1="358" y1="298" x2="399" y2="298" stroke="var(--warm)" stroke-width="2.4"/>
+<line x1="648" y1="191" x2="648" y2="150" stroke="var(--paper)" stroke-width="4"/>
+<path d="M648 150 A 41 41 0 0 1 689 130" fill="none" stroke="var(--warm)" stroke-width="1.1" stroke-dasharray="3 3"/>
+<line x1="648" y1="130" x2="689" y2="130" stroke="var(--warm)" stroke-width="2.4"/>
+<text x="144" y="86" font-size="12.5" fill="var(--ink)" text-anchor="middle">1  captain's cabin</text>
+<text x="144" y="101" font-size="11" fill="var(--ink2)" text-anchor="middle">9.3 m²</text>
+<text x="300" y="86" font-size="12.5" fill="var(--ink)" text-anchor="middle">2  pantry, ladder, spirit locker</text>
+<text x="300" y="101" font-size="11" fill="var(--ink2)" text-anchor="middle">6.4 m²</text>
+<text x="515" y="62" font-size="12.5" fill="var(--ink)" text-anchor="middle">3  wardroom</text>
+<text x="515" y="77" font-size="11" fill="var(--ink2)" text-anchor="middle">21.0 m², 1.84–2.06 m head</text>
+<text x="759" y="366" font-size="12.5" fill="var(--ink)" text-anchor="middle">4  forecastle — galley, four berths</text>
+<text x="759" y="381" font-size="11" fill="var(--ink2)" text-anchor="middle">12.6 m²</text>
+<text x="898" y="147" font-size="12.5" fill="var(--ink)" text-anchor="middle">5  peak</text>
+<text x="86" y="307" font-size="10.5" fill="var(--warm)" text-anchor="middle">four stern windows</text>
+<text x="48" y="424" font-size="13" fill="var(--ink2)">Side view — and what is under each floor</text>
+<path d="M48 427L60 428L71 429L83 430L94 432L106 433L118 434L129 435L141 436L152 437L164 437L176 438L187 439L199 440L210 441L222 441L234 442L245 442L257 443L268 444L280 444L292 444L303 445L315 445L326 445L338 446L350 446L361 478L373 478L384 478L396 478L408 478L419 478L431 478L442 478L454 478L466 478L477 478L489 478L500 477L512 477L524 477L535 476L547 476L558 476L570 475L582 475L593 474L605 473L616 473L628 472L640 471L651 471L663 470L674 469L686 468L698 467L709 467L721 466L732 465L744 464L756 463L767 449L779 448L790 446L802 445L814 444L825 443L837 442L848 440L860 439L872 437L883 436L895 434L906 433L918 431L930 430L941 428L941 520L930 530L918 540L906 550L895 560L883 569L872 578L860 587L848 595L837 604L825 611L814 619L802 626L790 633L779 640L767 646L756 652L744 657L732 663L721 667L709 672L698 676L686 680L674 683L663 686L651 688L640 690L628 691L616 691L605 691L593 691L582 691L570 691L558 691L547 691L535 691L524 691L512 691L500 691L489 691L477 691L466 691L454 691L442 691L431 691L419 691L408 691L396 690L384 690L373 689L361 687L350 686L338 684L326 681L315 679L303 676L292 673L280 670L268 667L257 663L245 659L234 655L222 651L210 647L199 642L187 638L176 633L164 628L152 622L141 617L129 611L118 606L106 600L94 594L83 587L71 581L60 574L48 568Z" fill="var(--panel)" stroke="var(--rule2)" stroke-width="1.2"/>
+<path d="M48 434L60 435L71 436L83 438L94 439L106 440L118 441L129 441L141 442L152 443L164 444L176 445L187 446L199 446L210 447L222 447L234 448L245 449L257 449L268 449L280 450L292 450L303 451L315 451L326 451L338 451L350 451L361 484L373 484L384 484L396 484L408 484L419 484L431 483L442 483L454 483L466 483L477 483L489 482L500 482L512 482L524 481L535 481L547 481L558 480L570 480L582 479L593 479L605 478L616 478L628 477L640 476L651 476L663 475L674 474L686 473L698 473L709 472L721 471L732 470L744 469L756 468L767 455L779 454L790 452L802 451L814 450L825 449L837 448L848 447L860 446L872 445L883 443L895 442L906 441L918 440L930 439L941 438" fill="none" stroke="var(--rule2)" stroke-width="1" stroke-dasharray="4 3"/>
+<circle cx="379" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="409" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="439" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="469" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="499" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="529" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="560" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="590" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="620" cy="665" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="393" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="423" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="453" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="484" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="514" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="544" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="574" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="604" cy="637" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="379" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="409" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="439" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="469" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="499" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="529" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="560" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="590" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<circle cx="620" cy="610" r="14" fill="none" stroke="var(--cask)" stroke-width="1"/>
+<path d="M364 690L643 690L643 680L364 680Z" fill="var(--ink3)" opacity="0.55"/>
+<line x1="48" y1="567" x2="947" y2="567" stroke="var(--warm)" stroke-width="1.2" stroke-dasharray="7 4"/>
+<text x="953" y="571" font-size="11" fill="var(--warm)">waterline</text>
+<line x1="45" y1="558" x2="358" y2="558" stroke="var(--ink)" stroke-width="3"/>
+<line x1="358" y1="596" x2="648" y2="596" stroke="var(--ink)" stroke-width="3"/>
+<line x1="648" y1="581" x2="857" y2="581" stroke="var(--ink)" stroke-width="3"/>
+<rect x="415" y="477" width="9" height="119" fill="var(--warm)" opacity="0.24"/>
+<rect x="414" y="596" width="10" height="88" fill="var(--warm)" opacity="0.08"/>
+<rect x="414" y="575" width="11" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="414" y="677" width="11" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="408" y="581" width="22" height="110" fill="var(--warm)" opacity="0.08"/>
+<rect x="428" y="581" width="2" height="110" fill="var(--warm)" opacity="0.08"/>
+<rect x="408" y="581" width="22" height="110" fill="var(--warm)" opacity="0.08"/>
+<rect x="408" y="581" width="2" height="110" fill="var(--warm)" opacity="0.08"/>
+<rect x="424" y="568" width="1" height="30" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="567" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="552" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="538" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="523" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="509" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="495" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="480" width="4" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="466" width="5" height="115" fill="var(--warm)" opacity="0.08"/>
+<rect x="669" y="466" width="5" height="115" fill="var(--warm)" opacity="0.08"/>
+<rect x="81" y="516" width="13" height="36" fill="var(--warm)" opacity="0.24"/>
+<rect x="128" y="516" width="6" height="36" fill="var(--warm)" opacity="0.24"/>
+<rect x="154" y="516" width="6" height="36" fill="var(--warm)" opacity="0.24"/>
+<rect x="81" y="553" width="13" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="128" y="553" width="6" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="154" y="553" width="6" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="130" y="516" width="28" height="36" fill="var(--warm)" opacity="0.24"/>
+<rect x="130" y="553" width="28" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="135" y="541" width="23" height="11" fill="var(--warm)" opacity="0.08"/>
+<rect x="143" y="547" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="135" y="529" width="23" height="11" fill="var(--warm)" opacity="0.08"/>
+<rect x="143" y="535" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="135" y="517" width="23" height="11" fill="var(--warm)" opacity="0.08"/>
+<rect x="143" y="522" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="81" y="514" width="79" height="3" fill="var(--warm)" opacity="0.24"/>
+<rect x="88" y="514" width="64" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="85" y="512" width="75" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="81" y="512" width="75" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="81" y="512" width="5" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="155" y="512" width="5" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="89" y="469" width="51" height="26" fill="var(--warm)" opacity="0.08"/>
+<rect x="89" y="469" width="3" height="26" fill="var(--warm)" opacity="0.08"/>
+<rect x="138" y="469" width="3" height="26" fill="var(--warm)" opacity="0.08"/>
+<rect x="89" y="493" width="52" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="89" y="482" width="52" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="89" y="469" width="52" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="101" y="470" width="2" height="13" fill="var(--warm)" opacity="0.08"/>
+<rect x="114" y="470" width="2" height="13" fill="var(--warm)" opacity="0.08"/>
+<rect x="126" y="470" width="2" height="13" fill="var(--warm)" opacity="0.08"/>
+<rect x="94" y="481" width="4" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="96" y="481" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="118" y="481" width="4" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="120" y="481" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="99" y="492" width="18" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="100" y="532" width="25" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="101" y="534" width="4" height="23" fill="var(--warm)" opacity="0.08"/>
+<rect x="122" y="534" width="4" height="23" fill="var(--warm)" opacity="0.08"/>
+<rect x="99" y="534" width="4" height="23" fill="var(--warm)" opacity="0.08"/>
+<rect x="120" y="534" width="4" height="23" fill="var(--warm)" opacity="0.08"/>
+<rect x="100" y="550" width="4" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="121" y="550" width="4" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="103" y="506" width="2" height="29" fill="var(--warm)" opacity="0.08"/>
+<rect x="122" y="506" width="2" height="29" fill="var(--warm)" opacity="0.08"/>
+<rect x="103" y="506" width="22" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="109" y="515" width="10" height="10" fill="var(--warm)" opacity="0.08"/>
+<rect x="101" y="531" width="24" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="104" y="513" width="15" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="105" y="510" width="14" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="104" y="509" width="15" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="104" y="509" width="3" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="108" y="509" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="107" y="509" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="116" y="509" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="105" y="509" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="114" y="509" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="140" y="511" width="10" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="141" y="511" width="9" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="140" y="503" width="9" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="141" y="504" width="8" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="142" y="510" width="7" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="143" y="509" width="6" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="141" y="510" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="145" y="509" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="145" y="509" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="45" y="554" width="24" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="45" y="532" width="26" height="22" fill="var(--warm)" opacity="0.24"/>
+<rect x="71" y="536" width="1" height="13" fill="var(--warm)" opacity="0.08"/>
+<rect x="40" y="530" width="33" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="41" y="527" width="28" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="72" y="545" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="45" y="554" width="24" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="45" y="532" width="26" height="22" fill="var(--warm)" opacity="0.24"/>
+<rect x="71" y="536" width="1" height="13" fill="var(--warm)" opacity="0.08"/>
+<rect x="40" y="530" width="33" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="41" y="527" width="28" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="72" y="545" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="75" y="554" width="114" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="75" y="529" width="114" height="25" fill="var(--warm)" opacity="0.24"/>
+<rect x="75" y="529" width="114" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="81" y="531" width="53" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="103" y="541" width="8" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="135" y="531" width="53" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="158" y="541" width="8" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="80" y="515" width="110" height="14" fill="var(--warm)" opacity="0.24"/>
+<rect x="75" y="509" width="7" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="182" y="509" width="7" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="77" y="520" width="110" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="79" y="516" width="23" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="112" y="518" width="75" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="106" y="517" width="12" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="80" y="459" width="109" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="175" y="460" width="13" height="51" fill="var(--warm)" opacity="0.08"/>
+<rect x="197" y="513" width="6" height="45" fill="var(--warm)" opacity="0.24"/>
+<rect x="229" y="513" width="6" height="45" fill="var(--warm)" opacity="0.24"/>
+<rect x="197" y="541" width="37" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="201" y="539" width="33" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="197" y="512" width="37" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="197" y="499" width="33" height="13" fill="var(--warm)" opacity="0.08"/>
+<rect x="201" y="499" width="27" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="207" y="506" width="18" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="220" y="527" width="7" height="12" fill="var(--warm)" opacity="0.08"/>
+<rect x="219" y="529" width="1" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="205" y="517" width="25" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="209" y="517" width="17" height="15" fill="var(--warm)" opacity="0.08"/>
+<rect x="193" y="461" width="47" height="94" fill="var(--warm)" opacity="0.24"/>
+<rect x="192" y="554" width="48" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="192" y="458" width="49" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="199" y="462" width="20" height="90" fill="var(--warm)" opacity="0.08"/>
+<rect x="203" y="467" width="11" height="82" fill="var(--warm)" opacity="0.08"/>
+<rect x="219" y="462" width="20" height="90" fill="var(--warm)" opacity="0.08"/>
+<rect x="224" y="467" width="11" height="82" fill="var(--warm)" opacity="0.08"/>
+<rect x="215" y="508" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="221" y="508" width="3" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="160" y="555" width="28" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="157" y="536" width="33" height="19" fill="var(--warm)" opacity="0.24"/>
+<rect x="156" y="532" width="35" height="3" fill="var(--warm)" opacity="0.24"/>
+<rect x="159" y="532" width="31" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="163" y="537" width="26" height="16" fill="var(--warm)" opacity="0.08"/>
+<rect x="165" y="533" width="2" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="161" y="532" width="6" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="185" y="533" width="2" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="181" y="532" width="6" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="174" y="541" width="4" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="159" y="541" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="158" y="541" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="158" y="547" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="189" y="541" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="188" y="541" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="188" y="547" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="58" y="440" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="50" y="443" width="17" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="52" y="447" width="13" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="53" y="447" width="10" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="58" y="447" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="136" y="471" width="47" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="136" y="471" width="3" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="182" y="471" width="3" height="20" fill="var(--warm)" opacity="0.08"/>
+<rect x="136" y="490" width="49" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="136" y="481" width="49" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="136" y="471" width="49" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="138" y="483" width="4" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="141" y="484" width="3" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="143" y="482" width="4" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="146" y="484" width="3" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="148" y="483" width="4" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="151" y="483" width="3" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="138" y="472" width="3" height="9" fill="var(--warm)" opacity="0.08"/>
+<rect x="140" y="475" width="4" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="143" y="473" width="3" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="145" y="474" width="4" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="148" y="473" width="3" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="150" y="474" width="4" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="138" y="486" width="47" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="138" y="477" width="47" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="422" y="555" width="4" height="35" fill="var(--warm)" opacity="0.24"/>
+<rect x="420" y="590" width="9" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="474" y="555" width="4" height="35" fill="var(--warm)" opacity="0.24"/>
+<rect x="472" y="590" width="9" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="424" y="578" width="52" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="411" y="553" width="78" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="411" y="551" width="78" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="411" y="551" width="78" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="488" y="551" width="1" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="437" y="573" width="3" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="481" y="573" width="3" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="433" y="571" width="56" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="435" y="573" width="52" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="415" y="573" width="3" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="481" y="573" width="3" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="411" y="571" width="78" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="414" y="573" width="73" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="535" y="488" width="2" height="108" fill="var(--warm)" opacity="0.24"/>
+<rect x="535" y="488" width="9" height="108" fill="var(--warm)" opacity="0.24"/>
+<rect x="585" y="488" width="61" height="108" fill="var(--warm)" opacity="0.24"/>
+<rect x="544" y="488" width="41" height="3" fill="var(--warm)" opacity="0.24"/>
+<rect x="543" y="489" width="2" height="106" fill="var(--warm)" opacity="0.08"/>
+<rect x="585" y="489" width="2" height="106" fill="var(--warm)" opacity="0.08"/>
+<rect x="543" y="489" width="44" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="586" y="492" width="38" height="103" fill="var(--warm)" opacity="0.08"/>
+<rect x="587" y="536" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="537" y="568" width="108" height="28" fill="var(--warm)" opacity="0.24"/>
+<rect x="538" y="570" width="50" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="591" y="570" width="50" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="539" y="560" width="104" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="575" y="558" width="68" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="619" y="556" width="21" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="537" y="555" width="105" height="13" fill="var(--warm)" opacity="0.24"/>
+<rect x="552" y="513" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="565" y="513" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="535" y="488" width="2" height="108" fill="var(--warm)" opacity="0.24"/>
+<rect x="535" y="488" width="9" height="108" fill="var(--warm)" opacity="0.24"/>
+<rect x="585" y="488" width="61" height="108" fill="var(--warm)" opacity="0.24"/>
+<rect x="544" y="488" width="41" height="3" fill="var(--warm)" opacity="0.24"/>
+<rect x="543" y="489" width="2" height="106" fill="var(--warm)" opacity="0.08"/>
+<rect x="585" y="489" width="2" height="106" fill="var(--warm)" opacity="0.08"/>
+<rect x="543" y="489" width="44" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="586" y="492" width="38" height="103" fill="var(--warm)" opacity="0.08"/>
+<rect x="587" y="536" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="537" y="568" width="107" height="28" fill="var(--warm)" opacity="0.24"/>
+<rect x="539" y="570" width="50" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="591" y="570" width="50" height="22" fill="var(--warm)" opacity="0.08"/>
+<rect x="539" y="560" width="104" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="575" y="558" width="68" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="620" y="556" width="20" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="537" y="555" width="105" height="13" fill="var(--warm)" opacity="0.24"/>
+<rect x="552" y="513" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="565" y="513" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="362" y="592" width="127" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="360" y="563" width="130" height="29" fill="var(--warm)" opacity="0.24"/>
+<rect x="360" y="561" width="131" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="404" y="563" width="3" height="29" fill="var(--warm)" opacity="0.08"/>
+<rect x="446" y="563" width="3" height="29" fill="var(--warm)" opacity="0.08"/>
+<rect x="380" y="579" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="380" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="387" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="423" y="579" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="423" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="429" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="466" y="579" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="466" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="472" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="362" y="592" width="127" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="360" y="563" width="130" height="29" fill="var(--warm)" opacity="0.24"/>
+<rect x="360" y="561" width="131" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="404" y="563" width="3" height="29" fill="var(--warm)" opacity="0.08"/>
+<rect x="446" y="563" width="3" height="29" fill="var(--warm)" opacity="0.08"/>
+<rect x="380" y="579" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="380" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="387" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="423" y="579" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="423" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="429" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="466" y="579" width="7" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="466" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="472" y="574" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="650" y="575" width="45" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="650" y="533" width="48" height="42" fill="var(--warm)" opacity="0.24"/>
+<rect x="698" y="539" width="1" height="27" fill="var(--warm)" opacity="0.08"/>
+<rect x="699" y="557" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="650" y="531" width="48" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="650" y="527" width="48" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="696" y="527" width="1" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="653" y="527" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="695" y="527" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="696" y="527" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="657" y="520" width="16" height="12" fill="var(--warm)" opacity="0.08"/>
+<rect x="679" y="523" width="11" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="655" y="478" width="9" height="53" fill="var(--warm)" opacity="0.08"/>
+<rect x="700" y="530" width="47" height="47" fill="var(--warm)" opacity="0.24"/>
+<rect x="702" y="577" width="43" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="702" y="533" width="19" height="42" fill="var(--warm)" opacity="0.08"/>
+<rect x="721" y="533" width="19" height="42" fill="var(--warm)" opacity="0.08"/>
+<rect x="700" y="528" width="47" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="700" y="525" width="42" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="704" y="494" width="42" height="36" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="494" width="4" height="36" fill="var(--warm)" opacity="0.08"/>
+<rect x="742" y="494" width="4" height="36" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="522" width="46" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="519" width="42" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="515" width="46" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="511" width="42" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="507" width="46" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="504" width="42" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="708" y="516" width="11" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="728" y="510" width="8" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="725" y="520" width="12" height="8" fill="var(--warm)" opacity="0.08"/>
+<rect x="715" y="523" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="713" y="527" width="5" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="726" y="523" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="724" y="527" width="5" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="738" y="523" width="1" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="736" y="527" width="5" height="5" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="557" width="105" height="24" fill="var(--warm)" opacity="0.24"/>
+<rect x="750" y="559" width="43" height="19" fill="var(--warm)" opacity="0.08"/>
+<rect x="795" y="559" width="43" height="19" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="557" width="105" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="545" width="90" height="12" fill="var(--warm)" opacity="0.24"/>
+<rect x="751" y="550" width="100" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="751" y="548" width="71" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="822" y="546" width="27" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="513" width="4" height="44" fill="var(--warm)" opacity="0.08"/>
+<rect x="833" y="513" width="4" height="44" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="513" width="105" height="1" fill="var(--warm)" opacity="0.24"/>
+<rect x="749" y="501" width="90" height="12" fill="var(--warm)" opacity="0.08"/>
+<rect x="751" y="506" width="100" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="751" y="504" width="71" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="822" y="502" width="27" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="845" y="531" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="845" y="487" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="557" width="105" height="24" fill="var(--warm)" opacity="0.24"/>
+<rect x="750" y="559" width="43" height="19" fill="var(--warm)" opacity="0.08"/>
+<rect x="795" y="559" width="43" height="19" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="557" width="105" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="545" width="90" height="12" fill="var(--warm)" opacity="0.24"/>
+<rect x="751" y="550" width="100" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="751" y="548" width="71" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="822" y="546" width="27" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="513" width="4" height="44" fill="var(--warm)" opacity="0.08"/>
+<rect x="833" y="513" width="4" height="44" fill="var(--warm)" opacity="0.08"/>
+<rect x="749" y="513" width="105" height="1" fill="var(--warm)" opacity="0.24"/>
+<rect x="749" y="501" width="90" height="12" fill="var(--warm)" opacity="0.08"/>
+<rect x="751" y="506" width="100" height="7" fill="var(--warm)" opacity="0.08"/>
+<rect x="751" y="504" width="71" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="822" y="502" width="27" height="4" fill="var(--warm)" opacity="0.08"/>
+<rect x="845" y="531" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="845" y="487" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="713" y="539" width="39" height="2" fill="var(--warm)" opacity="0.24"/>
+<rect x="715" y="541" width="3" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="747" y="541" width="3" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="713" y="538" width="39" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="713" y="538" width="39" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="713" y="538" width="1" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="717" y="543" width="3" height="38" fill="var(--warm)" opacity="0.08"/>
+<rect x="717" y="543" width="3" height="38" fill="var(--warm)" opacity="0.08"/>
+<rect x="717" y="570" width="2" height="2" fill="var(--warm)" opacity="0.08"/>
+<rect x="753" y="539" width="3" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="753" y="539" width="3" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="578" width="44" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="699" y="559" width="48" height="19" fill="var(--warm)" opacity="0.24"/>
+<rect x="698" y="556" width="50" height="3" fill="var(--warm)" opacity="0.24"/>
+<rect x="700" y="556" width="2" height="21" fill="var(--warm)" opacity="0.08"/>
+<rect x="738" y="556" width="2" height="21" fill="var(--warm)" opacity="0.08"/>
+<rect x="699" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="701" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="699" y="570" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="744" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="745" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="744" y="570" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="653" y="578" width="43" height="3" fill="var(--warm)" opacity="0.08"/>
+<rect x="651" y="559" width="47" height="19" fill="var(--warm)" opacity="0.24"/>
+<rect x="650" y="556" width="49" height="3" fill="var(--warm)" opacity="0.24"/>
+<rect x="652" y="556" width="2" height="21" fill="var(--warm)" opacity="0.08"/>
+<rect x="690" y="556" width="2" height="21" fill="var(--warm)" opacity="0.08"/>
+<rect x="652" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="651" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="651" y="570" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<rect x="697" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="696" y="564" width="1" height="6" fill="var(--warm)" opacity="0.08"/>
+<rect x="696" y="570" width="2" height="1" fill="var(--warm)" opacity="0.08"/>
+<line x1="358" y1="577" x2="376" y2="577" stroke="var(--ink)" stroke-width="2"/>
+<line x1="376" y1="596" x2="393" y2="596" stroke="var(--ink)" stroke-width="2"/>
+<line x1="648" y1="596" x2="631" y2="596" stroke="var(--ink)" stroke-width="2"/>
+<line x1="248" y1="453" x2="248" y2="449" stroke="var(--ink)" stroke-width="1.8"/>
+<line x1="248" y1="558" x2="248" y2="453" stroke="var(--warm)" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="358" y1="485" x2="358" y2="452" stroke="var(--ink)" stroke-width="1.8"/>
+<line x1="358" y1="596" x2="358" y2="485" stroke="var(--warm)" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="648" y1="485" x2="648" y2="476" stroke="var(--ink)" stroke-width="1.8"/>
+<line x1="648" y1="596" x2="648" y2="485" stroke="var(--warm)" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="857" y1="581" x2="857" y2="446" stroke="var(--ink)" stroke-width="1.8"/>
+<line x1="387" y1="675" x2="387" y2="404" stroke="var(--ink3)" stroke-width="3"/>
+<text x="393" y="400" font-size="11" fill="var(--ink3)">mainmast</text>
+<line x1="735" y1="646" x2="735" y2="404" stroke="var(--ink3)" stroke-width="3"/>
+<text x="741" y="400" font-size="11" fill="var(--ink3)">foremast</text>
+<line x1="283" y1="441" x2="358" y2="441" stroke="var(--warm)" stroke-width="4"/>
+<line x1="527" y1="469" x2="631" y2="469" stroke="var(--warm)" stroke-width="4"/>
+<line x1="527" y1="596" x2="631" y2="596" stroke="var(--warm)" stroke-width="4"/>
+<line x1="527" y1="596" x2="527" y2="469" stroke="var(--warm)" stroke-width="0.9" stroke-dasharray="4 4"/>
+<line x1="631" y1="596" x2="631" y2="469" stroke="var(--warm)" stroke-width="0.9" stroke-dasharray="4 4"/>
+<text x="579" y="581" font-size="10" fill="var(--warm)" text-anchor="middle">one shaft, deck to hold</text>
+<line x1="63" y1="558" x2="353" y2="558" stroke="var(--ink)" stroke-width="1"/>
+<text x="196" y="600" font-size="10.5" fill="var(--ink2)" text-anchor="middle">bread room and lazarette</text>
+<text x="503" y="633" font-size="10.5" fill="var(--ink2)" text-anchor="middle">water · salt provisions · iron ballast</text>
+<text x="759" y="618" font-size="10.5" fill="var(--ink2)" text-anchor="middle">cable tier</text>
+<text x="150" y="509" font-size="11" fill="var(--ink2)" text-anchor="middle">2.45 floor</text>
+<text x="300" y="509" font-size="11" fill="var(--ink2)" text-anchor="middle">2.45 floor</text>
+<text x="503" y="549" font-size="11" fill="var(--ink2)" text-anchor="middle">1.80 floor — the platform</text>
+<text x="753" y="529" font-size="11" fill="var(--ink2)" text-anchor="middle">2.05 floor</text>
+<line x1="48" y1="734" x2="947" y2="734" stroke="var(--rule)" stroke-width="1"/>
+<line x1="150" y1="730" x2="150" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="150" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">-6</text>
+<line x1="266" y1="730" x2="266" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="266" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">-4</text>
+<line x1="382" y1="730" x2="382" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="382" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">-2</text>
+<line x1="498" y1="730" x2="498" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="498" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">0</text>
+<line x1="614" y1="730" x2="614" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="614" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">+2</text>
+<line x1="730" y1="730" x2="730" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="730" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">+4</text>
+<line x1="846" y1="730" x2="846" y2="738" stroke="var(--rule2)" stroke-width="1"/>
+<text x="846" y="752" font-size="11" fill="var(--ink3)" text-anchor="middle">+6</text>
+<text x="955" y="752" font-size="11" fill="var(--ink3)">m</text>
+</svg>

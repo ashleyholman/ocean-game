@@ -1,0 +1,127 @@
+{
+  "generatedAtIso": "2026-08-07T09:08:51.543Z",
+  "purpose": "TERR-111/112/113 paired depth-strategy terrain occlusion GPU comparison",
+  "revision": "runtime build",
+  "device": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "drawingBuffer": {
+    "width": 1600,
+    "height": 913,
+    "pixelRatio": 1
+  },
+  "depth": {
+    "requested": "reversed",
+    "logarithmicActive": false,
+    "reversedActive": true,
+    "clipControl": true,
+    "depthBits": 24
+  },
+  "fixture": {
+    "id": "peak",
+    "rangeKm": 21,
+    "bearingDeg": -48
+  },
+  "terrain": {
+    "tiles": 6,
+    "triangles": 196608,
+    "renderOrder": -1,
+    "oceanRenderOrder": 0
+  },
+  "protocol": {
+    "pairs": 16,
+    "rotationsPerLeg": 8,
+    "framesPerRotation": 6,
+    "switchWarmupFrames": 12,
+    "armOrder": "alternating off/on then on/off",
+    "frozen": [
+      "world",
+      "waves",
+      "foam history",
+      "cloud cache"
+    ]
+  },
+  "timings": {
+    "frame": {
+      "offLegMediansMs": {
+        "mean": 7.00102021875,
+        "median": 6.73091625,
+        "standardDeviation": 0.6538934539407513,
+        "minimum": 6.404999500000001,
+        "maximum": 8.579958,
+        "count": 16
+      },
+      "onLegMediansMs": {
+        "mean": 7.46664671875,
+        "median": 7.3159165,
+        "standardDeviation": 0.39151757048532615,
+        "minimum": 7.219312,
+        "maximum": 8.7474165,
+        "count": 16
+      },
+      "pairedOnMinusOffMs": {
+        "mean": 0.46562649999999994,
+        "median": 0.5802500000000004,
+        "standardDeviation": 0.45196498524634987,
+        "minimum": -0.6950835,
+        "maximum": 0.9073959999999994,
+        "count": 16
+      },
+      "standardErrorMs": 0.11299124631158747
+    },
+    "ocean": {
+      "offLegMediansMs": {
+        "mean": 4.78325653125,
+        "median": 4.83491675,
+        "standardDeviation": 0.4056390131195251,
+        "minimum": 4.197542,
+        "maximum": 5.6402909999999995,
+        "count": 16
+      },
+      "onLegMediansMs": {
+        "mean": 5.408959499999999,
+        "median": 5.3158335,
+        "standardDeviation": 0.37419589926062324,
+        "minimum": 4.956104,
+        "maximum": 6.166083499999999,
+        "count": 16
+      },
+      "pairedOnMinusOffMs": {
+        "mean": 0.6257029687500002,
+        "median": 0.5544685,
+        "standardDeviation": 0.4493338932460456,
+        "minimum": -0.2329989999999995,
+        "maximum": 1.4994170000000002,
+        "count": 16
+      },
+      "standardErrorMs": 0.1123334733115114
+    },
+    "sceneAndStars": {
+      "offLegMediansMs": {
+        "mean": 0.45950259374999997,
+        "median": 0.39730175,
+        "standardDeviation": 0.21340552574361174,
+        "minimum": 0.24425050000000015,
+        "maximum": 1.0648545000000005,
+        "count": 16
+      },
+      "onLegMediansMs": {
+        "mean": 0.3345469062499999,
+        "median": 0.3384480000000001,
+        "standardDeviation": 0.27769486437948515,
+        "minimum": -0.1364580000000002,
+        "maximum": 0.9503955,
+        "count": 16
+      },
+      "pairedOnMinusOffMs": {
+        "mean": -0.12495568750000005,
+        "median": -0.08626075000000033,
+        "standardDeviation": 0.22595604715518433,
+        "minimum": -0.5326865000000005,
+        "maximum": 0.23070849999999998,
+        "count": 16
+      },
+      "standardErrorMs": 0.05648901178879608
+    }
+  },
+  "capture": "terrain-on.jpg"
+}

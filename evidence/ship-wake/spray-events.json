@@ -1,0 +1,397 @@
+{
+  "formatVersion": 1,
+  "status": "WK3 bow-entry tear rates and overtop cue sizing. An intentional extension beside contact-baseline.json, not a change to it.",
+  "contract": {
+    "method": "The production HullSprayEventDetector stepped on the same completed 60 Hz contact frames the renderer reads, under the same prescribed S3 polar kinematics the contact baseline uses. Fixed 240 Hz physics, seeded WaveField.",
+    "scope": "The three polar references plus CURRENT_MODERATE at anchor, plus a dedicated running sizing case at 135 degrees off the bow in SOUTHERN_OCEAN_ROUGH, plus a ten-point speed sweep in CURRENT_MODERATE.",
+    "interpretation": "tearsPerSecond is the event rate the round gates: zero at anchor and on glass, non-decreasing across the speed sweep, and never above ceilingPerSecond. The overtop block records what the CUE makes of the physics-detected events; drawnSamples of zero means the detector fired and the cue correctly declined to draw anything."
+  },
+  "regenerateCommand": "npm run ship:wake",
+  "configuration": {
+    "physicsHz": 240,
+    "callerHz": 60,
+    "warmupSeconds": 20,
+    "measurementSeconds": 60,
+    "sweepMeasurementSeconds": 90
+  },
+  "policy": {
+    "entryPowerReferenceW": 20000,
+    "wayOnsetMps": 1,
+    "waySaturationMps": 4.7,
+    "armDriveCalm": 0.5,
+    "armDriveRough": 1.5,
+    "releaseFraction": 0.5,
+    "minimumIntervalSeconds": 1.5,
+    "tearMaxSeconds": 0.5,
+    "eventCeilingPerSecond": 0.666667,
+    "sustainedDropletCeilingPerSecond": 600
+  },
+  "overtopCue": {
+    "schoonerFreeboardM": 1.696882,
+    "depthReferenceM": 1.696882,
+    "speedReferenceMps": 5.769994,
+    "raftDepthReferenceM": 0.454545,
+    "raftSpeedReferenceMps": 1.818182,
+    "comparison": [
+      {
+        "label": "beam-reach reference peak",
+        "depthM": 0.0764,
+        "speedMps": 0.859,
+        "raftCurveStrength": 0.64053,
+        "freeboardCurveStrength": 0.193897,
+        "drawnByRaftCurve": true,
+        "drawnByFreeboardCurve": false
+      },
+      {
+        "label": "WK-R-F1 recorded peak",
+        "depthM": 0.151,
+        "speedMps": 1.329,
+        "raftCurveStrength": 1,
+        "freeboardCurveStrength": 0.319316,
+        "drawnByRaftCurve": true,
+        "drawnByFreeboardCurve": true
+      },
+      {
+        "label": "running sizing case p50",
+        "depthM": 0.398,
+        "speedMps": 1,
+        "raftCurveStrength": 1,
+        "freeboardCurveStrength": 0.407858,
+        "drawnByRaftCurve": true,
+        "drawnByFreeboardCurve": true
+      },
+      {
+        "label": "running sizing case p95",
+        "depthM": 1.4317,
+        "speedMps": 4,
+        "raftCurveStrength": 1,
+        "freeboardCurveStrength": 1,
+        "drawnByRaftCurve": true,
+        "drawnByFreeboardCurve": true
+      },
+      {
+        "label": "running sizing case peak",
+        "depthM": 1.8927,
+        "speedMps": 8.096,
+        "raftCurveStrength": 1,
+        "freeboardCurveStrength": 1,
+        "drawnByRaftCurve": true,
+        "drawnByFreeboardCurve": true
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "CURRENT_MODERATE_ANCHOR",
+      "seaStateName": "CURRENT_MODERATE",
+      "windAngleOffBowDeg": 90,
+      "speedMps": 0,
+      "leewayDeg": 0,
+      "sprayEvents": {
+        "tears": 0,
+        "tearsPerSecond": 0,
+        "ceilingPerSecond": 0.666667,
+        "framesShedding": 0,
+        "dropletsShed": 0,
+        "dropletsPerSecond": 0,
+        "dropletCeilingPerSecond": 600,
+        "peakDrive": 0,
+        "p95Drive": 0,
+        "armThreshold": 0.5,
+        "wayGate": 0,
+        "seaMask": 0,
+        "peakBowImmersionRateM3PerSec": 17.017253,
+        "peakEntryPowerW": 22931.305787
+      },
+      "overtopping": {
+        "eventSamples": 0,
+        "eventSamplesPerSecond": 0,
+        "framesWithEvents": 0,
+        "frameFraction": 0,
+        "maximumEventsInFrame": 0,
+        "peakSpeedMps": 0,
+        "peakDepthM": 0,
+        "contactSamplesByRegion": {
+          "bow": 0,
+          "midships": 0,
+          "stern": 0
+        },
+        "cue": {
+          "depthReferenceM": 1.696882,
+          "speedReferenceMps": 5.769994,
+          "peakStrength": 0,
+          "meanStrength": null,
+          "drawnSamples": 0
+        }
+      }
+    },
+    {
+      "name": "GLASSY_LONG_SWELL_POLAR_REACH",
+      "seaStateName": "GLASSY_LONG_SWELL",
+      "windAngleOffBowDeg": 90,
+      "speedMps": 0.850586,
+      "leewayDeg": 1.796875,
+      "sprayEvents": {
+        "tears": 0,
+        "tearsPerSecond": 0,
+        "ceilingPerSecond": 0.666667,
+        "framesShedding": 0,
+        "dropletsShed": 0,
+        "dropletsPerSecond": 0,
+        "dropletCeilingPerSecond": 600,
+        "peakDrive": 0,
+        "p95Drive": 0,
+        "armThreshold": 0.5,
+        "wayGate": 0,
+        "seaMask": 0,
+        "peakBowImmersionRateM3PerSec": 0.860199,
+        "peakEntryPowerW": 1.784459
+      },
+      "overtopping": {
+        "eventSamples": 0,
+        "eventSamplesPerSecond": 0,
+        "framesWithEvents": 0,
+        "frameFraction": 0,
+        "maximumEventsInFrame": 0,
+        "peakSpeedMps": 0,
+        "peakDepthM": 0,
+        "contactSamplesByRegion": {
+          "bow": 0,
+          "midships": 0,
+          "stern": 0
+        },
+        "cue": {
+          "depthReferenceM": 1.696882,
+          "speedReferenceMps": 5.769994,
+          "peakStrength": 0,
+          "meanStrength": null,
+          "drawnSamples": 0
+        }
+      }
+    },
+    {
+      "name": "CURRENT_MODERATE_POLAR_REACH",
+      "seaStateName": "CURRENT_MODERATE",
+      "windAngleOffBowDeg": 90,
+      "speedMps": 3.288086,
+      "leewayDeg": 1.640625,
+      "sprayEvents": {
+        "tears": 8,
+        "tearsPerSecond": 0.133333,
+        "ceilingPerSecond": 0.666667,
+        "framesShedding": 246,
+        "dropletsShed": 3728,
+        "dropletsPerSecond": 62.133333,
+        "dropletCeilingPerSecond": 600,
+        "peakDrive": 1.778078,
+        "p95Drive": 0.831067,
+        "armThreshold": 0.5,
+        "wayGate": 0.674283,
+        "seaMask": 0,
+        "peakBowImmersionRateM3PerSec": 25.749299,
+        "peakEntryPowerW": 52739.84028
+      },
+      "overtopping": {
+        "eventSamples": 0,
+        "eventSamplesPerSecond": 0,
+        "framesWithEvents": 0,
+        "frameFraction": 0,
+        "maximumEventsInFrame": 0,
+        "peakSpeedMps": 0,
+        "peakDepthM": 0,
+        "contactSamplesByRegion": {
+          "bow": 0,
+          "midships": 0,
+          "stern": 0
+        },
+        "cue": {
+          "depthReferenceM": 1.696882,
+          "speedReferenceMps": 5.769994,
+          "peakStrength": 0,
+          "meanStrength": null,
+          "drawnSamples": 0
+        }
+      }
+    },
+    {
+      "name": "SOUTHERN_OCEAN_ROUGH_POLAR_REACH",
+      "seaStateName": "SOUTHERN_OCEAN_ROUGH",
+      "windAngleOffBowDeg": 90,
+      "speedMps": 5.243164,
+      "leewayDeg": 2.421875,
+      "sprayEvents": {
+        "tears": 8,
+        "tearsPerSecond": 0.133333,
+        "ceilingPerSecond": 0.666667,
+        "framesShedding": 229,
+        "dropletsShed": 3371,
+        "dropletsPerSecond": 56.183333,
+        "dropletCeilingPerSecond": 600,
+        "peakDrive": 44.129639,
+        "p95Drive": 3.288233,
+        "armThreshold": 1.5,
+        "wayGate": 1,
+        "seaMask": 1,
+        "peakBowImmersionRateM3PerSec": 81.657883,
+        "peakEntryPowerW": 882592.785161
+      },
+      "overtopping": {
+        "eventSamples": 0,
+        "eventSamplesPerSecond": 0,
+        "framesWithEvents": 0,
+        "frameFraction": 0,
+        "maximumEventsInFrame": 0,
+        "peakSpeedMps": 0,
+        "peakDepthM": 0,
+        "contactSamplesByRegion": {
+          "bow": 0,
+          "midships": 0,
+          "stern": 0
+        },
+        "cue": {
+          "depthReferenceM": 1.696882,
+          "speedReferenceMps": 5.769994,
+          "peakStrength": 0,
+          "meanStrength": null,
+          "drawnSamples": 0
+        }
+      }
+    },
+    {
+      "name": "SOUTHERN_OCEAN_ROUGH_RUNNING_SIZING",
+      "seaStateName": "SOUTHERN_OCEAN_ROUGH",
+      "windAngleOffBowDeg": 135,
+      "speedMps": 5.243164,
+      "leewayDeg": 2.421875,
+      "sprayEvents": {
+        "tears": 17,
+        "tearsPerSecond": 0.283333,
+        "ceilingPerSecond": 0.666667,
+        "framesShedding": 513,
+        "dropletsShed": 9480,
+        "dropletsPerSecond": 158,
+        "dropletCeilingPerSecond": 600,
+        "peakDrive": 377.735806,
+        "p95Drive": 31.038032,
+        "armThreshold": 1.5,
+        "wayGate": 1,
+        "seaMask": 1,
+        "peakBowImmersionRateM3PerSec": 152.315221,
+        "peakEntryPowerW": 7554716.122732
+      },
+      "overtopping": {
+        "eventSamples": 7262,
+        "eventSamplesPerSecond": 121.033333,
+        "framesWithEvents": 239,
+        "frameFraction": 0.066389,
+        "maximumEventsInFrame": 124,
+        "peakSpeedMps": 6.171807,
+        "peakDepthM": 1.354372,
+        "contactSamplesByRegion": {
+          "bow": 1126,
+          "midships": 526,
+          "stern": 165
+        },
+        "cue": {
+          "depthReferenceM": 1.696882,
+          "speedReferenceMps": 5.769994,
+          "peakStrength": 1,
+          "meanStrength": 0.451493,
+          "drawnSamples": 4325
+        }
+      }
+    }
+  ],
+  "moderateSpeedSweep": [
+    {
+      "speedMps": 0,
+      "wayGate": 0,
+      "tears": 0,
+      "tearsPerSecond": 0,
+      "dropletsPerSecond": 0,
+      "p95Drive": 0,
+      "peakDrive": 0
+    },
+    {
+      "speedMps": 0.5,
+      "wayGate": 0,
+      "tears": 0,
+      "tearsPerSecond": 0,
+      "dropletsPerSecond": 0,
+      "p95Drive": 0,
+      "peakDrive": 0
+    },
+    {
+      "speedMps": 1,
+      "wayGate": 0,
+      "tears": 0,
+      "tearsPerSecond": 0,
+      "dropletsPerSecond": 0,
+      "p95Drive": 0,
+      "peakDrive": 0
+    },
+    {
+      "speedMps": 1.5,
+      "wayGate": 0.049849,
+      "tears": 0,
+      "tearsPerSecond": 0,
+      "dropletsPerSecond": 0,
+      "p95Drive": 0.023231,
+      "peakDrive": 0.065484
+    },
+    {
+      "speedMps": 2,
+      "wayGate": 0.179654,
+      "tears": 2,
+      "tearsPerSecond": 0.022222,
+      "dropletsPerSecond": 4.655556,
+      "p95Drive": 0.088364,
+      "peakDrive": 0.818798
+    },
+    {
+      "speedMps": 2.5,
+      "wayGate": 0.359801,
+      "tears": 7,
+      "tearsPerSecond": 0.077778,
+      "dropletsPerSecond": 17.377778,
+      "p95Drive": 0.224788,
+      "peakDrive": 1.478924
+    },
+    {
+      "speedMps": 3,
+      "wayGate": 0.560678,
+      "tears": 12,
+      "tearsPerSecond": 0.133333,
+      "dropletsPerSecond": 48.666667,
+      "p95Drive": 0.532322,
+      "peakDrive": 3.017947
+    },
+    {
+      "speedMps": 3.5,
+      "wayGate": 0.75267,
+      "tears": 13,
+      "tearsPerSecond": 0.144444,
+      "dropletsPerSecond": 68.177778,
+      "p95Drive": 0.770358,
+      "peakDrive": 3.935058
+    },
+    {
+      "speedMps": 4,
+      "wayGate": 0.906165,
+      "tears": 17,
+      "tearsPerSecond": 0.188889,
+      "dropletsPerSecond": 91.4,
+      "p95Drive": 0.988719,
+      "peakDrive": 5.283363
+    },
+    {
+      "speedMps": 4.7,
+      "wayGate": 1,
+      "tears": 19,
+      "tearsPerSecond": 0.211111,
+      "dropletsPerSecond": 113.611111,
+      "p95Drive": 1.53778,
+      "peakDrive": 8.410205
+    }
+  ]
+}

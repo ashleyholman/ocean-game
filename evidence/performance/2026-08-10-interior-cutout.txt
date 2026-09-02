@@ -1,0 +1,147 @@
+INTERIOR CUTOUT GPU CAMPAIGN — COMPLETE TECHNIQUES
+2026-08-10
+
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+GPU-enabled headless Chrome, --use-angle=metal
+buffer 1600×913 · DPR 1.00
+SOUTHERN_OCEAN_ROUGH · sun 38°
+Each run: 8 interleaved stencil/shader pairs · 16 timer rotations per block
+Campaign: 24 paired deltas · 384 raw frame samples per arm and framing
+
+The in-app visual-review renderer was closed before all retained runs. The
+shader arm disabled both the ocean stencil read and the interior stencil writes,
+so this compares the complete shader-volume technique with the complete stencil
+technique. No run was selected or rejected by its result.
+
+CAMPAIGN SUMMARY
+
+close exterior · camera (30, 16)
+per-pair deltas (ms):
+  0.43, 0.25, 0.78, -1.29, 0.16, 0.80, 0.64, 0.09,
+  0.45, 0.41, 0.15, 0.64, 0.58, 0.29, 0.37, 0.67,
+  0.52, 0.50, 0.23, 0.90, 0.71, 0.11, 0.46, 0.25
+pooled paired shader − stencil: +0.379 ± 0.087 ms/frame
+pooled delta SD: 0.424 ms · n=24 pairs
+95% interval by mean ± 1.96 SE: +0.210 to +0.549 ms/frame
+harness 2-SE bound: |cost| < 0.552 ms/frame
+23/24 pairs positive
+mean of the three reported stencil frame means: 9.88 ms
+campaign delta as a fraction of that mean: +3.84%
+Reading: resolved above noise.
+
+cabin interior · eye (0, -5.9)
+per-pair deltas (ms):
+  -3.24, -1.34, -1.09, -1.42, -2.13, -1.17, -1.12, -2.64,
+  -1.28, -2.00, -0.83, -1.16, -1.42, -0.72, -0.97, -1.57,
+  -1.42, -1.08, -0.44, -0.90, -1.25, -0.79, -1.02, -1.72
+pooled paired shader − stencil: -1.363 ± 0.128 ms/frame
+pooled delta SD: 0.626 ms · n=24 pairs
+95% interval by mean ± 1.96 SE: -1.614 to -1.113 ms/frame
+harness 2-SE bound: |cost| < 1.619 ms/frame
+24/24 pairs favor shader
+mean of the three reported stencil frame means: 11.27 ms
+campaign delta as a fraction of that mean: -12.10%
+Reading: resolved above noise.
+
+DECISION
+
+Use the shader volume as production default. The repeatable ~0.38 ms cost in the
+handover's worst-case close exterior framing is accepted for depth correctness
+and a reusable hull-volume mechanism. Keep the stencil selectable as a fallback
+if a future GPU budget needs that time back.
+
+--- RUN 1 ---
+
+FRAMING: close exterior · Southern rough · sun 38° · camera (30, 16)
+interior cutout: shader volume test vs stencil
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 1600×913 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 10.25 ± 2.17 ms · n=128
+frame time on:  10.48 ± 1.96 ms · n=128
+
+per-pair deltas (ms): 0.43, 0.25, 0.78, -1.29, 0.16, 0.80, 0.64, 0.09
+marginal cost: +0.232 ± 0.238 ms/frame (2.26%)
+95% bound on the true cost: |cost| < 0.71 ms/frame
+Not resolvable: the term is smaller than this machine can measure.
+
+FRAMING: cabin interior · Southern rough · sun 38° · eye at (0, -5.9)
+interior cutout: shader volume test vs stencil
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 1600×913 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 11.76 ± 2.71 ms · n=128
+frame time on:  9.99 ± 2.30 ms · n=128
+
+per-pair deltas (ms): -3.24, -1.34, -1.09, -1.42, -2.13, -1.17, -1.12, -2.64
+marginal cost: -1.769 ± 0.286 ms/frame (-15.05%)
+95% bound on the true cost: |cost| < 2.34 ms/frame
+Resolved above noise.
+
+--- RUN 2 ---
+
+FRAMING: close exterior · Southern rough · sun 38° · camera (30, 16)
+interior cutout: shader volume test vs stencil
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 1600×913 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 9.70 ± 1.89 ms · n=128
+frame time on:  10.14 ± 2.06 ms · n=128
+
+per-pair deltas (ms): 0.45, 0.41, 0.15, 0.64, 0.58, 0.29, 0.37, 0.67
+marginal cost: +0.444 ± 0.063 ms/frame (4.58%)
+95% bound on the true cost: |cost| < 0.57 ms/frame
+Resolved above noise.
+
+FRAMING: cabin interior · Southern rough · sun 38° · eye at (0, -5.9)
+interior cutout: shader volume test vs stencil
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 1600×913 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 11.03 ± 2.50 ms · n=128
+frame time on:  9.79 ± 2.46 ms · n=128
+
+per-pair deltas (ms): -1.28, -2.00, -0.83, -1.16, -1.42, -0.72, -0.97, -1.57
+marginal cost: -1.243 ± 0.149 ms/frame (-11.27%)
+95% bound on the true cost: |cost| < 1.54 ms/frame
+Resolved above noise.
+
+--- RUN 3 ---
+
+FRAMING: close exterior · Southern rough · sun 38° · camera (30, 16)
+interior cutout: shader volume test vs stencil
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 1600×913 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 9.70 ± 1.88 ms · n=128
+frame time on:  10.16 ± 2.11 ms · n=128
+
+per-pair deltas (ms): 0.52, 0.50, 0.23, 0.90, 0.71, 0.11, 0.46, 0.25
+marginal cost: +0.459 ± 0.093 ms/frame (4.73%)
+95% bound on the true cost: |cost| < 0.64 ms/frame
+Resolved above noise.
+
+FRAMING: cabin interior · Southern rough · sun 38° · eye at (0, -5.9)
+interior cutout: shader volume test vs stencil
+GPU ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)
+buffer 1600×913 · DPR 1.00
+8 interleaved off/on pairs · 16 rotations per block
+paired differences, so drift between pairs cancels instead of being charged to the feature
+
+frame time off: 11.01 ± 2.44 ms · n=128
+frame time on:  9.93 ± 2.50 ms · n=128
+
+per-pair deltas (ms): -1.42, -1.08, -0.44, -0.90, -1.25, -0.79, -1.02, -1.72
+marginal cost: -1.079 ± 0.140 ms/frame (-9.80%)
+95% bound on the true cost: |cost| < 1.36 ms/frame
+Resolved above noise.

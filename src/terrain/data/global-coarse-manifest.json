@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "buildId": "drift-global-coarse-ne110m-v1",
+  "status": "interim_coarse_active",
+  "canonical": false,
+  "runtimeRoles": [
+    "developer_globe_land_relief",
+    "farthest_lod_fallback",
+    "teleport_local_preview_tiles",
+    "voyage_governor_presentation_distance",
+    "water_aware_global_opening_bootstrap",
+    "water_aware_world_panel_teleport"
+  ],
+  "accuracyNotice": "Cartographic preview only. Not navigation, collision, shoreline, harbour, or survey data.",
+  "sources": {
+    "land": {
+      "product": "Natural Earth 1:110m Land",
+      "release": "4.1.0",
+      "sourceUrl": "https://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip",
+      "archiveSha256": "1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de",
+      "horizontalCrs": "EPSG:4326",
+      "licence": "Public domain",
+      "termsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "downloadedUtcDate": "2026-08-17"
+    },
+    "reliefSeeds": {
+      "product": "Natural Earth 1:110m Geography Regions Elevation Points",
+      "release": "5.0.0",
+      "sourceUrl": "https://naciscdn.org/naturalearth/110m/physical/ne_110m_geography_regions_elevation_points.zip",
+      "archiveSha256": "5f1952dc9b8b947fe492778282a67c7ecd84c66052977f1400f3e6b817f30b61",
+      "horizontalCrs": "EPSG:4326",
+      "verticalUnits": "metres as catalogued by Natural Earth",
+      "licence": "Public domain",
+      "termsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "downloadedUtcDate": "2026-08-17"
+    }
+  },
+  "derivedAsset": {
+    "path": "src/terrain/data/natural-earth-110m-coarse.json",
+    "sha256": "845c4976e601643dd57e308bbd7f9b39752de2739107e5d3ab84784535654616",
+    "builder": "tools/terrain/build-natural-earth-coarse.mjs",
+    "coordinateQuantizationPerDegree": 10000,
+    "landShapeCount": 127,
+    "elevationPointCount": 19,
+    "reliefAlgorithm": "natural-earth-peak-envelope-v1",
+    "reliefNotice": "Broad deterministic visual relief inferred from sparse named extrema; not a DEM."
+  },
+  "tileProfile": {
+    "addressing": "temporary geographic lattice",
+    "tileDegrees": 2,
+    "samplesPerEdge": 33,
+    "neighbourhoodRadiusTiles": 1,
+    "waterFloorHeightM": -80,
+    "verticalPolicy": "visual orthometric metres used as ellipsoid displacement"
+  },
+  "coastDistanceProfile": {
+    "algorithm": "natural-earth-minor-great-circle-segment-v1",
+    "segmentCount": 5004,
+    "distanceRadius": "WGS84 arithmetic mean radius (2a+b)/3",
+    "landPolicy": "exact zero from shared polygon classification",
+    "purpose": "voyage presentation governor and bounded coarse water qualification; not navigation, collision, grounding, or safety"
+  },
+  "canonicalUpgrade": {
+    "elevation": {
+      "product": "Copernicus DEM GLO-30 2024_1",
+      "status": "not_acquired"
+    },
+    "water": {
+      "product": "Copernicus DEM Water Body Mask 2024_1",
+      "status": "not_acquired"
+    },
+    "ingestionPipelineStatus": "not_started",
+    "gate": "R2 remains separate; this manifest records no GLO-30 or WBM acceptance evidence."
+  }
+}

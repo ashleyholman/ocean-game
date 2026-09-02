@@ -1,0 +1,166 @@
+{
+ "switch": {
+  "name": "shoulder",
+  "summary": "tone-curve shoulder join, in multiples of display white — 0.80 ships, 0.70 spreads the blue sky band over ~9 levels instead of 3",
+  "scope": "reload",
+  "defaultArm": "0.8",
+  "arms": [
+   "0.8",
+   "0.7"
+  ]
+ },
+ "arms": [
+  "0.8",
+  "0.7"
+ ],
+ "scenes": [
+  {
+   "seaState": "CURRENT_MODERATE",
+   "waveTimeSeconds": 120,
+   "lookYawDeg": 140,
+   "stand": "Waist",
+   "sunElevationDeg": 48
+  }
+ ],
+ "surface": {
+  "tier": "desktop",
+  "cssWidth": 1280,
+  "cssHeight": 720,
+  "pixelRatio": 2
+ },
+ "repeats": 1,
+ "diffGain": 8,
+ "terrain": "off",
+ "params": {},
+ "capturedAt": "2026-08-17T00:02:05.358Z",
+ "determinism": {
+  "sameStage": {
+   "pixels": 3686400,
+   "differing": 23576,
+   "differingPercent": 0.64,
+   "maxChannelDelta": 2,
+   "meanChannelDelta": 0.0064,
+   "meanSignedLuma": 0.0022
+  },
+  "restage": {
+   "pixels": 3686400,
+   "differing": 10998,
+   "differingPercent": 0.298,
+   "maxChannelDelta": 208,
+   "meanChannelDelta": 0.197,
+   "meanSignedLuma": -0.0294
+  }
+ },
+ "crossPageControl": {
+  "pixels": 3686400,
+  "differing": 2744,
+  "differingPercent": 0.074,
+  "maxChannelDelta": 50,
+  "meanChannelDelta": 0.0015,
+  "meanSignedLuma": -0.0001
+ },
+ "nullControls": null,
+ "armDelta": {
+  "pixels": 3686400,
+  "differing": 1625141,
+  "differingPercent": 44.085,
+  "maxChannelDelta": 142,
+  "meanChannelDelta": 1.9627,
+  "meanSignedLuma": -1.4203
+ },
+ "armDeltas": [
+  {
+   "scene": "CURRENT_MODERATE · sun 48°",
+   "difference": {
+    "pixels": 3686400,
+    "differing": 1625141,
+    "differingPercent": 44.085,
+    "maxChannelDelta": 142,
+    "meanChannelDelta": 1.9627,
+    "meanSignedLuma": -1.4203
+   }
+  }
+ ],
+ "shots": [
+  {
+   "label": "shoulder=0.8 · CURRENT_MODERATE · sun 48°",
+   "sunElevationDeg": 47.89,
+   "tier": {
+    "tier": "desktop",
+    "detailOctaves": 5,
+    "oceanRings": 288,
+    "oceanSectors": 288,
+    "cssWidth": 1280,
+    "cssHeight": 720,
+    "pixelRatio": 2,
+    "backingWidth": 2560,
+    "backingHeight": 1440,
+    "devicePixelRatio": 1,
+    "adaptiveResolutionPinned": true,
+    "animationLoopStopped": true,
+    "preserveDrawingBuffer": true,
+    "switches": {
+     "oceanTaa": "0",
+     "legacyToneCurve": "0",
+     "legacyExposure": "0",
+     "noChromaTrim": "0",
+     "legacySkyHue": "0",
+     "sunDomeMean": "0",
+     "fibonacciAmbient": "0",
+     "flatSkyMean": "0",
+     "legacyWaterHue": "0",
+     "sunShadow": "1",
+     "vesselSkyOcclusion": "1",
+     "foamLookupLegacy": "0",
+     "wakeEffects": "1",
+     "kelvinPattern": "0",
+     "cloudLiveMarch": "0",
+     "scotopic": "1",
+     "starDome": "far",
+     "shoulder": "0.8",
+     "noToe": "0"
+    }
+   }
+  },
+  {
+   "label": "shoulder=0.7 · CURRENT_MODERATE · sun 48°",
+   "sunElevationDeg": 47.89,
+   "tier": {
+    "tier": "desktop",
+    "detailOctaves": 5,
+    "oceanRings": 288,
+    "oceanSectors": 288,
+    "cssWidth": 1280,
+    "cssHeight": 720,
+    "pixelRatio": 2,
+    "backingWidth": 2560,
+    "backingHeight": 1440,
+    "devicePixelRatio": 1,
+    "adaptiveResolutionPinned": true,
+    "animationLoopStopped": true,
+    "preserveDrawingBuffer": true,
+    "switches": {
+     "oceanTaa": "0",
+     "legacyToneCurve": "0",
+     "legacyExposure": "0",
+     "noChromaTrim": "0",
+     "legacySkyHue": "0",
+     "sunDomeMean": "0",
+     "fibonacciAmbient": "0",
+     "flatSkyMean": "0",
+     "legacyWaterHue": "0",
+     "sunShadow": "1",
+     "vesselSkyOcclusion": "1",
+     "foamLookupLegacy": "0",
+     "wakeEffects": "1",
+     "kelvinPattern": "0",
+     "cloudLiveMarch": "0",
+     "scotopic": "1",
+     "starDome": "far",
+     "shoulder": "0.7",
+     "noToe": "0"
+    }
+   }
+  }
+ ]
+}

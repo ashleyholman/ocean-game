@@ -1,0 +1,113 @@
+{
+ "switch": {
+  "name": "timber",
+  "summary": "the timber round, cumulative: off ships; woods respecs six wood colours at held luminance (hue 26-43 where all six now sit inside 5 degrees); grain adds board, figure and warm/cool variation in the fragment; wear darkens the six places hands and feet go. Look at the cabin by lamplight, the wardroom unlit, and the deck at low sun",
+  "scope": "reload",
+  "defaultArm": "off",
+  "arms": [
+   "off",
+   "woods",
+   "grain",
+   "wear"
+  ]
+ },
+ "arms": [
+  "off",
+  "grain"
+ ],
+ "scenes": [
+  {
+   "stand": "Hatch",
+   "lookYawDeg": 160,
+   "lookPitchDeg": -45,
+   "sunElevationDeg": 32
+  }
+ ],
+ "surface": {
+  "tier": "desktop",
+  "cssWidth": 1280,
+  "cssHeight": 720,
+  "pixelRatio": 2
+ },
+ "repeats": 1,
+ "capturedAt": "2026-08-17T00:05:42.113Z",
+ "determinism": null,
+ "crossPageControl": null,
+ "armDelta": null,
+ "shots": [
+  {
+   "label": "timber=off · CURRENT_MODERATE · sun 32°",
+   "tier": {
+    "tier": "desktop",
+    "detailOctaves": 5,
+    "oceanRings": 288,
+    "oceanSectors": 288,
+    "cssWidth": 1280,
+    "cssHeight": 720,
+    "pixelRatio": 2,
+    "backingWidth": 2560,
+    "backingHeight": 1440,
+    "devicePixelRatio": 1,
+    "adaptiveResolutionPinned": true,
+    "animationLoopStopped": true,
+    "preserveDrawingBuffer": true,
+    "switches": {
+     "oceanTaa": "0",
+     "legacyToneCurve": "0",
+     "legacyExposure": "0",
+     "noChromaTrim": "0",
+     "legacySkyHue": "0",
+     "sunDomeMean": "0",
+     "fibonacciAmbient": "0",
+     "flatSkyMean": "0",
+     "legacyWaterHue": "0",
+     "sunShadow": "1",
+     "vesselSkyOcclusion": "1",
+     "foamLookupLegacy": "0",
+     "wakeEffects": "1",
+     "starDome": "far",
+     "shoulder": "0.8",
+     "noToe": "0",
+     "timber": "off"
+    }
+   }
+  },
+  {
+   "label": "timber=grain · CURRENT_MODERATE · sun 32°",
+   "tier": {
+    "tier": "desktop",
+    "detailOctaves": 5,
+    "oceanRings": 288,
+    "oceanSectors": 288,
+    "cssWidth": 1280,
+    "cssHeight": 720,
+    "pixelRatio": 2,
+    "backingWidth": 2560,
+    "backingHeight": 1440,
+    "devicePixelRatio": 1,
+    "adaptiveResolutionPinned": true,
+    "animationLoopStopped": true,
+    "preserveDrawingBuffer": true,
+    "switches": {
+     "oceanTaa": "0",
+     "legacyToneCurve": "0",
+     "legacyExposure": "0",
+     "noChromaTrim": "0",
+     "legacySkyHue": "0",
+     "sunDomeMean": "0",
+     "fibonacciAmbient": "0",
+     "flatSkyMean": "0",
+     "legacyWaterHue": "0",
+     "sunShadow": "1",
+     "vesselSkyOcclusion": "1",
+     "foamLookupLegacy": "0",
+     "wakeEffects": "1",
+     "starDome": "far",
+     "shoulder": "0.8",
+     "noToe": "0",
+     "timber": "grain"
+    }
+   }
+  }
+ ]
+}

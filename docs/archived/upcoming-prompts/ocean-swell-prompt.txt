@@ -1,0 +1,1257 @@
+You are the lead real-time ocean graphics engineer, physical ocean-surface
+engineer and visual-effects director for the existing Three.js raft prototype.
+
+Perform one focused implementation round:
+
+BUILD A RICH, PHYSICALLY COHERENT FAMILY OF OPEN-OCEAN SEA STATES, WITH
+BEAUTIFUL WHITEWATER, WHILE PRESERVING THE VERIFIED RAFT–WATER CONTRACT.
+
+This is primarily an ocean-simulation and water-rendering round.
+
+Do not redesign the game.
+Do not add survival mechanics, navigation, islands, radio gameplay, celestial
+systems or unrelated features.
+
+IMPLEMENTATION ORDER AND DEPENDENCIES
+
+This is the first of three planned implementation rounds:
+
+1. Open-ocean sea states and whitewater — this specification.
+2. Multi-scale camera and embodiment.
+3. Final graphics, lighting, atmosphere and material polish.
+
+Start from the latest integrated `master`, including the planetary world model
+and distributed-buoyancy round. Do not implement the camera or final graphics
+round here. Leave clear extension points for distance-aware foam, spray and
+ocean LOD because the later camera round will introduce much wider viewing
+scales, but do not guess or pre-build that camera system.
+
+BACKGROUND
+
+The previous raft–water coupling round has established:
+
+- A shared local-render-coordinate wave parameter space.
+- `WaveField.setOrigin(presentationOriginX, presentationOriginZ)`, used only as
+  a local presentation-phase offset.
+- `WaveField.setTime(t)`.
+- `WaveField.sample(x, z, out)`.
+- Exact CPU/GPU temporal parity.
+- Gerstner inverse horizontal-displacement sampling.
+- Gerstner orbital water velocity.
+- Distributed 24-station buoyancy.
+- Fixed 240 Hz physics substeps.
+- Eight deterministic diagnostic wave presets.
+- A substantial `?debug=buoyancy` verification harness.
+- GPU height readback for CPU/rendered-surface parity.
+- Contact sheets, videos, numerical metrics and worst-case capture tools.
+
+The current world model is already planetary and authoritative:
+
+- `PlanetaryWorld` owns WGS84/ECEF position, voyage distance and time.
+- The renderer remains permanently raft-centred at local `(0, 0)`.
+- The former planar `worldX`/`worldZ` travel accumulator and 800 m recenter
+  mechanism no longer exist.
+- Production keeps `WaveField`'s presentation origin at zero. The buoyancy lab
+  may vary it diagnostically to verify CPU/GPU phase behaviour, but it is not
+  geography and must not become a second travel or position authority.
+
+The current production ocean is visually strong but represents essentially one
+moderate sea condition. Its whitecaps and foam are comparatively underdeveloped.
+
+The coupling report also records several real water-rendering defects:
+
+1. `residualWaveSlope()` is evaluated at displaced `vLocal` while vertex phase
+   is evaluated at undisplaced `p`, misregistering residual ripple.
+2. `residualWaveSlope()` lacks the Gerstner normalisation needed near compressed
+   crests.
+3. Detail-origin wrapping is inconsistent with q-space periodicity and causes
+   normal-detail popping.
+4. The foam noise is not periodic and can jump when the diagnostic presentation
+   origin crosses its wrap boundary.
+5. True-course changes already update the planetary/local transported frame and
+   raft presentation, but the current wave headings are baked at construction;
+   the new sea-state controls need an explicit, coherent direction contract.
+
+These are in scope for this round.
+
+CENTRAL EXPERIENCE
+
+The ocean should support recognisably different, physically intelligible
+conditions rather than merely scaling one fixed wave pattern up and down.
+
+The player should be able to experience:
+
+- Almost dead-flat water.
+- A glassy ocean with long, smooth swell.
+- Long remote swell under little local wind.
+- Fine wind chop with little underlying swell.
+- A moderate mixed open sea.
+- Two intersecting swell systems.
+- A mature wind sea.
+- Post-storm conditions with large organised swell but weakening local wind.
+- Rough Southern Ocean-like conditions.
+- Debug-only extreme conditions near the limits of the wave representation.
+
+Each condition must differ in:
+
+- Wave scale.
+- Dominant period.
+- Direction.
+- Directional spread.
+- Crest shape.
+- Group structure.
+- Fine roughness.
+- Whitecap coverage.
+- Foam persistence.
+- Spray and spindrift.
+- Raft motion.
+
+Do not make every condition look like the same ocean with a different amplitude.
+
+PRIMARY OUTCOMES
+
+At the end of this round:
+
+1. The ocean is composed from independently controllable physical systems:
+   - local wind sea;
+   - primary swell;
+   - optional secondary swell;
+   - high-frequency surface roughness;
+   - foam and spray.
+
+2. Wind speed and direction visibly affect:
+   - short-wave energy;
+   - wave directionality;
+   - fine surface roughness;
+   - whitecap generation;
+   - foam drift;
+   - spindrift;
+   - but do not magically rotate established remote swell.
+
+3. Primary and secondary swell remain independently controllable by:
+   - height;
+   - period;
+   - direction;
+   - directional spread;
+   - steepness or crest sharpness;
+   - groupiness.
+
+4. The water remains visually excellent from calm conditions through rough seas.
+
+5. Whitewater becomes a first-class rendering system:
+   - crest whitecaps;
+   - persistent foam;
+   - foam streaking and breakup;
+   - wind-blown spray;
+   - raft-related splashes and overtopping remain separate effects.
+
+6. The verified CPU/GPU wave contract remains intact.
+
+7. Existing buoyancy remains correct for all raft-survivable sea states.
+
+8. Extreme conditions are not required to keep the small raft dry, upright or
+   survivable. They must remain numerically stable and visually coherent.
+
+9. A discoverable developer-tools launcher exposes the existing world and
+   buoyancy diagnostics plus an ocean laboratory with all meaningful sea-state
+   controls and reproducible presets.
+
+10. All development UI can be tucked away immediately for a clean,
+    screenshot-ready view.
+
+STRICT ARCHITECTURAL CONSTRAINTS
+
+Preserve the established contract:
+
+- `WaveField` remains the canonical large- and medium-scale displacement field.
+- CPU and GPU evaluate the same wave components.
+- The ocean and raft use the same simulation time.
+- CPU sampling remains in local render coordinates.
+- Canonical geographic travel must never be injected into local wave phase.
+- Diagnostic changes to the presentation-phase origin, including equivalent
+  wrapped offsets, must not create wave, detail-normal or foam discontinuities.
+- Inverse horizontal displacement remains correct.
+- `WaveField.sample()` continues to return at least:
+  - surface height or position;
+  - normal;
+  - local orbital velocity;
+  - whatever additional derivatives are required.
+- The raft buoyancy implementation remains distributed and force-based.
+- Preserve `PlanetaryWorld`, `RaftBuoyancy`, `OvertopSpray`, `SimHandle`, the
+  permanently raft-centred renderer, and the existing `?debug=buoyancy` lab.
+- Do not introduce a second position, travel-distance or recentering integrator.
+- Do not reintroduce target-following springs or arbitrary delays.
+- Do not introduce per-preset raft physics constants.
+- Do not tune water rendering to conceal flotation errors.
+- Do not replace the proven wave architecture merely because a more fashionable
+  technique exists.
+
+The main agent is the sole code integrator.
+
+SUBAGENT STRATEGY
+
+Use at most four bounded read-only subagents.
+
+Subagent A — Current ocean architecture auditor
+
+Inspect the current wave and rendering implementation and report:
+
+- Every wave component currently used.
+- Exact wave equations.
+- Wavelength, amplitude, direction, speed, steepness and phase handling.
+- CPU/GPU data flow.
+- Mesh topology and LOD.
+- Residual normal implementation.
+- Fine-detail normal implementation.
+- Current foam and whitecap formula.
+- Presentation-origin and texture/detail wrapping.
+- Performance characteristics.
+- Which parts should be extended versus corrected.
+
+Do not edit code.
+
+Subagent B — Oceanographic model analyst
+
+Recommend a practical real-time model for:
+
+- local wind sea;
+- primary swell;
+- secondary swell;
+- directional spread;
+- wave growth and maturity;
+- groupiness;
+- calm-to-storm transitions.
+
+The result must be suitable for a browser and compatible with deterministic CPU
+sampling for buoyancy.
+
+Do not recommend full CFD.
+Do not assume an FFT replacement is necessary.
+Compare:
+
+- an expanded Gerstner spectrum;
+- a spectral/FFT ocean;
+- a hybrid.
+
+Recommend the lowest-risk architecture that can produce visibly distinct sea
+states while preserving the current strengths.
+
+Do not edit code.
+
+Subagent C — Whitewater and foam analyst
+
+Review current whitewater and recommend a system for:
+
+- crest generation;
+- persistence;
+- advection;
+- decay;
+- breakup;
+- whitecap coverage;
+- spindrift;
+- lighting and material response;
+- distance LOD;
+- raft interaction separation.
+
+The system must work in Three.js and degrade gracefully on mobile.
+
+Do not edit code.
+
+Subagent D — Independent visual critic
+
+Run after the first complete implementation.
+
+Review actual screenshots and motion sequences for every major sea state.
+Rank defects by severity.
+
+Focus on:
+
+- repetition;
+- obviously sinusoidal water;
+- waves moving without coherent propagation;
+- wave systems that do not reflect the selected controls;
+- foam painted rigidly onto crests;
+- foam popping;
+- foam sliding incorrectly;
+- excessive whitewater;
+- insufficient whitewater;
+- spray that resembles snow or smoke;
+- scale ambiguity;
+- tiling;
+- presentation-origin or wrap-boundary discontinuities;
+- water/raft disagreement;
+- severe presets that merely enlarge moderate waves;
+- calm presets that still look choppy;
+- glassy swell that still has excessive local roughness.
+
+Do not request unrelated game systems.
+
+PRE-IMPLEMENTATION DELIVERABLES
+
+Create:
+
+1. `docs/ocean/OCEAN_SEA_STATE_SPEC.md`
+2. `docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`
+3. `docs/ocean/OCEAN_SEA_STATE_REPORT.md`
+
+Before implementation, the specification must define:
+
+- Current architecture.
+- Chosen extension strategy.
+- Why the current architecture is retained, hybridised or partially replaced.
+- Canonical sea-state parameters.
+- Wave-system decomposition.
+- Whitewater architecture.
+- Control panel design.
+- Preset matrix.
+- Performance plan.
+- Buoyancy regression plan.
+- Visual acceptance criteria.
+- Numerical acceptance criteria.
+- Explicit non-goals.
+
+The final report must include:
+
+- Actual implementation.
+- Root causes of existing residual-normal, wrapping and foam defects.
+- Files changed.
+- Preset definitions.
+- Performance measurements.
+- CPU/GPU parity results.
+- Buoyancy regression results.
+- Visual-review evidence.
+- Known physical and visual limitations.
+
+PHASE 1 — AUDIT BEFORE CHANGING THE WATER
+
+Inspect the running application and current source.
+
+Before editing, run the current tracked test suite, type checking and production
+build. Ensure Vitest is testing this worktree only; nested `.claude/worktrees`
+must be excluded rather than counted as duplicate test suites.
+
+Record:
+
+- Number of displacement-wave slots.
+- Current wavelength range.
+- Current amplitude range.
+- Current directional spread.
+- Current deep-water dispersion handling.
+- Current Gerstner steepness handling.
+- Current residual normal frequencies.
+- Current detail-texture frequencies.
+- Current foam inputs.
+- Current LOD fade behaviour.
+- Current `WaveField` presentation-origin behaviour and all detail/foam wrap
+  boundaries.
+- Confirmation that production has no renderer-recentering path and keeps the
+  raft at local `(0, 0)`.
+- Current 4K desktop and mobile performance.
+- Current GPU and CPU costs.
+
+Capture the existing production ocean as a reference.
+
+Preserve what already looks excellent.
+
+Do not begin by replacing the entire shader.
+
+PHASE 2 — DEFINE THE CANONICAL SEA-STATE MODEL
+
+Use a canonical environment state with the following conceptual layers.
+
+A. LOCAL WIND
+
+Parameters:
+
+- wind speed in metres per second;
+- wind direction as a true bearing mapped through the existing transported
+  local tangent frame, or an equivalently documented local presentation
+  direction;
+- gustiness;
+- optional fetch or wind-sea maturity;
+- optional duration/development factor.
+
+Wind speed must not directly set every wave height.
+
+It should influence:
+
+- local short-wave energy;
+- dominant local wind-sea period;
+- directional alignment;
+- directional spread;
+- fine roughness;
+- whitecap probability;
+- spray and spindrift;
+- foam advection.
+
+A newly raised wind should be capable of producing roughened small-scale water
+before a fully mature large wind sea develops.
+
+B. PRIMARY SWELL
+
+Parameters:
+
+- significant wave height or a clearly documented proxy;
+- peak period;
+- true/local-tangent direction using the same documented heading convention as
+  the wind sea;
+- directional spread;
+- crest sharpness or steepness;
+- groupiness;
+- optional decay or age.
+
+This represents remote organised swell and must not automatically rotate when
+local wind direction changes.
+
+Direction controls describe physical headings in the current local tangent
+presentation. They must use the existing `PlanetaryWorld`/transported-frame
+mapping where true bearings are required and must not create another world
+position, voyage-distance or recentering model. Primary and secondary swell
+remain independent of the local wind after their headings are established.
+
+C. SECONDARY SWELL
+
+Same conceptual parameters as primary swell, independently enabled.
+
+This supports:
+
+- crossing seas;
+- confused seas;
+- post-storm multi-system conditions;
+- one dominant and one weaker swell.
+
+D. CAPILLARY AND HIGH-FREQUENCY ROUGHNESS
+
+This layer affects reflection and fine appearance but should not materially move
+the raft.
+
+It should respond strongly to:
+
+- wind speed;
+- viewing angle;
+- sun angle;
+- gustiness.
+
+It should diminish towards a genuinely glassy state under little wind.
+
+E. WHITEWATER STATE
+
+Maintain persistent whitewater state independently from instantaneous wave
+height where practical.
+
+Parameters or derived quantities may include:
+
+- generation rate;
+- foam age;
+- advection velocity;
+- decay rate;
+- breakup scale;
+- wind streaking;
+- spray threshold.
+
+The precise internal representation may differ, but it must not be a static
+white mask glued to every crest.
+
+PHASE 3 — WAVE REPRESENTATION
+
+Prefer an expanded deterministic Gerstner-spectrum or hybrid solution unless
+the audit proves it inadequate.
+
+A suitable approach may:
+
+- keep a fixed maximum uniform capacity;
+- organise components into wind-sea, primary-swell and secondary-swell groups;
+- derive component wavelengths and amplitudes around peak periods;
+- use deterministic seeded phase and directional distributions;
+- use deep-water dispersion;
+- use directional spreading around each system’s heading;
+- support smooth parameter interpolation;
+- expose analytic derivatives and orbital velocity;
+- preserve inverse horizontal-displacement sampling.
+
+Do not simply create:
+
+- one large sine wave;
+- one small sine wave;
+- a global amplitude multiplier.
+
+Each system should contain enough components to avoid visibly repeating regular
+patterns.
+
+Use deterministic generation so the same seed and parameters reproduce the
+same sea exactly.
+
+If the current fixed eight slots are insufficient:
+
+- increase capacity carefully;
+- measure the performance cost;
+- avoid shader recompilation when switching ordinary presets;
+- retain a practical mobile fallback;
+- document why the selected count is sufficient.
+
+If using multiple bands or grouped sums, ensure the CPU and GPU use identical
+parameters and equations.
+
+PHASE 4 — CORRECT EXISTING WATER-RENDERING DEFECTS
+
+Fix the known defects from the coupling report.
+
+A. RESIDUAL-WAVE COORDINATES
+
+Ensure residual slope/detail evaluation is spatially registered to the same
+undisplaced or correctly inverted surface coordinate used by the main wave
+evaluation.
+
+Do not evaluate one layer in displaced coordinates and another in undisplaced
+coordinates without a deliberate and documented mapping.
+
+B. GERSTNER NORMAL CORRECTION
+
+Correct residual slope composition around compressed Gerstner crests.
+
+Use the actual surface Jacobian or an equivalent physically coherent derivative
+composition.
+
+Do not merely add unnormalised height-field slopes where horizontal displacement
+has materially changed surface spacing.
+
+C. PRESENTATION-ORIGIN AND WRAP CONTINUITY
+
+Fix detail and foam coordinate wrapping so:
+
+- detail normals are periodic in the space in which they are evaluated;
+- foam does not jump at a 256 m boundary;
+- deliberately changing the diagnostic presentation-phase origin produces no
+  visible discontinuity at equivalent wrapped coordinates;
+- large positive and negative diagnostic origins remain stable;
+- wind-streak orientation remains continuous.
+
+Test values immediately below and above every relevant wrap boundary and
+equivalent phase origins separated by whole wrap periods. Confirm separately
+that canonical geographic travel never drives this presentation origin.
+
+D. WIND-HEADING CONSISTENCY
+
+Changing wind direction in the ocean lab must update:
+
+- local wind-sea directions;
+- surface roughness orientation;
+- foam advection;
+- spindrift direction;
+- wind-driven raft drift and yaw where currently applicable.
+
+It must not rotate independently established remote swell unless explicitly
+requested by the control.
+
+PHASE 5 — GROUPINESS AND NATURAL VARIATION
+
+Large swell should arrive in perceptible wave groups rather than as perfectly
+uniform repetition.
+
+Implement controlled amplitude modulation or spectral grouping that:
+
+- produces sets of somewhat larger and smaller waves;
+- remains deterministic;
+- avoids obvious periodic pulsing;
+- does not break CPU/GPU parity;
+- does not cause sudden parameter discontinuities;
+- does not resemble a single artificial envelope sine wave.
+
+Allow independent groupiness control for swell systems.
+
+Do not overdo the effect. Ordinary moderate sea should remain natural rather
+than theatrical.
+
+PHASE 6 — WHITEWATER AND FOAM
+
+Treat whitewater as a major visual system.
+
+Separate at least:
+
+1. Ocean crest whitecaps.
+2. Persistent surface foam.
+3. Wind-blown spindrift and spray.
+4. Raft overtopping and raft-contact effects.
+
+Do not merge all four into one particle effect.
+
+A. WHITEcap GENERATION
+
+Generate whitecaps from physically meaningful indicators, potentially including:
+
+- local surface steepness;
+- crest curvature;
+- horizontal compression;
+- Jacobian determinant;
+- upward velocity;
+- crest speed;
+- wind speed;
+- wind direction relative to wave travel;
+- sea maturity.
+
+Do not use a fixed world-height threshold.
+
+Do not paint every crest white.
+
+Calm swell under little wind should generally have little or no whitecap foam,
+even when the swell is visually large.
+
+Young steep wind sea should create substantially more whitewater.
+
+B. PERSISTENCE
+
+Foam should survive after initial crest generation.
+
+It should:
+
+- advect with an appropriate approximation of surface water and wind;
+- spread and fragment;
+- decay over time;
+- form irregular patches and streaks;
+- vary in age and opacity;
+- avoid remaining rigidly fixed to a wave crest;
+- remain temporally stable without frame-to-frame flicker.
+
+Possible implementations include:
+
+- low-resolution persistent render targets;
+- ping-pong advection textures;
+- clipmap-aligned foam fields;
+- deterministic procedural history approximations.
+
+Choose a solution compatible with the raft-centred presentation frame,
+diagnostic phase-origin changes, wrap-boundary continuity and mobile
+performance.
+
+C. FOAM APPEARANCE
+
+Daylight foam should appear:
+
+- bright but not uniformly pure white;
+- rough and highly diffuse;
+- slightly translucent at thin edges;
+- thicker and more opaque in fresh breaking areas;
+- structured at multiple scales;
+- shadowed and textured enough to avoid looking like flat paint.
+
+Sunlight should make whitewater particularly beautiful.
+
+At sunset and night, foam should remain physically plausible:
+
+- warm highlights at low sun;
+- cooler moonlit response;
+- no self-illumination unless a later bioluminescence feature is added.
+
+D. SPINDRIFT AND SPRAY
+
+Under strong wind and sufficiently steep crests:
+
+- emit sparse fine spray from crest tops;
+- move it downwind;
+- vary emission with gusts and whitecap activity;
+- keep particles small and short-lived;
+- prevent them resembling snow, fog blobs or smoke;
+- reduce or disable them in calm conditions.
+
+Do not add heavy volumetric spray in ordinary moderate seas.
+
+E. RAFT EFFECT SEPARATION
+
+Preserve `OvertopSpray.ts` as a raft-specific physical cue.
+
+Do not replace it with general ocean foam.
+
+Future hooks may be added for:
+
+- bow disturbance;
+- wake;
+- edge splash;
+- water-on-deck.
+
+Do not implement a full water-on-deck simulation in this round unless required
+to preserve existing overtopping behaviour.
+
+PHASE 7 — SEA-STATE PRESETS
+
+Create polished deterministic presets.
+
+At minimum:
+
+1. DEAD_CALM
+
+Characteristics:
+
+- Essentially no broad swell.
+- Extremely low wind.
+- Very weak fine ripple.
+- Mirror-like but not perfectly static.
+- No whitecaps.
+- No spray.
+- Raft motion extremely gentle.
+
+2. GLASSY_LONG_SWELL
+
+Characteristics:
+
+- Long-period organised swell.
+- Very little local wind.
+- Smooth broad faces.
+- Minimal fine roughness.
+- Almost no whitecaps.
+- Strong clean reflection patterns.
+- Slow, clear raft heave and pitch.
+
+3. LIGHT_BREEZE_OVER_SWELL
+
+Characteristics:
+
+- Moderate long swell.
+- Light local wind.
+- Fine ripples crossing the swell faces.
+- Occasional tiny whitecaps only.
+
+4. WIND_CHOP
+
+Characteristics:
+
+- Little remote swell.
+- Short, irregular, directional local wind sea.
+- Fine roughness.
+- Small frequent whitecaps.
+- Noticeably more spray than swell-only conditions.
+- Raft filters the highest-frequency motion.
+
+5. CURRENT_MODERATE
+
+Preserve the present production visual character as closely as practical.
+
+It is the visual-regression baseline.
+
+6. MATURE_WIND_SEA
+
+Characteristics:
+
+- Stronger local wind.
+- Developed medium-period sea.
+- Directionally coherent but irregular.
+- Substantial whitecaps.
+- Persistent foam streaks.
+- Moderate spindrift.
+
+7. CROSSING_SEAS
+
+Characteristics:
+
+- Primary swell and secondary swell crossing obliquely.
+- Complex but physically legible interference.
+- No arbitrary chaotic noise.
+- Whitewater based on local steepness and wind.
+
+8. POST_STORM_SWELL
+
+Characteristics:
+
+- Large, long, organised swell.
+- Weakening local wind.
+- Broad powerful motion.
+- Less whitewater than its wave height might initially suggest.
+- Residual foam from recent conditions may persist if the transition system
+  supports it.
+
+9. SOUTHERN_OCEAN_ROUGH
+
+Characteristics:
+
+- Large long-period swell.
+- Strong local wind sea superimposed.
+- Significant whitewater.
+- Strong directional spray.
+- A visually formidable open ocean.
+
+This preset is allowed to wet or swamp parts of the 3.2 m raft.
+
+Do not distort raft buoyancy to keep it dry.
+
+Do not require the raft to survive indefinitely.
+
+10. EXTREME_DEBUG
+
+Characteristics:
+
+- Near the stable practical limit of the chosen wave representation.
+- Intended to test numerical stability, shader robustness, parity and LOD.
+- Not a demonstration of raft survivability.
+- May capsize, swamp or render the current raft operationally impossible in a
+  future gameplay round.
+
+Do not artificially constrain this preset merely to make the raft look safe.
+Do not allow NaNs, mesh folding beyond the documented representational limit,
+exploding forces or visible CPU/GPU divergence.
+
+Each preset must document:
+
+- wind speed and direction;
+- wind-sea maturity;
+- primary swell height, period and direction;
+- secondary swell parameters;
+- approximate maximum individual-wave range;
+- whitecap behaviour;
+- intended raft survivability classification.
+
+PHASE 8 — SURVIVABILITY CLASSIFICATION
+
+Do not confuse ocean validity with raft survivability.
+
+Classify each preset as:
+
+A. COMFORTABLE
+The raft should remain stable and mostly dry.
+
+B. WET BUT VIABLE
+Edge overtopping and intermittent deck wetting are plausible.
+
+C. MARGINAL
+Frequent swamping or extreme attitude is plausible; survival is not guaranteed.
+
+D. UNSURVIVABLE OR DEBUG-ONLY
+The sea is valid, but this particular raft should not be expected to remain
+upright, dry or functional.
+
+This round does not need to implement capsize, structural breakup, drowning or
+game-over behaviour.
+
+If the current constrained three-degree-of-freedom raft model cannot represent a
+physically expected capsize, document that limitation rather than secretly
+flattening the waves or increasing freeboard.
+
+PHASE 9 — TRANSITIONS
+
+Sea-state parameters must interpolate smoothly.
+
+Support controlled transitions over adjustable simulated durations.
+
+During transitions:
+
+- no phase reset;
+- no wave popping;
+- no sudden direction snap;
+- no abrupt whitecap disappearance;
+- persistent foam should decay naturally;
+- orbital velocity must remain coherent;
+- buoyancy must remain stable;
+- the canonical raft-centred presentation must remain stable;
+- no diagnostic presentation-origin change may reset phase or foam history.
+
+Changing swell period or component distribution is difficult because replacing
+the entire spectrum can pop.
+
+Use a robust strategy such as:
+
+- stable component slots whose parameters morph gradually;
+- dual-spectrum crossfading with phase continuity;
+- energy-preserving component activation and decay;
+- another documented deterministic method.
+
+Do not regenerate all random phases instantaneously.
+
+PHASE 10 — DISCOVERABLE DEVELOPER TOOLS AND OCEAN LAB
+
+Establish a small shared developer-tools launcher for this early-development
+application, then add or extend the ocean laboratory within it.
+
+Required interaction:
+
+- A compact, clearly labelled `Tools` or `Debug` button is available without
+  knowing a query parameter.
+- Opening it exposes simple entries for the existing general/world controls,
+  buoyancy lab and new ocean lab.
+- A single close or `Hide all` action tucks every panel away and returns to a
+  clean, screenshot-ready scene.
+- When tucked away, retain at most the compact launcher; optionally allow a
+  documented clean-view shortcut to hide and restore even that launcher.
+- Opening one lab must not force every heavy diagnostic module to load.
+- The shell and selected panel remain usable on desktop and mobile.
+
+Keep `?debug=1`, `?debug=buoyancy` and add `?debug=ocean` as supported direct
+links for bookmarks, automated capture and test harnesses, but they must not be
+the only discoverable entry points. A direct link should open the same shared
+UI state as the corresponding button rather than construct a competing debug
+system.
+
+This round owns the common launcher foundation. Later camera and graphics rounds
+will extend it with their own panels.
+
+Expose:
+
+ENVIRONMENT
+
+- Pause/play.
+- Fixed deterministic time.
+- Seed.
+- Simulation speed.
+- Diagnostic presentation-phase origin controls, clearly labelled as
+  non-geographic and development-only.
+- Controls to step immediately below and above relevant detail/foam wrap
+  boundaries.
+- Read-only canonical location, course and time may be reused from the existing
+  world model, but must not drive local wave phase.
+
+WIND
+
+- Wind speed in m/s.
+- Wind direction in degrees.
+- Gustiness.
+- Wind-sea maturity or fetch proxy.
+
+PRIMARY SWELL
+
+- Enable.
+- Significant height or documented proxy in metres.
+- Peak period in seconds.
+- Direction in degrees.
+- Directional spread.
+- Steepness.
+- Groupiness.
+
+SECONDARY SWELL
+
+- Same controls.
+
+SURFACE DETAIL
+
+- Fine roughness.
+- Detail scale.
+- Detail strength.
+- Gust streak strength.
+
+WHITEWATER
+
+- Whitecap threshold bias.
+- Generation strength.
+- Foam persistence.
+- Decay.
+- Wind advection.
+- Spray intensity.
+- Freeze foam history.
+- Clear persistent foam.
+
+PRESETS
+
+- Every defined sea-state preset.
+- Before/after comparison with the original production condition.
+
+CAMERA
+
+Reuse useful camera views from the buoyancy lab:
+
+- production;
+- high three-quarter;
+- fixed local presentation frame;
+- low waterline;
+- close crest-inspection;
+- high overview;
+- foam-following diagnostic view if useful.
+
+OVERLAYS
+
+Optional diagnostic visualisation for:
+
+- wave-system direction arrows;
+- per-component wavelength and direction;
+- primary/secondary/wind-sea contribution;
+- local steepness;
+- Jacobian compression;
+- whitecap-generation field;
+- persistent foam field;
+- wind vector;
+- local orbital velocity;
+- CPU surface probes;
+- LOD boundaries.
+
+Diagnostic panels must be dynamically loaded and absent while closed. The
+compact early-development launcher is intentional and is not a gameplay HUD.
+
+PHASE 11 — BUOYANCY REGRESSION
+
+Every production and test sea state must run through the existing buoyancy
+harness.
+
+Do not modify the raft’s mass, freeboard, waterline or station physics to make
+new presets pass.
+
+For raft-survivable presets, verify:
+
+- zero whole-hull air-gap frames;
+- no folded-sail immersion;
+- no unexplained central-deck penetration;
+- no phase mismatch;
+- no degradation at large positive or negative diagnostic phase origins;
+- no detail, foam or wave discontinuity across wrap boundaries;
+- no frame-rate dependence;
+- CPU/GPU water parity remains within the established scale of error.
+
+For intentionally marginal or unsurvivable presets:
+
+- the simulation remains finite and stable;
+- the raft samples the correct surface;
+- overtopping is correctly detected;
+- no hovercraft gap appears;
+- no CPU/GPU phase error appears;
+- any swamping is correctly classified as physical rather than numerical.
+
+Re-run, at minimum:
+
+- FLAT;
+- GLASSY_LONG_SWELL;
+- WIND_CHOP;
+- CURRENT_MODERATE;
+- CROSSING_SEAS;
+- POST_STORM_SWELL;
+- SOUTHERN_OCEAN_ROUGH;
+- EXTREME_DEBUG.
+
+Run at:
+
+- origin;
+- at least +6 km and -6 km diagnostic presentation-phase offsets;
+- at least +60 km and -60 km diagnostic presentation-phase offsets;
+- values immediately below and above every implemented detail/foam wrap
+  boundary;
+- equivalent origins separated by whole wrap periods;
+- 30, 60 and 120 Hz rendering;
+- irregular render timing with fixed physics.
+
+PHASE 12 — VISUAL EVIDENCE
+
+Static screenshots alone are insufficient.
+
+For every major preset, capture:
+
+- production camera;
+- high three-quarter;
+- low waterline;
+- wide horizon view;
+- close foam/crest view.
+
+Capture at least one 20–30-second deterministic motion sequence for:
+
+- dead calm;
+- glassy long swell;
+- wind chop;
+- current moderate;
+- crossing seas;
+- mature wind sea;
+- post-storm swell;
+- Southern Ocean rough.
+
+Produce time-coded contact or visual sheets where helpful.
+
+For whitewater specifically, capture:
+
+- fresh crest generation;
+- foam one second after generation;
+- foam several seconds later;
+- streaking under strong wind;
+- calm state with no inappropriate whitewater;
+- diagnostic presentation-origin/wrap-boundary crossing with continuous foam;
+- transition from rough sea to weakening wind;
+- daylight close-ups;
+- sunset close-ups;
+- night close-ups.
+
+Automatically inspect or capture worst cases for:
+
+- highest whitecap coverage;
+- largest foam discontinuity;
+- largest temporal foam change;
+- LOD transition;
+- diagnostic phase-origin boundary-crossing frame;
+- largest CPU/GPU height discrepancy;
+- most severe raft overtopping;
+- highest spray density.
+
+PHASE 13 — VISUAL REVIEW LOOP
+
+After the first complete implementation:
+
+1. Generate all screenshots, contact sheets and videos.
+2. Ask the independent visual-critic subagent to evaluate each preset.
+3. Rank findings by severity.
+4. Correct all severity-one issues.
+5. Correct all severity-two issues involving:
+   - repeated wave patterns;
+   - tiling;
+   - temporal popping;
+   - foam discontinuity;
+   - foam looking painted on;
+   - spray looking like smoke or snow;
+   - calm water remaining too rough;
+   - large swell lacking scale;
+   - whitewater not responding to wind;
+   - raft/water mismatch;
+   - presentation-origin or wrap-boundary discontinuity;
+   - severe performance degradation.
+6. Regenerate equivalent deterministic evidence.
+7. Repeat for no more than four focused visual passes.
+
+Do not add unrelated features at the critic’s request.
+
+POST-ROUND EXTERNAL REVIEW
+
+This implementation prompt must complete its own critic loop and final report
+without waiting for user orchestration. Afterwards, the user may run
+`ocean-opus-code-and-visual-review-prompt.txt` in a separate Opus session and
+use that report to seed an optional follow-up improvement pass.
+
+PERFORMANCE
+
+Target:
+
+- Smooth production rendering on a modern desktop at 1440p.
+- High-quality presentation on a 4K display at an appropriate capped device
+  pixel ratio.
+- At least usable 30 fps behaviour on a contemporary mobile-sized viewport.
+- No unbounded allocations in animation loops.
+- No full-resolution persistent simulation texture where a lower-resolution
+  field is sufficient.
+- Graceful reduction of spray, foam resolution and high-frequency wave detail on
+  weaker devices.
+- Large displacement and buoyancy remain active even when fine rendering detail
+  is reduced.
+
+Record:
+
+- GPU frame time where available.
+- CPU simulation cost.
+- Persistent-foam cost.
+- Particle/spray cost.
+- Memory use for render targets.
+- Desktop and mobile quality settings.
+
+Do not sacrifice CPU/GPU parity for rendering performance.
+
+NUMERICAL AND STRUCTURAL ACCEPTANCE
+
+The round is complete only when:
+
+1. All displacement systems are deterministic and share CPU/GPU parameters.
+2. `WaveField.sample()` remains correct for the visible surface.
+3. Orbital velocity remains available and coherent.
+4. Existing inverse-displacement residual remains within the established
+   tolerance.
+5. Diagnostic presentation-origin changes and wrap-boundary crossings produce
+   no visible or numerical wave, detail or foam jump.
+6. Calm, swell, wind sea and crossing systems are genuinely distinct.
+7. Wind direction affects local wind sea but not independent remote swell.
+8. Parameter changes transition without phase resets or visible popping.
+9. No preset-specific raft physics constants exist.
+10. All normal production and survivable presets pass buoyancy regressions.
+11. Marginal and extreme presets remain numerically stable and correctly sample
+    the surface.
+12. Type checking and production build pass.
+13. No material browser or WebGL errors remain.
+14. World, buoyancy and ocean diagnostics are reachable from the visible
+    developer-tools launcher without a query parameter, while direct-link
+    queries still open the same panels.
+
+VISUAL ACCEPTANCE
+
+The round is complete only when:
+
+1. DEAD_CALM reads as genuinely calm rather than ordinary waves scaled down.
+2. GLASSY_LONG_SWELL has broad, smooth, organised motion with little local
+   roughness.
+3. WIND_CHOP reads as short, locally wind-driven disorder rather than miniature
+   swell.
+4. CROSSING_SEAS visibly contains two coherent directional systems.
+5. POST_STORM_SWELL communicates powerful remote swell with reduced local wind.
+6. SOUTHERN_OCEAN_ROUGH feels materially larger and more energetic than the
+   moderate sea, not merely faster.
+7. Whitecaps occur for plausible reasons and are absent where inappropriate.
+8. Foam persists, advects, fragments and decays rather than remaining attached
+   rigidly to crests.
+9. Foam remains continuous across diagnostic presentation-origin changes and
+   every relevant wrap boundary.
+10. Daylight whitewater is bright, detailed and beautiful without clipping to
+    featureless white.
+11. Sunset and night foam remain visible but restrained.
+12. Spray appears only under appropriate wind and steepness.
+13. Spray does not resemble snow, smoke or opaque blobs.
+14. The current production ocean retains or exceeds its existing visual quality.
+15. The independent critic reports no unresolved severity-one issue and no
+    relevant severity-two issue.
+16. `Hide all` produces a clean, screenshot-ready view and reopening the tools
+    does not reset canonical world, buoyancy, sea-state or foam-history state.
+
+NON-GOALS AND SCOPE GUARD
+
+Do not implement:
+
+- A global weather simulation.
+- Real meteorological forecasts.
+- Latitude, longitude, sun, moon or stars.
+- Shorelines, reefs or bathymetry.
+- Breaking surf on beaches.
+- Full Navier–Stokes fluid simulation.
+- Volumetric water-on-deck.
+- Capsize or structural-breakup gameplay.
+- Drowning or survival systems.
+- Gameplay-facing technical controls; the explicitly requested
+  early-development tools launcher is in scope.
+- A complete FFT replacement unless the audit conclusively demonstrates that
+  the current architecture cannot meet the acceptance criteria.
+- Signed-distance-field ray-marched replacement for the entire ocean.
+
+SDF or ray-marched methods may be considered only for a narrowly justified local
+effect if they clearly outperform conventional geometry or particles and do not
+endanger performance or integration.
+
+FINAL DELIVERABLES
+
+Leave the repository with:
+
+- Working implementation.
+- `docs/ocean/OCEAN_SEA_STATE_SPEC.md`.
+- `docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`.
+- `docs/ocean/OCEAN_SEA_STATE_REPORT.md`.
+- Updated asset credits if any assets are introduced.
+- Deterministic sea-state presets.
+- Shared developer-tools launcher and development-only ocean lab.
+- Machine-readable preset definitions.
+- Performance results.
+- CPU/GPU parity results.
+- Buoyancy regression results.
+- Screenshot and video evidence.
+- Independent critic findings.
+- Updated `README.md` documentation for the visible tools launcher, clean-view
+  behaviour and supported debug deep links.
+- Updated `docs/project/FUTURE_ROUNDS.md` marking this sea-state round complete while leaving
+  camera, final graphics, weather and current systems deferred.
+
+FINAL RESPONSE
+
+Do not merely claim that the ocean looks better.
+
+Report:
+
+- The chosen architecture and why.
+- Whether the existing Gerstner approach was retained, expanded or hybridised.
+- The exact parameter model.
+- The current wave-component layout.
+- How wind sea differs from remote swell.
+- How groupiness works.
+- How whitecaps are generated.
+- How persistent foam is represented and advected.
+- How spray is generated.
+- How presentation-origin and wrap-boundary continuity were fixed without
+  reintroducing a world-recentering model.
+- Before-and-after performance.
+- Results for every preset.
+- Buoyancy regression results.
+- CPU/GPU parity results.
+- Paths to visual and numerical evidence.
+- Independent critic’s final verdict.
+- Known limitations.
+- Exact files changed.
+
+Implement, test, visually review and verify this ocean-improvement round now.

@@ -1,0 +1,209 @@
+You are the independent read-only code reviewer, physical-ocean reviewer and
+visual critic for a candidate implementation of the ocean sea-state and
+whitewater round in an existing Three.js raft prototype.
+
+EXPECTED HARNESS
+
+Run this prompt in a separate Claude Code session using Opus 5.
+
+ROLE AND AUTHORITY
+
+Perform a fresh review of the complete candidate implementation, tests,
+documentation and rendered evidence. Do not edit any tracked file, implement
+fixes, or commit, merge, rebase or push.
+
+The original Codex implementation session is the sole code integrator. Your job
+is to identify code, architecture, numerical, test, performance and visual
+defects precisely enough that a follow-up implementation session can reproduce,
+prioritise and fix them.
+
+Do not anchor on another reviewer’s conclusions before forming your own. The
+value of this review is an independent model’s reading of both code and output.
+
+ORIENTATION
+
+Locate the candidate’s:
+
+- the planetary `PlanetaryWorld` baseline;
+- distributed 24-station raft buoyancy;
+- `docs/ocean/OCEAN_SEA_STATE_SPEC.md`;
+- `docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`;
+- `docs/ocean/OCEAN_SEA_STATE_REPORT.md`;
+- deterministic sea-state presets;
+- the ocean laboratory and visible developer-tools launcher;
+- captured screenshots and motion evidence, or a documented way to reproduce
+  them.
+
+If an artifact or evidence case is unavailable, identify that limitation
+clearly and continue with everything that can be reviewed. Make sure the review
+targets the candidate rather than an older branch.
+
+READ FIRST
+
+Read:
+
+- `docs/upcoming-prompts/ocean-swell-prompt.txt`;
+- `docs/ocean/RAFT_WATER_COUPLING_SPEC.md`;
+- `docs/ocean/RAFT_WATER_COUPLING_REPORT.md`;
+- `docs/ocean/OCEAN_SEA_STATE_SPEC.md`;
+- `docs/ocean/OCEAN_ARCHITECTURE_AUDIT.md`;
+- `docs/ocean/OCEAN_SEA_STATE_REPORT.md`;
+- the implementation diff from its starting commit.
+
+Inspect the relevant implementation beyond the changed lines where necessary to
+understand ownership and integration.
+
+Run the complete current-worktree test suite, type checking and production build
+if the environment permits. Exclude nested `.claude/worktrees` from test
+discovery. Record exact commands and results.
+
+Inspect the supplied screenshots, contact sheets and videos. Where browser
+control is available, launch the real application and reproduce important cases
+through the visible tools launcher. Query parameters may be used as deep links,
+but confirm that they are not the only route to the labs.
+
+TECHNICAL CODE REVIEW
+
+Review at minimum:
+
+1. WORLD AND COORDINATE AUTHORITY
+
+- `PlanetaryWorld` remains the only geographic travel/time authority.
+- The renderer remains raft-centred and no planar travel or recentering model
+  has returned.
+- `WaveField.setOrigin()` remains a presentation-phase diagnostic rather than a
+  second geographic position.
+- True/local-tangent wind and swell directions use one documented convention.
+
+2. WAVE MODEL AND NUMERICAL CONTRACT
+
+- Sea-state component generation is deterministic for seed and parameters.
+- Wind sea, primary swell and secondary swell are genuinely independent systems.
+- CPU and GPU consume the same components, phase, time, derivatives and
+  transition state.
+- Gerstner inverse displacement, Jacobian/normal composition and orbital
+  velocity remain coherent and finite.
+- Parameter transitions do not regenerate phases, snap headings or introduce
+  energy discontinuities.
+- Extreme inputs are bounded or classified without hiding NaNs or mesh failure.
+
+3. WHITEWATER AND RESOURCE LIFECYCLE
+
+- Whitecap generation uses defensible surface/wind indicators.
+- Persistent foam has explicit generation, advection, decay and breakup state.
+- Presentation-origin and texture wrapping are continuous.
+- Render targets, ping-pong state, resize, quality changes and disposal are
+  correct and bounded.
+- Spray and raft-contact effects remain separate, with no unbounded allocations.
+
+4. BUOYANCY AND EXISTING-SYSTEM PRESERVATION
+
+- The 24-station, 240 Hz force-based buoyancy contract remains intact.
+- No preset-specific raft constants or rendering-driven flotation fixes exist.
+- Raft-survivable and extreme classifications match actual regression evidence.
+- `?debug=buoyancy`, its parity tools and existing world/astronomy behaviour
+  remain functional.
+
+5. DEVELOPER TOOLS, TESTS AND PERFORMANCE
+
+- One visible launcher owns World/General, Buoyancy and Ocean panels.
+- Query parameters open the same state as discoverable buttons.
+- Closed heavy labs are lazy and `Hide all` does not reset simulation state.
+- Tests exercise determinism, CPU/GPU parity, transitions, wrapping, frame-rate
+  independence and failure boundaries rather than only happy-path presets.
+- Performance and memory claims are measured and supported by the implementation.
+
+For every technical finding, cite the exact file and tight line range, explain
+the concrete failure mode, identify the missing or insufficient test, and give a
+narrow acceptance condition. Do not supply a replacement implementation.
+
+REQUIRED REVIEW MATRIX
+
+Review at least the documented equivalents of:
+
+- `DEAD_CALM`;
+- `GLASSY_LONG_SWELL`;
+- `WIND_CHOP`;
+- `CURRENT_MODERATE`;
+- `CROSSING_SEAS`;
+- `POST_STORM_SWELL`;
+- `SOUTHERN_OCEAN_ROUGH`;
+- `EXTREME_DEBUG`.
+
+For the major non-debug presets inspect:
+
+- the production/default camera;
+- high three-quarter;
+- low waterline;
+- wide horizon;
+- close crest and foam;
+- at least one deterministic 20–30-second motion sequence.
+
+Inspect transitions from calm to rough and rough to weakening-wind/post-storm
+conditions. Inspect daylight, sunset and night whitewater.
+
+JUDGING CRITERIA
+
+Judge whether:
+
+- each preset is recognisably different in period, scale, direction, spread,
+  grouping, roughness and whitewater—not one spectrum with amplitude changed;
+- remote swell remains visually independent from local wind;
+- crossing seas contain two coherent, legible systems rather than arbitrary
+  noise;
+- calm water is genuinely calm and glassy swell is broad and organised;
+- rough seas convey large-scale energy without merely moving faster;
+- crests propagate coherently and avoid obvious sinusoidal repetition;
+- whitecaps arise for plausible steepness/wind reasons;
+- persistent foam survives, advects, fragments and decays;
+- foam does not remain painted rigidly on crests;
+- foam and detail remain continuous at diagnostic presentation-origin and wrap
+  boundaries;
+- spindrift is directional, sparse and scale-appropriate rather than snow,
+  smoke or fog blobs;
+- raft-contact spray remains distinct from ocean whitewater;
+- raft and rendered water appear to agree;
+- LOD transitions, horizon views and mobile/4K presentation remain credible;
+- the tools launcher is discoverable and `Hide all` produces a clean view.
+
+Do not fail this ocean round for missing final graphics-round features such as
+new atmosphere, colour grading, material overhaul or the future multi-scale
+camera. Judge the water within the integrated current visual style.
+
+SEVERITY
+
+- BLOCKER: invalidates the round, hides a broken physical contract, prevents
+  required evidence, or makes a major preset unusable.
+- MAJOR: conspicuous recurring defect that materially harms physical
+  intelligibility or visual quality.
+- MINOR: local polish issue that can be deferred without misrepresenting the
+  result.
+
+OUTPUT
+
+Return one self-contained report with:
+
+1. Verdict: `PASS`, `PASS WITH FINDINGS`, `FAIL`, or `UNREVIEWABLE`.
+2. Candidate commit/path, starting commit and diff inspected.
+3. Commands run, test/build results and evidence inspected.
+4. All BLOCKER and MAJOR code-review findings, plus only meaningful MINOR
+   findings.
+5. All BLOCKER and MAJOR visual findings, plus only meaningful MINOR findings.
+6. The five highest-severity findings across code and visuals, ordered by impact.
+7. For every finding:
+   - severity;
+   - category: code, numerical contract, tests, performance or visual;
+   - exact file/line where applicable;
+   - affected preset/view/time where applicable;
+   - proof, reproduction steps and evidence;
+   - why it violates the ocean specification;
+   - narrowly scoped acceptance test for a fix.
+8. A compact per-preset assessment.
+9. CPU/GPU, buoyancy, transition, whitewater, boundary-continuity, resource,
+   mobile and 4K assessments.
+10. Developer-tools discoverability/clean-view assessment.
+11. Integration recommendation.
+
+Do not provide replacement shaders, patches or edit suggestions larger than
+needed to make a finding actionable. Do not request unrelated gameplay, weather,
+camera or final graphics work.

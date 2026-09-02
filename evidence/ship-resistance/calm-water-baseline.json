@@ -1,0 +1,691 @@
+{
+  "formatVersion": 1,
+  "status": "Captive force-surface evidence only; passive integration is validated in the separate horizontal-dynamics record, while propulsion and steering remain absent.",
+  "contract": {
+    "coordinates": "Body +x port, +z forward; positive yaw turns the bow toward port.",
+    "scope": "Level still-water tow, drift and steady-yaw force evidence at canonical loading.",
+    "frictionSource": "ITTC 7.5-02-02-01 rev. 05 ITTC-1957 model-ship correlation line.",
+    "validationMeaning": "Symmetry, passivity, continuity and decomposition are validated; unmeasured coefficients remain provisional."
+  },
+  "geometry": {
+    "stationCount": 39,
+    "waterlineLengthM": 14.30769231,
+    "yawReferenceZ": -0.20246323,
+    "wettedSurfaceAreaM2": 114.7902483,
+    "hullLateralAreaM2": 22.49500658,
+    "backboneLateralAreaM2": 12.49417323,
+    "rudderLateralAreaM2": 1.63653203
+  },
+  "coefficients": {
+    "viscousFormFactor": 1.25,
+    "residuaryCoefficientAtReference": 0.0025,
+    "residuaryReferenceFroude": 0.35,
+    "residuaryFroudeExponent": 6,
+    "maximumResiduaryCoefficient": 0.08,
+    "hullCrossFlowCoefficient": 0.85,
+    "backboneCrossFlowCoefficient": 1.05,
+    "rudderCrossFlowCoefficient": 1.1,
+    "hullForwardLateralSlope": 0.35,
+    "backboneForwardLateralSlope": 1.3,
+    "rudderForwardLateralSlope": 2.8
+  },
+  "straightTow": [
+    {
+      "forwardSpeedMps": 0,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": 0,
+      "reynoldsNumber": 0,
+      "froudeNumber": 0,
+      "frictionCoefficient": 0,
+      "residuaryCoefficient": 0,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": 0,
+        "formForceN": 0,
+        "residuaryForceN": 0,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 0.5,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -60.37237218
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -30.18618609,
+      "reynoldsNumber": 6011635.42,
+      "froudeNumber": 0.04220372,
+      "frictionCoefficient": 0.0032838895,
+      "residuaryCoefficient": 7.7e-9,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -48.29780733,
+        "formForceN": -12.07445183,
+        "residuaryForceN": -0.00011303,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 1,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -213.74582527
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -213.74582527,
+      "reynoldsNumber": 12023270.85,
+      "froudeNumber": 0.08440743,
+      "frictionCoefficient": 0.0029062299,
+      "residuaryCoefficient": 4.918e-7,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -170.97351268,
+        "formForceN": -42.74337817,
+        "residuaryForceN": -0.02893442,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 2,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -769.30314251
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -1538.60628501,
+      "reynoldsNumber": 24046541.69,
+      "froudeNumber": 0.16881487,
+      "frictionCoefficient": 0.0025901611,
+      "residuaryCoefficient": 0.0000314772,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -609.5167444,
+        "formForceN": -152.3791861,
+        "residuaryForceN": -7.40721201,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 3,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -1797.18471895
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -5391.55415686,
+      "reynoldsNumber": 36069812.54,
+      "froudeNumber": 0.2532223,
+      "frictionCoefficient": 0.0024286111,
+      "residuaryCoefficient": 0.0003585448,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -1285.8767815,
+        "formForceN": -321.46919537,
+        "residuaryForceN": -189.83874208,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -18517.87630407,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 5,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -15431.13764326
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -77155.68821629,
+      "reynoldsNumber": 60116354.23,
+      "froudeNumber": 0.42203717,
+      "frictionCoefficient": 0.0022457271,
+      "residuaryCoefficient": 0.0076848602,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -3302.90327121,
+        "formForceN": -825.7258178,
+        "residuaryForceN": -11302.50855424,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 6,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -54384.31426063
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -326305.88556378,
+      "reynoldsNumber": 72139625.08,
+      "froudeNumber": 0.50644461,
+      "frictionCoefficient": 0.0021854292,
+      "residuaryCoefficient": 0.0229468696,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -4628.47703084,
+        "formForceN": -1157.11925771,
+        "residuaryForceN": -48598.71797208,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    }
+  ],
+  "drift": [
+    {
+      "driftAngleDeg": -15,
+      "forwardSpeedMps": 3.86370331,
+      "portSpeedMps": -1.03527618,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 77528.76588861,
+        "y": 0,
+        "z": -4000.66097771
+      },
+      "yawMomentNm": -138557.95696288,
+      "mechanicalPowerW": -95721.05166344,
+      "reynoldsNumber": 46454351.31,
+      "froudeNumber": 0.32612528,
+      "frictionCoefficient": 0.0023353436,
+      "residuaryCoefficient": 0.0016362082,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2050.96002483,
+        "formForceN": -512.74000621,
+        "residuaryForceN": -1436.96094667,
+        "hullLateralForceN": 26643.11881042,
+        "backboneLateralForceN": 40503.1189592,
+        "rudderLateralForceN": 10382.52811899,
+        "hullYawMomentNm": -2399.79566742,
+        "backboneYawMomentNm": -62011.18836104,
+        "rudderYawMomentNm": -74146.97293443
+      }
+    },
+    {
+      "driftAngleDeg": -10,
+      "forwardSpeedMps": 3.93923101,
+      "portSpeedMps": -0.69459271,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 48659.35491784,
+        "y": 0,
+        "z": -4334.68982335
+      },
+      "yawMomentNm": -90325.63788668,
+      "mechanicalPowerW": -50873.77781147,
+      "reynoldsNumber": 47362441.39,
+      "froudeNumber": 0.33250038,
+      "frictionCoefficient": 0.0023284295,
+      "residuaryCoefficient": 0.0018377424,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2125.61624953,
+        "formForceN": -531.40406238,
+        "residuaryForceN": -1677.66951143,
+        "hullLateralForceN": 15768.32751122,
+        "backboneLateralForceN": 26020.24811255,
+        "rudderLateralForceN": 6870.77929407,
+        "hullYawMomentNm": -1420.28282474,
+        "backboneYawMomentNm": -39837.5865457,
+        "rudderYawMomentNm": -49067.76851624
+      }
+    },
+    {
+      "driftAngleDeg": -5,
+      "forwardSpeedMps": 3.98477879,
+      "portSpeedMps": -0.34862297,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 22552.01350232,
+        "y": 0,
+        "z": -4553.32539716
+      },
+      "yawMomentNm": -43667.08674368,
+      "mechanicalPowerW": -26006.14442635,
+      "reynoldsNumber": 47910074.69,
+      "froudeNumber": 0.33634495,
+      "frictionCoefficient": 0.0023243382,
+      "residuaryCoefficient": 0.0019689797,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2171.23394593,
+        "formForceN": -542.80848648,
+        "residuaryForceN": -1839.28296475,
+        "hullLateralForceN": 6796.41894044,
+        "backboneLateralForceN": 12381.06860361,
+        "rudderLateralForceN": 3374.52595827,
+        "hullYawMomentNm": -612.16619733,
+        "backboneYawMomentNm": -18955.69519134,
+        "rudderYawMomentNm": -24099.22535501
+      }
+    },
+    {
+      "driftAngleDeg": 0,
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -18517.87630407,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "driftAngleDeg": 5,
+      "forwardSpeedMps": 3.98477879,
+      "portSpeedMps": 0.34862297,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": -22552.01350232,
+        "y": 0,
+        "z": -4553.32539716
+      },
+      "yawMomentNm": 43667.08674368,
+      "mechanicalPowerW": -26006.14442635,
+      "reynoldsNumber": 47910074.69,
+      "froudeNumber": 0.33634495,
+      "frictionCoefficient": 0.0023243382,
+      "residuaryCoefficient": 0.0019689797,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2171.23394593,
+        "formForceN": -542.80848648,
+        "residuaryForceN": -1839.28296475,
+        "hullLateralForceN": -6796.41894044,
+        "backboneLateralForceN": -12381.06860361,
+        "rudderLateralForceN": -3374.52595827,
+        "hullYawMomentNm": 612.16619733,
+        "backboneYawMomentNm": 18955.69519134,
+        "rudderYawMomentNm": 24099.22535501
+      }
+    },
+    {
+      "driftAngleDeg": 10,
+      "forwardSpeedMps": 3.93923101,
+      "portSpeedMps": 0.69459271,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": -48659.35491784,
+        "y": 0,
+        "z": -4334.68982335
+      },
+      "yawMomentNm": 90325.63788668,
+      "mechanicalPowerW": -50873.77781147,
+      "reynoldsNumber": 47362441.39,
+      "froudeNumber": 0.33250038,
+      "frictionCoefficient": 0.0023284295,
+      "residuaryCoefficient": 0.0018377424,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2125.61624953,
+        "formForceN": -531.40406238,
+        "residuaryForceN": -1677.66951143,
+        "hullLateralForceN": -15768.32751122,
+        "backboneLateralForceN": -26020.24811255,
+        "rudderLateralForceN": -6870.77929407,
+        "hullYawMomentNm": 1420.28282474,
+        "backboneYawMomentNm": 39837.5865457,
+        "rudderYawMomentNm": 49067.76851624
+      }
+    },
+    {
+      "driftAngleDeg": 15,
+      "forwardSpeedMps": 3.86370331,
+      "portSpeedMps": 1.03527618,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": -77528.76588861,
+        "y": 0,
+        "z": -4000.66097771
+      },
+      "yawMomentNm": 138557.95696288,
+      "mechanicalPowerW": -95721.05166344,
+      "reynoldsNumber": 46454351.31,
+      "froudeNumber": 0.32612528,
+      "frictionCoefficient": 0.0023353436,
+      "residuaryCoefficient": 0.0016362082,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2050.96002483,
+        "formForceN": -512.74000621,
+        "residuaryForceN": -1436.96094667,
+        "hullLateralForceN": -26643.11881042,
+        "backboneLateralForceN": -40503.1189592,
+        "rudderLateralForceN": -10382.52811899,
+        "hullYawMomentNm": 2399.79566742,
+        "backboneYawMomentNm": 62011.18836104,
+        "rudderYawMomentNm": 74146.97293443
+      }
+    }
+  ],
+  "yaw": [
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": -0.12903226,
+      "normalizedYawRate": -0.5,
+      "forceBodyN": {
+        "x": -17312.54733088,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": 205621.21787411,
+      "mechanicalPowerW": -45049.64635234,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": -307.47024034,
+        "backboneLateralForceN": -7564.45165809,
+        "rudderLateralForceN": -9440.62543245,
+        "hullYawMomentNm": 31110.52048387,
+        "backboneYawMomentNm": 106991.59377335,
+        "rudderYawMomentNm": 67519.10361689
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": -0.06451613,
+      "normalizedYawRate": -0.25,
+      "forceBodyN": {
+        "x": -8183.53645728,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": 95983.83753732,
+      "mechanicalPowerW": -24710.38195164,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": -123.76353184,
+        "backboneLateralForceN": -3535.57789376,
+        "rudderLateralForceN": -4524.19503168,
+        "hullYawMomentNm": 13504.82573769,
+        "backboneYawMomentNm": 50123.76769701,
+        "rudderYawMomentNm": 32355.24410261
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": -0.02580645,
+      "normalizedYawRate": -0.1,
+      "forceBodyN": {
+        "x": -3159.95765296,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": 36755.10987899,
+      "mechanicalPowerW": -19466.39526869,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": -42.31223154,
+        "backboneLateralForceN": -1355.03565304,
+        "rudderLateralForceN": -1762.60976838,
+        "hullYawMomentNm": 4909.82601406,
+        "backboneYawMomentNm": 19240.22007328,
+        "rudderYawMomentNm": 12605.06379165
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0,
+      "normalizedYawRate": 0,
+      "forceBodyN": {
+        "x": 0,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": 0,
+      "mechanicalPowerW": -18517.87630407,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": 0,
+        "backboneLateralForceN": 0,
+        "rudderLateralForceN": 0,
+        "hullYawMomentNm": 0,
+        "backboneYawMomentNm": 0,
+        "rudderYawMomentNm": 0
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0.02580645,
+      "normalizedYawRate": 0.1,
+      "forceBodyN": {
+        "x": 3159.95765296,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": -36755.10987899,
+      "mechanicalPowerW": -19466.39526869,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": 42.31223154,
+        "backboneLateralForceN": 1355.03565304,
+        "rudderLateralForceN": 1762.60976838,
+        "hullYawMomentNm": -4909.82601406,
+        "backboneYawMomentNm": -19240.22007328,
+        "rudderYawMomentNm": -12605.06379165
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0.06451613,
+      "normalizedYawRate": 0.25,
+      "forceBodyN": {
+        "x": 8183.53645728,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": -95983.83753732,
+      "mechanicalPowerW": -24710.38195164,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": 123.76353184,
+        "backboneLateralForceN": 3535.57789376,
+        "rudderLateralForceN": 4524.19503168,
+        "hullYawMomentNm": -13504.82573769,
+        "backboneYawMomentNm": -50123.76769701,
+        "rudderYawMomentNm": -32355.24410261
+      }
+    },
+    {
+      "forwardSpeedMps": 4,
+      "portSpeedMps": 0,
+      "yawRateRadPerSecond": 0.12903226,
+      "normalizedYawRate": 0.5,
+      "forceBodyN": {
+        "x": 17312.54733088,
+        "y": 0,
+        "z": -4629.46907602
+      },
+      "yawMomentNm": -205621.21787411,
+      "mechanicalPowerW": -45049.64635234,
+      "reynoldsNumber": 48093083.39,
+      "froudeNumber": 0.33762974,
+      "frictionCoefficient": 0.0023229838,
+      "residuaryCoefficient": 0.00201454,
+      "effectiveWettedSurfaceAreaM2": 114.7902483,
+      "components": {
+        "frictionForceN": -2186.57824196,
+        "formForceN": -546.64456049,
+        "residuaryForceN": -1896.24627356,
+        "hullLateralForceN": 307.47024034,
+        "backboneLateralForceN": 7564.45165809,
+        "rudderLateralForceN": 9440.62543245,
+        "hullYawMomentNm": -31110.52048387,
+        "backboneYawMomentNm": -106991.59377335,
+        "rudderYawMomentNm": -67519.10361689
+      }
+    }
+  ],
+  "summary": {
+    "straightTowDragMonotonic": true,
+    "maximumPositiveMechanicalPowerW": 0,
+    "maximumDriftMirrorRelativeError": 0,
+    "maximumYawMirrorRelativeError": 0,
+    "dragAtFourMpsN": 4629.46907602,
+    "effectivePowerAtFourMpsW": 18517.87630407
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-08-03",
+  "host": {
+    "chip": "Apple M2"
+  },
+  "source": {
+    "status": "Recovered summary; original per-batch raw JSON was lost with retired ignored worktree d6d4",
+    "snapshotCommit": "b4ef4f24e4c431bd76c4bf3264db5e96b76ab1ba",
+    "originalResultFiles": 99,
+    "suiteFileCounts": {
+      "representative": 4,
+      "smoke": 24,
+      "historical": 15,
+      "southern-afternoon": 56
+    }
+  },
+  "contract": {
+    "chrome": "--headless=new --enable-gpu --use-angle=metal --window-size=1600,1000",
+    "cssSurface": "1280x720",
+    "devicePixelRatio": 2,
+    "drawingBuffer": "2560x1440",
+    "minimumOceanTriangles": 100000,
+    "fence": "1x1 readPixels with PIXEL_PACK_BUFFER unbound",
+    "roundPolicy": "Two rounds in alternating revision order where recorded"
+  },
+  "representativeEndpoints": [
+    {
+      "revision": "513fe5a",
+      "scenariosMs": {
+        "day-production-medium": 24.675,
+        "sunset-production-medium": 38.644,
+        "night-production-medium": 24.606,
+        "day-calm-medium": 23.606,
+        "day-rough-medium": 33.212,
+        "day-production-close": 19.962,
+        "day-production-high": 16.725
+      },
+      "dayAttributionMs": {
+        "ocean": 21.238,
+        "vesselNet": 0.292,
+        "vesselWithOceanHidden": 0.283,
+        "vesselAndLightsOnly": 0.329
+      }
+    },
+    {
+      "revision": "38440b5",
+      "scenariosMs": {
+        "day-production-medium": 14.069,
+        "sunset-production-medium": 13.381,
+        "night-production-medium": 13.706,
+        "day-calm-medium": 13.206,
+        "day-rough-medium": 17.919,
+        "day-production-close": 14.725,
+        "day-production-high": 13.213
+      },
+      "dayAttributionMs": {
+        "ocean": 7.071,
+        "vesselNet": 0.408,
+        "vesselWithOceanHidden": 0.779,
+        "vesselAndLightsOnly": 0.671
+      }
+    }
+  ],
+  "timeOfDayHistory": [
+    { "revision": "4c1f3d9", "dayMs": 24.988, "sunsetMs": 24.650, "nightMs": 24.800 },
+    { "revision": "795cc69", "dayMs": 24.888, "sunsetMs": 24.650, "nightMs": 24.800 },
+    { "revision": "8418c4d", "dayMs": 26.975, "sunsetMs": 26.525, "nightMs": 26.700 },
+    { "revision": "0f9ae83", "dayMs": 26.588, "sunsetMs": 26.588, "nightMs": 26.588 },
+    { "revision": "8221024", "dayMs": 24.150, "sunsetMs": 24.450, "nightMs": 24.038 },
+    { "revision": "5cb290e", "dayMs": 23.650, "sunsetMs": 23.663, "nightMs": 23.688 },
+    { "revision": "f316e0e", "dayMs": 23.762, "sunsetMs": 23.663, "nightMs": 23.663 },
+    { "revision": "24c3aa8", "dayMs": 15.525, "sunsetMs": 15.400, "nightMs": 15.412 },
+    { "revision": "d984eaa", "dayMs": 15.262, "sunsetMs": 15.225, "nightMs": 14.988 },
+    { "revision": "f5ebace", "dayMs": 12.975, "sunsetMs": 13.063, "nightMs": 13.037 },
+    { "revision": "8395110", "dayMs": 12.463, "sunsetMs": 12.088, "nightMs": 12.400 },
+    { "revision": "e15939d", "dayMs": 12.738, "sunsetMs": 11.912, "nightMs": 13.250 },
+    { "revision": "3096f1d", "dayMs": 13.488, "sunsetMs": 12.738, "nightMs": 13.100 },
+    { "revision": "3350698", "dayMs": 13.412, "sunsetMs": 12.850, "nightMs": 13.150 },
+    { "revision": "ff5d9c8", "dayMs": 14.000, "sunsetMs": 13.238, "nightMs": 13.750 }
+  ],
+  "southernAfternoonHistory": {
+    "scenario": {
+      "worldInstantUtcSeconds": 1768624260,
+      "solarElevationDegrees": 64.6878,
+      "seaState": "SOUTHERN_OCEAN_ROUGH",
+      "cameraDistanceM": 34,
+      "cameraAltitudeM": 9
+    },
+    "rows": [
+      { "revision": "513fe5a", "medianAverageMs": 28.256, "roundMediansMs": [28.288, 28.225], "oceanDeltaMs": 24.883, "vesselOnlyDeltaMs": 0.142 },
+      { "revision": "4c1f3d9", "medianAverageMs": 28.400, "roundMediansMs": [28.425, 28.375], "oceanDeltaMs": 24.933, "vesselOnlyDeltaMs": 0.225 },
+      { "revision": "795cc69", "medianAverageMs": 28.594, "roundMediansMs": [28.587, 28.600], "oceanDeltaMs": 25.046, "vesselOnlyDeltaMs": 0.225 },
+      { "revision": "8418c4d", "medianAverageMs": 30.694, "roundMediansMs": [30.762, 30.625], "oceanDeltaMs": 25.142, "vesselOnlyDeltaMs": 0.196 },
+      { "revision": "0f9ae83", "medianAverageMs": 30.406, "roundMediansMs": [30.325, 30.488], "oceanDeltaMs": 24.971, "vesselOnlyDeltaMs": 0.179 },
+      { "revision": "8221024", "medianAverageMs": 28.069, "roundMediansMs": [28.212, 27.925], "oceanDeltaMs": 22.579, "vesselOnlyDeltaMs": 0.383 },
+      { "revision": "5cb290e", "medianAverageMs": 27.587, "roundMediansMs": [27.587, 27.587], "oceanDeltaMs": 22.292, "vesselOnlyDeltaMs": 0.371 },
+      { "revision": "f316e0e", "medianAverageMs": 27.538, "roundMediansMs": [27.475, 27.600], "oceanDeltaMs": 22.354, "vesselOnlyDeltaMs": 0.275 },
+      { "revision": "24c3aa8", "medianAverageMs": 18.981, "roundMediansMs": [19.125, 18.837], "oceanDeltaMs": 13.529, "vesselOnlyDeltaMs": 0.171 },
+      { "revision": "35d866f", "medianAverageMs": 18.319, "roundMediansMs": [18.250, 18.387], "oceanDeltaMs": 11.917, "vesselOnlyDeltaMs": 0.208 },
+      { "revision": "885dd4c", "medianAverageMs": 18.288, "roundMediansMs": [18.387, 18.188], "oceanDeltaMs": 11.796, "vesselOnlyDeltaMs": 0.237 },
+      { "revision": "d984eaa", "medianAverageMs": 18.275, "roundMediansMs": [18.288, 18.262], "oceanDeltaMs": 12.042, "vesselOnlyDeltaMs": 0.192 },
+      { "revision": "8b65e6e", "medianAverageMs": 18.219, "roundMediansMs": [18.163, 18.275], "oceanDeltaMs": 11.837, "vesselOnlyDeltaMs": 0.192 },
+      { "revision": "f5ebace", "medianAverageMs": 16.175, "roundMediansMs": [16.137, 16.212], "oceanDeltaMs": 10.042, "vesselOnlyDeltaMs": 0.246 },
+      { "revision": "8395110", "medianAverageMs": 15.375, "roundMediansMs": [15.425, 15.325], "oceanDeltaMs": 9.054, "vesselOnlyDeltaMs": 0.250 },
+      { "revision": "def9b52", "medianAverageMs": 15.488, "roundMediansMs": [15.450, 15.525], "oceanDeltaMs": 9.512, "vesselOnlyDeltaMs": 0.167 },
+      { "revision": "432f984", "medianAverageMs": 15.981, "roundMediansMs": [15.963, 16.000], "oceanDeltaMs": 9.637, "vesselOnlyDeltaMs": 0.204 },
+      { "revision": "e277fb1", "medianAverageMs": 16.050, "roundMediansMs": [16.075, 16.025], "oceanDeltaMs": 9.738, "vesselOnlyDeltaMs": 0.221 },
+      { "revision": "3a42934", "medianAverageMs": 16.012, "roundMediansMs": [16.000, 16.025], "oceanDeltaMs": 9.729, "vesselOnlyDeltaMs": 0.150 },
+      { "revision": "bfab3f1", "medianAverageMs": 16.256, "roundMediansMs": [16.262, 16.250], "oceanDeltaMs": 9.717, "vesselOnlyDeltaMs": 0.292 },
+      { "revision": "e15939d", "medianAverageMs": 16.188, "roundMediansMs": [16.150, 16.225], "oceanDeltaMs": 9.621, "vesselOnlyDeltaMs": 0.275 },
+      { "revision": "3096f1d", "medianAverageMs": 17.194, "roundMediansMs": [17.050, 17.337], "oceanDeltaMs": 10.408, "vesselOnlyDeltaMs": 0.342 },
+      { "revision": "a6ac1db", "medianAverageMs": 17.038, "roundMediansMs": [17.038, 17.038], "oceanDeltaMs": 10.492, "vesselOnlyDeltaMs": 0.271 },
+      { "revision": "0398807", "medianAverageMs": 17.019, "roundMediansMs": [17.038, 17.000], "oceanDeltaMs": 10.625, "vesselOnlyDeltaMs": 0.246 },
+      { "revision": "31d2fe9", "medianAverageMs": 17.144, "roundMediansMs": [17.075, 17.212], "oceanDeltaMs": 10.604, "vesselOnlyDeltaMs": 0.346 },
+      { "revision": "3350698", "medianAverageMs": 17.106, "roundMediansMs": [17.125, 17.087], "oceanDeltaMs": 10.433, "vesselOnlyDeltaMs": 0.208 },
+      { "revision": "ff5d9c8", "medianAverageMs": 17.719, "roundMediansMs": [17.700, 17.738], "oceanDeltaMs": 10.754, "vesselOnlyDeltaMs": 0.667 },
+      { "revision": "38440b5", "medianAverageMs": 17.806, "roundMediansMs": [17.875, 17.738], "oceanDeltaMs": 10.575, "vesselOnlyDeltaMs": 0.617 }
+    ]
+  }
+}
